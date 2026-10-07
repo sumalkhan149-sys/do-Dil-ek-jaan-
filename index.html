@@ -15,7 +15,7 @@
     body {
       min-height: 100vh;
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #4b164c, #160018 55%, #050005);
+      background: radial-gradient(circle at top, #58145b, #180018 55%, #050005);
       color: white;
       display: flex;
       justify-content: center;
@@ -23,51 +23,16 @@
       overflow: hidden;
     }
 
-    .hearts {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .heart {
-      position: absolute;
-      font-size: 24px;
-      animation: float 7s linear infinite;
-      opacity: 0.5;
-    }
-
-    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .heart:nth-child(2) { left: 30%; animation-delay: 2s; }
-    .heart:nth-child(3) { left: 55%; animation-delay: 4s; }
-    .heart:nth-child(4) { left: 80%; animation-delay: 1s; }
-
-    @keyframes float {
-      0% {
-        transform: translateY(110vh) scale(0.7);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-20vh) scale(1.3);
-        opacity: 0;
-      }
-    }
-
     .card {
       width: 90%;
       max-width: 420px;
-      padding: 40px 25px;
+      padding: 35px 25px;
       text-align: center;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.15);
       border-radius: 28px;
       backdrop-filter: blur(15px);
-      box-shadow: 0 0 45px rgba(255, 0, 150, 0.25);
-      position: relative;
-      z-index: 2;
+      box-shadow: 0 0 45px rgba(255,0,150,.25);
     }
 
     .logo {
@@ -76,17 +41,16 @@
     }
 
     h1 {
-      font-size: 35px;
+      font-size: 34px;
       margin-bottom: 10px;
-      background: linear-gradient(90deg, #ff6bcb, #ffffff, #ff4f9a);
+      background: linear-gradient(90deg,#ff6bcb,#fff,#ff4f9a);
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    .tagline {
-      color: #e7cce5;
-      margin-bottom: 30px;
-      font-size: 15px;
+    p {
+      color: #e8d2e6;
+      margin-bottom: 25px;
     }
 
     button {
@@ -94,57 +58,193 @@
       padding: 15px;
       border: none;
       border-radius: 30px;
-      background: linear-gradient(90deg, #ff3f9f, #a52cff);
+      background: linear-gradient(90deg,#ff3f9f,#a52cff);
       color: white;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(255, 0, 150, 0.3);
     }
 
-    button:active {
-      transform: scale(0.97);
+    .profile {
+      display: none;
     }
 
-    .small {
-      margin-top: 18px;
-      color: #bda9bb;
-      font-size: 12px;
+    .profile img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 15px;
+      border: 3px solid #ff70c8;
+    }
+
+    .logout {
+      margin-top: 15px;
+      background: rgba(255,255,255,.12);
     }
   </style>
 </head>
 
 <body>
 
-  <div class="hearts">
-    <div class="heart">❤️</div>
-    <div class="heart">💗</div>
-    <div class="heart">💖</div>
-    <div class="heart">💕</div>
-  </div>
-
   <div class="card">
-    <div class="logo">❤️</div>
 
-    <h1>Do Dil Ek Jaan</h1>
+    <!-- LOGIN SCREEN -->
+    <div id="loginScreen">
+      <div class="logo">❤️</div>
 
-    <p class="tagline">
-      Connect • Chat • Share • Play
-    </p>
+      <h1>Do Dil Ek Jaan</h1>
 
-    <button onclick="startApp()">
-      Enter Do Dil Ek Jaan
-    </button>
+      <p>Connect • Chat • Share • Play</p>
 
-    <p class="small">
-      Made with ❤️ for connections that matter
-    </p>
+      <button id="loginBtn">
+        Continue with Google
+      </button>
+    </div>
+
+
+    <!-- PROFILE SCREEN -->
+    <div id="profileScreen" class="profile">
+
+      <div class="logo">💕</div>
+
+      <h1>Welcome!</h1>
+
+      <img id="profilePic" src="" alt="Profile">
+
+      <h2 id="userName"></h2>
+
+      <p id="userEmail"></p>
+
+      <button id="logoutBtn" class="logout">
+        Logout
+      </button>
+
+    </div>
+
   </div>
 
-  <script>
-    function startApp() {
-      alert("Welcome to Do Dil Ek Jaan ❤️");
-    }
+
+  <!-- Firebase -->
+  <script type="module">
+
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
+    // 🔥 APNI FIREBASE CONFIG YAHAN PASTE KARO
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
+
+      authDomain: "do-dil-ek-jaan.firebaseapp.com",
+
+      projectId: "do-dil-ek-jaan",
+
+      storageBucket: "do-dil-ek-jaan.firebasestorage.app",
+
+      messagingSenderId: "468290989463",
+
+      appId: "1:468290989463:web:3a8c0fc7b550177cfb68d2"
+
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const provider = new GoogleAuthProvider();
+
+
+    const loginScreen =
+      document.getElementById("loginScreen");
+
+    const profileScreen =
+      document.getElementById("profileScreen");
+
+    const loginBtn =
+      document.getElementById("loginBtn");
+
+    const logoutBtn =
+      document.getElementById("logoutBtn");
+
+    const userName =
+      document.getElementById("userName");
+
+    const userEmail =
+      document.getElementById("userEmail");
+
+    const profilePic =
+      document.getElementById("profilePic");
+
+
+    // GOOGLE LOGIN
+
+    loginBtn.addEventListener("click", async () => {
+
+      try {
+
+        await signInWithPopup(auth, provider);
+
+      } catch (error) {
+
+        alert("Login failed: " + error.message);
+
+        console.log(error);
+
+      }
+
+    });
+
+
+    // CHECK LOGIN
+
+    onAuthStateChanged(auth, (user) => {
+
+      if (user) {
+
+        loginScreen.style.display = "none";
+
+        profileScreen.style.display = "block";
+
+        userName.textContent =
+          user.displayName || "Do Dil Ek Jaan User";
+
+        userEmail.textContent =
+          user.email || "";
+
+        profilePic.src =
+          user.photoURL ||
+          "https://via.placeholder.com/90";
+
+      } else {
+
+        loginScreen.style.display = "block";
+
+        profileScreen.style.display = "none";
+
+      }
+
+    });
+
+
+    // LOGOUT
+
+    logoutBtn.addEventListener("click", async () => {
+
+      await signOut(auth);
+
+    });
+
   </script>
 
 </body>
