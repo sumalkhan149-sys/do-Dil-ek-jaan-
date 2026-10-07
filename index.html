@@ -17,15 +17,36 @@
       font-family: Arial, sans-serif;
       background: radial-gradient(circle at top, #58145b, #180018 55%, #050005);
       color: white;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 500px;
+      min-height: 100vh;
+      margin: auto;
+      position: relative;
+      padding-bottom: 80px;
+    }
+
+    .screen {
+      display: none;
+      padding: 25px 18px;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .login-screen {
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      padding: 20px;
     }
 
     .card {
-      width: 90%;
-      max-width: 420px;
+      width: 100%;
       padding: 35px 25px;
       text-align: center;
       background: rgba(255,255,255,0.08);
@@ -41,14 +62,14 @@
     }
 
     h1 {
-      font-size: 34px;
+      font-size: 32px;
       margin-bottom: 10px;
       background: linear-gradient(90deg,#ff6bcb,#fff,#ff4f9a);
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    p {
+    .subtitle {
       color: #e8d2e6;
       margin-bottom: 25px;
     }
@@ -65,58 +86,137 @@
       cursor: pointer;
     }
 
-    .profile {
-      display: none;
+    .top-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
-    .profile img {
-      width: 90px;
-      height: 90px;
+    .welcome {
+      padding: 25px;
+      border-radius: 25px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 18px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 8px;
+    }
+
+    .profile-box {
+      text-align: center;
+      padding: 25px 20px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .profile-box img {
+      width: 105px;
+      height: 105px;
+      object-fit: cover;
       border-radius: 50%;
-      margin: 15px;
       border: 3px solid #ff70c8;
+      margin-bottom: 15px;
+    }
+
+    .profile-box h2 {
+      margin-bottom: 6px;
+    }
+
+    .email {
+      color: #d8bfd6;
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    .edit-btn {
+      background: rgba(255,255,255,.12);
+      margin-bottom: 10px;
     }
 
     .logout {
-      margin-top: 15px;
-      background: rgba(255,255,255,.12);
+      background: rgba(255,50,100,.25);
+    }
+
+    .feature {
+      padding: 18px;
+      margin-top: 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 17px;
+    }
+
+    .feature span {
+      color: #cdb9cb;
+      font-size: 14px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      height: 70px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: rgba(20,0,20,.94);
+      border-top: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(15px);
+      z-index: 10;
+    }
+
+    .nav-btn {
+      width: 20%;
+      background: none;
+      padding: 8px 2px;
+      font-size: 12px;
+      color: #bdaabd;
+    }
+
+    .nav-btn.active {
+      color: #ff69bd;
+    }
+
+    .nav-icon {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="card">
+  <!-- LOGIN -->
+  <div id="loginScreen" class="login-screen">
 
-    <!-- LOGIN SCREEN -->
-    <div id="loginScreen">
+    <div class="card">
+
       <div class="logo">❤️</div>
 
       <h1>Do Dil Ek Jaan</h1>
 
-      <p>Connect • Chat • Share • Play</p>
+      <p class="subtitle">
+        Connect • Chat • Share • Play
+      </p>
 
       <button id="loginBtn">
         Continue with Google
-      </button>
-    </div>
-
-
-    <!-- PROFILE SCREEN -->
-    <div id="profileScreen" class="profile">
-
-      <div class="logo">💕</div>
-
-      <h1>Welcome!</h1>
-
-      <img id="profilePic" src="" alt="Profile">
-
-      <h2 id="userName"></h2>
-
-      <p id="userEmail"></p>
-
-      <button id="logoutBtn" class="logout">
-        Logout
       </button>
 
     </div>
@@ -124,7 +224,140 @@
   </div>
 
 
-  <!-- Firebase -->
+  <!-- APP -->
+  <div id="app" class="app hidden">
+
+    <!-- HOME -->
+    <section id="homeScreen" class="screen active">
+
+      <div class="top-title">
+        Do Dil Ek Jaan ❤️
+      </div>
+
+      <div class="welcome">
+        <h2 id="homeWelcome">Welcome! 💕</h2>
+        <p class="subtitle">
+          Your social world starts here.
+        </p>
+      </div>
+
+      <div class="feature">
+        <strong>👥 Friends</strong>
+        <span>Connect with your friends.</span>
+      </div>
+
+      <div class="feature">
+        <strong>💬 Chat</strong>
+        <span>Private chatting is coming next.</span>
+      </div>
+
+      <div class="feature">
+        <strong>💕 Couple Space</strong>
+        <span>Connect two accounts with a special code.</span>
+      </div>
+
+      <div class="feature">
+        <strong>🎮 Games</strong>
+        <span>Play fun games with your friends.</span>
+      </div>
+
+    </section>
+
+
+    <!-- FRIENDS -->
+    <section id="friendsScreen" class="screen">
+
+      <div class="top-title">
+        👥 Friends
+      </div>
+
+      <div class="welcome">
+        <h2>Friends are coming ❤️</h2>
+        <p class="subtitle">
+          We will build the friend system next.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- CHAT -->
+    <section id="chatScreen" class="screen">
+
+      <div class="top-title">
+        💬 Chat
+      </div>
+
+      <div class="welcome">
+        <h2>Messages</h2>
+        <p class="subtitle">
+          Real-time chat will be added soon.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- PROFILE -->
+    <section id="profileScreen" class="screen">
+
+      <div class="top-title">
+        👤 Profile
+      </div>
+
+      <div class="profile-box">
+
+        <img id="profilePic" src="" alt="Profile">
+
+        <h2 id="userName">
+          User
+        </h2>
+
+        <p id="userEmail" class="email">
+        </p>
+
+        <button id="editBtn" class="edit-btn">
+          ✏️ Edit Profile
+        </button>
+
+        <button id="logoutBtn" class="logout">
+          🚪 Logout
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+
+      <button class="nav-btn active" data-screen="homeScreen">
+        <span class="nav-icon">🏠</span>
+        Home
+      </button>
+
+      <button class="nav-btn" data-screen="friendsScreen">
+        <span class="nav-icon">👥</span>
+        Friends
+      </button>
+
+      <button class="nav-btn" data-screen="chatScreen">
+        <span class="nav-icon">💬</span>
+        Chat
+      </button>
+
+      <button class="nav-btn" data-screen="profileScreen">
+        <span class="nav-icon">👤</span>
+        Profile
+      </button>
+
+    </nav>
+
+  </div>
+
+
+  <!-- FIREBASE -->
   <script type="module">
 
     import { initializeApp }
@@ -139,11 +372,9 @@
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 
-    // 🔥 APNI FIREBASE CONFIG YAHAN PASTE KARO
-
     const firebaseConfig = {
 
-      apiKey: "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
+      apiKey: "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA", 
 
       authDomain: "do-dil-ek-jaan.firebaseapp.com",
 
@@ -168,8 +399,8 @@
     const loginScreen =
       document.getElementById("loginScreen");
 
-    const profileScreen =
-      document.getElementById("profileScreen");
+    const appScreen =
+      document.getElementById("app");
 
     const loginBtn =
       document.getElementById("loginBtn");
@@ -177,14 +408,17 @@
     const logoutBtn =
       document.getElementById("logoutBtn");
 
+    const profilePic =
+      document.getElementById("profilePic");
+
     const userName =
       document.getElementById("userName");
 
     const userEmail =
       document.getElementById("userEmail");
 
-    const profilePic =
-      document.getElementById("profilePic");
+    const homeWelcome =
+      document.getElementById("homeWelcome");
 
 
     // GOOGLE LOGIN
@@ -206,15 +440,15 @@
     });
 
 
-    // CHECK LOGIN
+    // LOGIN STATE
 
     onAuthStateChanged(auth, (user) => {
 
       if (user) {
 
-        loginScreen.style.display = "none";
+        loginScreen.classList.add("hidden");
 
-        profileScreen.style.display = "block";
+        appScreen.classList.remove("hidden");
 
         userName.textContent =
           user.displayName || "Do Dil Ek Jaan User";
@@ -224,13 +458,18 @@
 
         profilePic.src =
           user.photoURL ||
-          "https://via.placeholder.com/90";
+          "https://via.placeholder.com/105";
+
+        homeWelcome.textContent =
+          "Welcome, " +
+          (user.displayName || "Friend") +
+          "! ❤️";
 
       } else {
 
-        loginScreen.style.display = "block";
+        loginScreen.classList.remove("hidden");
 
-        profileScreen.style.display = "none";
+        appScreen.classList.add("hidden");
 
       }
 
@@ -244,6 +483,54 @@
       await signOut(auth);
 
     });
+
+
+    // NAVIGATION
+
+    const navButtons =
+      document.querySelectorAll(".nav-btn");
+
+    const screens =
+      document.querySelectorAll(".screen");
+
+
+    navButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const target =
+          button.dataset.screen;
+
+        screens.forEach(screen => {
+          screen.classList.remove("active");
+        });
+
+        document
+          .getElementById(target)
+          .classList.add("active");
+
+        navButtons.forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+      });
+
+    });
+
+
+    // EDIT PROFILE
+
+    document
+      .getElementById("editBtn")
+      .addEventListener("click", () => {
+
+        alert(
+          "Profile editing system hum next step me add karenge ❤️"
+        );
+
+      });
 
   </script>
 
