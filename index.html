@@ -1643,105 +1643,25 @@ function requestId(
 
 
 /* SEND FRIEND REQUEST */
-
 async function sendFriendRequest(
   foundUid,
   data
 ){
 
-  const user =
-    auth.currentUser;
-
+  const user = auth.currentUser;
 
   if(!user) return;
 
-
-  const id =
-    requestId(
-      user.uid,
-      foundUid
-    );
-
+  const id = requestId(
+    user.uid,
+    foundUid
+  );
 
   try{
 
-    const existing =
-      await getDoc(
-        doc(
-          db,
-          "friendRequests",
-          id
-        )
-      );
-
-
-    if(existing.exists()){
-
-      const old =
-        existing.data();
-
-
-      if(
-        old.status ===
-        "pending"
-      ){
-
-        alert(
-          "Friend Request already sent 📩"
-        );
-
-        return;
-
-      }
-
-
-      if(
-        old.status ===
-        "accepted"
-      ){
-
-        alert(
-          "Aap dono already friends ho ❤️"
-        );
-
-        return;
-
-      }
-
-    }
-
-
-    const reverseId =
-      requestId(
-        foundUid,
-        user.uid
-      );
-
-
-    const reverse =
-      await getDoc(
-        doc(
-          db,
-          "friendRequests",
-          reverseId
-        )
-      );
-
-
-    if(
-      reverse.exists() &&
-      reverse.data().status ===
-      "pending"
-    ){
-
-      alert(
-        "Is person ne tumhe already request bheji hai. Friend Requests mein check karo 📩"
-      );
-
-      return;
-
-    }
-
+    // Directly send request
+    // Existing request check ko hata diya hai
+    // taaki permission error na aaye
 
     await setDoc(
       doc(
@@ -1750,15 +1670,13 @@ async function sendFriendRequest(
         id
       ),
       {
+        fromUid: user.uid,
 
-        fromUid:
-          user.uid,
-
-        toUid:
-          foundUid,
+        toUid: foundUid,
 
         fromName:
-          userName.textContent,
+          userName.textContent ||
+          "Do Dil Ek Jaan User",
 
         fromPhoto:
           profilePic.src || "",
@@ -1772,42 +1690,29 @@ async function sendFriendRequest(
 
         createdAt:
           serverTimestamp()
-
       }
     );
-
 
     alert(
       "Friend Request sent successfully ❤️"
     );
 
-
     friendResult.innerHTML = `
-
       <div class="search-message">
-
         📩 Friend Request sent!
-
       </div>
-
     `;
 
   }catch(error){
 
-    console.log(
-      error
-    );
-
+    console.log(error);
 
     alert(
       "Request send failed: " +
       error.message
     );
-
   }
-
 }
-
 
 /* FRIEND SEARCH */
 
