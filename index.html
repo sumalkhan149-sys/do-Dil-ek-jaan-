@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -203,6 +204,83 @@
       background: rgba(255,255,255,.12);
     }
 
+    /* CHAT */
+
+    .chat-box {
+      height: 55vh;
+      min-height: 350px;
+      overflow-y: auto;
+      padding: 15px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 12px;
+    }
+
+    .chat-empty {
+      text-align: center;
+      color: #cdb9cb;
+      padding: 30px 10px;
+    }
+
+    .message {
+      margin-bottom: 12px;
+      max-width: 82%;
+    }
+
+    .message.mine {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .message-bubble {
+      display: inline-block;
+      padding: 11px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.12);
+      text-align: left;
+      word-break: break-word;
+    }
+
+    .message.mine .message-bubble {
+      background: linear-gradient(90deg,#ff3f9f,#a52cff);
+    }
+
+    .sender {
+      display: block;
+      font-size: 12px;
+      color: #e5cde3;
+      margin-bottom: 4px;
+    }
+
+    .message-time {
+      display: block;
+      font-size: 10px;
+      color: #bdaabd;
+      margin-top: 4px;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 25px;
+      background: rgba(255,255,255,.08);
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .chat-send {
+      width: 90px;
+      padding: 12px;
+    }
+
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -247,6 +325,7 @@
 <body>
 
   <!-- LOGIN -->
+
   <div id="loginScreen" class="login-screen">
 
     <div class="card">
@@ -269,9 +348,11 @@
 
 
   <!-- APP -->
+
   <div id="app" class="app hidden">
 
     <!-- HOME -->
+
     <section id="homeScreen" class="screen active">
 
       <div class="top-title">
@@ -293,7 +374,7 @@
 
       <div class="feature">
         <strong>💬 Chat</strong>
-        <span>Private chatting is coming next.</span>
+        <span>Real-time chat is now working.</span>
       </div>
 
       <div class="feature">
@@ -310,6 +391,7 @@
 
 
     <!-- FRIENDS -->
+
     <section id="friendsScreen" class="screen">
 
       <div class="top-title">
@@ -317,35 +399,56 @@
       </div>
 
       <div class="welcome">
+
         <h2>Friends are coming ❤️</h2>
 
         <p class="subtitle">
           We will build the friend system next.
         </p>
+
       </div>
 
     </section>
 
 
     <!-- CHAT -->
+
     <section id="chatScreen" class="screen">
 
       <div class="top-title">
         💬 Chat
       </div>
 
-      <div class="welcome">
-        <h2>Messages</h2>
+      <div class="chat-box" id="chatBox">
 
-        <p class="subtitle">
-          Real-time chat will be added soon.
-        </p>
+        <div class="chat-empty" id="chatEmpty">
+          No messages yet ❤️<br>
+          Send the first message!
+        </div>
+
+      </div>
+
+      <div class="chat-input-row">
+
+        <input
+          id="chatInput"
+          class="chat-input"
+          type="text"
+          maxlength="500"
+          placeholder="Type a message..."
+        >
+
+        <button id="sendBtn" class="chat-send">
+          Send
+        </button>
+
       </div>
 
     </section>
 
 
     <!-- PROFILE -->
+
     <section id="profileScreen" class="screen">
 
       <div class="top-title">
@@ -405,6 +508,7 @@
 
 
     <!-- BOTTOM NAV -->
+
     <nav class="bottom-nav">
 
       <button class="nav-btn active" data-screen="homeScreen">
@@ -433,6 +537,7 @@
 
 
   <!-- FIREBASE -->
+
   <script type="module">
 
     import { initializeApp }
@@ -450,13 +555,19 @@
       getFirestore,
       doc,
       setDoc,
-      getDoc
+      getDoc,
+      collection,
+      addDoc,
+      query,
+      orderBy,
+      onSnapshot,
+      serverTimestamp
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
     const firebaseConfig = {
 
-      apiKey: "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
+      apiKey: "PASTE_YOUR_EXISTING_API_KEY_HERE",
 
       authDomain: "do-dil-ek-jaan.firebaseapp.com",
 
@@ -525,6 +636,18 @@
     const cancelBtn =
       document.getElementById("cancelBtn");
 
+    const chatBox =
+      document.getElementById("chatBox");
+
+    const chatEmpty =
+      document.getElementById("chatEmpty");
+
+    const chatInput =
+      document.getElementById("chatInput");
+
+    const sendBtn =
+      document.getElementById("sendBtn");
+
 
     // GOOGLE LOGIN
 
@@ -545,7 +668,7 @@
     });
 
 
-    // LOAD PROFILE FROM FIRESTORE
+    // LOAD PROFILE
 
     async function loadProfile(user) {
 
@@ -599,146 +722,395 @@
     }
 
 
-    // LOGIN STATE
+    // REAL-TIME CHAT
 
-    onAuthStateChanged(auth, async (user) => {
+    function startChat(user) {
 
-      if (user) {
+      const messagesRef =
+        collection(db, "chatMessages");
 
-        loginScreen.classList.add("hidden");
+      const messagesQuery =
+        query(
+          messagesRef,
+          orderBy("createdAt", "asc")
+        );
 
-        appScreen.classList.remove("hidden");
 
-        userEmail.textContent =
-          user.email || "";
+      onSnapshot(
+        messagesQuery,
+        (snapshot) => {
 
-        profilePic.src =
-          user.photoURL ||
-          "https://via.placeholder.com/105";
+          chatBox.innerHTML = "";
 
-        homeWelcome.textContent =
-          "Welcome, " +
-          (user.displayName || "Friend") +
-          "! ❤️";
+          if (snapshot.empty) {
 
-        await loadProfile(user);
+            chatBox.innerHTML = `
+              <div class="chat-empty">
+                No messages yet ❤️<br>
+                Send the first message!
+              </div>
+            `;
 
-      } else {
+            return;
 
-        loginScreen.classList.remove("hidden");
+          }
 
-        appScreen.classList.add("hidden");
+
+          snapshot.forEach((messageDoc) => {
+
+            const data =
+              messageDoc.data();
+
+            const message =
+              document.createElement("div");
+
+            const isMine =
+              data.uid === user.uid;
+
+            message.className =
+              "message " +
+              (isMine ? "mine" : "");
+
+
+            let timeText = "";
+
+            if (data.createdAt) {
+
+              const date =
+                data.createdAt.toDate();
+
+              timeText =
+                date.toLocaleTimeString(
+                  [],
+                  {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                  }
+                );
+
+            }
+
+
+            message.innerHTML = `
+              <span class="sender">
+                ${escapeHtml(data.name || "User")}
+              </span>
+
+              <span class="message-bubble">
+                ${escapeHtml(data.text || "")}
+              </span>
+
+              <span class="message-time">
+                ${timeText}
+              </span>
+            `;
+
+            chatBox.appendChild(message);
+
+          });
+
+
+          chatBox.scrollTop =
+            chatBox.scrollHeight;
+
+        },
+
+        (error) => {
+
+          console.log(
+            "Chat listener error:",
+            error
+          );
+
+          chatBox.innerHTML = `
+            <div class="chat-empty">
+              Chat permission error.<br>
+              Check Firestore Rules.
+            </div>
+          `;
+
+        }
+
+      );
+
+    }
+
+
+    // ESCAPE TEXT
+
+    function escapeHtml(text) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent =
+        text;
+
+      return div.innerHTML;
+
+    }
+
+
+    // SEND MESSAGE
+
+    sendBtn.addEventListener(
+      "click",
+      async () => {
+
+        const user =
+          auth.currentUser;
+
+        if (!user) {
+
+          alert("Please login first.");
+
+          return;
+
+        }
+
+
+        const text =
+          chatInput.value.trim();
+
+        if (!text) {
+
+          return;
+
+        }
+
+
+        sendBtn.disabled =
+          true;
+
+        sendBtn.textContent =
+          "Sending...";
+
+
+        try {
+
+          await addDoc(
+            collection(db, "chatMessages"),
+            {
+              uid: user.uid,
+              name:
+                userName.textContent ||
+                user.displayName ||
+                "User",
+              text: text,
+              createdAt:
+                serverTimestamp()
+            }
+          );
+
+
+          chatInput.value = "";
+
+        } catch (error) {
+
+          console.log(error);
+
+          alert(
+            "Message send failed: " +
+            error.message
+          );
+
+        }
+
+
+        sendBtn.disabled =
+          false;
+
+        sendBtn.textContent =
+          "Send";
 
       }
+    );
 
-    });
+
+    // ENTER TO SEND
+
+    chatInput.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (event.key === "Enter") {
+
+          event.preventDefault();
+
+          sendBtn.click();
+
+        }
+
+      }
+    );
 
 
-    // OPEN EDIT PROFILE
+    // LOGIN STATE
 
-    editBtn.addEventListener("click", () => {
+    onAuthStateChanged(
+      auth,
+      async (user) => {
 
-      editBox.classList.add("show");
+        if (user) {
 
-    });
+          loginScreen.classList.add("hidden");
+
+          appScreen.classList.remove("hidden");
+
+          userEmail.textContent =
+            user.email || "";
+
+          profilePic.src =
+            user.photoURL ||
+            "https://via.placeholder.com/105";
+
+          homeWelcome.textContent =
+            "Welcome, " +
+            (user.displayName || "Friend") +
+            "! ❤️";
+
+          await loadProfile(user);
+
+          startChat(user);
+
+        } else {
+
+          loginScreen.classList.remove("hidden");
+
+          appScreen.classList.add("hidden");
+
+        }
+
+      }
+    );
+
+
+    // EDIT PROFILE
+
+    editBtn.addEventListener(
+      "click",
+      () => {
+
+        editBox.classList.add("show");
+
+      }
+    );
 
 
     // CANCEL EDIT
 
-    cancelBtn.addEventListener("click", () => {
+    cancelBtn.addEventListener(
+      "click",
+      () => {
 
-      editBox.classList.remove("show");
+        editBox.classList.remove("show");
 
-    });
+      }
+    );
 
 
     // SAVE PROFILE
 
-    saveBtn.addEventListener("click", async () => {
+    saveBtn.addEventListener(
+      "click",
+      async () => {
 
-      const user = auth.currentUser;
+        const user =
+          auth.currentUser;
 
-      if (!user) {
+        if (!user) {
 
-        alert("Please login first.");
+          alert("Please login first.");
 
-        return;
+          return;
+
+        }
+
+
+        const name =
+          nameInput.value.trim();
+
+        const bio =
+          bioInput.value.trim();
+
+
+        if (!name) {
+
+          alert(
+            "Please enter your name ❤️"
+          );
+
+          return;
+
+        }
+
+
+        saveBtn.textContent =
+          "Saving...";
+
+
+        try {
+
+          await setDoc(
+            doc(db, "users", user.uid),
+            {
+              name: name,
+              bio: bio,
+              email: user.email || "",
+              photoURL: user.photoURL || "",
+              updatedAt:
+                new Date().toISOString()
+            },
+            { merge: true }
+          );
+
+
+          userName.textContent =
+            name;
+
+          userBio.textContent =
+            bio || "No bio yet ❤️";
+
+          homeWelcome.textContent =
+            "Welcome, " +
+            name +
+            "! ❤️";
+
+          editBox.classList.remove("show");
+
+          alert(
+            "Profile saved successfully ❤️"
+          );
+
+        } catch (error) {
+
+          console.log(error);
+
+          alert(
+            "Profile save failed: " +
+            error.message
+          );
+
+        }
+
+
+        saveBtn.textContent =
+          "💾 Save Profile";
 
       }
-
-      const name =
-        nameInput.value.trim();
-
-      const bio =
-        bioInput.value.trim();
-
-
-      if (!name) {
-
-        alert("Please enter your name ❤️");
-
-        return;
-
-      }
-
-
-      saveBtn.textContent =
-        "Saving...";
-
-
-      try {
-
-        await setDoc(
-          doc(db, "users", user.uid),
-          {
-            name: name,
-            bio: bio,
-            email: user.email || "",
-            photoURL: user.photoURL || "",
-            updatedAt: new Date().toISOString()
-          },
-          { merge: true }
-        );
-
-
-        userName.textContent =
-          name;
-
-        userBio.textContent =
-          bio || "No bio yet ❤️";
-
-        homeWelcome.textContent =
-          "Welcome, " + name + "! ❤️";
-
-        editBox.classList.remove("show");
-
-        alert("Profile saved successfully ❤️");
-
-      } catch (error) {
-
-        console.log(error);
-
-        alert(
-          "Profile save failed: " +
-          error.message
-        );
-
-      }
-
-
-      saveBtn.textContent =
-        "💾 Save Profile";
-
-    });
+    );
 
 
     // LOGOUT
 
-    logoutBtn.addEventListener("click", async () => {
+    logoutBtn.addEventListener(
+      "click",
+      async () => {
 
-      await signOut(auth);
+        await signOut(auth);
 
-    });
+      }
+    );
 
 
     // NAVIGATION
@@ -750,35 +1122,53 @@
       document.querySelectorAll(".screen");
 
 
-    navButtons.forEach(button => {
+    navButtons.forEach(
+      (button) => {
 
-      button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-        const target =
-          button.dataset.screen;
-
-        screens.forEach(screen => {
-
-          screen.classList.remove("active");
-
-        });
-
-        document
-          .getElementById(target)
-          .classList.add("active");
+            const target =
+              button.dataset.screen;
 
 
-        navButtons.forEach(btn => {
+            screens.forEach(
+              (screen) => {
 
-          btn.classList.remove("active");
+                screen.classList.remove(
+                  "active"
+                );
 
-        });
+              }
+            );
 
-        button.classList.add("active");
 
-      });
+            document
+              .getElementById(target)
+              .classList.add("active");
 
-    });
+
+            navButtons.forEach(
+              (btn) => {
+
+                btn.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+
+            button.classList.add(
+              "active"
+            );
+
+          }
+        );
+
+      }
+    );
 
   </script>
 
