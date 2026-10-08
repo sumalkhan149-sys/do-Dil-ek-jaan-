@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,6 +84,11 @@
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
     }
 
     .top-title {
@@ -202,6 +206,117 @@
 
     .cancel-btn {
       background: rgba(255,255,255,.12);
+    }
+
+    /* FRIENDS */
+
+    .friend-code-box {
+      text-align: center;
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 18px;
+    }
+
+    .friend-code-label {
+      color: #d8bfd6;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .friend-code {
+      font-size: 29px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #ff69bd;
+      word-break: break-all;
+    }
+
+    .friend-code-help {
+      color: #cdb9cb;
+      font-size: 12px;
+      margin-top: 9px;
+    }
+
+    .friend-search-box {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .friend-search-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .friend-search-box p {
+      color: #cdb9cb;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .friend-search-input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 15px;
+      background: rgba(255,255,255,.08);
+      color: white;
+      outline: none;
+      font-size: 16px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .friend-search-input::placeholder {
+      color: #9e879c;
+      letter-spacing: normal;
+    }
+
+    .friend-result {
+      margin-top: 15px;
+    }
+
+    .friend-user {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .friend-user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .friend-user-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ff69bd;
+    }
+
+    .friend-user-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .friend-user-code {
+      color: #cdb9cb;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .search-message {
+      text-align: center;
+      padding: 15px 5px;
+      color: #cdb9cb;
     }
 
     /* CHAT */
@@ -360,11 +475,15 @@
       </div>
 
       <div class="welcome">
-        <h2 id="homeWelcome">Welcome! 💕</h2>
+
+        <h2 id="homeWelcome">
+          Welcome! 💕
+        </h2>
 
         <p class="subtitle">
           Your social world starts here.
         </p>
+
       </div>
 
       <div class="feature">
@@ -398,13 +517,57 @@
         👥 Friends
       </div>
 
-      <div class="welcome">
 
-        <h2>Friends are coming ❤️</h2>
+      <!-- MY FRIEND CODE -->
 
-        <p class="subtitle">
-          We will build the friend system next.
+      <div class="friend-code-box">
+
+        <div class="friend-code-label">
+          Your Friend Code
+        </div>
+
+        <div
+          id="myFriendCode"
+          class="friend-code"
+        >
+          --------
+        </div>
+
+        <div class="friend-code-help">
+          Apna code friend ke saath share karo ❤️
+        </div>
+
+      </div>
+
+
+      <!-- SEARCH -->
+
+      <div class="friend-search-box">
+
+        <h2>
+          🔎 Find a Friend
+        </h2>
+
+        <p>
+          Friend ka 8-digit code enter karo.
         </p>
+
+        <input
+          id="friendSearchInput"
+          class="friend-search-input"
+          type="text"
+          maxlength="8"
+          placeholder="ENTER FRIEND CODE"
+        >
+
+        <button id="searchFriendBtn">
+          🔎 Search Friend
+        </button>
+
+        <div
+          id="friendResult"
+          class="friend-result"
+        ></div>
 
       </div>
 
@@ -419,9 +582,15 @@
         💬 Chat
       </div>
 
-      <div class="chat-box" id="chatBox">
+      <div
+        class="chat-box"
+        id="chatBox"
+      >
 
-        <div class="chat-empty" id="chatEmpty">
+        <div
+          class="chat-empty"
+          id="chatEmpty"
+        >
           No messages yet ❤️<br>
           Send the first message!
         </div>
@@ -438,7 +607,10 @@
           placeholder="Type a message..."
         >
 
-        <button id="sendBtn" class="chat-send">
+        <button
+          id="sendBtn"
+          class="chat-send"
+        >
           Send
         </button>
 
@@ -457,23 +629,39 @@
 
       <div class="profile-box">
 
-        <img id="profilePic" src="" alt="Profile">
+        <img
+          id="profilePic"
+          src=""
+          alt="Profile"
+        >
 
         <h2 id="userName">
           User
         </h2>
 
-        <p id="userEmail" class="email"></p>
+        <p
+          id="userEmail"
+          class="email"
+        ></p>
 
-        <p id="userBio" class="bio">
+        <p
+          id="userBio"
+          class="bio"
+        >
           No bio yet ❤️
         </p>
 
-        <button id="editBtn" class="edit-btn">
+        <button
+          id="editBtn"
+          class="edit-btn"
+        >
           ✏️ Edit Profile
         </button>
 
-        <div id="editBox" class="edit-box">
+        <div
+          id="editBox"
+          class="edit-box"
+        >
 
           <input
             id="nameInput"
@@ -488,17 +676,26 @@
             maxlength="150"
           ></textarea>
 
-          <button id="saveBtn" class="save-btn">
+          <button
+            id="saveBtn"
+            class="save-btn"
+          >
             💾 Save Profile
           </button>
 
-          <button id="cancelBtn" class="cancel-btn">
+          <button
+            id="cancelBtn"
+            class="cancel-btn"
+          >
             Cancel
           </button>
 
         </div>
 
-        <button id="logoutBtn" class="logout">
+        <button
+          id="logoutBtn"
+          class="logout"
+        >
           🚪 Logout
         </button>
 
@@ -511,22 +708,34 @@
 
     <nav class="bottom-nav">
 
-      <button class="nav-btn active" data-screen="homeScreen">
+      <button
+        class="nav-btn active"
+        data-screen="homeScreen"
+      >
         <span class="nav-icon">🏠</span>
         Home
       </button>
 
-      <button class="nav-btn" data-screen="friendsScreen">
+      <button
+        class="nav-btn"
+        data-screen="friendsScreen"
+      >
         <span class="nav-icon">👥</span>
         Friends
       </button>
 
-      <button class="nav-btn" data-screen="chatScreen">
+      <button
+        class="nav-btn"
+        data-screen="chatScreen"
+      >
         <span class="nav-icon">💬</span>
         Chat
       </button>
 
-      <button class="nav-btn" data-screen="profileScreen">
+      <button
+        class="nav-btn"
+        data-screen="profileScreen"
+      >
         <span class="nav-icon">👤</span>
         Profile
       </button>
@@ -561,35 +770,55 @@
       query,
       orderBy,
       onSnapshot,
-      serverTimestamp
+      serverTimestamp,
+      getDocs,
+      where
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
+    /* FIREBASE CONFIG */
+
     const firebaseConfig = {
+
+      /*
+        IMPORTANT:
+        Yahan apni existing Firebase API key rakho.
+      */
 
       apiKey: "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
 
-      authDomain: "do-dil-ek-jaan.firebaseapp.com",
+      authDomain:
+        "do-dil-ek-jaan.firebaseapp.com",
 
-      projectId: "do-dil-ek-jaan",
+      projectId:
+        "do-dil-ek-jaan",
 
-      storageBucket: "do-dil-ek-jaan.firebasestorage.app",
+      storageBucket:
+        "do-dil-ek-jaan.firebasestorage.app",
 
-      messagingSenderId: "468290989463",
+      messagingSenderId:
+        "468290989463",
 
-      appId: "1:468290989463:web:3a8c0fc7b550177cfb68d2"
+      appId:
+        "1:468290989463:web:3a8c0fc7b550177cfb68d2"
 
     };
 
 
-    const app = initializeApp(firebaseConfig);
+    const app =
+      initializeApp(firebaseConfig);
 
-    const auth = getAuth(app);
+    const auth =
+      getAuth(app);
 
-    const db = getFirestore(app);
+    const db =
+      getFirestore(app);
 
-    const provider = new GoogleAuthProvider();
+    const provider =
+      new GoogleAuthProvider();
 
+
+    /* ELEMENTS */
 
     const loginScreen =
       document.getElementById("loginScreen");
@@ -639,100 +868,241 @@
     const chatBox =
       document.getElementById("chatBox");
 
-    const chatEmpty =
-      document.getElementById("chatEmpty");
-
     const chatInput =
       document.getElementById("chatInput");
 
     const sendBtn =
       document.getElementById("sendBtn");
 
+    const myFriendCode =
+      document.getElementById("myFriendCode");
 
-    // GOOGLE LOGIN
+    const friendSearchInput =
+      document.getElementById("friendSearchInput");
 
-    loginBtn.addEventListener("click", async () => {
+    const searchFriendBtn =
+      document.getElementById("searchFriendBtn");
 
-      try {
+    const friendResult =
+      document.getElementById("friendResult");
 
-        await signInWithPopup(auth, provider);
 
-      } catch (error) {
+    /* FRIEND CODE GENERATOR */
 
-        alert("Login failed: " + error.message);
+    function generateFriendCode() {
 
-        console.log(error);
+      const chars =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+      let code = "";
+
+      for (let i = 0; i < 8; i++) {
+
+        code +=
+          chars[
+            Math.floor(
+              Math.random() * chars.length
+            )
+          ];
 
       }
 
-    });
+      return code;
+
+    }
 
 
-    // LOAD PROFILE
+    /* GOOGLE LOGIN */
+
+    loginBtn.addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          await signInWithPopup(
+            auth,
+            provider
+          );
+
+        } catch (error) {
+
+          alert(
+            "Login failed: " +
+            error.message
+          );
+
+          console.log(error);
+
+        }
+
+      }
+    );
+
+
+    /* LOAD PROFILE */
 
     async function loadProfile(user) {
 
       try {
 
         const profileRef =
-          doc(db, "users", user.uid);
+          doc(
+            db,
+            "users",
+            user.uid
+          );
 
         const profileSnap =
           await getDoc(profileRef);
+
 
         if (profileSnap.exists()) {
 
           const data =
             profileSnap.data();
 
+
           userName.textContent =
-            data.name || user.displayName || "Do Dil Ek Jaan User";
+            data.name ||
+            user.displayName ||
+            "Do Dil Ek Jaan User";
+
 
           userBio.textContent =
-            data.bio || "No bio yet ❤️";
+            data.bio ||
+            "No bio yet ❤️";
+
 
           nameInput.value =
-            data.name || user.displayName || "";
+            data.name ||
+            user.displayName ||
+            "";
+
 
           bioInput.value =
-            data.bio || "";
+            data.bio ||
+            "";
+
+
+          /*
+            OLD USER ke liye agar
+            Friend Code nahi hai,
+            to automatically generate hoga.
+          */
+
+          if (!data.friendCode) {
+
+            const newCode =
+              generateFriendCode();
+
+            await setDoc(
+              profileRef,
+              {
+                friendCode:
+                  newCode
+              },
+              {
+                merge: true
+              }
+            );
+
+            myFriendCode.textContent =
+              newCode;
+
+          } else {
+
+            myFriendCode.textContent =
+              data.friendCode;
+
+          }
+
 
         } else {
 
+          const friendCode =
+            generateFriendCode();
+
+
+          await setDoc(
+            profileRef,
+            {
+
+              name:
+                user.displayName ||
+                "Do Dil Ek Jaan User",
+
+              bio: "",
+
+              email:
+                user.email || "",
+
+              photoURL:
+                user.photoURL || "",
+
+              friendCode:
+                friendCode,
+
+              createdAt:
+                new Date().toISOString()
+
+            }
+          );
+
+
           userName.textContent =
-            user.displayName || "Do Dil Ek Jaan User";
+            user.displayName ||
+            "Do Dil Ek Jaan User";
+
 
           userBio.textContent =
             "No bio yet ❤️";
 
+
           nameInput.value =
             user.displayName || "";
+
 
           bioInput.value =
             "";
 
+
+          myFriendCode.textContent =
+            friendCode;
+
         }
+
 
       } catch (error) {
 
-        console.log("Profile load error:", error);
+        console.log(
+          "Profile load error:",
+          error
+        );
 
       }
 
     }
 
 
-    // REAL-TIME CHAT
+    /* REAL-TIME CHAT */
 
     function startChat(user) {
 
       const messagesRef =
-        collection(db, "chatMessages");
+        collection(
+          db,
+          "chatMessages"
+        );
+
 
       const messagesQuery =
         query(
           messagesRef,
-          orderBy("createdAt", "asc")
+          orderBy(
+            "createdAt",
+            "asc"
+          )
         );
 
 
@@ -741,6 +1111,7 @@
         (snapshot) => {
 
           chatBox.innerHTML = "";
+
 
           if (snapshot.empty) {
 
@@ -756,64 +1127,89 @@
           }
 
 
-          snapshot.forEach((messageDoc) => {
+          snapshot.forEach(
+            (messageDoc) => {
 
-            const data =
-              messageDoc.data();
-
-            const message =
-              document.createElement("div");
-
-            const isMine =
-              data.uid === user.uid;
-
-            message.className =
-              "message " +
-              (isMine ? "mine" : "");
+              const data =
+                messageDoc.data();
 
 
-            let timeText = "";
-
-            if (data.createdAt) {
-
-              const date =
-                data.createdAt.toDate();
-
-              timeText =
-                date.toLocaleTimeString(
-                  [],
-                  {
-                    hour: "2-digit",
-                    minute: "2-digit"
-                  }
+              const message =
+                document.createElement(
+                  "div"
                 );
 
+
+              const isMine =
+                data.uid === user.uid;
+
+
+              message.className =
+                "message " +
+                (
+                  isMine
+                    ? "mine"
+                    : ""
+                );
+
+
+              let timeText = "";
+
+
+              if (data.createdAt) {
+
+                const date =
+                  data.createdAt.toDate();
+
+
+                timeText =
+                  date.toLocaleTimeString(
+                    [],
+                    {
+                      hour: "2-digit",
+                      minute: "2-digit"
+                    }
+                  );
+
+              }
+
+
+              message.innerHTML = `
+
+                <span class="sender">
+                  ${escapeHtml(
+                    data.name ||
+                    "User"
+                  )}
+                </span>
+
+                <span class="message-bubble">
+                  ${escapeHtml(
+                    data.text ||
+                    ""
+                  )}
+                </span>
+
+                <span class="message-time">
+                  ${timeText}
+                </span>
+
+              `;
+
+
+              chatBox.appendChild(
+                message
+              );
+
             }
-
-
-            message.innerHTML = `
-              <span class="sender">
-                ${escapeHtml(data.name || "User")}
-              </span>
-
-              <span class="message-bubble">
-                ${escapeHtml(data.text || "")}
-              </span>
-
-              <span class="message-time">
-                ${timeText}
-              </span>
-            `;
-
-            chatBox.appendChild(message);
-
-          });
+          );
 
 
           chatBox.scrollTop =
             chatBox.scrollHeight;
 
         },
+
 
         (error) => {
 
@@ -822,11 +1218,14 @@
             error
           );
 
+
           chatBox.innerHTML = `
+
             <div class="chat-empty">
               Chat permission error.<br>
               Check Firestore Rules.
             </div>
+
           `;
 
         }
@@ -836,12 +1235,14 @@
     }
 
 
-    // ESCAPE TEXT
+    /* ESCAPE TEXT */
 
     function escapeHtml(text) {
 
       const div =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       div.textContent =
         text;
@@ -851,7 +1252,7 @@
     }
 
 
-    // SEND MESSAGE
+    /* SEND MESSAGE */
 
     sendBtn.addEventListener(
       "click",
@@ -860,9 +1261,12 @@
         const user =
           auth.currentUser;
 
+
         if (!user) {
 
-          alert("Please login first.");
+          alert(
+            "Please login first."
+          );
 
           return;
 
@@ -871,6 +1275,7 @@
 
         const text =
           chatInput.value.trim();
+
 
         if (!text) {
 
@@ -889,25 +1294,37 @@
         try {
 
           await addDoc(
-            collection(db, "chatMessages"),
+            collection(
+              db,
+              "chatMessages"
+            ),
             {
-              uid: user.uid,
+
+              uid:
+                user.uid,
+
               name:
                 userName.textContent ||
                 user.displayName ||
                 "User",
-              text: text,
+
+              text:
+                text,
+
               createdAt:
                 serverTimestamp()
+
             }
           );
 
 
           chatInput.value = "";
 
+
         } catch (error) {
 
           console.log(error);
+
 
           alert(
             "Message send failed: " +
@@ -927,13 +1344,15 @@
     );
 
 
-    // ENTER TO SEND
+    /* ENTER TO SEND */
 
     chatInput.addEventListener(
       "keydown",
       (event) => {
 
-        if (event.key === "Enter") {
+        if (
+          event.key === "Enter"
+        ) {
 
           event.preventDefault();
 
@@ -945,39 +1364,199 @@
     );
 
 
-    // LOGIN STATE
+    /* FRIEND SEARCH */
 
-    onAuthStateChanged(
-      auth,
-      async (user) => {
+    searchFriendBtn.addEventListener(
+      "click",
+      async () => {
 
-        if (user) {
+        const code =
+          friendSearchInput.value
+            .trim()
+            .toUpperCase();
 
-          loginScreen.classList.add("hidden");
 
-          appScreen.classList.remove("hidden");
+        if (!code) {
 
-          userEmail.textContent =
-            user.email || "";
+          alert(
+            "Friend Code enter karo ❤️"
+          );
 
-          profilePic.src =
-            user.photoURL ||
-            "https://via.placeholder.com/105";
+          return;
 
-          homeWelcome.textContent =
-            "Welcome, " +
-            (user.displayName || "Friend") +
-            "! ❤️";
+        }
 
-          await loadProfile(user);
 
-          startChat(user);
+        friendResult.innerHTML = `
 
-        } else {
+          <div class="search-message">
+            🔎 Searching...
+          </div>
 
-          loginScreen.classList.remove("hidden");
+        `;
 
-          appScreen.classList.add("hidden");
+
+        try {
+
+          const usersRef =
+            collection(
+              db,
+              "users"
+            );
+
+
+          const searchQuery =
+            query(
+              usersRef,
+              where(
+                "friendCode",
+                "==",
+                code
+              )
+            );
+
+
+          const snapshot =
+            await getDocs(
+              searchQuery
+            );
+
+
+          if (snapshot.empty) {
+
+            friendResult.innerHTML = `
+
+              <div class="search-message">
+                User nahi mila 😕
+              </div>
+
+            `;
+
+            return;
+
+          }
+
+
+          const foundDoc =
+            snapshot.docs[0];
+
+
+          const data =
+            foundDoc.data();
+
+
+          const foundUid =
+            foundDoc.id;
+
+
+          /* OWN CODE */
+
+          if (
+            auth.currentUser &&
+            foundUid ===
+            auth.currentUser.uid
+          ) {
+
+            friendResult.innerHTML = `
+
+              <div class="search-message">
+                Ye tumhara apna Friend Code hai 😄
+              </div>
+
+            `;
+
+            return;
+
+          }
+
+
+          /* SHOW USER */
+
+          friendResult.innerHTML = `
+
+            <div class="friend-user">
+
+              <div class="friend-user-info">
+
+                <img
+                  class="friend-user-photo"
+                  src="${
+                    escapeHtml(
+                      data.photoURL ||
+                      "https://via.placeholder.com/60"
+                    )
+                  }"
+                  alt="User"
+                >
+
+                <div>
+
+                  <div class="friend-user-name">
+                    ${
+                      escapeHtml(
+                        data.name ||
+                        "Do Dil Ek Jaan User"
+                      )
+                    }
+                  </div>
+
+                  <div class="friend-user-code">
+                    Friend Code: ${code}
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                id="addFriendBtn"
+              >
+                ➕ Add Friend
+              </button>
+
+            </div>
+
+          `;
+
+
+          const addFriendBtn =
+            document.getElementById(
+              "addFriendBtn"
+            );
+
+
+          addFriendBtn.addEventListener(
+            "click",
+            () => {
+
+              alert(
+                "User mil gaya ❤️\n\n" +
+                "Friend Request system next step mein banayenge."
+              );
+
+            }
+          );
+
+
+        } catch (error) {
+
+          console.log(
+            "Friend search error:",
+            error
+          );
+
+
+          friendResult.innerHTML = `
+
+            <div class="search-message">
+              Search failed 😕<br>
+              ${escapeHtml(
+                error.message
+              )}
+            </div>
+
+          `;
 
         }
 
@@ -985,31 +1564,96 @@
     );
 
 
-    // EDIT PROFILE
+    /* LOGIN STATE */
+
+    onAuthStateChanged(
+      auth,
+      async (user) => {
+
+        if (user) {
+
+          loginScreen.classList.add(
+            "hidden"
+          );
+
+          appScreen.classList.remove(
+            "hidden"
+          );
+
+
+          userEmail.textContent =
+            user.email || "";
+
+
+          profilePic.src =
+            user.photoURL ||
+            "https://via.placeholder.com/105";
+
+
+          homeWelcome.textContent =
+            "Welcome, " +
+            (
+              user.displayName ||
+              "Friend"
+            ) +
+            "! ❤️";
+
+
+          await loadProfile(
+            user
+          );
+
+
+          startChat(
+            user
+          );
+
+
+        } else {
+
+          loginScreen.classList.remove(
+            "hidden"
+          );
+
+          appScreen.classList.add(
+            "hidden"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* EDIT PROFILE */
 
     editBtn.addEventListener(
       "click",
       () => {
 
-        editBox.classList.add("show");
+        editBox.classList.add(
+          "show"
+        );
 
       }
     );
 
 
-    // CANCEL EDIT
+    /* CANCEL EDIT */
 
     cancelBtn.addEventListener(
       "click",
       () => {
 
-        editBox.classList.remove("show");
+        editBox.classList.remove(
+          "show"
+        );
 
       }
     );
 
 
-    // SAVE PROFILE
+    /* SAVE PROFILE */
 
     saveBtn.addEventListener(
       "click",
@@ -1018,9 +1662,12 @@
         const user =
           auth.currentUser;
 
+
         if (!user) {
 
-          alert("Please login first.");
+          alert(
+            "Please login first."
+          );
 
           return;
 
@@ -1029,6 +1676,7 @@
 
         const name =
           nameInput.value.trim();
+
 
         const bio =
           bioInput.value.trim();
@@ -1051,40 +1699,110 @@
 
         try {
 
+          /*
+            Existing Friend Code
+            ko preserve karenge.
+          */
+
+          const profileRef =
+            doc(
+              db,
+              "users",
+              user.uid
+            );
+
+
+          const oldProfile =
+            await getDoc(
+              profileRef
+            );
+
+
+          let friendCode;
+
+
+          if (
+            oldProfile.exists() &&
+            oldProfile.data().friendCode
+          ) {
+
+            friendCode =
+              oldProfile.data().friendCode;
+
+          } else {
+
+            friendCode =
+              generateFriendCode();
+
+          }
+
+
           await setDoc(
-            doc(db, "users", user.uid),
+            profileRef,
             {
-              name: name,
-              bio: bio,
-              email: user.email || "",
-              photoURL: user.photoURL || "",
+
+              name:
+                name,
+
+              bio:
+                bio,
+
+              email:
+                user.email || "",
+
+              photoURL:
+                user.photoURL || "",
+
+              friendCode:
+                friendCode,
+
               updatedAt:
                 new Date().toISOString()
+
             },
-            { merge: true }
+
+            {
+              merge: true
+            }
+
           );
 
 
           userName.textContent =
             name;
 
+
           userBio.textContent =
-            bio || "No bio yet ❤️";
+            bio ||
+            "No bio yet ❤️";
+
 
           homeWelcome.textContent =
             "Welcome, " +
             name +
             "! ❤️";
 
-          editBox.classList.remove("show");
+
+          myFriendCode.textContent =
+            friendCode;
+
+
+          editBox.classList.remove(
+            "show"
+          );
+
 
           alert(
             "Profile saved successfully ❤️"
           );
 
+
         } catch (error) {
 
-          console.log(error);
+          console.log(
+            error
+          );
+
 
           alert(
             "Profile save failed: " +
@@ -1101,25 +1819,32 @@
     );
 
 
-    // LOGOUT
+    /* LOGOUT */
 
     logoutBtn.addEventListener(
       "click",
       async () => {
 
-        await signOut(auth);
+        await signOut(
+          auth
+        );
 
       }
     );
 
 
-    // NAVIGATION
+    /* NAVIGATION */
 
     const navButtons =
-      document.querySelectorAll(".nav-btn");
+      document.querySelectorAll(
+        ".nav-btn"
+      );
+
 
     const screens =
-      document.querySelectorAll(".screen");
+      document.querySelectorAll(
+        ".screen"
+      );
 
 
     navButtons.forEach(
@@ -1145,8 +1870,12 @@
 
 
             document
-              .getElementById(target)
-              .classList.add("active");
+              .getElementById(
+                target
+              )
+              .classList.add(
+                "active"
+              );
 
 
             navButtons.forEach(
