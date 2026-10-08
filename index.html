@@ -12,7 +12,6 @@
 
 <title>Do Dil Ek Jaan ❤️</title>
 
-
 <style>
 
 *{
@@ -910,6 +909,23 @@ button:disabled{
       alt="Profile"
     >
 
+    <!-- NEW PROFILE PHOTO BUTTON -->
+
+    <input
+      id="photoInput"
+      type="file"
+      accept="image/*"
+      style="display:none;"
+    >
+
+    <button
+      id="changePhotoBtn"
+      class="edit-btn"
+    >
+      📸 Change Profile Photo
+    </button>
+
+
     <h2 id="userName">
       User
     </h2>
@@ -1093,17 +1109,29 @@ from
 "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
+/* FIREBASE STORAGE IMPORT */
+
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+
+
 /* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
   /*
-    YAHAN APNI PURANI FILE WALI
-    FIREBASE API KEY PASTE KARO.
+    IMPORTANT:
+    YAHAN APNI PURANI FIREBASE API KEY PASTE KARO.
   */
 
   apiKey:
-   "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
+    "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
 
   authDomain:
     "do-dil-ek-jaan.firebaseapp.com",
@@ -1131,6 +1159,9 @@ const auth =
 
 const db =
   getFirestore(app);
+
+const storage =
+  getStorage(app);
 
 const provider =
   new GoogleAuthProvider();
@@ -1161,6 +1192,16 @@ const logoutBtn =
 const profilePic =
   document.getElementById(
     "profilePic"
+  );
+
+const photoInput =
+  document.getElementById(
+    "photoInput"
+  );
+
+const changePhotoBtn =
+  document.getElementById(
+    "changePhotoBtn"
   );
 
 const userName =
@@ -1480,6 +1521,12 @@ async function loadProfile(user){
         "";
 
 
+      profilePic.src =
+        data.photoURL ||
+        user.photoURL ||
+        "https://via.placeholder.com/105";
+
+
       if(!data.friendCode){
 
         const newCode =
@@ -1555,6 +1602,11 @@ async function loadProfile(user){
 
       bioInput.value =
         "";
+
+
+      profilePic.src =
+        user.photoURL ||
+        "https://via.placeholder.com/105";
 
 
       myFriendCode.textContent =
@@ -1709,7 +1761,7 @@ async function sendFriendRequest(
           userName.textContent,
 
         fromPhoto:
-          user.photoURL || "",
+          profilePic.src || "",
 
         toName:
           data.name ||
@@ -2234,7 +2286,7 @@ async function acceptRequest(
           userName.textContent,
 
         friendPhoto:
-          user.photoURL ||
+          profilePic.src ||
           "",
 
         createdAt:
@@ -2580,15 +2632,6 @@ async function openPrivateChat(
 
   try{
 
-    /*
-      IMPORTANT FIX:
-
-      Yahan getDoc() nahi hai.
-
-      Direct setDoc() se parent chat
-      create/update hota hai.
-    */
-
     await setDoc(
       chatRef,
       {
@@ -2873,14 +2916,6 @@ async function sendPrivateMessage(){
       );
 
 
-    /*
-      IMPORTANT FIX:
-
-      Yahan bhi getDoc() hata diya.
-
-      Parent chat directly ensure hota hai.
-    */
-
     await setDoc(
       chatRef,
       {
@@ -2899,8 +2934,6 @@ async function sendPrivateMessage(){
       }
     );
 
-
-    /* SEND MESSAGE */
 
     await addDoc(
       collection(
@@ -3239,6 +3272,12 @@ saveBtn.addEventListener(
       }
 
 
+      const existingPhoto =
+        oldProfile.exists()
+        ? oldProfile.data().photoURL
+        : "";
+
+
       await setDoc(
         profileRef,
         {
@@ -3253,7 +3292,9 @@ saveBtn.addEventListener(
             user.email || "",
 
           photoURL:
-            user.photoURL || "",
+            existingPhoto ||
+            user.photoURL ||
+            "",
 
           friendCode:
             friendCode,
@@ -3317,6 +3358,175 @@ saveBtn.addEventListener(
 );
 
 
+/* =====================================
+   PROFILE PHOTO UPLOAD
+   ===================================== */
+
+changePhotoBtn.addEventListener(
+  "click",
+  () => {
+
+    photoInput.click();
+
+  }
+);
+
+
+photoInput.addEventListener(
+  "change",
+  async () => {
+
+    const user =
+      auth.currentUser;
+
+
+    if(!user){
+
+      alert(
+        "Please login first."
+      );
+
+      return;
+
+    }
+
+
+    const file =
+      photoInput.files[0];
+
+
+    if(!file) return;
+
+
+    if(!file.type.startsWith("image/")){
+
+      alert(
+        "Sirf image select karo ❤️"
+      );
+
+      photoInput.value =
+        "";
+
+      return;
+
+    }
+
+
+    /* MAX 5 MB */
+
+    if(
+      file.size >
+      5 * 1024 * 1024
+    ){
+
+      alert(
+        "Image 5 MB se chhoti honi chahiye."
+      );
+
+      photoInput.value =
+        "";
+
+      return;
+
+    }
+
+
+    changePhotoBtn.disabled =
+      true;
+
+
+    changePhotoBtn.textContent =
+      "Uploading...";
+
+
+    try{
+
+      const photoRef =
+        ref(
+          storage,
+          "profilePhotos/" +
+          user.uid
+        );
+
+
+      await uploadBytes(
+        photoRef,
+        file
+      );
+
+
+      const downloadURL =
+        await getDownloadURL(
+          photoRef
+        );
+
+
+      /* SAVE PHOTO URL */
+
+      await setDoc(
+        doc(
+          db,
+          "users",
+          user.uid
+        ),
+        {
+
+          photoURL:
+            downloadURL,
+
+          updatedAt:
+            new Date()
+              .toISOString()
+
+        },
+        {
+          merge:true
+        }
+      );
+
+
+      /* SHOW NEW PHOTO */
+
+      profilePic.src =
+        downloadURL;
+
+
+      alert(
+        "Profile photo updated successfully ❤️"
+      );
+
+
+      photoInput.value =
+        "";
+
+
+    }catch(error){
+
+      console.log(
+        "PHOTO UPLOAD ERROR:",
+        error
+      );
+
+
+      alert(
+        "Photo upload failed: " +
+        error.message
+      );
+
+    }
+
+
+    changePhotoBtn.disabled =
+      false;
+
+
+    changePhotoBtn.textContent =
+      "📸 Change Profile Photo";
+
+  }
+);
+
+
 /* LOGOUT */
 
 logoutBtn.addEventListener(
@@ -3357,8 +3567,6 @@ navButtons.forEach(
         const target =
           button.dataset.screen;
 
-
-        /* CHAT TAB */
 
         if(
           target ===
