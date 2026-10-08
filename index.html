@@ -2492,60 +2492,62 @@ async function openPrivateChat(
 
 }
 
-
 /* SEND PRIVATE MESSAGE */
 
 async function sendPrivateMessage(){
 
-  const user =
-  auth.currentUser;
-
+  const user = auth.currentUser;
 
   if(!user){
-
-    alert(
-      "Please login first."
-    );
-
+    alert("Please login first.");
     return;
-
   }
-
 
   if(!currentPrivateFriendUid){
-
-    alert(
-      "Pehle Friends mein se friend select karo ❤️"
-    );
-
+    alert("Pehle Friends mein se friend select karo ❤️");
     return;
-
   }
 
+  const text = chatInput.value.trim();
 
-  const text =
-  chatInput.value.trim();
+  if(!text) return;
 
-
-  if(!text)return;
-
-
-  sendBtn.disabled =
-  true;
-
-
-  sendBtn.textContent =
-  "Sending...";
-
+  sendBtn.disabled = true;
+  sendBtn.textContent = "Sending...";
 
   try{
 
-    const chatId =
-    privateChatId(
+    const chatId = privateChatId(
       user.uid,
       currentPrivateFriendUid
     );
 
+    /* Make sure parent private chat exists */
+
+    const chatRef = doc(
+      db,
+      "privateChats",
+      chatId
+    );
+
+    const chatSnap = await getDoc(chatRef);
+
+    if(!chatSnap.exists()){
+
+      await setDoc(
+        chatRef,
+        {
+          participants: [
+            user.uid,
+            currentPrivateFriendUid
+          ],
+          createdAt: serverTimestamp()
+        }
+      );
+
+    }
+
+    /* Now send message */
 
     await addDoc(
       collection(
@@ -2555,36 +2557,29 @@ async function sendPrivateMessage(){
         "messages"
       ),
       {
+        uid: user.uid,
 
-        uid:
-        user.uid,
-
-        toUid:
-        currentPrivateFriendUid,
+        toUid: currentPrivateFriendUid,
 
         name:
-        userName.textContent ||
-        user.displayName ||
-        "User",
+          userName.textContent ||
+          user.displayName ||
+          "User",
 
-        text:
-        text,
+        text: text,
 
-        createdAt:
-        serverTimestamp()
-
+        createdAt: serverTimestamp()
       }
     );
 
-
-    chatInput.value =
-    "";
-
+    chatInput.value = "";
 
   }catch(error){
 
-    console.log(error);
-
+    console.log(
+      "PRIVATE MESSAGE ERROR:",
+      error
+    );
 
     alert(
       "Message send failed: " +
@@ -2593,16 +2588,10 @@ async function sendPrivateMessage(){
 
   }
 
-
-  sendBtn.disabled =
-  false;
-
-
-  sendBtn.textContent =
-  "Send";
+  sendBtn.disabled = false;
+  sendBtn.textContent = "Send";
 
 }
-
 
 /* BACK TO FRIENDS */
 
