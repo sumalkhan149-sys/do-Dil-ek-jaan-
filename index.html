@@ -1,1518 +1,1490 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Do Dil Ek Jaan ❤️</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #58145b, #180018 55%, #050005);
-      color: white;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 500px;
-      min-height: 100vh;
-      margin: auto;
-      position: relative;
-      padding-bottom: 80px;
-    }
-
-    .screen {
-      display: none;
-      padding: 25px 18px;
-    }
-
-    .screen.active {
-      display: block;
-    }
-
-    .login-screen {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .card {
-      width: 100%;
-      padding: 35px 25px;
-      text-align: center;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 28px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 0 45px rgba(255,0,150,.25);
-    }
-
-    .logo {
-      font-size: 65px;
-      margin-bottom: 15px;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg,#ff6bcb,#fff,#ff4f9a);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .subtitle {
-      color: #e8d2e6;
-      margin-bottom: 25px;
-    }
-
-    button {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(90deg,#ff3f9f,#a52cff);
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
-
-    .top-title {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .welcome {
-      padding: 25px;
-      border-radius: 25px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      margin-bottom: 18px;
-    }
-
-    .welcome h2 {
-      margin-bottom: 8px;
-    }
-
-    .profile-box {
-      text-align: center;
-      padding: 25px 20px;
-      border-radius: 28px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
-    .profile-box img {
-      width: 105px;
-      height: 105px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #ff70c8;
-      margin-bottom: 15px;
-    }
-
-    .profile-box h2 {
-      margin-bottom: 6px;
-    }
-
-    .email {
-      color: #d8bfd6;
-      margin-bottom: 10px;
-      word-break: break-word;
-    }
-
-    .bio {
-      color: #ead7e7;
-      margin-bottom: 20px;
-      font-size: 15px;
-    }
-
-    .edit-btn {
-      background: rgba(255,255,255,.12);
-      margin-bottom: 10px;
-    }
-
-    .logout {
-      background: rgba(255,50,100,.25);
-    }
-
-    .feature {
-      padding: 18px;
-      margin-top: 12px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-    }
-
-    .feature strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 17px;
-    }
-
-    .feature span {
-      color: #cdb9cb;
-      font-size: 14px;
-    }
-
-    .edit-box {
-      display: none;
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(0,0,0,.25);
-    }
-
-    .edit-box.show {
-      display: block;
-    }
-
-    .edit-box input,
-    .edit-box textarea {
-      width: 100%;
-      padding: 13px;
-      margin-bottom: 12px;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 12px;
-      background: rgba(255,255,255,.08);
-      color: white;
-      outline: none;
-      font-size: 15px;
-    }
-
-    .edit-box textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-
-    .save-btn {
-      margin-bottom: 10px;
-    }
-
-    .cancel-btn {
-      background: rgba(255,255,255,.12);
-    }
-
-    /* FRIENDS */
-
-    .friend-code-box {
-      text-align: center;
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      margin-bottom: 18px;
-    }
-
-    .friend-code-label {
-      color: #d8bfd6;
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .friend-code {
-      font-size: 29px;
-      font-weight: bold;
-      letter-spacing: 4px;
-      color: #ff69bd;
-      word-break: break-all;
-    }
-
-    .friend-code-help {
-      color: #cdb9cb;
-      font-size: 12px;
-      margin-top: 9px;
-    }
-
-    .friend-search-box {
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
-    .friend-search-box h2 {
-      margin-bottom: 8px;
-    }
-
-    .friend-search-box p {
-      color: #cdb9cb;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .friend-search-input {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 10px;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 15px;
-      background: rgba(255,255,255,.08);
-      color: white;
-      outline: none;
-      font-size: 16px;
-      text-transform: uppercase;
-      text-align: center;
-      letter-spacing: 2px;
-    }
-
-    .friend-search-input::placeholder {
-      color: #9e879c;
-      letter-spacing: normal;
-    }
-
-    .friend-result {
-      margin-top: 15px;
-    }
-
-    .friend-user {
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
-    .friend-user-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .friend-user-photo {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #ff69bd;
-    }
-
-    .friend-user-name {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .friend-user-code {
-      color: #cdb9cb;
-      font-size: 12px;
-      margin-top: 4px;
-    }
-
-    .search-message {
-      text-align: center;
-      padding: 15px 5px;
-      color: #cdb9cb;
-    }
-
-    /* CHAT */
-
-    .chat-box {
-      height: 55vh;
-      min-height: 350px;
-      overflow-y: auto;
-      padding: 15px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      margin-bottom: 12px;
-    }
-
-    .chat-empty {
-      text-align: center;
-      color: #cdb9cb;
-      padding: 30px 10px;
-    }
-
-    .message {
-      margin-bottom: 12px;
-      max-width: 82%;
-    }
-
-    .message.mine {
-      margin-left: auto;
-      text-align: right;
-    }
-
-    .message-bubble {
-      display: inline-block;
-      padding: 11px 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.12);
-      text-align: left;
-      word-break: break-word;
-    }
-
-    .message.mine .message-bubble {
-      background: linear-gradient(90deg,#ff3f9f,#a52cff);
-    }
-
-    .sender {
-      display: block;
-      font-size: 12px;
-      color: #e5cde3;
-      margin-bottom: 4px;
-    }
-
-    .message-time {
-      display: block;
-      font-size: 10px;
-      color: #bdaabd;
-      margin-top: 4px;
-    }
-
-    .chat-input-row {
-      display: flex;
-      gap: 8px;
-    }
-
-    .chat-input {
-      flex: 1;
-      padding: 14px;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 25px;
-      background: rgba(255,255,255,.08);
-      color: white;
-      outline: none;
-      font-size: 15px;
-    }
-
-    .chat-send {
-      width: 90px;
-      padding: 12px;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 500px;
-      height: 70px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background: rgba(20,0,20,.94);
-      border-top: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(15px);
-      z-index: 10;
-    }
-
-    .nav-btn {
-      width: 20%;
-      background: none;
-      padding: 8px 2px;
-      font-size: 12px;
-      color: #bdaabd;
-    }
-
-    .nav-btn.active {
-      color: #ff69bd;
-    }
-
-    .nav-icon {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 3px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do Dil Ek Jaan ❤️</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:radial-gradient(circle at top,#58145b,#180018 55%,#050005);
+  color:white;
+}
+
+.app{
+  width:100%;
+  max-width:500px;
+  min-height:100vh;
+  margin:auto;
+  position:relative;
+  padding-bottom:80px;
+}
+
+.screen{display:none;padding:25px 18px}
+.screen.active{display:block}
+
+.login-screen{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  padding:35px 25px;
+  text-align:center;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:28px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 0 45px rgba(255,0,150,.25);
+}
+
+.logo{font-size:65px;margin-bottom:15px}
+
+h1{
+  font-size:32px;
+  margin-bottom:10px;
+  background:linear-gradient(90deg,#ff6bcb,#fff,#ff4f9a);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.subtitle{color:#e8d2e6;margin-bottom:25px}
+
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#ff3f9f,#a52cff);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:disabled{opacity:.6;cursor:not-allowed}
+
+.top-title{
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.welcome{
+  padding:25px;
+  border-radius:25px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  margin-bottom:18px;
+}
+
+.welcome h2{margin-bottom:8px}
+
+.profile-box{
+  text-align:center;
+  padding:25px 20px;
+  border-radius:28px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.profile-box img{
+  width:105px;
+  height:105px;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #ff70c8;
+  margin-bottom:15px;
+}
+
+.profile-box h2{margin-bottom:6px}
+
+.email{
+  color:#d8bfd6;
+  margin-bottom:10px;
+  word-break:break-word;
+}
+
+.bio{
+  color:#ead7e7;
+  margin-bottom:20px;
+  font-size:15px;
+}
+
+.edit-btn{
+  background:rgba(255,255,255,.12);
+  margin-bottom:10px;
+}
+
+.logout{background:rgba(255,50,100,.25)}
+
+.feature{
+  padding:18px;
+  margin-top:12px;
+  border-radius:20px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.feature strong{
+  display:block;
+  margin-bottom:5px;
+  font-size:17px;
+}
+
+.feature span{
+  color:#cdb9cb;
+  font-size:14px;
+}
+
+.edit-box{
+  display:none;
+  margin-top:20px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(0,0,0,.25);
+}
+
+.edit-box.show{display:block}
+
+.edit-box input,
+.edit-box textarea{
+  width:100%;
+  padding:13px;
+  margin-bottom:12px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;
+  background:rgba(255,255,255,.08);
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+.edit-box textarea{
+  min-height:80px;
+  resize:vertical;
+}
+
+.save-btn{margin-bottom:10px}
+.cancel-btn{background:rgba(255,255,255,.12)}
+
+/* FRIEND CODE */
+
+.friend-code-box{
+  text-align:center;
+  padding:22px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  margin-bottom:18px;
+}
+
+.friend-code-label{
+  color:#d8bfd6;
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.friend-code{
+  font-size:29px;
+  font-weight:bold;
+  letter-spacing:4px;
+  color:#ff69bd;
+  word-break:break-all;
+}
+
+.friend-code-help{
+  color:#cdb9cb;
+  font-size:12px;
+  margin-top:9px;
+}
+
+.friend-search-box,
+.friend-section{
+  padding:22px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  margin-bottom:18px;
+}
+
+.friend-search-box h2,
+.friend-section h2{
+  margin-bottom:8px;
+}
+
+.friend-search-box p{
+  color:#cdb9cb;
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+.friend-search-input{
+  width:100%;
+  padding:14px;
+  margin-bottom:10px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:15px;
+  background:rgba(255,255,255,.08);
+  color:white;
+  outline:none;
+  font-size:16px;
+  text-transform:uppercase;
+  text-align:center;
+  letter-spacing:2px;
+}
+
+.friend-search-input::placeholder{
+  color:#9e879c;
+  letter-spacing:normal;
+}
+
+.friend-result{margin-top:15px}
+
+.friend-user{
+  padding:18px;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.friend-user-info{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:15px;
+}
+
+.friend-user-photo{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #ff69bd;
+}
+
+.friend-user-name{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.friend-user-code{
+  color:#cdb9cb;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.search-message{
+  text-align:center;
+  padding:15px 5px;
+  color:#cdb9cb;
+}
+
+.request-card,
+.friend-card{
+  padding:15px;
+  margin-top:10px;
+  border-radius:18px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.request-info,
+.friend-info{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.request-info img,
+.friend-info img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #ff69bd;
+}
+
+.person-name{
+  font-weight:bold;
+  font-size:16px;
+}
+
+.person-code{
+  color:#cdb9cb;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.request-buttons{
+  display:flex;
+  gap:8px;
+}
+
+.request-buttons button{
+  padding:11px;
+  font-size:14px;
+}
+
+.reject-btn{
+  background:rgba(255,255,255,.12);
+}
+
+.friend-status{
+  color:#ff69bd;
+  font-size:13px;
+}
+
+/* CHAT */
+
+.chat-box{
+  height:55vh;
+  min-height:350px;
+  overflow-y:auto;
+  padding:15px;
+  border-radius:22px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  margin-bottom:12px;
+}
+
+.chat-empty{
+  text-align:center;
+  color:#cdb9cb;
+  padding:30px 10px;
+}
+
+.message{
+  margin-bottom:12px;
+  max-width:82%;
+}
+
+.message.mine{
+  margin-left:auto;
+  text-align:right;
+}
+
+.message-bubble{
+  display:inline-block;
+  padding:11px 14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.12);
+  text-align:left;
+  word-break:break-word;
+}
+
+.message.mine .message-bubble{
+  background:linear-gradient(90deg,#ff3f9f,#a52cff);
+}
+
+.sender{
+  display:block;
+  font-size:12px;
+  color:#e5cde3;
+  margin-bottom:4px;
+}
+
+.message-time{
+  display:block;
+  font-size:10px;
+  color:#bdaabd;
+  margin-top:4px;
+}
+
+.chat-input-row{
+  display:flex;
+  gap:8px;
+}
+
+.chat-input{
+  flex:1;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:25px;
+  background:rgba(255,255,255,.08);
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+.chat-send{
+  width:90px;
+  padding:12px;
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:500px;
+  height:70px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  background:rgba(20,0,20,.94);
+  border-top:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(15px);
+  z-index:10;
+}
+
+.nav-btn{
+  width:20%;
+  background:none;
+  padding:8px 2px;
+  font-size:12px;
+  color:#bdaabd;
+}
+
+.nav-btn.active{color:#ff69bd}
+
+.nav-icon{
+  display:block;
+  font-size:22px;
+  margin-bottom:3px;
+}
+
+.hidden{display:none!important}
+</style>
 </head>
 
 <body>
 
-  <!-- LOGIN -->
+<!-- LOGIN -->
 
-  <div id="loginScreen" class="login-screen">
+<div id="loginScreen" class="login-screen">
 
-    <div class="card">
+  <div class="card">
 
-      <div class="logo">❤️</div>
+    <div class="logo">❤️</div>
 
-      <h1>Do Dil Ek Jaan</h1>
+    <h1>Do Dil Ek Jaan</h1>
 
-      <p class="subtitle">
-        Connect • Chat • Share • Play
-      </p>
+    <p class="subtitle">
+      Connect • Chat • Share • Play
+    </p>
 
-      <button id="loginBtn">
-        Continue with Google
-      </button>
+    <button id="loginBtn">
+      Continue with Google
+    </button>
 
+  </div>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="app" class="app hidden">
+
+<!-- HOME -->
+
+<section id="homeScreen" class="screen active">
+
+  <div class="top-title">
+    Do Dil Ek Jaan ❤️
+  </div>
+
+  <div class="welcome">
+
+    <h2 id="homeWelcome">
+      Welcome! 💕
+    </h2>
+
+    <p class="subtitle">
+      Your social world starts here.
+    </p>
+
+  </div>
+
+  <div class="feature">
+    <strong>👥 Friends</strong>
+    <span>Connect with your friends.</span>
+  </div>
+
+  <div class="feature">
+    <strong>💬 Chat</strong>
+    <span>Real-time chat is now working.</span>
+  </div>
+
+  <div class="feature">
+    <strong>💕 Couple Space</strong>
+    <span>Connect two accounts with a special code.</span>
+  </div>
+
+  <div class="feature">
+    <strong>🎮 Games</strong>
+    <span>Play fun games with your friends.</span>
+  </div>
+
+</section>
+
+
+<!-- FRIENDS -->
+
+<section id="friendsScreen" class="screen">
+
+  <div class="top-title">
+    👥 Friends
+  </div>
+
+
+  <div class="friend-code-box">
+
+    <div class="friend-code-label">
+      Your Friend Code
+    </div>
+
+    <div id="myFriendCode" class="friend-code">
+      --------
+    </div>
+
+    <div class="friend-code-help">
+      Apna code friend ke saath share karo ❤️
     </div>
 
   </div>
 
 
-  <!-- APP -->
+  <!-- REQUESTS -->
 
-  <div id="app" class="app hidden">
+  <div class="friend-section">
 
-    <!-- HOME -->
+    <h2>📩 Friend Requests</h2>
 
-    <section id="homeScreen" class="screen active">
-
-      <div class="top-title">
-        Do Dil Ek Jaan ❤️
+    <div id="requestList">
+      <div class="search-message">
+        Loading...
       </div>
-
-      <div class="welcome">
-
-        <h2 id="homeWelcome">
-          Welcome! 💕
-        </h2>
-
-        <p class="subtitle">
-          Your social world starts here.
-        </p>
-
-      </div>
-
-      <div class="feature">
-        <strong>👥 Friends</strong>
-        <span>Connect with your friends.</span>
-      </div>
-
-      <div class="feature">
-        <strong>💬 Chat</strong>
-        <span>Real-time chat is now working.</span>
-      </div>
-
-      <div class="feature">
-        <strong>💕 Couple Space</strong>
-        <span>Connect two accounts with a special code.</span>
-      </div>
-
-      <div class="feature">
-        <strong>🎮 Games</strong>
-        <span>Play fun games with your friends.</span>
-      </div>
-
-    </section>
-
-
-    <!-- FRIENDS -->
-
-    <section id="friendsScreen" class="screen">
-
-      <div class="top-title">
-        👥 Friends
-      </div>
-
-
-      <!-- MY FRIEND CODE -->
-
-      <div class="friend-code-box">
-
-        <div class="friend-code-label">
-          Your Friend Code
-        </div>
-
-        <div
-          id="myFriendCode"
-          class="friend-code"
-        >
-          --------
-        </div>
-
-        <div class="friend-code-help">
-          Apna code friend ke saath share karo ❤️
-        </div>
-
-      </div>
-
-
-      <!-- SEARCH -->
-
-      <div class="friend-search-box">
-
-        <h2>
-          🔎 Find a Friend
-        </h2>
-
-        <p>
-          Friend ka 8-digit code enter karo.
-        </p>
-
-        <input
-          id="friendSearchInput"
-          class="friend-search-input"
-          type="text"
-          maxlength="8"
-          placeholder="ENTER FRIEND CODE"
-        >
-
-        <button id="searchFriendBtn">
-          🔎 Search Friend
-        </button>
-
-        <div
-          id="friendResult"
-          class="friend-result"
-        ></div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CHAT -->
-
-    <section id="chatScreen" class="screen">
-
-      <div class="top-title">
-        💬 Chat
-      </div>
-
-      <div
-        class="chat-box"
-        id="chatBox"
-      >
-
-        <div
-          class="chat-empty"
-          id="chatEmpty"
-        >
-          No messages yet ❤️<br>
-          Send the first message!
-        </div>
-
-      </div>
-
-      <div class="chat-input-row">
-
-        <input
-          id="chatInput"
-          class="chat-input"
-          type="text"
-          maxlength="500"
-          placeholder="Type a message..."
-        >
-
-        <button
-          id="sendBtn"
-          class="chat-send"
-        >
-          Send
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROFILE -->
-
-    <section id="profileScreen" class="screen">
-
-      <div class="top-title">
-        👤 Profile
-      </div>
-
-      <div class="profile-box">
-
-        <img
-          id="profilePic"
-          src=""
-          alt="Profile"
-        >
-
-        <h2 id="userName">
-          User
-        </h2>
-
-        <p
-          id="userEmail"
-          class="email"
-        ></p>
-
-        <p
-          id="userBio"
-          class="bio"
-        >
-          No bio yet ❤️
-        </p>
-
-        <button
-          id="editBtn"
-          class="edit-btn"
-        >
-          ✏️ Edit Profile
-        </button>
-
-        <div
-          id="editBox"
-          class="edit-box"
-        >
-
-          <input
-            id="nameInput"
-            type="text"
-            placeholder="Your name"
-            maxlength="40"
-          >
-
-          <textarea
-            id="bioInput"
-            placeholder="Write something about yourself..."
-            maxlength="150"
-          ></textarea>
-
-          <button
-            id="saveBtn"
-            class="save-btn"
-          >
-            💾 Save Profile
-          </button>
-
-          <button
-            id="cancelBtn"
-            class="cancel-btn"
-          >
-            Cancel
-          </button>
-
-        </div>
-
-        <button
-          id="logoutBtn"
-          class="logout"
-        >
-          🚪 Logout
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- BOTTOM NAV -->
-
-    <nav class="bottom-nav">
-
-      <button
-        class="nav-btn active"
-        data-screen="homeScreen"
-      >
-        <span class="nav-icon">🏠</span>
-        Home
-      </button>
-
-      <button
-        class="nav-btn"
-        data-screen="friendsScreen"
-      >
-        <span class="nav-icon">👥</span>
-        Friends
-      </button>
-
-      <button
-        class="nav-btn"
-        data-screen="chatScreen"
-      >
-        <span class="nav-icon">💬</span>
-        Chat
-      </button>
-
-      <button
-        class="nav-btn"
-        data-screen="profileScreen"
-      >
-        <span class="nav-icon">👤</span>
-        Profile
-      </button>
-
-    </nav>
+    </div>
 
   </div>
 
 
-  <!-- FIREBASE -->
+  <!-- MY FRIENDS -->
 
-  <script type="module">
+  <div class="friend-section">
 
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    <h2>👥 My Friends</h2>
 
-    import {
-      getAuth,
-      GoogleAuthProvider,
-      signInWithPopup,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+    <div id="friendsList">
+      <div class="search-message">
+        Loading...
+      </div>
+    </div>
 
-    import {
-      getFirestore,
-      doc,
-      setDoc,
-      getDoc,
-      collection,
-      addDoc,
-      query,
-      orderBy,
-      onSnapshot,
-      serverTimestamp,
-      getDocs,
-      where
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  </div>
 
 
-    /* FIREBASE CONFIG */
+  <!-- SEARCH -->
 
-    const firebaseConfig = {
+  <div class="friend-search-box">
 
-      /*
-        IMPORTANT:
-        Yahan apni existing Firebase API key rakho.
-      */
+    <h2>🔎 Find a Friend</h2>
 
-      apiKey: "AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
+    <p>
+      Friend ka 8-digit code enter karo.
+    </p>
 
-      authDomain:
-        "do-dil-ek-jaan.firebaseapp.com",
+    <input
+      id="friendSearchInput"
+      class="friend-search-input"
+      type="text"
+      maxlength="8"
+      placeholder="ENTER FRIEND CODE"
+    >
 
-      projectId:
-        "do-dil-ek-jaan",
+    <button id="searchFriendBtn">
+      🔎 Search Friend
+    </button>
 
-      storageBucket:
-        "do-dil-ek-jaan.firebasestorage.app",
+    <div id="friendResult" class="friend-result"></div>
 
-      messagingSenderId:
-        "468290989463",
+  </div>
 
-      appId:
-        "1:468290989463:web:3a8c0fc7b550177cfb68d2"
+</section>
 
-    };
 
+<!-- CHAT -->
 
-    const app =
-      initializeApp(firebaseConfig);
+<section id="chatScreen" class="screen">
 
-    const auth =
-      getAuth(app);
+  <div class="top-title">
+    💬 Chat
+  </div>
 
-    const db =
-      getFirestore(app);
+  <div class="chat-box" id="chatBox">
 
-    const provider =
-      new GoogleAuthProvider();
+    <div class="chat-empty" id="chatEmpty">
+      No messages yet ❤️<br>
+      Send the first message!
+    </div>
 
+  </div>
 
-    /* ELEMENTS */
+  <div class="chat-input-row">
 
-    const loginScreen =
-      document.getElementById("loginScreen");
+    <input
+      id="chatInput"
+      class="chat-input"
+      type="text"
+      maxlength="500"
+      placeholder="Type a message..."
+    >
 
-    const appScreen =
-      document.getElementById("app");
+    <button id="sendBtn" class="chat-send">
+      Send
+    </button>
 
-    const loginBtn =
-      document.getElementById("loginBtn");
+  </div>
 
-    const logoutBtn =
-      document.getElementById("logoutBtn");
+</section>
 
-    const profilePic =
-      document.getElementById("profilePic");
 
-    const userName =
-      document.getElementById("userName");
+<!-- PROFILE -->
 
-    const userEmail =
-      document.getElementById("userEmail");
+<section id="profileScreen" class="screen">
 
-    const userBio =
-      document.getElementById("userBio");
+  <div class="top-title">
+    👤 Profile
+  </div>
 
-    const homeWelcome =
-      document.getElementById("homeWelcome");
+  <div class="profile-box">
 
-    const editBtn =
-      document.getElementById("editBtn");
+    <img id="profilePic" src="" alt="Profile">
 
-    const editBox =
-      document.getElementById("editBox");
+    <h2 id="userName">
+      User
+    </h2>
 
-    const nameInput =
-      document.getElementById("nameInput");
+    <p id="userEmail" class="email"></p>
 
-    const bioInput =
-      document.getElementById("bioInput");
+    <p id="userBio" class="bio">
+      No bio yet ❤️
+    </p>
+
+    <button id="editBtn" class="edit-btn">
+      ✏️ Edit Profile
+    </button>
 
-    const saveBtn =
-      document.getElementById("saveBtn");
+    <div id="editBox" class="edit-box">
 
-    const cancelBtn =
-      document.getElementById("cancelBtn");
+      <input
+        id="nameInput"
+        type="text"
+        placeholder="Your name"
+        maxlength="40"
+      >
 
-    const chatBox =
-      document.getElementById("chatBox");
+      <textarea
+        id="bioInput"
+        placeholder="Write something about yourself..."
+        maxlength="150"
+      ></textarea>
 
-    const chatInput =
-      document.getElementById("chatInput");
+      <button id="saveBtn" class="save-btn">
+        💾 Save Profile
+      </button>
 
-    const sendBtn =
-      document.getElementById("sendBtn");
+      <button id="cancelBtn" class="cancel-btn">
+        Cancel
+      </button>
 
-    const myFriendCode =
-      document.getElementById("myFriendCode");
+    </div>
 
-    const friendSearchInput =
-      document.getElementById("friendSearchInput");
+    <button id="logoutBtn" class="logout">
+      🚪 Logout
+    </button>
 
-    const searchFriendBtn =
-      document.getElementById("searchFriendBtn");
+  </div>
 
-    const friendResult =
-      document.getElementById("friendResult");
+</section>
 
 
-    /* FRIEND CODE GENERATOR */
+<!-- NAV -->
 
-    function generateFriendCode() {
+<nav class="bottom-nav">
 
-      const chars =
-        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  <button class="nav-btn active" data-screen="homeScreen">
+    <span class="nav-icon">🏠</span>
+    Home
+  </button>
 
-      let code = "";
+  <button class="nav-btn" data-screen="friendsScreen">
+    <span class="nav-icon">👥</span>
+    Friends
+  </button>
 
-      for (let i = 0; i < 8; i++) {
+  <button class="nav-btn" data-screen="chatScreen">
+    <span class="nav-icon">💬</span>
+    Chat
+  </button>
 
-        code +=
-          chars[
-            Math.floor(
-              Math.random() * chars.length
-            )
-          ];
+  <button class="nav-btn" data-screen="profileScreen">
+    <span class="nav-icon">👤</span>
+    Profile
+  </button>
 
-      }
+</nav>
 
-      return code;
+</div>
 
-    }
 
+<!-- FIREBASE -->
 
-    /* GOOGLE LOGIN */
+<script type="module">
 
-    loginBtn.addEventListener(
-      "click",
-      async () => {
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-        try {
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  signOut
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-          await signInWithPopup(
-            auth,
-            provider
-          );
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+  getDocs,
+  where,
+  updateDoc
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-        } catch (error) {
 
-          alert(
-            "Login failed: " +
-            error.message
-          );
+/* FIREBASE CONFIG */
 
-          console.log(error);
+const firebaseConfig = {
 
-        }
+  /* APNI EXISTING API KEY YAHAN RAKHO */
 
-      }
+  apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",
+
+  authDomain:
+    "do-dil-ek-jaan.firebaseapp.com",
+
+  projectId:
+    "do-dil-ek-jaan",
+
+  storageBucket:
+    "do-dil-ek-jaan.firebasestorage.app",
+
+  messagingSenderId:
+    "468290989463",
+
+  appId:
+    "1:468290989463:web:3a8c0fc7b550177cfb68d2"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+const provider = new GoogleAuthProvider();
+
+
+/* ELEMENTS */
+
+const loginScreen =
+document.getElementById("loginScreen");
+
+const appScreen =
+document.getElementById("app");
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+const profilePic =
+document.getElementById("profilePic");
+
+const userName =
+document.getElementById("userName");
+
+const userEmail =
+document.getElementById("userEmail");
+
+const userBio =
+document.getElementById("userBio");
+
+const homeWelcome =
+document.getElementById("homeWelcome");
+
+const editBtn =
+document.getElementById("editBtn");
+
+const editBox =
+document.getElementById("editBox");
+
+const nameInput =
+document.getElementById("nameInput");
+
+const bioInput =
+document.getElementById("bioInput");
+
+const saveBtn =
+document.getElementById("saveBtn");
+
+const cancelBtn =
+document.getElementById("cancelBtn");
+
+const chatBox =
+document.getElementById("chatBox");
+
+const chatInput =
+document.getElementById("chatInput");
+
+const sendBtn =
+document.getElementById("sendBtn");
+
+const myFriendCode =
+document.getElementById("myFriendCode");
+
+const friendSearchInput =
+document.getElementById("friendSearchInput");
+
+const searchFriendBtn =
+document.getElementById("searchFriendBtn");
+
+const friendResult =
+document.getElementById("friendResult");
+
+const requestList =
+document.getElementById("requestList");
+
+const friendsList =
+document.getElementById("friendsList");
+
+
+/* FRIEND CODE */
+
+function generateFriendCode(){
+
+  const chars =
+  "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+  let code = "";
+
+  for(let i=0;i<8;i++){
+
+    code += chars[
+      Math.floor(
+        Math.random()*chars.length
+      )
+    ];
+
+  }
+
+  return code;
+
+}
+
+
+/* ESCAPE */
+
+function escapeHtml(text){
+
+  const div =
+  document.createElement("div");
+
+  div.textContent =
+  text || "";
+
+  return div.innerHTML;
+
+}
+
+
+/* LOGIN */
+
+loginBtn.addEventListener(
+"click",
+async()=>{
+
+  try{
+
+    await signInWithPopup(
+      auth,
+      provider
     );
 
+  }catch(error){
 
-    /* LOAD PROFILE */
+    alert(
+      "Login failed: " +
+      error.message
+    );
 
-    async function loadProfile(user) {
+    console.log(error);
 
-      try {
+  }
 
-        const profileRef =
-          doc(
-            db,
-            "users",
-            user.uid
-          );
-
-        const profileSnap =
-          await getDoc(profileRef);
+});
 
 
-        if (profileSnap.exists()) {
+/* LOAD PROFILE */
 
-          const data =
-            profileSnap.data();
+async function loadProfile(user){
 
+  try{
 
-          userName.textContent =
-            data.name ||
-            user.displayName ||
-            "Do Dil Ek Jaan User";
+    const profileRef =
+    doc(db,"users",user.uid);
 
-
-          userBio.textContent =
-            data.bio ||
-            "No bio yet ❤️";
+    const profileSnap =
+    await getDoc(profileRef);
 
 
-          nameInput.value =
-            data.name ||
-            user.displayName ||
-            "";
+    if(profileSnap.exists()){
 
+      const data =
+      profileSnap.data();
 
-          bioInput.value =
-            data.bio ||
-            "";
+      userName.textContent =
+      data.name ||
+      user.displayName ||
+      "Do Dil Ek Jaan User";
 
+      userBio.textContent =
+      data.bio ||
+      "No bio yet ❤️";
 
-          /*
-            OLD USER ke liye agar
-            Friend Code nahi hai,
-            to automatically generate hoga.
-          */
+      nameInput.value =
+      data.name ||
+      user.displayName ||
+      "";
 
-          if (!data.friendCode) {
+      bioInput.value =
+      data.bio ||
+      "";
 
-            const newCode =
-              generateFriendCode();
+      if(!data.friendCode){
 
-            await setDoc(
-              profileRef,
-              {
-                friendCode:
-                  newCode
-              },
-              {
-                merge: true
-              }
-            );
+        const newCode =
+        generateFriendCode();
 
-            myFriendCode.textContent =
-              newCode;
-
-          } else {
-
-            myFriendCode.textContent =
-              data.friendCode;
-
-          }
-
-
-        } else {
-
-          const friendCode =
-            generateFriendCode();
-
-
-          await setDoc(
-            profileRef,
-            {
-
-              name:
-                user.displayName ||
-                "Do Dil Ek Jaan User",
-
-              bio: "",
-
-              email:
-                user.email || "",
-
-              photoURL:
-                user.photoURL || "",
-
-              friendCode:
-                friendCode,
-
-              createdAt:
-                new Date().toISOString()
-
-            }
-          );
-
-
-          userName.textContent =
-            user.displayName ||
-            "Do Dil Ek Jaan User";
-
-
-          userBio.textContent =
-            "No bio yet ❤️";
-
-
-          nameInput.value =
-            user.displayName || "";
-
-
-          bioInput.value =
-            "";
-
-
-          myFriendCode.textContent =
-            friendCode;
-
-        }
-
-
-      } catch (error) {
-
-        console.log(
-          "Profile load error:",
-          error
+        await setDoc(
+          profileRef,
+          {friendCode:newCode},
+          {merge:true}
         );
+
+        myFriendCode.textContent =
+        newCode;
+
+      }else{
+
+        myFriendCode.textContent =
+        data.friendCode;
 
       }
 
-    }
+    }else{
 
+      const friendCode =
+      generateFriendCode();
 
-    /* REAL-TIME CHAT */
+      await setDoc(
+        profileRef,
+        {
 
-    function startChat(user) {
+          name:
+          user.displayName ||
+          "Do Dil Ek Jaan User",
 
-      const messagesRef =
-        collection(
-          db,
-          "chatMessages"
-        );
+          bio:"",
 
+          email:user.email || "",
 
-      const messagesQuery =
-        query(
-          messagesRef,
-          orderBy(
-            "createdAt",
-            "asc"
-          )
-        );
+          photoURL:user.photoURL || "",
 
+          friendCode:friendCode,
 
-      onSnapshot(
-        messagesQuery,
-        (snapshot) => {
-
-          chatBox.innerHTML = "";
-
-
-          if (snapshot.empty) {
-
-            chatBox.innerHTML = `
-              <div class="chat-empty">
-                No messages yet ❤️<br>
-                Send the first message!
-              </div>
-            `;
-
-            return;
-
-          }
-
-
-          snapshot.forEach(
-            (messageDoc) => {
-
-              const data =
-                messageDoc.data();
-
-
-              const message =
-                document.createElement(
-                  "div"
-                );
-
-
-              const isMine =
-                data.uid === user.uid;
-
-
-              message.className =
-                "message " +
-                (
-                  isMine
-                    ? "mine"
-                    : ""
-                );
-
-
-              let timeText = "";
-
-
-              if (data.createdAt) {
-
-                const date =
-                  data.createdAt.toDate();
-
-
-                timeText =
-                  date.toLocaleTimeString(
-                    [],
-                    {
-                      hour: "2-digit",
-                      minute: "2-digit"
-                    }
-                  );
-
-              }
-
-
-              message.innerHTML = `
-
-                <span class="sender">
-                  ${escapeHtml(
-                    data.name ||
-                    "User"
-                  )}
-                </span>
-
-                <span class="message-bubble">
-                  ${escapeHtml(
-                    data.text ||
-                    ""
-                  )}
-                </span>
-
-                <span class="message-time">
-                  ${timeText}
-                </span>
-
-              `;
-
-
-              chatBox.appendChild(
-                message
-              );
-
-            }
-          );
-
-
-          chatBox.scrollTop =
-            chatBox.scrollHeight;
-
-        },
-
-
-        (error) => {
-
-          console.log(
-            "Chat listener error:",
-            error
-          );
-
-
-          chatBox.innerHTML = `
-
-            <div class="chat-empty">
-              Chat permission error.<br>
-              Check Firestore Rules.
-            </div>
-
-          `;
+          createdAt:
+          new Date().toISOString()
 
         }
-
       );
 
+      userName.textContent =
+      user.displayName ||
+      "Do Dil Ek Jaan User";
+
+      userBio.textContent =
+      "No bio yet ❤️";
+
+      nameInput.value =
+      user.displayName || "";
+
+      bioInput.value = "";
+
+      myFriendCode.textContent =
+      friendCode;
+
     }
 
+  }catch(error){
 
-    /* ESCAPE TEXT */
+    console.log(
+      "Profile load error:",
+      error
+    );
 
-    function escapeHtml(text) {
+  }
 
-      const div =
-        document.createElement(
-          "div"
+}
+
+
+/* FRIEND REQUEST ID */
+
+function requestId(fromUid,toUid){
+
+  return fromUid + "_" + toUid;
+
+}
+
+
+/* SEND FRIEND REQUEST */
+
+async function sendFriendRequest(foundUid,data){
+
+  const user =
+  auth.currentUser;
+
+  if(!user)return;
+
+  const id =
+  requestId(
+    user.uid,
+    foundUid
+  );
+
+  try{
+
+    const existing =
+    await getDoc(
+      doc(
+        db,
+        "friendRequests",
+        id
+      )
+    );
+
+    if(existing.exists()){
+
+      const old =
+      existing.data();
+
+      if(old.status === "pending"){
+
+        alert(
+          "Friend Request already sent 📩"
         );
 
-      div.textContent =
-        text;
+        return;
 
-      return div.innerHTML;
+      }
+
+      if(old.status === "accepted"){
+
+        alert(
+          "Aap dono already friends ho ❤️"
+        );
+
+        return;
+
+      }
 
     }
 
 
-    /* SEND MESSAGE */
+    const reverseId =
+    requestId(
+      foundUid,
+      user.uid
+    );
 
-    sendBtn.addEventListener(
-      "click",
-      async () => {
+    const reverse =
+    await getDoc(
+      doc(
+        db,
+        "friendRequests",
+        reverseId
+      )
+    );
 
-        const user =
-          auth.currentUser;
+    if(
+      reverse.exists() &&
+      reverse.data().status === "pending"
+    ){
 
+      alert(
+        "Is person ne tumhe already request bheji hai. Friend Requests mein check karo 📩"
+      );
 
-        if (!user) {
+      return;
 
-          alert(
-            "Please login first."
-          );
-
-          return;
-
-        }
-
-
-        const text =
-          chatInput.value.trim();
-
-
-        if (!text) {
-
-          return;
-
-        }
+    }
 
 
-        sendBtn.disabled =
-          true;
+    await setDoc(
+      doc(
+        db,
+        "friendRequests",
+        id
+      ),
+      {
 
-        sendBtn.textContent =
-          "Sending...";
+        fromUid:
+        user.uid,
 
+        toUid:
+        foundUid,
 
-        try {
+        fromName:
+        userName.textContent,
 
-          await addDoc(
-            collection(
-              db,
-              "chatMessages"
-            ),
-            {
+        fromPhoto:
+        user.photoURL || "",
 
-              uid:
-                user.uid,
+        toName:
+        data.name ||
+        "Do Dil Ek Jaan User",
 
-              name:
-                userName.textContent ||
-                user.displayName ||
-                "User",
+        status:
+        "pending",
 
-              text:
-                text,
-
-              createdAt:
-                serverTimestamp()
-
-            }
-          );
-
-
-          chatInput.value = "";
-
-
-        } catch (error) {
-
-          console.log(error);
-
-
-          alert(
-            "Message send failed: " +
-            error.message
-          );
-
-        }
-
-
-        sendBtn.disabled =
-          false;
-
-        sendBtn.textContent =
-          "Send";
+        createdAt:
+        serverTimestamp()
 
       }
     );
 
 
-    /* ENTER TO SEND */
+    alert(
+      "Friend Request sent successfully ❤️"
+    );
 
-    chatInput.addEventListener(
-      "keydown",
-      (event) => {
 
-        if (
-          event.key === "Enter"
-        ) {
+    friendResult.innerHTML = `
 
-          event.preventDefault();
+      <div class="search-message">
+        📩 Friend Request sent!
+      </div>
 
-          sendBtn.click();
+    `;
 
-        }
+  }catch(error){
 
+    console.log(error);
+
+    alert(
+      "Request send failed: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* FRIEND SEARCH */
+
+searchFriendBtn.addEventListener(
+"click",
+async()=>{
+
+  const code =
+  friendSearchInput.value
+  .trim()
+  .toUpperCase();
+
+  if(!code){
+
+    alert(
+      "Friend Code enter karo ❤️"
+    );
+
+    return;
+
+  }
+
+  friendResult.innerHTML = `
+
+    <div class="search-message">
+      🔎 Searching...
+    </div>
+
+  `;
+
+  try{
+
+    const usersRef =
+    collection(db,"users");
+
+    const searchQuery =
+    query(
+      usersRef,
+      where(
+        "friendCode",
+        "==",
+        code
+      )
+    );
+
+    const snapshot =
+    await getDocs(
+      searchQuery
+    );
+
+    if(snapshot.empty){
+
+      friendResult.innerHTML = `
+
+        <div class="search-message">
+          User nahi mila 😕
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    const foundDoc =
+    snapshot.docs[0];
+
+    const data =
+    foundDoc.data();
+
+    const foundUid =
+    foundDoc.id;
+
+
+    if(
+      auth.currentUser &&
+      foundUid ===
+      auth.currentUser.uid
+    ){
+
+      friendResult.innerHTML = `
+
+        <div class="search-message">
+          Ye tumhara apna Friend Code hai 😄
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    friendResult.innerHTML = `
+
+      <div class="friend-user">
+
+        <div class="friend-user-info">
+
+          <img
+            class="friend-user-photo"
+            src="${
+              escapeHtml(
+                data.photoURL ||
+                "https://via.placeholder.com/60"
+              )
+            }"
+            alt="User"
+          >
+
+          <div>
+
+            <div class="friend-user-name">
+              ${
+                escapeHtml(
+                  data.name ||
+                  "Do Dil Ek Jaan User"
+                )
+              }
+            </div>
+
+            <div class="friend-user-code">
+              Friend Code: ${code}
+            </div>
+
+          </div>
+
+        </div>
+
+        <button id="addFriendBtn">
+          ➕ Add Friend
+        </button>
+
+      </div>
+
+    `;
+
+
+    document
+    .getElementById("addFriendBtn")
+    .addEventListener(
+      "click",
+      ()=>{
+        sendFriendRequest(
+          foundUid,
+          data
+        );
       }
     );
 
 
-    /* FRIEND SEARCH */
+  }catch(error){
 
-    searchFriendBtn.addEventListener(
-      "click",
-      async () => {
+    console.log(
+      "Friend search error:",
+      error
+    );
 
-        const code =
-          friendSearchInput.value
-            .trim()
-            .toUpperCase();
+    friendResult.innerHTML = `
 
+      <div class="search-message">
+        Search failed 😕<br>
+        ${escapeHtml(error.message)}
+      </div>
 
-        if (!code) {
+    `;
 
-          alert(
-            "Friend Code enter karo ❤️"
-          );
+  }
 
-          return;
-
-        }
+});
 
 
-        friendResult.innerHTML = `
+/* LOAD FRIEND REQUESTS */
+
+function loadFriendRequests(user){
+
+  const requestsQuery =
+  query(
+    collection(
+      db,
+      "friendRequests"
+    ),
+    where(
+      "toUid",
+      "==",
+      user.uid
+    ),
+    where(
+      "status",
+      "==",
+      "pending"
+    )
+  );
+
+
+  onSnapshot(
+    requestsQuery,
+    snapshot=>{
+
+      requestList.innerHTML = "";
+
+
+      if(snapshot.empty){
+
+        requestList.innerHTML = `
 
           <div class="search-message">
-            🔎 Searching...
+            No new requests ❤️
           </div>
 
         `;
 
+        return;
 
-        try {
-
-          const usersRef =
-            collection(
-              db,
-              "users"
-            );
+      }
 
 
-          const searchQuery =
-            query(
-              usersRef,
-              where(
-                "friendCode",
-                "==",
-                code
-              )
-            );
-
-
-          const snapshot =
-            await getDocs(
-              searchQuery
-            );
-
-
-          if (snapshot.empty) {
-
-            friendResult.innerHTML = `
-
-              <div class="search-message">
-                User nahi mila 😕
-              </div>
-
-            `;
-
-            return;
-
-          }
-
-
-          const foundDoc =
-            snapshot.docs[0];
-
+      snapshot.forEach(
+        requestDoc=>{
 
           const data =
-            foundDoc.data();
+          requestDoc.data();
 
+          const card =
+          document.createElement("div");
 
-          const foundUid =
-            foundDoc.id;
+          card.className =
+          "request-card";
 
+          card.innerHTML = `
 
-          /* OWN CODE */
+            <div class="request-info">
 
-          if (
-            auth.currentUser &&
-            foundUid ===
-            auth.currentUser.uid
-          ) {
+              <img
+                src="${
+                  escapeHtml(
+                    data.fromPhoto ||
+                    "https://via.placeholder.com/50"
+                  )
+                }"
+              >
 
-            friendResult.innerHTML = `
+              <div>
 
-              <div class="search-message">
-                Ye tumhara apna Friend Code hai 😄
-              </div>
-
-            `;
-
-            return;
-
-          }
-
-
-          /* SHOW USER */
-
-          friendResult.innerHTML = `
-
-            <div class="friend-user">
-
-              <div class="friend-user-info">
-
-                <img
-                  class="friend-user-photo"
-                  src="${
+                <div class="person-name">
+                  ${
                     escapeHtml(
-                      data.photoURL ||
-                      "https://via.placeholder.com/60"
+                      data.fromName ||
+                      "User"
                     )
-                  }"
-                  alt="User"
-                >
+                  }
+                </div>
 
-                <div>
-
-                  <div class="friend-user-name">
-                    ${
-                      escapeHtml(
-                        data.name ||
-                        "Do Dil Ek Jaan User"
-                      )
-                    }
-                  </div>
-
-                  <div class="friend-user-code">
-                    Friend Code: ${code}
-                  </div>
-
+                <div class="person-code">
+                  Wants to be your friend ❤️
                 </div>
 
               </div>
 
+            </div>
 
-              <button
-                id="addFriendBtn"
-              >
-                ➕ Add Friend
+            <div class="request-buttons">
+
+              <button class="accept-btn">
+                ✅ Accept
+              </button>
+
+              <button class="reject-btn">
+                ❌ Reject
               </button>
 
             </div>
@@ -1520,386 +1492,793 @@
           `;
 
 
-          const addFriendBtn =
-            document.getElementById(
-              "addFriendBtn"
-            );
-
-
-          addFriendBtn.addEventListener(
+          card
+          .querySelector(".accept-btn")
+          .addEventListener(
             "click",
-            () => {
-
-              alert(
-                "User mil gaya ❤️\n\n" +
-                "Friend Request system next step mein banayenge."
+            ()=>{
+              acceptRequest(
+                requestDoc.id,
+                data
               );
-
             }
           );
 
 
-        } catch (error) {
-
-          console.log(
-            "Friend search error:",
-            error
+          card
+          .querySelector(".reject-btn")
+          .addEventListener(
+            "click",
+            ()=>{
+              rejectRequest(
+                requestDoc.id
+              );
+            }
           );
 
 
-          friendResult.innerHTML = `
+          requestList.appendChild(card);
 
-            <div class="search-message">
-              Search failed 😕<br>
-              ${escapeHtml(
-                error.message
-              )}
+        }
+      );
+
+    },
+    error=>{
+
+      console.log(
+        "Request listener error:",
+        error
+      );
+
+      requestList.innerHTML = `
+
+        <div class="search-message">
+          Request load nahi ho paaye.
+        </div>
+
+      `;
+
+    }
+  );
+
+}
+
+
+/* ACCEPT REQUEST */
+
+async function acceptRequest(
+requestDocId,
+data
+){
+
+  const user =
+  auth.currentUser;
+
+  if(!user)return;
+
+  try{
+
+    await updateDoc(
+      doc(
+        db,
+        "friendRequests",
+        requestDocId
+      ),
+      {
+        status:"accepted"
+      }
+    );
+
+
+    const myFriendId =
+    user.uid + "_" + data.fromUid;
+
+    const otherFriendId =
+    data.fromUid + "_" + user.uid;
+
+
+    await setDoc(
+      doc(
+        db,
+        "friends",
+        myFriendId
+      ),
+      {
+
+        uid:user.uid,
+
+        friendUid:
+        data.fromUid,
+
+        friendName:
+        data.fromName ||
+        "Friend",
+
+        friendPhoto:
+        data.fromPhoto || "",
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    await setDoc(
+      doc(
+        db,
+        "friends",
+        otherFriendId
+      ),
+      {
+
+        uid:
+        data.fromUid,
+
+        friendUid:
+        user.uid,
+
+        friendName:
+        userName.textContent,
+
+        friendPhoto:
+        user.photoURL || "",
+
+        createdAt:
+        serverTimestamp()
+
+      }
+    );
+
+
+    alert(
+      "Friend request accepted ❤️"
+    );
+
+  }catch(error){
+
+    console.log(error);
+
+    alert(
+      "Accept failed: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* REJECT REQUEST */
+
+async function rejectRequest(
+requestDocId
+){
+
+  try{
+
+    await updateDoc(
+      doc(
+        db,
+        "friendRequests",
+        requestDocId
+      ),
+      {
+        status:"rejected"
+      }
+    );
+
+  }catch(error){
+
+    console.log(error);
+
+    alert(
+      "Reject failed: " +
+      error.message
+    );
+
+  }
+
+}
+
+
+/* LOAD FRIENDS */
+
+function loadFriends(user){
+
+  const friendsQuery =
+  query(
+    collection(
+      db,
+      "friends"
+    ),
+    where(
+      "uid",
+      "==",
+      user.uid
+    )
+  );
+
+
+  onSnapshot(
+    friendsQuery,
+    snapshot=>{
+
+      friendsList.innerHTML = "";
+
+
+      if(snapshot.empty){
+
+        friendsList.innerHTML = `
+
+          <div class="search-message">
+            Abhi koi friend nahi hai 👥
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      snapshot.forEach(
+        friendDoc=>{
+
+          const data =
+          friendDoc.data();
+
+          const card =
+          document.createElement("div");
+
+          card.className =
+          "friend-card";
+
+          card.innerHTML = `
+
+            <div class="friend-info">
+
+              <img
+                src="${
+                  escapeHtml(
+                    data.friendPhoto ||
+                    "https://via.placeholder.com/50"
+                  )
+                }"
+              >
+
+              <div>
+
+                <div class="person-name">
+                  ${
+                    escapeHtml(
+                      data.friendName ||
+                      "Friend"
+                    )
+                  }
+                </div>
+
+                <div class="friend-status">
+                  ❤️ Friend
+                </div>
+
+              </div>
+
             </div>
 
           `;
 
-        }
-
-      }
-    );
-
-
-    /* LOGIN STATE */
-
-    onAuthStateChanged(
-      auth,
-      async (user) => {
-
-        if (user) {
-
-          loginScreen.classList.add(
-            "hidden"
-          );
-
-          appScreen.classList.remove(
-            "hidden"
-          );
-
-
-          userEmail.textContent =
-            user.email || "";
-
-
-          profilePic.src =
-            user.photoURL ||
-            "https://via.placeholder.com/105";
-
-
-          homeWelcome.textContent =
-            "Welcome, " +
-            (
-              user.displayName ||
-              "Friend"
-            ) +
-            "! ❤️";
-
-
-          await loadProfile(
-            user
-          );
-
-
-          startChat(
-            user
-          );
-
-
-        } else {
-
-          loginScreen.classList.remove(
-            "hidden"
-          );
-
-          appScreen.classList.add(
-            "hidden"
-          );
+          friendsList.appendChild(card);
 
         }
+      );
+
+    },
+    error=>{
+
+      console.log(
+        "Friends listener error:",
+        error
+      );
+
+      friendsList.innerHTML = `
+
+        <div class="search-message">
+          Friends load nahi ho paaye.
+        </div>
+
+      `;
+
+    }
+  );
+
+}
+
+
+/* GLOBAL CHAT */
+
+function startChat(user){
+
+  const messagesRef =
+  collection(
+    db,
+    "chatMessages"
+  );
+
+  const messagesQuery =
+  query(
+    messagesRef,
+    orderBy(
+      "createdAt",
+      "asc"
+    )
+  );
+
+  onSnapshot(
+    messagesQuery,
+    snapshot=>{
+
+      chatBox.innerHTML = "";
+
+      if(snapshot.empty){
+
+        chatBox.innerHTML = `
+
+          <div class="chat-empty">
+            No messages yet ❤️<br>
+            Send the first message!
+          </div>
+
+        `;
+
+        return;
 
       }
-    );
 
 
-    /* EDIT PROFILE */
+      snapshot.forEach(
+        messageDoc=>{
 
-    editBtn.addEventListener(
-      "click",
-      () => {
+          const data =
+          messageDoc.data();
 
-        editBox.classList.add(
-          "show"
-        );
+          const message =
+          document.createElement("div");
 
-      }
-    );
+          const isMine =
+          data.uid === user.uid;
 
-
-    /* CANCEL EDIT */
-
-    cancelBtn.addEventListener(
-      "click",
-      () => {
-
-        editBox.classList.remove(
-          "show"
-        );
-
-      }
-    );
+          message.className =
+          "message " +
+          (isMine ? "mine" : "");
 
 
-    /* SAVE PROFILE */
+          let timeText = "";
 
-    saveBtn.addEventListener(
-      "click",
-      async () => {
+          if(data.createdAt){
 
-        const user =
-          auth.currentUser;
+            const date =
+            data.createdAt.toDate();
 
-
-        if (!user) {
-
-          alert(
-            "Please login first."
-          );
-
-          return;
-
-        }
-
-
-        const name =
-          nameInput.value.trim();
-
-
-        const bio =
-          bioInput.value.trim();
-
-
-        if (!name) {
-
-          alert(
-            "Please enter your name ❤️"
-          );
-
-          return;
-
-        }
-
-
-        saveBtn.textContent =
-          "Saving...";
-
-
-        try {
-
-          /*
-            Existing Friend Code
-            ko preserve karenge.
-          */
-
-          const profileRef =
-            doc(
-              db,
-              "users",
-              user.uid
+            timeText =
+            date.toLocaleTimeString(
+              [],
+              {
+                hour:"2-digit",
+                minute:"2-digit"
+              }
             );
-
-
-          const oldProfile =
-            await getDoc(
-              profileRef
-            );
-
-
-          let friendCode;
-
-
-          if (
-            oldProfile.exists() &&
-            oldProfile.data().friendCode
-          ) {
-
-            friendCode =
-              oldProfile.data().friendCode;
-
-          } else {
-
-            friendCode =
-              generateFriendCode();
 
           }
 
 
-          await setDoc(
-            profileRef,
-            {
+          message.innerHTML = `
 
-              name:
-                name,
+            <span class="sender">
+              ${escapeHtml(
+                data.name || "User"
+              )}
+            </span>
 
-              bio:
-                bio,
+            <span class="message-bubble">
+              ${escapeHtml(
+                data.text || ""
+              )}
+            </span>
 
-              email:
-                user.email || "",
+            <span class="message-time">
+              ${timeText}
+            </span>
 
-              photoURL:
-                user.photoURL || "",
+          `;
 
-              friendCode:
-                friendCode,
-
-              updatedAt:
-                new Date().toISOString()
-
-            },
-
-            {
-              merge: true
-            }
-
-          );
-
-
-          userName.textContent =
-            name;
-
-
-          userBio.textContent =
-            bio ||
-            "No bio yet ❤️";
-
-
-          homeWelcome.textContent =
-            "Welcome, " +
-            name +
-            "! ❤️";
-
-
-          myFriendCode.textContent =
-            friendCode;
-
-
-          editBox.classList.remove(
-            "show"
-          );
-
-
-          alert(
-            "Profile saved successfully ❤️"
-          );
-
-
-        } catch (error) {
-
-          console.log(
-            error
-          );
-
-
-          alert(
-            "Profile save failed: " +
-            error.message
-          );
+          chatBox.appendChild(message);
 
         }
-
-
-        saveBtn.textContent =
-          "💾 Save Profile";
-
-      }
-    );
-
-
-    /* LOGOUT */
-
-    logoutBtn.addEventListener(
-      "click",
-      async () => {
-
-        await signOut(
-          auth
-        );
-
-      }
-    );
-
-
-    /* NAVIGATION */
-
-    const navButtons =
-      document.querySelectorAll(
-        ".nav-btn"
       );
 
+      chatBox.scrollTop =
+      chatBox.scrollHeight;
 
-    const screens =
-      document.querySelectorAll(
-        ".screen"
+    },
+    error=>{
+
+      console.log(
+        "Chat listener error:",
+        error
       );
 
+      chatBox.innerHTML = `
 
-    navButtons.forEach(
-      (button) => {
+        <div class="chat-empty">
+          Chat permission error.<br>
+          Check Firestore Rules.
+        </div>
 
-        button.addEventListener(
-          "click",
-          () => {
+      `;
 
-            const target =
-              button.dataset.screen;
+    }
+  );
 
-
-            screens.forEach(
-              (screen) => {
-
-                screen.classList.remove(
-                  "active"
-                );
-
-              }
-            );
+}
 
 
-            document
-              .getElementById(
-                target
-              )
-              .classList.add(
-                "active"
-              );
+/* SEND MESSAGE */
 
+sendBtn.addEventListener(
+"click",
+async()=>{
 
-            navButtons.forEach(
-              (btn) => {
+  const user =
+  auth.currentUser;
 
-                btn.classList.remove(
-                  "active"
-                );
+  if(!user){
 
-              }
-            );
+    alert(
+      "Please login first."
+    );
 
+    return;
 
-            button.classList.add(
-              "active"
-            );
+  }
 
-          }
-        );
+  const text =
+  chatInput.value.trim();
+
+  if(!text)return;
+
+  sendBtn.disabled = true;
+
+  sendBtn.textContent =
+  "Sending...";
+
+  try{
+
+    await addDoc(
+      collection(
+        db,
+        "chatMessages"
+      ),
+      {
+
+        uid:user.uid,
+
+        name:
+        userName.textContent ||
+        user.displayName ||
+        "User",
+
+        text:text,
+
+        createdAt:
+        serverTimestamp()
 
       }
     );
 
-  </script>
+    chatInput.value = "";
+
+  }catch(error){
+
+    alert(
+      "Message send failed: " +
+      error.message
+    );
+
+  }
+
+  sendBtn.disabled = false;
+
+  sendBtn.textContent =
+  "Send";
+
+});
+
+
+chatInput.addEventListener(
+"keydown",
+event=>{
+
+  if(event.key === "Enter"){
+
+    event.preventDefault();
+
+    sendBtn.click();
+
+  }
+
+});
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+auth,
+async(user)=>{
+
+  if(user){
+
+    loginScreen.classList.add(
+      "hidden"
+    );
+
+    appScreen.classList.remove(
+      "hidden"
+    );
+
+    userEmail.textContent =
+    user.email || "";
+
+    profilePic.src =
+    user.photoURL ||
+    "https://via.placeholder.com/105";
+
+    homeWelcome.textContent =
+    "Welcome, " +
+    (user.displayName || "Friend") +
+    "! ❤️";
+
+
+    await loadProfile(user);
+
+    startChat(user);
+
+    loadFriendRequests(user);
+
+    loadFriends(user);
+
+  }else{
+
+    loginScreen.classList.remove(
+      "hidden"
+    );
+
+    appScreen.classList.add(
+      "hidden"
+    );
+
+  }
+
+});
+
+
+/* EDIT PROFILE */
+
+editBtn.addEventListener(
+"click",
+()=>{
+
+  editBox.classList.add("show");
+
+});
+
+
+cancelBtn.addEventListener(
+"click",
+()=>{
+
+  editBox.classList.remove("show");
+
+});
+
+
+/* SAVE PROFILE */
+
+saveBtn.addEventListener(
+"click",
+async()=>{
+
+  const user =
+  auth.currentUser;
+
+  if(!user){
+
+    alert(
+      "Please login first."
+    );
+
+    return;
+
+  }
+
+  const name =
+  nameInput.value.trim();
+
+  const bio =
+  bioInput.value.trim();
+
+  if(!name){
+
+    alert(
+      "Please enter your name ❤️"
+    );
+
+    return;
+
+  }
+
+  saveBtn.textContent =
+  "Saving...";
+
+
+  try{
+
+    const profileRef =
+    doc(
+      db,
+      "users",
+      user.uid
+    );
+
+    const oldProfile =
+    await getDoc(profileRef);
+
+    let friendCode;
+
+
+    if(
+      oldProfile.exists() &&
+      oldProfile.data().friendCode
+    ){
+
+      friendCode =
+      oldProfile.data().friendCode;
+
+    }else{
+
+      friendCode =
+      generateFriendCode();
+
+    }
+
+
+    await setDoc(
+      profileRef,
+      {
+
+        name:name,
+
+        bio:bio,
+
+        email:
+        user.email || "",
+
+        photoURL:
+        user.photoURL || "",
+
+        friendCode:friendCode,
+
+        updatedAt:
+        new Date().toISOString()
+
+      },
+      {merge:true}
+    );
+
+
+    userName.textContent =
+    name;
+
+    userBio.textContent =
+    bio || "No bio yet ❤️";
+
+    homeWelcome.textContent =
+    "Welcome, " +
+    name +
+    "! ❤️";
+
+    myFriendCode.textContent =
+    friendCode;
+
+    editBox.classList.remove(
+      "show"
+    );
+
+
+    alert(
+      "Profile saved successfully ❤️"
+    );
+
+  }catch(error){
+
+    alert(
+      "Profile save failed: " +
+      error.message
+    );
+
+  }
+
+
+  saveBtn.textContent =
+  "💾 Save Profile";
+
+});
+
+
+/* LOGOUT */
+
+logoutBtn.addEventListener(
+"click",
+async()=>{
+
+  await signOut(auth);
+
+});
+
+
+/* NAVIGATION */
+
+const navButtons =
+document.querySelectorAll(
+  ".nav-btn"
+);
+
+const screens =
+document.querySelectorAll(
+  ".screen"
+);
+
+navButtons.forEach(
+button=>{
+
+  button.addEventListener(
+    "click",
+    ()=>{
+
+      const target =
+      button.dataset.screen;
+
+      screens.forEach(
+        screen=>{
+          screen.classList.remove(
+            "active"
+          );
+        }
+      );
+
+      document
+      .getElementById(target)
+      .classList.add("active");
+
+
+      navButtons.forEach(
+        btn=>{
+          btn.classList.remove(
+            "active"
+          );
+        }
+      );
+
+      button.classList.add(
+        "active"
+      );
+
+    }
+  );
+
+});
+
+</script>
 
 </body>
 </html>
