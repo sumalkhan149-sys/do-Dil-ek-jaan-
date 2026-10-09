@@ -572,6 +572,44 @@ button:disabled{
   display:none!important;
 }
 
+
+
+/* POSTS */
+.post-composer{
+  margin:18px 0;
+  padding:16px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+}
+.post-composer textarea{
+  width:100%;
+  min-height:100px;
+  resize:vertical;
+  padding:13px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:14px;
+  background:rgba(0,0,0,.25);
+  color:#fff;
+  font:inherit;
+  outline:none;
+}
+.post-composer textarea::placeholder{color:#d8bfd7;}
+.post-composer button{margin-top:10px;}
+.posts-feed{display:flex;flex-direction:column;gap:14px;margin-top:16px;}
+.post-card{
+  padding:16px;
+  background:rgba(255,255,255,.075);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  overflow-wrap:anywhere;
+}
+.post-author{font-weight:bold;color:#ffb7df;margin-bottom:8px;}
+.post-text{white-space:pre-wrap;line-height:1.5;color:#fff;}
+.post-date{font-size:12px;color:#d5b9d2;margin-top:10px;}
+.posts-note{font-size:13px;color:#e8d2e6;margin-top:8px;line-height:1.4;}
+.post-status{font-size:13px;color:#ffd5ed;margin-top:8px;}
+
 </style>
 
 </head>
@@ -691,6 +729,48 @@ button:disabled{
       Play fun games with your friends.
     </span>
 
+  </div>
+
+</section>
+
+
+<!-- POSTS -->
+
+<section
+  id="postsScreen"
+  class="screen"
+>
+
+  <div class="top-title">
+    📝 Posts
+  </div>
+
+  <p class="subtitle">
+    Apne thoughts share karo ❤️
+  </p>
+
+  <div class="post-composer">
+    <textarea
+      id="postText"
+      maxlength="2000"
+      placeholder="Aaj aap kya share karna chahte ho? ✨"
+    ></textarea>
+
+    <div class="posts-note">
+      Filhaal text posts supported hain. Photo upload ke liye paid Storage ki zarurat nahi padegi kyunki hum abhi text-only rakh rahe hain.
+    </div>
+
+    <button id="publishPostBtn">
+      📝 Post Share Karo
+    </button>
+
+    <div id="postStatus" class="post-status"></div>
+  </div>
+
+  <h2 style="margin-top:22px;">🌍 Recent Posts</h2>
+
+  <div id="postsFeed" class="posts-feed">
+    <div class="search-message">Posts load ho rahi hain...</div>
   </div>
 
 </section>
@@ -1021,6 +1101,18 @@ button:disabled{
 
   <button
     class="nav-btn"
+    data-screen="postsScreen"
+  >
+
+    <span class="nav-icon">📝</span>
+
+    Posts
+
+  </button>
+
+
+  <button
+    class="nav-btn"
     data-screen="friendsScreen"
   >
 
@@ -1325,7 +1417,156 @@ const friendsList =
   );
 
 
+
+/* =====================================
+   POSTS: CREATE + REAL-TIME FEED
+   ===================================== */
+
+function escapePostHtml(value){
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function formatPostDate(timestamp){
+  if(!timestamp) return "Just now";
+  try{
+    const date = typeof timestamp.toDate === "function"
+      ? timestamp.toDate()
+      : new Date(timestamp);
+    return date.toLocaleString();
+  }catch(error){
+    return "Recently";
+  }
+}
+
+function loadPosts(){
+  if(postsUnsubscribe){
+    postsUnsubscribe();
+    postsUnsubscribe = null;
+  }
+
+  postsFeed.innerHTML =
+    '<div class="search-message">Posts load ho rahi hain...</div>';
+
+  const postsQuery = query(
+    collection(db, "posts"),
+    orderBy("createdAt", "desc")
+  );
+
+  postsUnsubscribe = onSnapshot(
+    postsQuery,
+    snapshot => {
+      postsFeed.innerHTML = "";
+
+      if(snapshot.empty){
+        postsFeed.innerHTML =
+          '<div class="search-message">Abhi koi post nahi hai. Pehli post tum karo ❤️</div>';
+        return;
+      }
+
+      snapshot.forEach(postDoc => {
+        const post = postDoc.data();
+        const card = document.createElement("article");
+        card.className = "post-card";
+
+        const author = document.createElement("div");
+        author.className = "post-author";
+        author.textContent = "❤️ " + (post.authorName || "Do Dil Ek Jaan User");
+
+        const body = document.createElement("div");
+        body.className = "post-text";
+        body.textContent = post.text || "";
+
+        const date = document.createElement("div");
+        date.className = "post-date";
+        date.textContent = formatPostDate(post.createdAt);
+
+        card.appendChild(author);
+        card.appendChild(body);
+        card.appendChild(date);
+        postsFeed.appendChild(card);
+      });
+    },
+    error => {
+      console.error("POST FEED ERROR:", error);
+      postsFeed.innerHTML =
+        '<div class="search-message">Posts load nahi hui: ' +
+        escapePostHtml(error.message) +
+        '</div>';
+    }
+  );
+}
+
+publishPostBtn.addEventListener("click", async () => {
+  const user = auth.currentUser;
+
+  if(!user){
+    alert("Post karne ke liye pehle login karo ❤️");
+    return;
+  }
+
+  const text = postText.value.trim();
+
+  if(!text){
+    postStatus.textContent = "Pehle post mein kuch likho ❤️";
+    postText.focus();
+    return;
+  }
+
+  if(text.length > 2000){
+    postStatus.textContent = "Post 2000 characters se chhoti rakho.";
+    return;
+  }
+
+  publishPostBtn.disabled = true;
+  publishPostBtn.textContent = "Posting...";
+  postStatus.textContent = "";
+
+  try{
+    await addDoc(collection(db, "posts"), {
+      uid: user.uid,
+      authorName:
+        userName.textContent ||
+        user.displayName ||
+        "Do Dil Ek Jaan User",
+      text: text,
+      createdAt: serverTimestamp()
+    });
+
+    postText.value = "";
+    postStatus.textContent = "Post share ho gayi ❤️";
+  }catch(error){
+    console.error("CREATE POST ERROR:", error);
+    postStatus.textContent =
+      "Post failed: " + error.message +
+      " — Firestore Rules mein posts rule add karna hoga.";
+  }finally{
+    publishPostBtn.disabled = false;
+    publishPostBtn.textContent = "📝 Post Share Karo";
+  }
+});
+
+
 /* NAVIGATION */
+
+const postText =
+  document.getElementById("postText");
+
+const publishPostBtn =
+  document.getElementById("publishPostBtn");
+
+const postStatus =
+  document.getElementById("postStatus");
+
+const postsFeed =
+  document.getElementById("postsFeed");
+
+let postsUnsubscribe = null;
+
 
 const navButtons =
   document.querySelectorAll(
@@ -3042,8 +3283,14 @@ onAuthStateChanged(
         user
       );
 
+      loadPosts();
+
 
     }else{
+      if(postsUnsubscribe){
+        postsUnsubscribe();
+        postsUnsubscribe = null;
+      }
 
       loginScreen
         .classList
