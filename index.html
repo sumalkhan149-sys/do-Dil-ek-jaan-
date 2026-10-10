@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Do Dil Ek Jaan ❤️ 30 Features Ultimate</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Do Dil Ek Jaan - Final 30</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;color:#fff;background:#000}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#000;color:#fff}
 button,input,textarea,select{font:inherit}button{border:0;border-radius:28px;padding:11px 14px;color:#fff;background:linear-gradient(90deg,#ff3f9f,#a52cff);font-weight:bold;cursor:pointer}
 input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:12px;background:#ffffff12;color:#fff;outline:none;margin:6px 0}
 .app{max-width:500px;min-height:100vh;margin:auto;padding:12px 12px 90px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005)}
@@ -16,55 +16,40 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 .game-cell{height:75px;font-size:28px;background:#ffffff18;border-radius:14px}.love-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#000000dd;z-index:200;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px}.love-overlay.active{display:flex}
 .bell{position:relative;cursor:pointer;font-size:22px}.bell-badge{position:absolute;top:-6px;right:-8px;background:#ff3264;color:#fff;font-size:10px;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px;font-weight:bold}
 .notif-screen{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:100%;background:#120012;z-index:50;display:none;flex-direction:column;padding:12px 12px 90px;overflow-y:auto}.notif-screen.active{display:flex}
-.small{font-size:11px;color:#cdb9cb}.turn-you{color:#00ff88;font-weight:bold}.story-bar{display:flex;gap:8px;overflow-x:auto;padding:8px 0}
+.small{font-size:11px;color:#cdb9cb}.story-bar{display:flex;gap:8px;overflow-x:auto;padding:8px 0}
+.settings-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #ffffff10}
 </style></head><body>
-<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan - 30 Features</h1><p class="small">Couple + Social Ultimate</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
+<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="small">FINAL 30 + Insta Setting + Block</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
 <div id="app" class="app hidden">
 <div id="notifScreen" class="notif-screen"><div class="top-title">🔔 Notifications <button id="closeNotifBtn" class="secondary" style="width:auto">✕</button></div><div id="notifList"></div></div>
 <div id="winOverlay" class="love-overlay" style="z-index:400"><div style="font-size:80px">👑</div><h1 id="winText">YOU WIN!</h1><button id="closeWinBtn" style="margin-top:20px;width:200px">Continue</button></div>
 <div id="hugOverlay" class="love-overlay" style="z-index:500"><div style="font-size:100px" id="hugEmoji">🤗</div><h1 id="hugText">Hug Sent!</h1></div>
+<div id="followersOverlay" class="love-overlay" style="z-index:600"><div class="panel" style="width:90%;max-width:400px;max-height:80%;overflow-y:auto"><div class="top-title"><span id="followOverlayTitle">Followers</span><button id="closeFollowBtn" class="secondary" style="width:auto">✕</button></div><div id="followOverlayList"></div></div></div>
 
 <section id="homeScreen" class="screen active">
 <div class="top-title"><span>Do Dil Ek Jaan ❤️</span><div class="bell" id="bellBtn">🔔<div id="bellBadge" class="bell-badge hidden">0</div></div></div>
 <div class="story-bar" id="storyBar"></div>
 <div style="display:flex;gap:6px"><button id="createStoryBtn" class="secondary" style="flex:1">📸 Story</button><input id="storyMediaInput" type="file" accept="image/*,video/*" class="hidden"><button id="tabPostsBtn" class="secondary" style="flex:1;background:linear-gradient(90deg,#ff3f9f,#a52cff)">📝 Posts</button><button id="tabReelsBtn" class="secondary" style="flex:1">🎬 Reels</button></div>
-<div id="postsTab">
-<div class="panel"><textarea id="postInput" placeholder="Kya soch rahe ho?"></textarea><input id="postMediaInput" type="file" accept="image/*,video/*" class="hidden"><img id="postMediaPreview" class="media-preview"><video id="postVideoPreview" class="media-preview" controls style="display:none"></video><div style="display:flex;gap:6px"><button id="postMediaBtn" class="secondary" style="width:60px">📷</button><button id="createPostBtn" style="flex:1">📝 Post</button><button id="createReelBtn" class="secondary" style="flex:1;background:#8d6e63">🎬 Reel</button></div></div>
-<div id="postsFeed"></div>
-</div>
+<div id="postsTab"><div class="panel"><textarea id="postInput" placeholder="Kya soch rahe ho?"></textarea><input id="postMediaInput" type="file" accept="image/*,video/*" class="hidden"><img id="postMediaPreview" class="media-preview"><video id="postVideoPreview" class="media-preview" controls style="display:none"></video><div style="display:flex;gap:6px"><button id="postMediaBtn" class="secondary" style="width:60px">📷</button><button id="createPostBtn" style="flex:1">📝 Post</button><button id="createReelBtn" class="secondary" style="flex:1;background:#8d6e63">🎬 Reel</button></div></div><div id="postsFeed"></div></div>
 <div id="reelsTab" class="hidden"><div id="reelsFeed"></div></div>
 </section>
 
 <section id="coupleScreen" class="screen">
 <div class="top-title">💑 Our Love Space</div>
 <div id="noCoupleDiv" class="panel" style="text-align:center"><p class="small">Tumhara Couple Code:</p><div id="myCoupleCode" class="code">--------</div><button id="copyCoupleCodeBtn" class="secondary">Copy Couple Code</button><input id="coupleCodeInput" maxlength="8" placeholder="Partner Code"><button id="linkCoupleBtn">💞 Link Couple</button><div id="coupleResult" class="small"></div></div>
-<div id="yesCoupleDiv" class="hidden">
-<div class="panel" style="text-align:center;background:linear-gradient(135deg,#58145b88,#ff3f9f33)">
-<h2 id="couplePartnerName">My Jaan ❤️</h2>
-<p class="small">Together: <span id="coupleDays">0 days</span> | Streak: <span id="streakCount">0 🔥</span> | Coins: <span id="coinCount">0 🪙</span></p>
-<div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px">
-<button id="loveBtn" style="width:90px">❤️ +1</button><button id="hugBtn" class="secondary" style="width:90px">🤗 Hug</button><button id="kissBtn" class="secondary" style="width:90px">😘 Kiss</button><button id="coinBtn" style="width:90px;background:#ffaa00">🪙 Coin</button>
-</div>
-<div style="display:flex;gap:6px;margin-top:10px"><input id="anniversaryInput" type="date"><button id="saveAnniversaryBtn" class="secondary" style="width:100px">Anniv Save</button></div>
-<div style="display:flex;gap:6px;margin-top:6px"><input id="birthdayInput" type="date"><button id="saveBirthdayBtn" class="secondary" style="width:100px">Bday Save</button></div>
-<p class="small" id="reminderText"></p>
-</div>
-<div class="panel"><h3>📅 Love Calendar</h3><input id="calendarTitle" placeholder="Title - First Meet"><input id="calendarDate" type="date"><button id="addCalendarBtn" class="secondary">Add Date ❤️</button><div id="calendarList"></div></div>
-<div class="panel"><h3>🔒 Private Diary (Only 2)</h3><textarea id="diaryInput" placeholder="Sirf tum dono ka secret..."></textarea><button id="addDiaryBtn" class="secondary">Add Diary 🔒</button><div id="diaryList"></div></div>
-<div class="panel"><h3>❓ Couple Quiz</h3><div id="quizQ">Q: Partner ka fav color kya hai?</div><div style="display:flex;gap:6px"><button class="secondary quizOpt">Red</button><button class="secondary quizOpt">Blue</button><button class="secondary quizOpt">Pink</button></div><div id="quizResult" class="small"></div></div>
-<div class="panel"><h3>😏 Truth & Dare</h3><div id="tdText">Click for Task...</div><button id="tdBtn" class="secondary">Truth/Dare 🎲</button></div>
-<div class="panel"><h3>🎯 Couple Goals</h3><input id="goalInput" placeholder="Goal - e.g. Goa Trip"><button id="addGoalBtn" class="secondary">Add Goal</button><div id="goalsList"></div></div>
-<div class="panel"><h3>🤝 Fight Resolve</h3><p class="small">Ladai hui? Ye bhejo:</p><button id="sorryBtn" class="secondary">Send Sorry Card 💌</button></div>
-<div class="panel"><h3>🎬 Anniversary Auto Video</h3><button id="makeVideoBtn" class="secondary">Make Love Video from Photos ❤️</button><canvas id="loveVideoCanvas" width="360" height="360" style="width:100%;max-width:360px;border-radius:12px;display:none"></canvas></div>
-<div class="panel"><h3>🎵 Together Playlist</h3><input id="ytInput" placeholder="YouTube Link"><button id="playYtBtn" class="secondary">Play Together</button><div id="ytPlayer" style="margin-top:8px"></div></div>
+<div id="yesCoupleDiv" class="hidden"><div class="panel" style="text-align:center;background:linear-gradient(135deg,#58145b88,#ff3f9f33)"><h2 id="couplePartnerName">My Jaan ❤️</h2><p class="small">Together: <span id="coupleDays">0 days</span> | Streak: <span id="streakCount">0 🔥</span> | Coins: <span id="coinCount">0 🪙</span></p><div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px"><button id="loveBtn" style="width:90px">❤️ +1</button><button id="hugBtn" class="secondary" style="width:90px">🤗 Hug</button><button id="kissBtn" class="secondary" style="width:90px">😘 Kiss</button><button id="coinBtn" style="width:90px;background:#ffaa00">🪙 Coin</button></div><div style="display:flex;gap:6px;margin-top:10px"><input id="anniversaryInput" type="date"><button id="saveAnniversaryBtn" class="secondary" style="width:100px">Save</button></div><div style="display:flex;gap:6px;margin-top:6px"><input id="birthdayInput" type="date"><button id="saveBirthdayBtn" class="secondary" style="width:100px">Bday Save</button></div><p class="small" id="reminderText"></p></div>
+<div class="panel"><h3>📅 Love Calendar</h3><input id="calendarTitle" placeholder="Title"><input id="calendarDate" type="date"><button id="addCalendarBtn" class="secondary">Add Date</button><div id="calendarList"></div></div>
+<div class="panel"><h3>🔒 Private Diary (Only 2)</h3><textarea id="diaryInput" placeholder="Secret..."></textarea><button id="addDiaryBtn" class="secondary">Add Diary</button><div id="diaryList"></div></div>
+<div class="panel"><h3>❓ Couple Quiz</h3><div id="quizQ">Fav color kya hai?</div><div style="display:flex;gap:6px"><button class="secondary quizOpt">Red</button><button class="secondary quizOpt">Blue</button><button class="secondary quizOpt">Pink</button></div><div id="quizResult" class="small"></div></div>
+<div class="panel"><h3>😏 Truth & Dare</h3><div id="tdText">Click...</div><button id="tdBtn" class="secondary">Truth/Dare 🎲</button></div>
+<div class="panel"><h3>🎯 Couple Goals</h3><input id="goalInput" placeholder="Goal"><button id="addGoalBtn" class="secondary">Add Goal</button><div id="goalsList"></div></div>
+<div class="panel"><h3>🤝 Fight Resolve</h3><button id="sorryBtn" class="secondary">Send Sorry Card 💌</button></div>
+<div class="panel"><h3>🎬 Auto Video</h3><button id="makeVideoBtn" class="secondary">Make Love Video ❤️</button><canvas id="loveVideoCanvas" width="360" height="360" style="width:100%;max-width:360px;border-radius:12px;display:none"></canvas></div>
+<div class="panel"><h3>🎵 Together Playlist</h3><input id="ytInput" placeholder="YouTube Link"><button id="playYtBtn" class="secondary">Play Together</button><div id="ytPlayer"></div></div>
 </div>
 </section>
 
-<section id="gameScreen" class="screen">
-<div class="top-title">🎮 Game Zone</div>
-<div id="gameFriendsList" class="panel"><div id="friendsForGame"></div></div>
-<div id="ticDiv" class="panel" style="text-align:center"><div id="gameStatus">Friend select karo</div><div id="currentGameWith" class="small"></div><div id="bossText" style="font-size:18px;color:#ff69bd;display:none"></div><div id="ticBoard" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:280px;margin:10px auto"><button class="game-cell" data-i="0"></button><button class="game-cell" data-i="1"></button><button class="game-cell" data-i="2"></button><button class="game-cell" data-i="3"></button><button class="game-cell" data-i="4"></button><button class="game-cell" data-i="5"></button><button class="game-cell" data-i="6"></button><button class="game-cell" data-i="7"></button><button class="game-cell" data-i="8"></button></div><button id="resetGameBtn" class="secondary">New Game</button></div>
-</section>
+<section id="gameScreen" class="screen"><div class="top-title">🎮 Game Zone</div><div id="gameFriendsList" class="panel"><div id="friendsForGame"></div></div><div id="ticDiv" class="panel" style="text-align:center"><div id="gameStatus">Friend select karo</div><div id="currentGameWith" class="small"></div><div id="bossText" style="font-size:18px;color:#ff69bd;display:none"></div><div id="ticBoard" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:280px;margin:10px auto"><button class="game-cell" data-i="0"></button><button class="game-cell" data-i="1"></button><button class="game-cell" data-i="2"></button><button class="game-cell" data-i="3"></button><button class="game-cell" data-i="4"></button><button class="game-cell" data-i="5"></button><button class="game-cell" data-i="6"></button><button class="game-cell" data-i="7"></button><button class="game-cell" data-i="8"></button></div><button id="resetGameBtn" class="secondary">New Game</button></div></section>
 
 <section id="friendsScreen" class="screen">
 <div class="top-title">👥 Social</div>
@@ -76,9 +61,22 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 
 <section id="profileScreen" class="screen">
 <div class="top-title">👤 Profile & Settings ⚙️</div>
-<div class="panel" style="text-align:center"><input id="profilePicInput" type="file" accept="image/*" class="hidden"><img id="profilePic" class="profile-pic"><h2 id="userName">User</h2><p class="small">Followers: <span id="followersCount">0</span> | Following: <span id="followingCount">0</span></p><input id="userNameInput" placeholder="Name"><input id="userBioInput" placeholder="Bio - I love my Jaan ❤️"><button id="saveProfileBtn" class="secondary">Save Profile</button></div>
-<div class="panel"><h3>⚙️ Settings - Theme</h3><select id="themeSelect"><option value="love">Love Theme 💖 (Pink)</option><option value="dark">Dark Theme 🌙</option><option value="light">Light Theme ☀️</option></select><button id="applyThemeBtn" class="secondary">Apply Theme</button></div>
-<div class="panel"><h3>🔒 Privacy</h3><p class="small">Instagram jaisi setting - sab secure hai</p><button id="logoutBtn" class="secondary" style="background:#ff3264;width:100%">Logout</button></div>
+<div class="panel" style="text-align:center"><input id="profilePicInput" type="file" accept="image/*" class="hidden"><img id="profilePic" class="profile-pic"><h2 id="userName">User</h2><p class="small" id="bioText">Bio...</p><div style="display:flex;gap:10px;justify-content:center;margin:10px 0"><div><b id="postsCount">0</b><br><span class="small">Posts</span></div><div style="cursor:pointer" id="followersBox"><b id="followersCount">0</b><br><span class="small">Followers</span></div><div style="cursor:pointer" id="followingBox"><b id="followingCount">0</b><br><span class="small">Following</span></div></div><input id="userNameInput" placeholder="Name"><input id="userBioInput" placeholder="Bio"><button id="saveProfileBtn" class="secondary">Save Profile</button></div>
+
+<div class="panel"><h3>⚙️ Instagram Style Settings</h3>
+<div class="settings-item"><span>🔒 Private Account</span><select id="privateSelect" style="width:90px"><option value="public">Public</option><option value="private">Private</option></select></div>
+<div class="settings-item"><span>🎨 Theme</span><select id="themeSelect" style="width:120px"><option value="love">Love 💖</option><option value="dark">Dark 🌙</option><option value="light">Light ☀️</option></select></div>
+<div class="settings-item"><span>🔔 Like Notification</span><select id="notifLikeSelect" style="width:90px"><option value="on">ON</option><option value="off">OFF</option></select></div>
+<div class="settings-item"><span>💬 Message Notification</span><select id="notifMsgSelect" style="width:90px"><option value="on">ON</option><option value="off">OFF</option></select></div>
+<div class="settings-item"><span>🎂 Birthday Reminder</span><select id="notifBdaySelect" style="width:90px"><option value="on">ON</option><option value="off">OFF</option></select></div>
+<button id="applyThemeBtn" class="secondary">Apply Settings</button>
+</div>
+
+<div class="panel"><h3>🚫 Block / Unblock</h3><input id="blockUserInput" placeholder="User ID ya Code"><button id="blockBtn" class="secondary" style="background:#ff3264">Block User 🚫</button><div id="blockedList"></div></div>
+
+<div class="panel"><h3>💑 Couple Settings</h3><button id="disconnectCoupleBtn" class="secondary" style="background:#ff6a00">Disconnect Couple 💔</button></div>
+
+<div class="panel"><button id="logoutBtn" class="secondary" style="background:#ff3264;width:100%">Logout</button><button id="deleteAccountBtn" class="secondary" style="background:#000;width:100%;margin-top:6px;border:1px solid #ff3264">Delete Account ❌</button></div>
 </section>
 
 <nav class="bottom-nav"><button class="nav-btn active" data-screen="homeScreen"><span class="nav-icon">🏠</span>Home</button><button class="nav-btn" data-screen="coupleScreen"><span class="nav-icon">💑</span>Us</button><button class="nav-btn" data-screen="gameScreen"><span class="nav-icon">🎮</span>Game</button><button class="nav-btn" data-screen="friendsScreen"><span class="nav-icon">👥</span>Social</button><button class="nav-btn" data-screen="profileScreen"><span class="nav-icon">👤</span>You</button></nav>
@@ -86,7 +84,7 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut,deleteUser} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapshot,getDocs,where,updateDoc,serverTimestamp,deleteDoc,increment} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",authDomain:"do-dil-ek-jaan.firebaseapp.com",projectId:"do-dil-ek-jaan",storageBucket:"do-dil-ek-jaan.firebasestorage.app",messagingSenderId:"468290989463",appId:"1:468290989463:web:3a8c0fc7b550177cfb68d2"};
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), provider=new GoogleAuthProvider();
@@ -100,71 +98,80 @@ function chatId(a,b){return [a,b].sort().join("_")}
 getRedirectResult(auth).catch(()=>{}); $("loginBtn").onclick=async()=>{try{await signInWithPopup(auth,provider);}catch{await signInWithRedirect(auth,provider);}};
 async function loadProfile(u){
  const r=doc(db,"users",u.uid);let s=await getDoc(r);
- if(!s.exists()){await setDoc(r,{name:u.displayName||"User",email:u.email||"",photoURL:u.photoURL||"",friendCode:genCode(),bio:"I love my Jaan ❤️",followers:[],following:[],createdAt:serverTimestamp()}); s=await getDoc(r);}
- const d=s.data(); $("userName").textContent=d.name||u.displayName||"User"; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||genCode(); $("myCoupleCode").textContent=u.uid.slice(0,8).toUpperCase(); $("userNameInput").value=d.name||""; $("userBioInput").value=d.bio||""; $("followersCount").textContent=(d.followers||[]).length; $("followingCount").textContent=(d.following||[]).length;
+ if(!s.exists()){await setDoc(r,{name:u.displayName||"User",email:u.email||"",photoURL:u.photoURL||"",friendCode:genCode(),bio:"I love my Jaan ❤️",followers:[],following:[],blocked:[],isPrivate:"public",settings:{likeNotif:"on",msgNotif:"on",bdayNotif:"on"},createdAt:serverTimestamp()}); s=await getDoc(r);}
+ const d=s.data(); $("userName").textContent=d.name||u.displayName||"User"; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||genCode(); $("myCoupleCode").textContent=u.uid.slice(0,8).toUpperCase(); $("userNameInput").value=d.name||""; $("userBioInput").value=d.bio||""; $("bioText").textContent=d.bio||""; $("followersCount").textContent=(d.followers||[]).length; $("followingCount").textContent=(d.following||[]).length; $("privateSelect").value=d.isPrivate||"public"; if(d.settings){$("notifLikeSelect").value=d.settings.likeNotif||"on"; $("notifMsgSelect").value=d.settings.msgNotif||"on"; $("notifBdaySelect").value=d.settings.bdayNotif||"on";}
+ loadBlocked(d.blocked||[]);
+ const postsSnap=await getDocs(query(collection(db,"posts"),where("uid","==",u.uid))); $("postsCount").textContent=postsSnap.size;
 }
+function loadBlocked(list){$("blockedList").innerHTML=""; if(!list.length){$("blockedList").innerHTML="<span class=small>No blocked users</span>"; return;} list.forEach(async uid=>{const snap=await getDoc(doc(db,"users",uid)); const name=snap.exists()? snap.data().name : uid.slice(0,8); const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`${safe(name)} <button class=secondary style="width:auto">Unblock</button>`; el.querySelector("button").onclick=()=>unblockUser(uid); $("blockedList").append(el);});}
+async function unblockUser(uid){const me=auth.currentUser; const ref=doc(db,"users",me.uid); const snap=await getDoc(ref); let b=snap.data().blocked||[]; b=b.filter(x=>x!==uid); await updateDoc(ref,{blocked:b}); alert("Unblocked"); loadProfile(me);}
+$("blockBtn").onclick=async()=>{const code=$("blockUserInput").value.trim().toUpperCase(); if(!code) return; const me=auth.currentUser; let targetUid=null;
+ const all=await getDocs(collection(db,"users")); all.forEach(d=>{ if(d.id.slice(0,8).toUpperCase()===code || (d.data().friendCode||"").toUpperCase()===code) targetUid=d.id; });
+ if(!targetUid){ alert("User not found"); return; }
+ const ref=doc(db,"users",me.uid); const snap=await getDoc(ref); let b=snap.data().blocked||[]; if(!b.includes(targetUid)) b.push(targetUid); await updateDoc(ref,{blocked:b}); alert("Blocked 🚫"); loadProfile(me);};
+$("followersBox").onclick=async()=>{ const me=auth.currentUser; const snap=await getDoc(doc(db,"users",me.uid)); const list=snap.data().followers||[]; $("followOverlayTitle").textContent="Followers"; $("followOverlayList").innerHTML=""; for(const uid of list){ const us=await getDoc(doc(db,"users",uid)); if(us.exists()){ const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(us.data().name)}</b>`; $("followOverlayList").append(el);} } $("followersOverlay").classList.add("active"); };
+$("followingBox").onclick=async()=>{ const me=auth.currentUser; const snap=await getDoc(doc(db,"users",me.uid)); const list=snap.data().following||[]; $("followOverlayTitle").textContent="Following"; $("followOverlayList").innerHTML=""; for(const uid of list){ const us=await getDoc(doc(db,"users",uid)); if(us.exists()){ const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(us.data().name)}</b> <button class=secondary style="width:auto">Unfollow</button>`; el.querySelector("button").onclick=async()=>{ await unfollow(uid); $("followersOverlay").classList.remove("active");}; $("followOverlayList").append(el);} } $("followersOverlay").classList.add("active"); };
+$("closeFollowBtn").onclick=()=>$("followersOverlay").classList.remove("active");
+async function unfollow(fid){const me=auth.currentUser; const myRef=doc(db,"users",me.uid); const theirRef=doc(db,"users",fid); const mySnap=await getDoc(myRef); const theirSnap=await getDoc(theirRef); let following=(mySnap.data().following||[]).filter(x=>x!==fid); let followers=(theirSnap.data().followers||[]).filter(x=>x!==me.uid); await updateDoc(myRef,{following}); await updateDoc(theirRef,{followers}); alert("Unfollowed");}
 function loadNotifs(u){if(notifUnsub)notifUnsub(); notifUnsub=onSnapshot(query(collection(db,"notifications"),where("toUid","==",u.uid),orderBy("createdAt","desc")),snap=>{let unread=0; $("notifList").innerHTML=""; snap.forEach(d=>{const n=d.data(); if(!n.read) unread++; const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(n.fromName)}</b> - ${safe(n.text)} <span class="small">${n.createdAt? new Date(n.createdAt.toMillis()).toLocaleTimeString():""}</span>`; el.onclick=async()=>{await updateDoc(doc(db,"notifications",d.id),{read:true});}; $("notifList").append(el);}); const b=$("bellBadge"); if(unread>0){b.textContent=unread; b.classList.remove("hidden");}else b.classList.add("hidden");});}
 $("bellBtn").onclick=()=>{$("notifScreen").classList.add("active");}; $("closeNotifBtn").onclick=()=>{$("notifScreen").classList.remove("active");}; $("closeWinBtn").onclick=()=>{$("winOverlay").classList.remove("active");};
-async function sendNotif(toUid, text){const u=auth.currentUser; if(!u||toUid===u.uid) return; try{await addDoc(collection(db,"notifications"),{toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",text,read:false,createdAt:serverTimestamp()});}catch{}}
+async function sendNotif(toUid, text){const u=auth.currentUser; if(!u||toUid===u.uid) return; try{const toSnap=await getDoc(doc(db,"users",toUid)); const settings=toSnap.exists()? (toSnap.data().settings||{}) : {}; if(text.includes("liked") && settings.likeNotif==="off") return; if(text.includes("commented") && settings.likeNotif==="off") return; if(text.includes("message") && settings.msgNotif==="off") return; const blocked=toSnap.exists()? (toSnap.data().blocked||[]) : []; if(blocked.includes(u.uid)) return; await addDoc(collection(db,"notifications"),{toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",text,read:false,createdAt:serverTimestamp()});}catch{}}
 $("copyCodeBtn").onclick=async()=>{await navigator.clipboard.writeText($("myFriendCode").textContent); alert("Copied");};
 $("copyCoupleCodeBtn").onclick=async()=>{await navigator.clipboard.writeText($("myCoupleCode").textContent); alert("Couple Code Copied: "+$("myCoupleCode").textContent);};
 $("profilePic").onclick=()=>$("profilePicInput").click();
 $("profilePicInput").onchange=()=>{const f=$("profilePicInput").files[0]; if(!f) return; const r=new FileReader(); r.onload=async e=>{const base=e.target.result; $("profilePic").src=base; await updateDoc(doc(db,"users",auth.currentUser.uid),{photoURL:base});}; r.readAsDataURL(f);};
-$("saveProfileBtn").onclick=async()=>{const n=$("userNameInput").value.trim(), b=$("userBioInput").value.trim(); if(!n) return; await updateDoc(doc(db,"users",auth.currentUser.uid),{name:n,bio:b}); $("userName").textContent=n; alert("Profile Saved ❤️");};
-$("themeSelect")? $("applyThemeBtn").onclick=()=>{const t=$("themeSelect").value; if(t==="love") document.body.style.background="radial-gradient(circle at top,#58145b,#180018)"; else if(t==="dark") document.body.style.background="#000"; else document.body.style.background="#fff"; alert("Theme Applied: "+t);} : null;
-// USER SEARCH BY NAME (Feature 3)
+$("saveProfileBtn").onclick=async()=>{const n=$("userNameInput").value.trim(), b=$("userBioInput").value.trim(); if(!n) return; await updateDoc(doc(db,"users",auth.currentUser.uid),{name:n,bio:b}); $("userName").textContent=n; $("bioText").textContent=b; alert("Profile Saved ❤️");};
+$("applyThemeBtn").onclick=async()=>{const t=$("themeSelect").value, p=$("privateSelect").value, likeN=$("notifLikeSelect").value, msgN=$("notifMsgSelect").value, bdayN=$("notifBdaySelect").value; if(t==="love") document.body.style.background="radial-gradient(circle at top,#58145b,#180018)"; else if(t==="dark") document.body.style.background="#000"; else document.body.style.background="linear-gradient(#fff,#eee)"; document.body.style.color=t==="light"?"#000":"#fff"; await updateDoc(doc(db,"users",auth.currentUser.uid),{isPrivate:p, settings:{likeNotif:likeN,msgNotif:msgN,bdayNotif:bdayN}}); alert("Settings Saved ✅");};
 $("userSearchBtn").onclick=async()=>{
  const qv=$("userSearchInput").value.trim().toLowerCase(); if(!qv) return; $("userSearchResults").innerHTML="Searching...";
- const snap=await getDocs(collection(db,"users")); let html=""; snap.forEach(d=>{const u=d.data(); if((u.name||"").toLowerCase().includes(qv)){ html+=`<div class=friend-card><img src="${u.photoURL||''}" style="width:30px;height:30px;border-radius:50%"><b> ${safe(u.name)}</b> - ID: ${d.id.slice(0,8).toUpperCase()}<br><button onclick="window.followUser('${d.id}')">Follow +</button> <button class=secondary onclick="window.addAsFriend('${d.id}','${safe(u.name)}')">Add Friend</button></div>`; }});
+ const snap=await getDocs(collection(db,"users")); let html=""; const meSnap=await getDoc(doc(db,"users",auth.currentUser.uid)); const myFollowing=meSnap.data().following||[]; const myBlocked=meSnap.data().blocked||[];
+ snap.forEach(d=>{if(d.id===auth.currentUser.uid) return; if(myBlocked.includes(d.id)) return; const u=d.data(); if((u.name||"").toLowerCase().includes(qv)){ const isFollowing=myFollowing.includes(d.id); html+=`<div class=friend-card><img src="${u.photoURL||''}" style="width:30px;height:30px;border-radius:50%"><b> ${safe(u.name)}</b> - ID: ${d.id.slice(0,8).toUpperCase()}<br><div style="display:flex;gap:6px;margin-top:6px"><button onclick="window.followUser('${d.id}')">${isFollowing? 'Following ✓':'Follow +'}</button> <button class=secondary onclick="window.addAsFriend('${d.id}','${safe(u.name)}')">Add Friend</button> <button class=secondary onclick="window.openChatDirect('${d.id}','${safe(u.name)}')">💬 Message</button></div></div>`; }});
  $("userSearchResults").innerHTML=html||"No user found";
 };
 window.followUser=async(fid)=>{
  const me=auth.currentUser; const myRef=doc(db,"users",me.uid); const theirRef=doc(db,"users",fid);
  const mySnap=await getDoc(myRef); const theirSnap=await getDoc(theirRef);
- let following=mySnap.data().following||[]; if(!following.includes(fid)) following.push(fid);
- let followers=theirSnap.data().followers||[]; if(!followers.includes(me.uid)) followers.push(me.uid);
- await updateDoc(myRef,{following}); await updateDoc(theirRef,{followers}); alert("Followed ❤️"); sendNotif(fid,"started following you ❤️");
+ let following=mySnap.data().following||[]; let followers=theirSnap.data().followers||[];
+ if(following.includes(fid)){ following=following.filter(x=>x!==fid); followers=followers.filter(x=>x!==me.uid); await updateDoc(myRef,{following}); await updateDoc(theirRef,{followers}); alert("Unfollowed"); }
+ else { following.push(fid); if(!followers.includes(me.uid)) followers.push(me.uid); await updateDoc(myRef,{following}); await updateDoc(theirRef,{followers}); alert("Followed ❤️"); sendNotif(fid,"started following you ❤️"); }
+ loadProfile(me);
 };
 window.addAsFriend=async(fid,fname)=>{
- const me=auth.currentUser; await setDoc(doc(db,"friends",me.uid+"_"+fid),{uid:me.uid,friendUid:fid,friendName:fname}); await setDoc(doc(db,"friends",fid+"_"+me.uid),{uid:fid,friendUid:me.uid,friendName:$("userName").textContent}); alert("Friend Added ❤️");
+ const me=auth.currentUser; await setDoc(doc(db,"friends",me.uid+"_"+fid),{uid:me.uid,friendUid:fid,friendName:fname}); await setDoc(doc(db,"friends",fid+"_"+me.uid),{uid:fid,friendUid:me.uid,friendName:$("userName").textContent}); alert("Friend Added ❤️"); sendNotif(fid,"added you as friend 👥");
 };
-// FRIENDS CODE SEARCH
+window.openChatDirect=async(fid,fname)=>{ await window.addAsFriend(fid,fname); openChat(fid,fname); };
 $("searchFriendBtn").onclick=async()=>{
  const c=$("friendSearchInput").value.trim().toUpperCase(), me=auth.currentUser; if(c.length!==8)return;
  const snap=await getDocs(query(collection(db,"users"),where("friendCode","==",c)));
  if(snap.empty){$("friendResult").textContent="Not found";return;}
  const f=snap.docs[0]; if(f.id===me.uid){$("friendResult").textContent="Own code";return;}
- $("friendResult").innerHTML=`<div class=friend-card><b>${safe(f.data().name||"User")}</b><br><button id=addF>➕ Add Friend</button></div>`;
- $("addF").onclick=async()=>{await setDoc(doc(db,"friends",me.uid+"_"+f.id),{uid:me.uid,friendUid:f.id,friendName:f.data().name}); await setDoc(doc(db,"friends",f.id+"_"+me.uid),{uid:f.id,friendUid:me.uid,friendName:$("userName").textContent}); $("friendResult").textContent="Friend Added ❤️"; sendNotif(f.id,"sent you friend request 👥");};
+ $("friendResult").innerHTML=`<div class=friend-card><b>${safe(f.data().name||"User")}</b><br><div style="display:flex;gap:6px"><button id=addF>➕ Add Friend</button><button class=secondary id=msgF>💬 Message</button></div></div>`;
+ $("addF").onclick=async()=>{await setDoc(doc(db,"friends",me.uid+"_"+f.id),{uid:me.uid,friendUid:f.id,friendName:f.data().name}); await setDoc(doc(db,"friends",f.id+"_"+me.uid),{uid:f.id,friendUid:me.uid,friendName:$("userName").textContent}); $("friendResult").textContent="Friend Added ❤️"; sendNotif(f.id,"added you as friend 👥");};
+ $("msgF").onclick=()=>openChat(f.id,f.data().name||"Friend");
 };
-function loadFriends(u){if(friendsUnsub)friendsUnsub(); friendsUnsub=onSnapshot(query(collection(db,"friends"),where("uid","==",u.uid)),s=>{$("friendsList").innerHTML=""; $("friendsForGame").innerHTML=""; s.forEach(d=>{const fd=d.data(); const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(fd.friendName||"Friend")}</b><div style="display:flex;gap:6px;margin-top:6px"><button>💬 Chat</button><button class="secondary">🎮 Game</button></div>`; const b=el.querySelectorAll("button"); b[0].onclick=()=>openChat(fd.friendUid,fd.friendName); b[1].onclick=()=>startGameWithFriend(fd.friendUid,fd.friendName); $("friendsList").append(el); const gEl=document.createElement("div"); gEl.className="friend-card"; gEl.innerHTML=`<div style="display:flex;justify-content:space-between"><b>👤 ${safe(fd.friendName)}</b><button style="width:auto">❌⭕ Play</button></div>`; gEl.querySelector("button").onclick=()=>startGameWithFriend(fd.friendUid,fd.friendName); $("friendsForGame").append(gEl);});});}
+function loadFriends(u){if(friendsUnsub)friendsUnsub(); friendsUnsub=onSnapshot(query(collection(db,"friends"),where("uid","==",u.uid)),s=>{$("friendsList").innerHTML=""; $("friendsForGame").innerHTML=""; s.forEach(d=>{const fd=d.data(); const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(fd.friendName||"Friend")}</b><div style="display:flex;gap:6px;margin-top:6px"><button>💬 Message</button><button class="secondary">🎮 Game</button><button class="secondary" style="width:auto;background:#ff3264">🚫 Block</button></div>`; const b=el.querySelectorAll("button"); b[0].onclick=()=>openChat(fd.friendUid,fd.friendName); b[1].onclick=()=>startGameWithFriend(fd.friendUid,fd.friendName); b[2].onclick=async()=>{ $("blockUserInput").value=fd.friendUid.slice(0,8).toUpperCase(); showScreen("profileScreen"); }; $("friendsList").append(el); const gEl=document.createElement("div"); gEl.className="friend-card"; gEl.innerHTML=`<div style="display:flex;justify-content:space-between"><b>👤 ${safe(fd.friendName)}</b><button style="width:auto">❌⭕ Play</button></div>`; gEl.querySelector("button").onclick=()=>startGameWithFriend(fd.friendUid,fd.friendName); $("friendsForGame").append(gEl);});});}
 async function openChat(fid,fname){ currentPrivateFriendUid=fid; $("privateFriendName").textContent=fname; $("privateChatHeader").classList.remove("hidden"); const u=auth.currentUser; const id=chatId(u.uid,fid); await setDoc(doc(db,"privateChats",id),{participants:[u.uid,fid]},{merge:true}); if(privateUnsub)privateUnsub(); privateUnsub=onSnapshot(query(collection(db,"privateChats",id,"messages"),orderBy("createdAt","asc")),snap=>{ $("chatBox").innerHTML=""; snap.forEach(m=>{const d=m.data(); const div=document.createElement("div"); div.style.margin="8px 0"; div.style.textAlign=d.uid===u.uid?"right":"left"; let media=""; if(d.mediaURL){ if(d.mediaType==="image") media=`<img src="${d.mediaURL}" style="max-width:180px;border-radius:12px;display:block">`; else if(d.mediaType==="video") media=`<video src="${d.mediaURL}" controls style="max-width:200px;border-radius:12px"></video>`; else if(d.mediaType==="audio") media=`<audio src="${d.mediaURL}" controls style="width:180px"></audio>`; } div.innerHTML=`<span style="display:inline-block;max-width:75%;padding:8px 12px;border-radius:14px;background:${d.uid===u.uid?"#ff3f9f":"#ffffff20"}"><div style="white-space:pre-wrap;font-size:13px">${safe(d.text||"")}</div>${media}</span>`; $("chatBox").append(div);}); $("chatBox").scrollTop=$("chatBox").scrollHeight; }); showScreen("friendsScreen"); $("friendsTab").classList.add("hidden"); $("chatTab").classList.remove("hidden"); $("searchTab").classList.add("hidden"); }
 $("chatMediaBtn").onclick=()=>$("chatMediaInput").click(); $("chatMediaInput").onchange=()=>{const f=$("chatMediaInput").files[0]; if(!f) return; const rd=new FileReader(); rd.onload=e=>{chatMediaBase64=e.target.result; chatMediaType=f.type.startsWith("image")?"image":f.type.startsWith("video")?"video":"audio"; $("chatMediaPreview").src=chatMediaType==="image"?chatMediaBase64:""; if(chatMediaType==="image") $("chatMediaPreview").style.display="block";}; rd.readAsDataURL(f);};
 let mediaRecorder=null, audioChunks=[];
 $("voiceNoteBtn").onclick=async()=>{
  if(mediaRecorder && mediaRecorder.state==="recording"){ mediaRecorder.stop(); $("voiceNoteBtn").textContent="🎤"; return; }
- try{ const stream=await navigator.mediaDevices.getUserMedia({audio:true}); mediaRecorder=new MediaRecorder(stream); audioChunks=[]; mediaRecorder.ondataavailable=e=>audioChunks.push(e.data); mediaRecorder.onstop=async()=>{ const blob=new Blob(audioChunks,{type:"audio/webm"}); const r=new FileReader(); r.onload=async e=>{ chatMediaBase64=e.target.result; chatMediaType="audio"; $("chatInput").value="Voice note ready 🎤"; }; r.readAsDataURL(blob); }; mediaRecorder.start(); $("voiceNoteBtn").textContent="⏹️"; alert("Recording... dobara dabao stop karne"); }catch(e){ alert("Mic permission do"); }
+ try{ const stream=await navigator.mediaDevices.getUserMedia({audio:true}); mediaRecorder=new MediaRecorder(stream); audioChunks=[]; mediaRecorder.ondataavailable=e=>audioChunks.push(e.data); mediaRecorder.onstop=async()=>{ const blob=new Blob(audioChunks,{type:"audio/webm"}); const r=new FileReader(); r.onload=async e=>{ chatMediaBase64=e.target.result; chatMediaType="audio"; $("chatInput").value="Voice note ready 🎤"; }; r.readAsDataURL(blob); }; mediaRecorder.start(); $("voiceNoteBtn").textContent="⏹️"; alert("Recording... dobara dabao stop"); }catch(e){ alert("Mic permission do"); }
 };
-$("sendBtn").onclick=async()=>{const u=auth.currentUser; let t=$("chatInput").value.trim(); if(t.includes("ready")) t=""; if(!u||!currentPrivateFriendUid) return; if(!t &&!chatMediaBase64) return; const id=chatId(u.uid,currentPrivateFriendUid); await addDoc(collection(db,"privateChats",id,"messages"),{uid:u.uid,text:t||(chatMediaType==="audio"?"🎤 Voice note":"📷"),mediaURL:chatMediaBase64||null,mediaType:chatMediaType||null,createdAt:serverTimestamp()}); $("chatInput").value=""; chatMediaBase64=null; chatMediaType=null; $("chatMediaInput").value=""; $("chatMediaPreview").style.display="none";};
+$("sendBtn").onclick=async()=>{const u=auth.currentUser; let t=$("chatInput").value.trim(); if(t.includes("ready")) t=""; if(!u||!currentPrivateFriendUid) return; if(!t &&!chatMediaBase64) return; const id=chatId(u.uid,currentPrivateFriendUid); await addDoc(collection(db,"privateChats",id,"messages"),{uid:u.uid,text:t||(chatMediaType==="audio"?"🎤 Voice note":"📷"),mediaURL:chatMediaBase64||null,mediaType:chatMediaType||null,createdAt:serverTimestamp()}); $("chatInput").value=""; chatMediaBase64=null; chatMediaType=null; $("chatMediaInput").value=""; $("chatMediaPreview").style.display="none"; sendNotif(currentPrivateFriendUid, `sent you a message: ${t.slice(0,20)} 💬`);};
 $("backToFriendsBtn").onclick=()=>{ $("friendsTab").classList.remove("hidden"); $("chatTab").classList.add("hidden"); $("searchTab").classList.add("hidden"); };
 $("tabFriendsBtn").onclick=()=>{ $("friendsTab").classList.remove("hidden"); $("chatTab").classList.add("hidden"); $("searchTab").classList.add("hidden"); };
 $("tabChatBtn").onclick=()=>{ $("friendsTab").classList.add("hidden"); $("chatTab").classList.remove("hidden"); $("searchTab").classList.add("hidden"); };
 $("tabSearchBtn").onclick=()=>{ $("friendsTab").classList.add("hidden"); $("chatTab").classList.add("hidden"); $("searchTab").classList.remove("hidden"); };
-// CALL (WebRTC simple)
 let pc=null, localStream=null;
 async function startCall(isVideo){
- const u=auth.currentUser; if(!currentPrivateFriendUid){ alert("Pehle friend select karo"); return; }
+ if(!currentPrivateFriendUid){ alert("Pehle friend select karo"); return; }
  try{
   localStream=await navigator.mediaDevices.getUserMedia({audio:true,video:isVideo});
   $("localVideo").srcObject=localStream; $("localVideo").style.display="block"; $("remoteVideo").style.display="block";
-  // Simple mock call - real signaling needs server, here we show local + notif
-  alert((isVideo?"Video":"Audio")+" Call started 📞 - dusre phone pe notification jayega");
-  sendNotif(currentPrivateFriendUid, `is calling you ${isVideo?"📹 Video":"📞 Audio"} - Chat kholo!`);
-  // In production add WebRTC signaling via Firestore
+  alert((isVideo?"Video":"Audio")+" Call started 📞"); sendNotif(currentPrivateFriendUid, `is calling you ${isVideo?"📹 Video":"📞 Audio"} - Chat kholo!`);
  }catch(e){ alert("Camera/Mic permission do"); }
 }
 $("voiceCallBtn").onclick=()=>startCall(false); $("videoCallBtn").onclick=()=>startCall(true);
-// POSTS + REELS + LIKE COMMENT + STORIES
 $("postMediaBtn").onclick=()=>$("postMediaInput").click();
 $("postMediaInput").onchange=()=>{
  const f=$("postMediaInput").files[0]; if(!f) return;
@@ -228,8 +235,6 @@ $("storyMediaInput").onchange=()=>{
 };
 $("tabPostsBtn").onclick=()=>{ $("postsTab").classList.remove("hidden"); $("reelsTab").classList.add("hidden"); };
 $("tabReelsBtn").onclick=()=>{ $("postsTab").classList.add("hidden"); $("reelsTab").classList.remove("hidden"); };
-
-// COUPLE - FIXED + ALL UNIQUE FEATURES
 function loadCouple(u){
  const q=query(collection(db,"couples"), where("members","array-contains",u.uid));
  onSnapshot(q, snap=>{
@@ -285,9 +290,9 @@ $("makeVideoBtn").onclick=async()=>{
  let i=0; function draw(){ if(i>=imgs.length) i=0; const img=new Image(); img.crossOrigin="anonymous"; img.onload=()=>{ ctx.clearRect(0,0,360,360); ctx.drawImage(img,0,0,360,360); ctx.fillStyle="#00000088"; ctx.fillRect(0,300,360,60); ctx.fillStyle="#fff"; ctx.font="bold 20px Arial"; ctx.fillText("Do Dil Ek Jaan ❤️",20,335); }; img.src=imgs[i]; i++; }
  setInterval(draw,1500); draw(); alert("Auto video ban raha hai 🎬❤️");
 };
-$("ytInput")? $("playYtBtn").onclick=()=>{ const link=$("ytInput").value.trim(); if(!link) return; const id=link.includes("v=")? link.split("v=")[1].split("&")[0] : link.split("/").pop(); $("ytPlayer").innerHTML=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen style="border-radius:12px"></iframe>`; } : null;
-
-// GAME - TicTac LIVE
+$("playYtBtn").onclick=()=>{ const link=$("ytInput").value.trim(); if(!link) return; const id=link.includes("v=")? link.split("v=")[1].split("&")[0] : link.split("/").pop(); $("ytPlayer").innerHTML=`<iframe width="100%" height="200" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen style="border-radius:12px"></iframe>`; };
+$("disconnectCoupleBtn").onclick=async()=>{ if(!coupleIdGlobal) return; if(!confirm("Couple disconnect?")) return; await deleteDoc(doc(db,"couples",coupleIdGlobal)); alert("Disconnected 💔"); location.reload(); };
+$("deleteAccountBtn").onclick=async()=>{ if(!confirm("Account delete?")) return; try{ await deleteDoc(doc(db,"users",auth.currentUser.uid)); await deleteUser(auth.currentUser); alert("Deleted"); }catch(e){ alert(e.message); }};
 async function startGameWithFriend(friendUid, friendName){ const me=auth.currentUser; showScreen("gameScreen"); currentGameId=chatId(me.uid,friendUid); const ref=doc(db,"games",currentGameId); const snap=await getDoc(ref); if(!snap.exists()){ await setDoc(ref,{members:[me.uid,friendUid],playerX:me.uid,playerXName:$("userName").textContent,playerO:friendUid,playerOName:friendName,board:["","","","","","","","",""],turn:me.uid,winner:null,createdAt:serverTimestamp()}); sendNotif(friendUid,"TicTacToe challenge ❌⭕"); } listenGame(currentGameId); $("currentGameWith").textContent=`${$("userName").textContent} vs ${friendName}`; }
 function listenGame(gameId){ if(gameUnsub) gameUnsub(); gameUnsub=onSnapshot(doc(db,"games",gameId),s=>{ if(!s.exists()) return; const g=s.data(); const board=g.board||[]; document.querySelectorAll(".game-cell").forEach((btn,i)=>{ btn.textContent=board[i]||""; }); if(g.winner){ const winName=g.winner==="draw"? "Draw" : g.winner===g.playerX? g.playerXName : g.playerOName; $("gameStatus").textContent=g.winner==="draw"? "Draw 🤝" : `${winName} jeeta! 🎉`; $("bossText").style.display="block"; $("bossText").textContent=g.winner==="draw"? "DRAW 👑" : `${winName} is BOSS 👑`; if(g.winner!== "draw"){ $("winText").textContent=g.winner===auth.currentUser.uid? "YOU WIN 👑" : `${winName} WON!`; $("winOverlay").classList.add("active"); } } else { const turnName=g.turn===g.playerX? g.playerXName : g.playerOName; const isYou=g.turn===auth.currentUser.uid; $("gameStatus").innerHTML=isYou? `<span class="turn-you">Tumhari Baari ❤️</span>` : `${safe(turnName)} ki baari...`; $("bossText").style.display="none"; } }); }
 document.querySelectorAll(".game-cell").forEach(btn=>{ btn.onclick=async()=>{ const i=parseInt(btn.dataset.i); if(!currentGameId) return; const ref=doc(db,"games",currentGameId); const snap=await getDoc(ref); if(!snap.exists()) return; const g=snap.data(); if(g.winner||g.turn!==auth.currentUser.uid||g.board[i]!=="") return; const sym=auth.currentUser.uid===g.playerX?"❤️":"💜"; let nb=[...g.board]; nb[i]=sym; const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; let win=null; for(const w of wins){ if(nb[w[0]] && nb[w[0]]===nb[w[1]] && nb[w[0]]===nb[w[2]]) win=auth.currentUser.uid; } if(!win && nb.every(c=>c!=="")) win="draw"; await updateDoc(ref,{board:nb,turn: win? null : (g.turn===g.playerX? g.playerO : g.playerX),winner:win}); }; });
