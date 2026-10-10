@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do Dil Ek Jaan ❤️</title>
+<title>Do Dil Ek Jaan ❤️ BOSS Game</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;color:#fff;background:#000}
 button,input,textarea,select{font:inherit}button{border:0;border-radius:28px;padding:11px 14px;color:#fff;background:linear-gradient(90deg,#ff3f9f,#a52cff);font-weight:bold;cursor:pointer}
@@ -10,9 +10,9 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 .app{max-width:500px;min-height:100vh;margin:auto;padding:12px 12px 90px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005);transition:0.3s}
 .hidden{display:none!important}.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005)}
 .card,.panel{background:#ffffff0d;border:1px solid #ffffff20;border-radius:20px;padding:14px;margin:8px 0}
-.screen{display:none}.screen.active{display:block}.top-title{font-size:21px;font-weight:bold;margin:6px 0 10px;display:flex;justify-content:space-between;align-items:center}
+.screen{display:none}.screen.active{display:block}.top-title{font-size:18px;font-weight:bold;margin:6px 0 10px;display:flex;justify-content:space-between;align-items:center}
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:68px;display:flex;justify-content:space-around;align-items:center;background:#140014f5;border-top:1px solid #ffffff20;z-index:10}
-.nav-btn{width:11%;background:none;padding:5px 1px;color:#bdaabd;font-size:7px}.nav-btn.active{color:#ff69bd}.nav-icon{display:block;font-size:16px;margin-bottom:1px}
+.nav-btn{width:11%;background:none;padding:5px 1px;color:#bdaabd;font-size:6.5px}.nav-btn.active{color:#ff69bd}.nav-icon{display:block;font-size:15px;margin-bottom:1px}
 .profile-pic{width:80px;height:80px;object-fit:cover;border-radius:50%;border:3px solid #ff70c8}
 .muted{color:#d8bfd6}.small{font-size:11px;color:#cdb9cb}.code{font-size:20px;letter-spacing:2px;color:#ff69bd;font-weight:bold;text-align:center}.secondary{background:#ffffff20}
 .post-card,.friend-card,.request-card,.notif-card,.setting-card{padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff0b;margin:8px 0}
@@ -49,10 +49,12 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 .toggle.on{background:linear-gradient(90deg,#ff3f9f,#a52cff)}
 .toggle::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:0.3s}
 .toggle.on::after{left:21px}
+.game-cell{height:90px;font-size:32px;background:#ffffff18;border-radius:14px;transition:0.2s}
+.game-cell:active{transform:scale(0.95)}
 </style>
 </head>
 <body>
-<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">Made for Couples</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
+<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">Made for Couples - BOSS Game 👑</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
 <div id="app" class="app hidden">
 <div id="loveOverlay" class="love-overlay"><div id="loveEmoji" style="font-size:90px">💋</div><h1 id="loveText" style="margin-top:12px">I Miss You Jaan! 😘</h1><p id="loveFrom" class="muted">From Your Love</p><button id="closeLoveBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">Aww ❤️ Love You Too</button></div>
 <div id="ringtoneOverlay" class="love-overlay"><div style="font-size:80px">🔔</div><h1 id="ringtoneText" style="margin-top:12px">Your Jaan is Online! ❤️</h1><p id="ringtoneSub" class="muted">Tumhari jaan abhi online aayi hai</p><button id="closeRingtoneBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">❤️ Aww Hi Jaan</button></div>
@@ -66,6 +68,7 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <div style="display:flex;gap:8px;margin-bottom:10px"><button id="markAllReadBtn" class="secondary" style="flex:1">Mark read</button><button id="clearNotifBtn" class="secondary" style="flex:1;background:#ff326430">Clear</button></div>
 <div id="notifList"></div>
 </div>
+
 <section id="homeScreen" class="screen active">
 <div class="top-title"><span>Do Dil Ek Jaan ❤️</span><div class="bell" id="bellBtn">🔔<div id="bellBadge" class="bell-badge hidden">0</div></div></div>
 <div class="panel" style="background:linear-gradient(135deg,#ff3f9f30,#a52cff30);border-color:#ff3f9f50;text-align:center">
@@ -94,7 +97,26 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <div class="panel" style="padding:10px"><div class="stories-bar" id="storiesBar"><div class="story-item story-add" id="addStoryItem"><div class="story-ring" style="background:#ffffff20"><span style="font-size:28px">+</span></div><div class="story-name">Your Story</div></div></div><input id="storyInput" type="file" accept="image/*,video/*" class="hidden"><div id="storyStatus" class="status"></div></div>
 <div class="panel"><h2 id="homeWelcome">Welcome! 💕</h2></div>
 </section>
-<section id="coupleScreen" class="screen"><div class="top-title">💑 Our Private Space 🔐</div><div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me jake Partner ko Link karo</p></div><div id="coupleHasLink" class="hidden"><div class="panel private-post"><h3>🔐 Sirf Tum Dono Ke Liye</h3><textarea id="privatePostText" rows="3" placeholder="Aaj ka secret yaad... ❤️"></textarea><input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview"><div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div><button id="publishPrivateBtn">💌 Private Post Karo</button><div id="privatePostStatus" class="status"></div></div><div id="privateFeed"></div><div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div></div></section>
+
+<section id="coupleScreen" class="screen"><div class="top-title">💑 Our Private Space 🔐</div>
+<div class="panel" style="text-align:center;background:linear-gradient(135deg,#ff3f9f40,#7a2bff40)"><h3>🎮 BOSS Game 👑</h3><p class="small">Jeeto aur BOSS bano 😎</p><button id="playGameBtn" style="margin-top:8px">❤️ Play Tic-Tac-Toe 👑</button></div>
+<div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me jake Partner ko Link karo</p></div><div id="coupleHasLink" class="hidden"><div class="panel private-post"><h3>🔐 Sirf Tum Dono Ke Liye</h3><textarea id="privatePostText" rows="3" placeholder="Aaj ka secret yaad... ❤️"></textarea><input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview"><div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div><button id="publishPrivateBtn">💌 Private Post Karo</button><div id="privatePostStatus" class="status"></div></div><div id="privateFeed"></div><div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div></div></section>
+
+<section id="gameScreen" class="screen">
+<div class="top-title">🎮 BOSS Battle 👑 <button id="closeGameBtn" class="secondary" style="width:auto;padding:8px 14px">← Back</button></div>
+<div class="panel" style="text-align:center;background:linear-gradient(135deg,#ff3f9f20,#7a2bff20)">
+<div id="gameStatus" style="font-size:18px;font-weight:bold;margin-bottom:6px">Loading...</div>
+<div id="bossText" style="font-size:26px;font-weight:bold;color:#ff69bd;display:none;margin:10px 0;text-shadow:0 0 15px #ff3f9f"></div>
+<div id="ticBoard" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:15px auto">
+<button class="game-cell" data-i="0"></button><button class="game-cell" data-i="1"></button><button class="game-cell" data-i="2"></button>
+<button class="game-cell" data-i="3"></button><button class="game-cell" data-i="4"></button><button class="game-cell" data-i="5"></button>
+<button class="game-cell" data-i="6"></button><button class="game-cell" data-i="7"></button><button class="game-cell" data-i="8"></button>
+</div>
+<div style="display:flex;gap:8px"><button id="resetGameBtn" class="secondary" style="flex:1">🔄 New Game</button><button id="exitGameBtn" class="secondary" style="flex:1;background:#ff326430">Exit</button></div>
+<p class="small" style="margin-top:10px">Tum = ❤️ | Partner = 💜</p>
+</div>
+</section>
+
 <section id="postsScreen" class="screen"><div class="top-title">📝 Posts</div><div class="panel"><textarea id="postText" rows="3" placeholder="Kya haal hai? ✨"></textarea><input id="postMediaInput" type="file" accept="image/*" class="hidden"><img id="mediaPreviewImg" class="media-preview"><div class="media-row"><button id="selectMediaBtn" class="secondary">📷 Photo</button><button id="removeMediaBtn" class="secondary hidden">❌</button></div><button id="publishPostBtn">Post Karo</button><div id="postStatus" class="status"></div></div><div id="postsFeed"></div></section>
 <section id="reelsScreen" class="screen"><div class="top-title">🎬 Reels</div><div class="panel"><textarea id="reelCaption" rows="2" placeholder="Caption..."></textarea><input id="reelInput" type="file" accept="video/*" class="hidden"><video id="reelPreview" class="media-preview" controls></video><div class="media-row"><button id="selectReelBtn" class="secondary">🎥 Select Reel</button><button id="removeReelBtn" class="secondary hidden">❌</button></div><button id="publishReelBtn">Upload Reel</button><div id="reelStatus" class="status"></div></div><div id="reelsFeed" class="reels-container"></div></section>
 <section id="friendsScreen" class="screen"><div class="top-title">👥 Friends</div><div class="panel"><div id="myFriendCode" class="code">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div><div class="panel"><h2>Requests</h2><div id="requestList"></div></div><div class="panel"><h2>Friends</h2><div id="friendsList"></div></div><div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search</button><div id="friendResult"></div></div></section>
@@ -103,7 +125,6 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 
 <section id="settingsScreen" class="screen">
 <div class="top-title">⚙️ Settings <button id="closeSettingsBtn" class="secondary" style="width:auto;padding:8px 14px">← Back</button></div>
-
 <div class="panel"><h3>🔔 Notifications</h3>
 <div class="setting-row"><span>Couple Ringtone</span><div id="toggleRingtone" class="toggle on"></div></div>
 <div class="setting-row"><span>Like Notification</span><div id="toggleLikeNotif" class="toggle on"></div></div>
@@ -111,39 +132,28 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <div class="setting-row"><span>Vibration</span><div id="toggleVibration" class="toggle on"></div></div>
 <button id="testRingtoneBtn" class="secondary" style="margin-top:8px">🎵 Test Ringtone</button>
 </div>
-
 <div class="panel"><h3>👁️ Privacy</h3>
 <div class="setting-row"><span>Private Account</span><div id="togglePrivate" class="toggle"></div></div>
 <div class="setting-row"><span>Hide Online Status</span><div id="toggleHideOnline" class="toggle"></div></div>
-<p class="small" style="margin-top:6px">Private ON = sirf friends tumhari post dekh payenge</p>
 </div>
-
 <div class="panel"><h3>🎨 Theme</h3>
-<select id="themeSelect">
-<option value="love">💜 Love (Default Pink/Purple)</option>
-<option value="dark">🖤 Dark Black</option>
-<option value="sunset">🌅 Sunset Orange</option>
-<option value="ocean">🌊 Ocean Blue</option>
-</select>
+<select id="themeSelect"><option value="love">💜 Love (Default)</option><option value="dark">🖤 Dark Black</option><option value="sunset">🌅 Sunset Orange</option><option value="ocean">🌊 Ocean Blue</option></select>
 </div>
-
 <div class="panel"><h3>💾 Data & Storage</h3>
 <button id="clearChatBtn" class="secondary" style="background:#ff980030">🗑️ Clear All Chats</button>
-<button id="clearPrivateBtn" class="secondary" style="background:#ff980030;margin-top:8px">🗑️ Clear Private Space Posts</button>
-<button id="clearNotifSettingBtn" class="secondary" style="background:#ff980030;margin-top:8px">🔔 Clear All Notifications</button>
+<button id="clearPrivateBtn" class="secondary" style="background:#ff980030;margin-top:8px">🗑️ Clear Private Space</button>
+<button id="clearNotifSettingBtn" class="secondary" style="background:#ff980030;margin-top:8px">🔔 Clear Notifications</button>
 </div>
-
-<div class="panel"><h3>⚠️ Danger Zone</h3>
+<div class="panel"><h3>⚠️ Danger</h3>
 <button id="settingsUnlinkBtn" style="background:#ff3264;width:100%">💔 Remove Partner</button>
-<button id="deleteAccountBtn" style="background:#000;border:1px solid #ff3264;margin-top:8px;width:100%">❌ Delete Account Permanently</button>
+<button id="deleteAccountBtn" style="background:#000;border:1px solid #ff3264;margin-top:8px;width:100%">❌ Delete Account</button>
 </div>
-
-<div class="panel"><p class="small" style="text-align:center">Do Dil Ek Jaan ❤️ v2.0<br>Made with Love in India</p></div>
 </section>
 
 <nav class="bottom-nav">
 <button class="nav-btn active" data-screen="homeScreen"><span class="nav-icon">🏠</span>Home</button>
 <button class="nav-btn" data-screen="coupleScreen"><span class="nav-icon">💑</span>Us</button>
+<button class="nav-btn" data-screen="gameScreen"><span class="nav-icon">🎮</span>Game</button>
 <button class="nav-btn" data-screen="postsScreen"><span class="nav-icon">📝</span>Posts</button>
 <button class="nav-btn" data-screen="reelsScreen"><span class="nav-icon">🎬</span>Reels</button>
 <button class="nav-btn" data-screen="friendsScreen"><span class="nav-icon">👥</span>Friends</button>
@@ -159,7 +169,7 @@ import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapsho
 const firebaseConfig={apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",authDomain:"do-dil-ek-jaan.firebaseapp.com",projectId:"do-dil-ek-jaan",storageBucket:"do-dil-ek-jaan.firebasestorage.app",messagingSenderId:"468290989463",appId:"1:468290989463:web:3a8c0fc7b550177cfb68d2"};
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), provider=new GoogleAuthProvider();
 const $=id=>document.getElementById(id);
-let currentPrivateFriendUid=null, postsUnsub=null, reelsUnsub=null, reqUnsub=null, friendsUnsub=null, privateUnsub=null, storiesUnsub=null, notifUnsub=null, coupleUnsub=null, privateUnsub2=null, loveUnsub=null, partnerPresenceUnsub=null, currentStories=[], currentStoryIndex=0, myCoupleId=null, partnerUid=null, lastPartnerOnline=false;
+let currentPrivateFriendUid=null, postsUnsub=null, reelsUnsub=null, reqUnsub=null, friendsUnsub=null, privateUnsub=null, storiesUnsub=null, notifUnsub=null, coupleUnsub=null, privateUnsub2=null, loveUnsub=null, partnerPresenceUnsub=null, gameUnsub=null, currentStories=[], currentStoryIndex=0, myCoupleId=null, partnerUid=null, lastPartnerOnline=false;
 let selectedPostBase64=null, selectedReelBase64=null, selectedProfileBase64=null, selectedPrivateBase64=null;
 let settings={ringtone:true, likeNotif:true, commentNotif:true, vibration:true, privateAcc:false, hideOnline:false, theme:"love"};
 const safe=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
@@ -434,8 +444,77 @@ $("themeSelect").onchange=()=>{settings.theme=$("themeSelect").value; saveLocalS
 $("clearChatBtn").onclick=async()=>{if(!confirm("Saare chats delete?")) return; const u=auth.currentUser; const snaps=await getDocs(query(collection(db,"friends"),where("uid","==",u.uid))); for(const d of snaps.docs){const fid=d.data().friendUid; const id=chatId(u.uid,fid); const msgs=await getDocs(collection(db,"privateChats",id,"messages")); for(const m of msgs.docs) await deleteDoc(m.ref);} alert("Chats cleared ✅");};
 $("clearPrivateBtn").onclick=async()=>{if(!myCoupleId) {alert("Couple link nahi hai"); return;} if(!confirm("Private Space ke saare posts delete?")) return; const snap=await getDocs(collection(db,"couples",myCoupleId,"privatePosts")); for(const d of snap.docs) await deleteDoc(d.ref); alert("Private posts cleared ✅");};
 $("clearNotifSettingBtn").onclick=async()=>{if(!confirm("Saare notifications delete?")) return; const u=auth.currentUser; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",u.uid))); for(const d of snap.docs) await deleteDoc(d.ref); alert("Notifications cleared ✅");};
-$("deleteAccountBtn").onclick=async()=>{if(!confirm("Pakka account delete? Ye wapas nahi ayega!")) return; if(!confirm("Last warning: Saara data delete ho jayega!")) return; try{const u=auth.currentUser; if(myCoupleId) {try{await deleteDoc(doc(db,"couples",myCoupleId));}catch{}} const userDoc=doc(db,"users",u.uid); await deleteDoc(userDoc); await deleteUser(u); alert("Account deleted");}catch(e){alert(e.message+" - pehle re-login karo");}};
+$("deleteAccountBtn").onclick=async()=>{if(!confirm("Pakka account delete?")) return; if(!confirm("Last warning!")) return; try{const u=auth.currentUser; if(myCoupleId) {try{await deleteDoc(doc(db,"couples",myCoupleId));}catch{}} await deleteDoc(doc(db,"users",u.uid)); await deleteUser(u); alert("Account deleted");}catch(e){alert(e.message+" - pehle re-login karo");}};
 $("logoutBtn").onclick=async()=>{const u=auth.currentUser; if(u){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});} await signOut(auth);};
+
+// === BOSS GAME ===
+$("playGameBtn").onclick=()=>{ if(!myCoupleId){alert("Pehle partner link karo Home se"); return;} showScreen("gameScreen"); initGame(); };
+$("closeGameBtn").onclick=()=>showScreen("coupleScreen");
+$("exitGameBtn").onclick=()=>showScreen("coupleScreen");
+async function initGame(){
+ if(!myCoupleId) return;
+ const gameRef=doc(db,"couples",myCoupleId,"game","current");
+ const snap=await getDoc(gameRef);
+ if(!snap.exists()){
+   await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent||"You",playerO:partnerUid||"",playerOName:"Partner",winner:null,createdAt:serverTimestamp()});
+ }
+ if(gameUnsub) gameUnsub();
+ gameUnsub=onSnapshot(gameRef, async (s)=>{
+  if(!s.exists()) return;
+  const g=s.data();
+  if((!g.playerOName || g.playerOName==="Partner") && g.playerO){
+   try{ const pSnap=await getDoc(doc(db,"users",g.playerO)); if(pSnap.exists()){ await updateDoc(gameRef,{playerOName:pSnap.data().name}); g.playerOName=pSnap.data().name; } }catch{}
+  }
+  const board=g.board||[];
+  document.querySelectorAll(".game-cell").forEach((btn,i)=>{
+    btn.textContent=board[i]||"";
+    btn.style.background=board[i]==="❤️"?"#ff3f9f60":board[i]==="💜"?"#7a2bff60":"#ffffff18";
+  });
+  if(g.winner){
+   if(g.winner==="draw"){
+     $("gameStatus").textContent="Draw! 🤝";
+     $("bossText").style.display="block"; $("bossText").innerHTML=`DRAW - Dono BOSS 👑👑<br><span style="font-size:14px">Dono barabar ho jaan 😘</span>`;
+   } else {
+     const winName=g.winner===g.playerX? g.playerXName : g.playerOName;
+     const winSym=g.winner===g.playerX? "❤️" : "💜";
+     $("gameStatus").textContent=`${winName} ${winSym} jeet gaya!`;
+     $("bossText").style.display="block"; $("bossText").innerHTML=`${safe(winName)} is the BOSS 👑😎<br><span style="font-size:14px">Loser ko ek kiss deni padegi 😘💋</span>`;
+     playRingtone(true);
+   }
+  } else {
+   $("bossText").style.display="none";
+   const turnName=g.turn===g.playerX? g.playerXName : g.playerOName;
+   $("gameStatus").textContent=`${safe(turnName||"Partner")} ki baari ${g.turn===auth.currentUser.uid? "- Tum Chalo ❤️":"- Wait karo ⏳"}`;
+  }
+ });
+}
+document.querySelectorAll(".game-cell").forEach(btn=>{
+ btn.onclick=async()=>{
+  const i=parseInt(btn.dataset.i);
+  if(!myCoupleId) return;
+  const gameRef=doc(db,"couples",myCoupleId,"game","current");
+  const snap=await getDoc(gameRef); if(!snap.exists()) return;
+  const g=snap.data();
+  if(g.winner) return;
+  if(g.turn!==auth.currentUser.uid){alert("Tumhari baari nahi hai, jaan ka wait karo 😘"); return;}
+  if(g.board[i]!=="") return;
+  const mySymbol=auth.currentUser.uid===g.playerX?"❤️":"💜";
+  let newBoard=[...g.board]; newBoard[i]=mySymbol;
+  const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  let winner=null;
+  for(const w of wins){ if(newBoard[w[0]] && newBoard[w[0]]===newBoard[w[1]] && newBoard[w[0]]===newBoard[w[2]]){ winner=auth.currentUser.uid; } }
+  if(!winner && newBoard.every(c=>c!=="")) winner="draw";
+  const nextTurn=winner? null : (g.turn===g.playerX? g.playerO : g.playerX);
+  await updateDoc(gameRef,{board:newBoard,turn:nextTurn,winner:winner});
+ }
+});
+$("resetGameBtn").onclick=async()=>{
+ if(!myCoupleId) return;
+ const gameRef=doc(db,"couples",myCoupleId,"game","current");
+ await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent,playerO:partnerUid,playerOName:"Partner",winner:null,createdAt:serverTimestamp()});
+ $("bossText").style.display="none";
+};
+
 onAuthStateChanged(auth,async u=>{
 if(u){
 $("loginScreen").classList.add("hidden");$("app").classList.remove("hidden");
