@@ -1,0 +1,22 @@
+{
+  "name": "Do Dil Ek Jaan - Final",
+  "short_name": "Do Dil",
+  "description": "Do Dil Ek Jaan - Love App ❤️",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#180018",
+  "theme_color": "#ff3f9f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/833/833472.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/833/833472.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
