@@ -47,25 +47,19 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 <body>
 <div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">Made for Couples</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
 <div id="app" class="app hidden">
-
 <div id="loveOverlay" class="love-overlay"><div id="loveEmoji" style="font-size:90px">💋</div><h1 id="loveText" style="margin-top:12px">I Miss You Jaan! 😘</h1><p id="loveFrom" class="muted">From Your Love</p><button id="closeLoveBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">Aww ❤️ Love You Too</button></div>
-
 <div id="storyViewer" class="story-viewer">
 <div class="story-top"><div><b id="storyViewerName">User</b><div id="storyViewerTime" class="small"></div></div><div style="display:flex;gap:8px"><button id="deleteStoryBtn" class="hidden" style="width:auto;padding:8px 14px;background:#ff3264">🗑️</button><button id="closeStoryBtn" style="width:auto;padding:8px 14px" class="secondary">✕</button></div></div>
 <div id="storyContent" style="flex:1;display:flex;align-items:center;justify-content:center"></div>
 <div class="story-bottom"><div style="display:flex;gap:8px;align-items:center"><button id="storyLikeBtn" style="width:60px">❤️ <span id="storyLikeCount">0</span></button></div><button id="nextStoryBtn" class="secondary" style="width:auto">Next →</button></div>
 </div>
-
 <div id="notifScreen" class="notif-screen">
 <div class="top-title">🔔 Notifications <button id="closeNotifBtn" class="secondary" style="width:auto;padding:8px 14px">✕</button></div>
 <div style="display:flex;gap:8px;margin-bottom:10px"><button id="markAllReadBtn" class="secondary" style="flex:1">Mark read</button><button id="clearNotifBtn" class="secondary" style="flex:1;background:#ff326430">Clear</button></div>
 <div id="notifList"></div>
 </div>
-
 <section id="homeScreen" class="screen active">
 <div class="top-title"><span>Do Dil Ek Jaan ❤️</span><div class="bell" id="bellBtn">🔔<div id="bellBadge" class="bell-badge hidden">0</div></div></div>
-
-<!-- COUPLE SPECIAL BAR -->
 <div class="panel" style="background:linear-gradient(135deg,#ff3f9f30,#a52cff30);border-color:#ff3f9f50;text-align:center">
 <div id="coupleNotLinked">
 <div class="couple-heart">💔</div>
@@ -86,14 +80,12 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 <button id="kissBtn" class="love-btn" style="background:linear-gradient(90deg,#ff3f9f,#ff0000)">💋 Kiss</button>
 </div>
 <p class="small" style="margin-top:8px">Dabao to partner ke phone pe full-screen love ayega! 💓</p>
+<button id="unlinkCoupleBtn" style="margin-top:12px;background:#ff3264;width:100%">💔 Remove Partner / Unlink</button>
 </div>
 </div>
-
 <div class="panel" style="padding:10px"><div class="stories-bar" id="storiesBar"><div class="story-item story-add" id="addStoryItem"><div class="story-ring" style="background:#ffffff20"><span style="font-size:28px">+</span></div><div class="story-name">Your Story</div></div></div><input id="storyInput" type="file" accept="image/*,video/*" class="hidden"><div id="storyStatus" class="status"></div></div>
 <div class="panel"><h2 id="homeWelcome">Welcome! 💕</h2></div>
 </section>
-
-<!-- COUPLE PRIVATE SPACE SCREEN -->
 <section id="coupleScreen" class="screen">
 <div class="top-title">💑 Our Private Space 🔐</div>
 <div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me jake Partner ko Link karo, tab ye private diary khulegi ❤️</p></div>
@@ -110,13 +102,11 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 <div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div>
 </div>
 </section>
-
 <section id="postsScreen" class="screen"><div class="top-title">📝 Posts</div><div class="panel"><textarea id="postText" rows="3" placeholder="Kya haal hai? ✨"></textarea><input id="postMediaInput" type="file" accept="image/*" class="hidden"><img id="mediaPreviewImg" class="media-preview"><div class="media-row"><button id="selectMediaBtn" class="secondary">📷 Photo</button><button id="removeMediaBtn" class="secondary hidden">❌</button></div><button id="publishPostBtn">Post Karo</button><div id="postStatus" class="status"></div></div><div id="postsFeed"></div></section>
 <section id="reelsScreen" class="screen"><div class="top-title">🎬 Reels</div><div class="panel"><textarea id="reelCaption" rows="2" placeholder="Caption..."></textarea><input id="reelInput" type="file" accept="video/*" class="hidden"><video id="reelPreview" class="media-preview" controls></video><div class="media-row"><button id="selectReelBtn" class="secondary">🎥 Select Reel</button><button id="removeReelBtn" class="secondary hidden">❌</button></div><button id="publishReelBtn">Upload Reel</button><div id="reelStatus" class="status"></div></div><div id="reelsFeed" class="reels-container"></div></section>
 <section id="friendsScreen" class="screen"><div class="top-title">👥 Friends</div><div class="panel"><div id="myFriendCode" class="code">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div><div class="panel"><h2>Requests</h2><div id="requestList"></div></div><div class="panel"><h2>Friends</h2><div id="friendsList"></div></div><div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search</button><div id="friendResult"></div></div></section>
 <section id="chatScreen" class="screen"><div class="top-title">💬 Chat</div><div id="privateChatHeader" class="panel hidden"><div id="privateFriendName" style="font-weight:bold">Friend</div><button id="backToFriendsBtn" class="secondary" style="margin-top:6px">← Back</button></div><div id="chatBox" style="height:50vh;overflow-y:auto;padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff08;margin:10px 0"></div><div style="display:flex;gap:6px"><input id="chatInput" placeholder="Message..."><button id="sendBtn" style="width:70px">Send</button></div></section>
 <section id="profileScreen" class="screen"><div class="top-title">👤 Profile</div><div class="panel" style="text-align:center"><img id="profilePic" class="profile-pic"><input id="photoInput" type="file" accept="image/*" class="hidden"><img id="profilePreview" class="media-preview" style="margin:8px auto;max-width:200px"><button id="changePhotoBtn" class="secondary">Select Photo</button><button id="uploadPhotoBtn" class="hidden">Upload</button><h2 id="userName">User</h2><p id="userEmail" class="small"></p><div id="editBox" class="hidden"><input id="nameInput"><textarea id="bioInput" rows="2"></textarea><button id="saveBtn">Save</button><button id="cancelBtn" class="secondary">Cancel</button></div><button id="editBtn" class="secondary">Edit</button><button id="logoutBtn" class="secondary" style="background:#ff3264">Logout</button></div></section>
-
 <nav class="bottom-nav">
 <button class="nav-btn active" data-screen="homeScreen"><span class="nav-icon">🏠</span>Home</button>
 <button class="nav-btn" data-screen="coupleScreen"><span class="nav-icon">💑</span>Us</button>
@@ -165,7 +155,6 @@ $("bellBtn").onclick=()=>{$("notifScreen").classList.add("active");};
 $("closeNotifBtn").onclick=()=>{$("notifScreen").classList.remove("active");};
 $("markAllReadBtn").onclick=async()=>{const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await updateDoc(doc(db,"notifications",d.id),{read:true});});};
 $("clearNotifBtn").onclick=async()=>{if(!confirm("Clear all?"))return; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await deleteDoc(doc(db,"notifications",d.id));});};
-
 function showLoveOverlay(type, fromName){
 const map={miss_you:{emoji:"😘",text:`${fromName} Misses You So Much! 😘`},hug:{emoji:"🤗",text:`${fromName} Sent You A Tight Hug! 🤗`},kiss:{emoji:"💋",text:`${fromName} Sent You A Kiss! 💋`}};
 const m=map[type]||map.miss_you;
@@ -174,7 +163,6 @@ $("loveOverlay").classList.add("active");
 if(navigator.vibrate) navigator.vibrate([200,100,200,100,400]);
 }
 $("closeLoveBtn").onclick=()=>{$("loveOverlay").classList.remove("active");};
-
 // COUPLE LOGIC
 $("linkCoupleBtn").onclick=async()=>{
 const c=$("coupleCodeInput").value.trim().toUpperCase(); const me=auth.currentUser; if(c.length!==8)return;
@@ -191,14 +179,16 @@ $("coupleLinkStatus").textContent="Linked ❤️";
 await setDoc(doc(db,"users",me.uid),{coupleId:cid,partnerUid:partner.id},{merge:true});
 await setDoc(doc(db,"users",partner.id),{coupleId:cid,partnerUid:me.uid},{merge:true});
 };
-
 function loadCouple(u){
 if(coupleUnsub)coupleUnsub();
 coupleUnsub=onSnapshot(doc(db,"users",u.uid),async snap=>{
 const data=snap.data(); if(!data?.coupleId){$("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden"); return;}
 myCoupleId=data.coupleId; partnerUid=data.partnerUid;
 const cSnap=await getDoc(doc(db,"couples",myCoupleId));
-if(!cSnap.exists()) return;
+if(!cSnap.exists()){ // couple deleted
+await setDoc(doc(db,"users",u.uid),{coupleId:null,partnerUid:null},{merge:true});
+$("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden");
+return;}
 const c=cSnap.data();
 $("coupleNotLinked").classList.add("hidden"); $("coupleLinked").classList.remove("hidden"); $("coupleNeedLink").classList.add("hidden"); $("coupleHasLink").classList.remove("hidden");
 const isUid1=u.uid===c.uid1;
@@ -224,7 +214,22 @@ updateCountdown(d);
 sendNotif(partnerUid,"private_post",`saved anniversary date 📅 ${d}`, myCoupleId);
 alert("Anniversary saved ❤️");
 };
-
+$("unlinkCoupleBtn").onclick=async()=>{
+if(!confirm("💔 Pakka partner ko hatana hai? Private Space lock ho jayega!")) return;
+if(!myCoupleId) return;
+try{
+const u=auth.currentUser;
+await setDoc(doc(db,"users",u.uid),{coupleId:null,partnerUid:null},{merge:true});
+if(partnerUid){try{await setDoc(doc(db,"users",partnerUid),{coupleId:null,partnerUid:null},{merge:true});}catch(e){}}
+try{await deleteDoc(doc(db,"couples",myCoupleId));}catch(e){}
+myCoupleId=null; partnerUid=null;
+$("coupleNotLinked").classList.remove("hidden");
+$("coupleLinked").classList.add("hidden");
+$("coupleNeedLink").classList.remove("hidden");
+$("coupleHasLink").classList.add("hidden");
+alert("Partner removed 💔 Ab naya partner link kar sakte ho");
+}catch(e){alert(e.message);}
+};
 $("missYouBtn").onclick=()=>sendLove("miss_you","Misses you so much! 😘 I Miss You Jaan!");
 $("hugBtn").onclick=()=>sendLove("hug","Sent you a tight hug! 🤗");
 $("kissBtn").onclick=()=>sendLove("kiss","Sent you a kiss! 💋 Muahhh!");
@@ -259,7 +264,6 @@ $("privateFeed").innerHTML=""; if(snap.empty){$("privateFeed").innerHTML="<p cla
 snap.forEach(d=>{const p=d.data(); const el=document.createElement("div"); el.className="post-card private-post"; el.innerHTML=`<div style="display:flex;justify-content:space-between"><b>💌 ${safe(p.authorName)}</b><span class=small>${p.createdAt?.toDate? p.createdAt.toDate().toLocaleDateString():""}</span></div><div style="margin:6px 0;white-space:pre-wrap">${safe(p.text||"")}</div>${p.mediaURL?`<img src="${p.mediaURL}" class="post-media">`:""}`; $("privateFeed").append(el);});
 });
 }
-
 // STORIES
 $("addStoryItem").onclick=()=>$("storyInput").click();
 $("storyInput").onchange=()=>{const f=$("storyInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=async e=>{const base64=e.target.result; $("storyStatus").textContent="Uploading..."; try{const u=auth.currentUser; const now=Date.now(); await addDoc(collection(db,"stories"),{uid:u.uid,authorName:$("userName").textContent||"User",authorPhoto:$("profilePic").src||"",mediaURL:base64,mediaType:f.type.startsWith("video")?"video":"image",likes:[],likesCount:0,createdAt:serverTimestamp(),expiresAt: now + 24*60*60*1000}); $("storyStatus").textContent="Story added ❤️";}catch(err){$("storyStatus").textContent=err.message;} $("storyInput").value="";}; rd.readAsDataURL(f);};
@@ -293,13 +297,11 @@ else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)}); s.li
 $("storyLikeCount").textContent=s.likesCount||0; $("storyLikeBtn").style.background=liked?"#ffffff20":"linear-gradient(90deg,#ff3f9f,#a52cff)";
 };
 $("storyContent").onclick=(e)=>{if(e.target.tagName==="VIDEO") return; $("nextStoryBtn").click();};
-
 // POSTS
 $("selectMediaBtn").onclick=()=>$("postMediaInput").click(); $("removeMediaBtn").onclick=()=>{selectedPostBase64=null;$("postMediaInput").value="";$("mediaPreviewImg").style.display="none";$("removeMediaBtn").classList.add("hidden");};
 $("postMediaInput").onchange=()=>{const f=$("postMediaInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedPostBase64=e.target.result; $("mediaPreviewImg").src=selectedPostBase64; $("mediaPreviewImg").style.display="block"; $("removeMediaBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
 function loadPosts(){if(postsUnsub)postsUnsub(); postsUnsub=onSnapshot(query(collection(db,"posts"),orderBy("createdAt","desc")),snap=>{$("postsFeed").innerHTML=""; snap.forEach(d=>{const p=d.data(); const id=d.id; const uid=auth.currentUser?.uid; const liked=uid&&p.likes?.includes(uid); const el=document.createElement("div"); el.className="post-card"; el.innerHTML=`<div style="display:flex;justify-content:space-between"><b>❤️ ${safe(p.authorName||"User")}</b> ${uid===p.uid?`<button class="del" style="width:auto;padding:4px 10px;background:#ff3264">🗑️</button>`:""}</div><div style="margin:6px 0;white-space:pre-wrap">${safe(p.text||"")}</div>${p.mediaURL?`<img src="${p.mediaURL}" class="post-media">`:""}<div class="post-actions"><button class="action-btn likeBtn ${liked?"liked":""}">❤️ ${p.likesCount||0}</button><button class="action-btn secondary commentToggle">💬 ${p.commentsCount||0}</button><button class="action-btn secondary shareBtn">🔗 Share</button></div><div class="comments-box"><div class="cList"></div><div style="display:flex;gap:6px;margin-top:8px"><input class="cInput" placeholder="Comment..."><button class="cSend" style="width:60px">Send</button></div></div>`; if(uid===p.uid) el.querySelector(".del").onclick=async()=>{if(confirm("Delete?")) await deleteDoc(doc(db,"posts",id));}; el.querySelector(".likeBtn").onclick=async()=>{const ref=doc(db,"posts",id); if(liked){await updateDoc(ref,{likes:arrayRemove(uid),likesCount:increment(-1)});} else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)}); sendNotif(p.uid,"like_post",`liked your post ❤️ "${(p.text||"").slice(0,30)}"`, id);}}; el.querySelector(".shareBtn").onclick=async()=>{const txt=`${p.text||""} ${location.href}`; if(navigator.share){try{await navigator.share({title:"Post",text:txt});}catch{}} else {await navigator.clipboard.writeText(txt); alert("Copied ❤️");}}; const box=el.querySelector(".comments-box"); const cList=el.querySelector(".cList"); el.querySelector(".commentToggle").onclick=()=>{box.classList.toggle("active"); if(box.classList.contains("active")){onSnapshot(query(collection(db,"posts",id,"comments"),orderBy("createdAt","asc")),cs=>{cList.innerHTML=""; cs.forEach(cd=>{const cm=cd.data(); const div=document.createElement("div"); div.className="comment"; div.innerHTML=`<b>${safe(cm.authorName)}:</b> ${safe(cm.text)}`; cList.appendChild(div);});});}}; el.querySelector(".cSend").onclick=async()=>{const input=el.querySelector(".cInput"); const t=input.value.trim(); if(!t||!uid)return; await addDoc(collection(db,"posts",id,"comments"),{uid:uid,authorName:$("userName").textContent||"User",text:t,createdAt:serverTimestamp()}); await updateDoc(doc(db,"posts",id),{commentsCount:increment(1)}); sendNotif(p.uid,"comment_post",`commented: "${t.slice(0,30)}"`, id); input.value="";}; $("postsFeed").append(el);});});}
 $("publishPostBtn").onclick=async()=>{const u=auth.currentUser, t=$("postText").value.trim(); if(!u||(!t&&!selectedPostBase64))return; $("publishPostBtn").disabled=true; try{await addDoc(collection(db,"posts"),{uid:u.uid,authorName:$("userName").textContent||"User",text:t,mediaURL:selectedPostBase64||null,likes:[],likesCount:0,commentsCount:0,createdAt:serverTimestamp()}); $("postText").value=""; selectedPostBase64=null; $("postMediaInput").value=""; $("mediaPreviewImg").style.display="none";}catch(e){} $("publishPostBtn").disabled=false;};
-// REELS
 $("selectReelBtn").onclick=()=>$("reelInput").click(); $("removeReelBtn").onclick=()=>{selectedReelBase64=null;$("reelInput").value="";$("reelPreview").style.display="none";$("removeReelBtn").classList.add("hidden");};
 $("reelInput").onchange=()=>{const f=$("reelInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedReelBase64=e.target.result; $("reelPreview").src=selectedReelBase64; $("reelPreview").style.display="block"; $("removeReelBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
 function loadReels(){if(reelsUnsub)reelsUnsub(); reelsUnsub=onSnapshot(query(collection(db,"reels"),orderBy("createdAt","desc")),snap=>{$("reelsFeed").innerHTML=""; snap.forEach(d=>{const r=d.data(); const id=d.id; const uid=auth.currentUser?.uid; const liked=uid&&r.likes?.includes(uid); const disliked=uid&&r.dislikes?.includes(uid); const wrap=document.createElement("div"); wrap.className="reel-item"; wrap.innerHTML=`<video src="${r.mediaURL}" class="reel-video" loop playsinline></video><div class="reel-actions"><button class="reel-action-btn likeBtn" style="${liked?'background:linear-gradient(90deg,#ff3f9f,#a52cff)':''}">❤️<span>${r.likesCount||0}</span></button><button class="reel-action-btn dislikeBtn" style="${disliked?'background:#ff4444':''}">👎<span>${r.dislikesCount||0}</span></button><button class="reel-action-btn commentBtn">💬<span>${r.commentsCount||0}</span></button><button class="reel-action-btn shareBtn">🔗<span>Share</span></button>${uid===r.uid?`<button class="reel-action-btn delBtn" style="background:#ff3264">🗑️</button>`:""}</div><div class="reel-overlay"><b>❤️ ${safe(r.authorName||"User")}</b><div class="small">${safe(r.caption||"")}</div></div><div class="reel-comments"><div style="display:flex;justify-content:space-between"><b>Comments</b><button class="secondary closeCmt" style="width:auto;padding:6px 12px">✕</button></div><div class="commentsList"></div><div style="display:flex;gap:6px;margin-top:8px"><input class="cInput" placeholder="Comment..."><button class="cSend" style="width:60px">Send</button></div></div>`; const vid=wrap.querySelector("video"); vid.onclick=()=>vid.paused?vid.play():vid.pause(); const obs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting) vid.play().catch(()=>{}); else vid.pause();});},{threshold:0.5}); obs.observe(wrap); wrap.querySelector(".likeBtn").onclick=async()=>{if(!uid)return; const ref=doc(db,"reels",id); if(liked){await updateDoc(ref,{likes:arrayRemove(uid),likesCount:increment(-1)});} else { if(disliked){await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1),dislikes:arrayRemove(uid),dislikesCount:increment(-1)});} else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)});} sendNotif(r.uid,"like_reel",`liked your reel ❤️`, id); }}; wrap.querySelector(".dislikeBtn").onclick=async()=>{if(!uid)return; const ref=doc(db,"reels",id); if(disliked){await updateDoc(ref,{dislikes:arrayRemove(uid),dislikesCount:increment(-1)});} else { if(liked){await updateDoc(ref,{dislikes:arrayUnion(uid),dislikesCount:increment(1),likes:arrayRemove(uid),likesCount:increment(-1)});} else {await updateDoc(ref,{dislikes:arrayUnion(uid),dislikesCount:increment(1)});} }}; wrap.querySelector(".shareBtn").onclick=async()=>{const txt=`Reel by ${r.authorName} ${location.href}`; if(navigator.share){try{await navigator.share({title:"Reel",text:txt});}catch{}} else {await navigator.clipboard.writeText(txt); alert("Copied ❤️");}}; const box=wrap.querySelector(".reel-comments"); const list=wrap.querySelector(".commentsList"); wrap.querySelector(".commentBtn").onclick=()=>{box.classList.add("active"); vid.pause(); onSnapshot(query(collection(db,"reels",id,"comments"),orderBy("createdAt","asc")),cs=>{list.innerHTML=""; cs.forEach(cd=>{const cm=cd.data(); const div=document.createElement("div"); div.className="comment"; div.innerHTML=`<b>${safe(cm.authorName)}:</b> ${safe(cm.text)}`; list.appendChild(div);});});}; wrap.querySelector(".closeCmt").onclick=()=>{box.classList.remove("active"); vid.play().catch(()=>{});}; wrap.querySelector(".cSend").onclick=async()=>{const input=wrap.querySelector(".cInput"); const t=input.value.trim(); if(!t||!uid)return; await addDoc(collection(db,"reels",id,"comments"),{uid:uid,authorName:$("userName").textContent||"User",text:t,createdAt:serverTimestamp()}); await updateDoc(doc(db,"reels",id),{commentsCount:increment(1)}); sendNotif(r.uid,"comment_reel",`commented: "${t.slice(0,30)}"`, id); input.value="";}; if(uid===r.uid){wrap.querySelector(".delBtn").onclick=async()=>{if(confirm("Delete?")) await deleteDoc(doc(db,"reels",id));};} $("reelsFeed").append(wrap);});});}
