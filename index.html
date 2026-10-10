@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Do Dil Ek Jaan 
- <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff3f9f">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do Dil Ek Jaan</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ff3f6c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png">
 <script>
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }
-</script>- FINAL ALL FIX</title>
-<style>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js');
+}
+</script>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#000;color:#fff;transition:0.3s}
 button,input,textarea,select{font:inherit}button{border:0;border-radius:28px;padding:11px 14px;color:#fff;background:linear-gradient(90deg,#ff3f9f,#a52cff);font-weight:bold;cursor:pointer}
 input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:12px;background:#ffffff12;color:#fff;outline:none;margin:6px 0}
