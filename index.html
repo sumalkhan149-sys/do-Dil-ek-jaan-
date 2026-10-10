@@ -42,12 +42,15 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 .love-overlay.active{display:flex}
 .countdown{font-size:32px;font-weight:bold;color:#ff69bd;margin:8px 0}
 .private-post{background:linear-gradient(135deg,#ff3f9f20,#a52cff20);border:1px solid #ff3f9f40}
+.online-dot{width:12px;height:12px;background:#00ff88;border-radius:50%;display:inline-block;margin-left:6px;box-shadow:0 0 8px #00ff88;animation:beat 1s infinite}
+.offline-dot{width:12px;height:12px;background:#666;border-radius:50%;display:inline-block;margin-left:6px}
 </style>
 </head>
 <body>
 <div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">Made for Couples</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
 <div id="app" class="app hidden">
 <div id="loveOverlay" class="love-overlay"><div id="loveEmoji" style="font-size:90px">💋</div><h1 id="loveText" style="margin-top:12px">I Miss You Jaan! 😘</h1><p id="loveFrom" class="muted">From Your Love</p><button id="closeLoveBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">Aww ❤️ Love You Too</button></div>
+<div id="ringtoneOverlay" class="love-overlay"><div style="font-size:80px">🔔</div><h1 id="ringtoneText" style="margin-top:12px">Your Jaan is Online! ❤️</h1><p id="ringtoneSub" class="muted">Tumhari jaan abhi online aayi hai</p><button id="closeRingtoneBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">❤️ Aww Hi Jaan</button></div>
 <div id="storyViewer" class="story-viewer">
 <div class="story-top"><div><b id="storyViewerName">User</b><div id="storyViewerTime" class="small"></div></div><div style="display:flex;gap:8px"><button id="deleteStoryBtn" class="hidden" style="width:auto;padding:8px 14px;background:#ff3264">🗑️</button><button id="closeStoryBtn" style="width:auto;padding:8px 14px" class="secondary">✕</button></div></div>
 <div id="storyContent" style="flex:1;display:flex;align-items:center;justify-content:center"></div>
@@ -69,8 +72,9 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 <div id="coupleLinkStatus" class="status"></div>
 </div>
 <div id="coupleLinked" class="hidden">
-<div style="display:flex;justify-content:center;align-items:center;gap:10px"><img id="myCouplePic" class="profile-pic" style="width:60px;height:60px"><div class="couple-heart" style="font-size:26px">❤️</div><img id="partnerCouplePic" class="profile-pic" style="width:60px;height:60px"></div>
+<div style="display:flex;justify-content:center;align-items:center;gap:10px"><div style="position:relative"><img id="myCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="myOnlineDot" class="online-dot" style="position:absolute;bottom:2px;right:2px"></span></div><div class="couple-heart" style="font-size:26px">❤️</div><div style="position:relative"><img id="partnerCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="partnerOnlineDot" class="offline-dot" style="position:absolute;bottom:2px;right:2px"></span></div></div>
 <h3 id="coupleNames" style="margin-top:8px">You ❤️ Partner</h3>
+<p id="partnerOnlineText" class="small">Checking...</p>
 <div id="anniversaryCountdown" class="countdown">--</div>
 <p id="anniversaryLabel" class="small">Anniversary Countdown</p>
 <div style="display:flex;gap:6px;margin-top:10px"><input id="anniversaryInput" type="date"><button id="saveAnniversaryBtn" style="width:90px" class="secondary">Save 📅</button></div>
@@ -79,7 +83,10 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 <button id="hugBtn" class="love-btn" style="background:linear-gradient(90deg,#a52cff,#7a2bff)">🤗 Hug</button>
 <button id="kissBtn" class="love-btn" style="background:linear-gradient(90deg,#ff3f9f,#ff0000)">💋 Kiss</button>
 </div>
-<p class="small" style="margin-top:8px">Dabao to partner ke phone pe full-screen love ayega! 💓</p>
+<div style="display:flex;gap:8px;margin-top:10px">
+<button id="soundToggleBtn" class="secondary" style="flex:1">🔔 Ringtone: ON</button>
+<button id="testRingtoneBtn" class="secondary" style="flex:1">🎵 Test Sound</button>
+</div>
 <button id="unlinkCoupleBtn" style="margin-top:12px;background:#ff3264;width:100%">💔 Remove Partner / Unlink</button>
 </div>
 </div>
@@ -124,7 +131,7 @@ import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapsho
 const firebaseConfig={apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",authDomain:"do-dil-ek-jaan.firebaseapp.com",projectId:"do-dil-ek-jaan",storageBucket:"do-dil-ek-jaan.firebasestorage.app",messagingSenderId:"468290989463",appId:"1:468290989463:web:3a8c0fc7b550177cfb68d2"};
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), provider=new GoogleAuthProvider();
 const $=id=>document.getElementById(id);
-let currentPrivateFriendUid=null, postsUnsub=null, reelsUnsub=null, reqUnsub=null, friendsUnsub=null, privateUnsub=null, storiesUnsub=null, notifUnsub=null, coupleUnsub=null, privateUnsub2=null, loveUnsub=null, currentStories=[], currentStoryIndex=0, myCoupleId=null, partnerUid=null;
+let currentPrivateFriendUid=null, postsUnsub=null, reelsUnsub=null, reqUnsub=null, friendsUnsub=null, privateUnsub=null, storiesUnsub=null, notifUnsub=null, coupleUnsub=null, privateUnsub2=null, loveUnsub=null, partnerPresenceUnsub=null, currentStories=[], currentStoryIndex=0, myCoupleId=null, partnerUid=null, lastPartnerOnline=false, ringtoneEnabled=true;
 let selectedPostBase64=null, selectedReelBase64=null, selectedProfileBase64=null, selectedPrivateBase64=null;
 const safe=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const code=()=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";return Array.from({length:8},()=>c[Math.floor(Math.random()*c.length)]).join("")};
@@ -133,7 +140,7 @@ document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>
 function chatId(a,b){return [a,b].sort().join("_")} function reqId(a,b){return a+"_"+b}
 getRedirectResult(auth).catch(()=>{});
 $("loginBtn").onclick=async()=>{try{const mob=/Android|iPhone/i.test(navigator.userAgent)||location.hostname.includes("vercel.app"); if(mob) await signInWithRedirect(auth,provider); else await signInWithPopup(auth,provider);}catch{await signInWithRedirect(auth,provider);}};
-async function loadProfile(u){const r=doc(db,"users",u.uid);let s=await getDoc(r);if(!s.exists()){await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),createdAt:serverTimestamp()}); s=await getDoc(r);}const d=s.data(); $("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤";}
+async function loadProfile(u){const r=doc(db,"users",u.uid);let s=await getDoc(r);if(!s.exists()){await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),isOnline:true,lastSeen:serverTimestamp(),createdAt:serverTimestamp()}); s=await getDoc(r);}else{await setDoc(r,{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}const d=s.data(); $("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤";}
 async function sendNotif(toUid, type, text, refId){const u=auth.currentUser; if(!u||toUid===u.uid) return; try{await addDoc(collection(db,"notifications"),{toUid:toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",fromPhoto:$("profilePic").src||"",type:type,text:text,refId:refId||"",read:false,createdAt:serverTimestamp()});}catch(e){}}
 function loadNotifs(u){
 if(notifUnsub)notifUnsub();
@@ -160,10 +167,36 @@ const map={miss_you:{emoji:"😘",text:`${fromName} Misses You So Much! 😘`},h
 const m=map[type]||map.miss_you;
 $("loveEmoji").textContent=m.emoji; $("loveText").textContent=m.text; $("loveFrom").textContent="From "+fromName+" ❤️";
 $("loveOverlay").classList.add("active");
+playRingtone(true);
 if(navigator.vibrate) navigator.vibrate([200,100,200,100,400]);
 }
 $("closeLoveBtn").onclick=()=>{$("loveOverlay").classList.remove("active");};
-// COUPLE LOGIC
+function playRingtone(isLove=false){
+if(!ringtoneEnabled) return;
+try{
+const ctx=new (window.AudioContext||window.webkitAudioContext)();
+const now=ctx.currentTime;
+function tone(freq,start,dur){
+const o=ctx.createOscillator(); const g=ctx.createGain();
+o.type="sine"; o.frequency.value=freq; o.connect(g); g.connect(ctx.destination);
+g.gain.setValueAtTime(0,now+start); g.gain.linearRampToValueAtTime(0.6,now+start+0.05); g.gain.exponentialRampToValueAtTime(0.001,now+start+dur);
+o.start(now+start); o.stop(now+start+dur);
+}
+if(isLove){tone(523.25,0,0.5); tone(659.25,0.15,0.5); tone(783.99,0.3,0.8);}else{tone(659.25,0,0.4); tone(783.99,0.2,0.4); tone(1046.5,0.4,0.8);}
+}catch(e){}
+if(navigator.vibrate) navigator.vibrate([150,80,150,80,300]);
+}
+$("testRingtoneBtn").onclick=()=>playRingtone(false);
+$("soundToggleBtn").onclick=()=>{ringtoneEnabled=!ringtoneEnabled; $("soundToggleBtn").textContent=ringtoneEnabled?"🔔 Ringtone: ON":"🔕 Ringtone: OFF"; if(ringtoneEnabled) playRingtone(false);};
+$("closeRingtoneBtn").onclick=()=>{$("ringtoneOverlay").classList.remove("active");};
+function showRingtonePopup(name){
+if(!ringtoneEnabled) return;
+$("ringtoneText").textContent=`${name} is Online! ❤️`;
+$("ringtoneSub").textContent=`${name} abhi online aayi hai, jaldi message karo 😘`;
+$("ringtoneOverlay").classList.add("active");
+playRingtone(false);
+}
+// PRESENCE + COUPLE LOGIC
 $("linkCoupleBtn").onclick=async()=>{
 const c=$("coupleCodeInput").value.trim().toUpperCase(); const me=auth.currentUser; if(c.length!==8)return;
 $("coupleLinkStatus").textContent="Linking...";
@@ -182,10 +215,10 @@ await setDoc(doc(db,"users",partner.id),{coupleId:cid,partnerUid:me.uid},{merge:
 function loadCouple(u){
 if(coupleUnsub)coupleUnsub();
 coupleUnsub=onSnapshot(doc(db,"users",u.uid),async snap=>{
-const data=snap.data(); if(!data?.coupleId){$("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden"); return;}
+const data=snap.data(); if(!data?.coupleId){$("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden"); if(partnerPresenceUnsub){partnerPresenceUnsub(); partnerPresenceUnsub=null;} return;}
 myCoupleId=data.coupleId; partnerUid=data.partnerUid;
 const cSnap=await getDoc(doc(db,"couples",myCoupleId));
-if(!cSnap.exists()){ // couple deleted
+if(!cSnap.exists()){
 await setDoc(doc(db,"users",u.uid),{coupleId:null,partnerUid:null},{merge:true});
 $("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden");
 return;}
@@ -198,6 +231,20 @@ $("partnerCouplePic").src=isUid1?c.photo2:c.photo1||"https://placehold.co/100x10
 if(c.anniversaryDate){$("anniversaryInput").value=c.anniversaryDate; updateCountdown(c.anniversaryDate);}
 loadPrivatePosts(myCoupleId);
 loadLoveHistory(myCoupleId);
+loadPartnerPresence();
+});
+}
+function loadPartnerPresence(){
+if(!partnerUid) return;
+if(partnerPresenceUnsub) partnerPresenceUnsub();
+partnerPresenceUnsub=onSnapshot(doc(db,"users",partnerUid),snap=>{
+if(!snap.exists()) return;
+const d=snap.data();
+const online=d.isOnline===true;
+const dot=$("partnerOnlineDot");
+const txt=$("partnerOnlineText");
+if(online){dot.className="online-dot"; txt.textContent=`🟢 Online now ❤️`; if(!lastPartnerOnline){showRingtonePopup(d.name||"Your Jaan");} lastPartnerOnline=true;}
+else {dot.className="offline-dot"; const last=d.lastSeen?.toDate? d.lastSeen.toDate().toLocaleTimeString() : ""; txt.textContent=`⚪ Offline - last seen ${last}`; lastPartnerOnline=false;}
 });
 }
 function updateCountdown(dateStr){
@@ -227,7 +274,8 @@ $("coupleNotLinked").classList.remove("hidden");
 $("coupleLinked").classList.add("hidden");
 $("coupleNeedLink").classList.remove("hidden");
 $("coupleHasLink").classList.add("hidden");
-alert("Partner removed 💔 Ab naya partner link kar sakte ho");
+if(partnerPresenceUnsub){partnerPresenceUnsub(); partnerPresenceUnsub=null;}
+alert("Partner removed 💔");
 }catch(e){alert(e.message);}
 };
 $("missYouBtn").onclick=()=>sendLove("miss_you","Misses you so much! 😘 I Miss You Jaan!");
@@ -238,7 +286,7 @@ if(!myCoupleId||!partnerUid){alert("Pehle partner link karo"); return;}
 const u=auth.currentUser;
 await addDoc(collection(db,"couples",myCoupleId,"loves"),{fromUid:u.uid,fromName:$("userName").textContent,type:type,text:text,createdAt:serverTimestamp()});
 await sendNotif(partnerUid,type,text,myCoupleId);
-if(navigator.vibrate) navigator.vibrate(200);
+playRingtone(true);
 alert("Sent ❤️ "+type);
 }
 function loadLoveHistory(cid){
@@ -264,7 +312,6 @@ $("privateFeed").innerHTML=""; if(snap.empty){$("privateFeed").innerHTML="<p cla
 snap.forEach(d=>{const p=d.data(); const el=document.createElement("div"); el.className="post-card private-post"; el.innerHTML=`<div style="display:flex;justify-content:space-between"><b>💌 ${safe(p.authorName)}</b><span class=small>${p.createdAt?.toDate? p.createdAt.toDate().toLocaleDateString():""}</span></div><div style="margin:6px 0;white-space:pre-wrap">${safe(p.text||"")}</div>${p.mediaURL?`<img src="${p.mediaURL}" class="post-media">`:""}`; $("privateFeed").append(el);});
 });
 }
-// STORIES
 $("addStoryItem").onclick=()=>$("storyInput").click();
 $("storyInput").onchange=()=>{const f=$("storyInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=async e=>{const base64=e.target.result; $("storyStatus").textContent="Uploading..."; try{const u=auth.currentUser; const now=Date.now(); await addDoc(collection(db,"stories"),{uid:u.uid,authorName:$("userName").textContent||"User",authorPhoto:$("profilePic").src||"",mediaURL:base64,mediaType:f.type.startsWith("video")?"video":"image",likes:[],likesCount:0,createdAt:serverTimestamp(),expiresAt: now + 24*60*60*1000}); $("storyStatus").textContent="Story added ❤️";}catch(err){$("storyStatus").textContent=err.message;} $("storyInput").value="";}; rd.readAsDataURL(f);};
 function loadStories(){
@@ -297,7 +344,6 @@ else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)}); s.li
 $("storyLikeCount").textContent=s.likesCount||0; $("storyLikeBtn").style.background=liked?"#ffffff20":"linear-gradient(90deg,#ff3f9f,#a52cff)";
 };
 $("storyContent").onclick=(e)=>{if(e.target.tagName==="VIDEO") return; $("nextStoryBtn").click();};
-// POSTS
 $("selectMediaBtn").onclick=()=>$("postMediaInput").click(); $("removeMediaBtn").onclick=()=>{selectedPostBase64=null;$("postMediaInput").value="";$("mediaPreviewImg").style.display="none";$("removeMediaBtn").classList.add("hidden");};
 $("postMediaInput").onchange=()=>{const f=$("postMediaInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedPostBase64=e.target.result; $("mediaPreviewImg").src=selectedPostBase64; $("mediaPreviewImg").style.display="block"; $("removeMediaBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
 function loadPosts(){if(postsUnsub)postsUnsub(); postsUnsub=onSnapshot(query(collection(db,"posts"),orderBy("createdAt","desc")),snap=>{$("postsFeed").innerHTML=""; snap.forEach(d=>{const p=d.data(); const id=d.id; const uid=auth.currentUser?.uid; const liked=uid&&p.likes?.includes(uid); const el=document.createElement("div"); el.className="post-card"; el.innerHTML=`<div style="display:flex;justify-content:space-between"><b>❤️ ${safe(p.authorName||"User")}</b> ${uid===p.uid?`<button class="del" style="width:auto;padding:4px 10px;background:#ff3264">🗑️</button>`:""}</div><div style="margin:6px 0;white-space:pre-wrap">${safe(p.text||"")}</div>${p.mediaURL?`<img src="${p.mediaURL}" class="post-media">`:""}<div class="post-actions"><button class="action-btn likeBtn ${liked?"liked":""}">❤️ ${p.likesCount||0}</button><button class="action-btn secondary commentToggle">💬 ${p.commentsCount||0}</button><button class="action-btn secondary shareBtn">🔗 Share</button></div><div class="comments-box"><div class="cList"></div><div style="display:flex;gap:6px;margin-top:8px"><input class="cInput" placeholder="Comment..."><button class="cSend" style="width:60px">Send</button></div></div>`; if(uid===p.uid) el.querySelector(".del").onclick=async()=>{if(confirm("Delete?")) await deleteDoc(doc(db,"posts",id));}; el.querySelector(".likeBtn").onclick=async()=>{const ref=doc(db,"posts",id); if(liked){await updateDoc(ref,{likes:arrayRemove(uid),likesCount:increment(-1)});} else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)}); sendNotif(p.uid,"like_post",`liked your post ❤️ "${(p.text||"").slice(0,30)}"`, id);}}; el.querySelector(".shareBtn").onclick=async()=>{const txt=`${p.text||""} ${location.href}`; if(navigator.share){try{await navigator.share({title:"Post",text:txt});}catch{}} else {await navigator.clipboard.writeText(txt); alert("Copied ❤️");}}; const box=el.querySelector(".comments-box"); const cList=el.querySelector(".cList"); el.querySelector(".commentToggle").onclick=()=>{box.classList.toggle("active"); if(box.classList.contains("active")){onSnapshot(query(collection(db,"posts",id,"comments"),orderBy("createdAt","asc")),cs=>{cList.innerHTML=""; cs.forEach(cd=>{const cm=cd.data(); const div=document.createElement("div"); div.className="comment"; div.innerHTML=`<b>${safe(cm.authorName)}:</b> ${safe(cm.text)}`; cList.appendChild(div);});});}}; el.querySelector(".cSend").onclick=async()=>{const input=el.querySelector(".cInput"); const t=input.value.trim(); if(!t||!uid)return; await addDoc(collection(db,"posts",id,"comments"),{uid:uid,authorName:$("userName").textContent||"User",text:t,createdAt:serverTimestamp()}); await updateDoc(doc(db,"posts",id),{commentsCount:increment(1)}); sendNotif(p.uid,"comment_post",`commented: "${t.slice(0,30)}"`, id); input.value="";}; $("postsFeed").append(el);});});}
@@ -315,8 +361,16 @@ $("sendBtn").onclick=async()=>{const u=auth.currentUser, t=$("chatInput").value.
 $("backToFriendsBtn").onclick=()=>showScreen("friendsScreen");
 $("changePhotoBtn").onclick=()=>$("photoInput").click(); $("photoInput").onchange=()=>{const f=$("photoInput").files[0]; if(!f)return; if(f.size>500*1024){alert("500KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedProfileBase64=e.target.result; $("profilePreview").src=selectedProfileBase64; $("profilePreview").style.display="block"; $("uploadPhotoBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
 $("uploadPhotoBtn").onclick=async()=>{const u=auth.currentUser; if(!u||!selectedProfileBase64)return; await setDoc(doc(db,"users",u.uid),{photoURL:selectedProfileBase64},{merge:true}); $("profilePic").src=selectedProfileBase64; $("profilePreview").style.display="none"; $("uploadPhotoBtn").classList.add("hidden");};
-$("editBtn").onclick=()=>$("editBox").classList.remove("hidden"); $("cancelBtn").onclick=()=>$("editBox").classList.add("hidden"); $("saveBtn").onclick=async()=>{const u=auth.currentUser; const n=$("nameInput").value.trim(); const b=$("bioInput").value.trim(); if(!n)return; await setDoc(doc(db,"users",u.uid),{name:n,bio:b},{merge:true}); $("userName").textContent=n; $("editBox").classList.add("hidden");}; $("logoutBtn").onclick=async()=>await signOut(auth);
-onAuthStateChanged(auth,async u=>{if(u){$("loginScreen").classList.add("hidden");$("app").classList.remove("hidden"); await loadProfile(u); loadPosts(); loadReels(); loadStories(); loadNotifs(u); loadRequests(u); loadFriends(u); loadCouple(u);} else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden");}});
+$("editBtn").onclick=()=>$("editBox").classList.remove("hidden"); $("cancelBtn").onclick=()=>$("editBox").classList.add("hidden"); $("saveBtn").onclick=async()=>{const u=auth.currentUser; const n=$("nameInput").value.trim(); const b=$("bioInput").value.trim(); if(!n)return; await setDoc(doc(db,"users",u.uid),{name:n,bio:b},{merge:true}); $("userName").textContent=n; $("editBox").classList.add("hidden");}; $("logoutBtn").onclick=async()=>{const u=auth.currentUser; if(u){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});} await signOut(auth);};
+onAuthStateChanged(auth,async u=>{
+if(u){
+$("loginScreen").classList.add("hidden");$("app").classList.remove("hidden");
+await loadProfile(u); loadPosts(); loadReels(); loadStories(); loadNotifs(u); loadRequests(u); loadFriends(u); loadCouple(u);
+setInterval(async()=>{try{await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}catch{}},30000);
+document.addEventListener("visibilitychange",async()=>{try{if(document.hidden){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});}else{await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}}catch{}});
+window.addEventListener("beforeunload",()=>{try{navigator.sendBeacon&&navigator.sendBeacon("");}catch{}});
+} else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden");}
+});
 </script>
 </body>
 </html>
