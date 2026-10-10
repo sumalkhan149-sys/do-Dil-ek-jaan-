@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do Dil Ek Jaan ❤️ BOSS Game</title>
+<title>Do Dil Ek Jaan ❤️ 5-Bottom</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;color:#fff;background:#000}
 button,input,textarea,select{font:inherit}button{border:0;border-radius:28px;padding:11px 14px;color:#fff;background:linear-gradient(90deg,#ff3f9f,#a52cff);font-weight:bold;cursor:pointer}
 input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:12px;background:#ffffff12;color:#fff;outline:none;margin:6px 0}
-.app{max-width:500px;min-height:100vh;margin:auto;padding:12px 12px 90px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005);transition:0.3s}
+.app{max-width:500px;min-height:100vh;margin:auto;padding:12px 12px 90px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005)}
 .hidden{display:none!important}.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005)}
 .card,.panel{background:#ffffff0d;border:1px solid #ffffff20;border-radius:20px;padding:14px;margin:8px 0}
 .screen{display:none}.screen.active{display:block}.top-title{font-size:18px;font-weight:bold;margin:6px 0 10px;display:flex;justify-content:space-between;align-items:center}
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:68px;display:flex;justify-content:space-around;align-items:center;background:#140014f5;border-top:1px solid #ffffff20;z-index:10}
-.nav-btn{width:11%;background:none;padding:5px 1px;color:#bdaabd;font-size:6.5px}.nav-btn.active{color:#ff69bd}.nav-icon{display:block;font-size:15px;margin-bottom:1px}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:70px;display:flex;justify-content:space-around;align-items:center;background:#140014f5;border-top:1px solid #ffffff20;z-index:10}
+.nav-btn{width:20%;background:none;padding:5px 1px;color:#bdaabd;font-size:10px}.nav-btn.active{color:#ff69bd}.nav-icon{display:block;font-size:20px;margin-bottom:2px}
 .profile-pic{width:80px;height:80px;object-fit:cover;border-radius:50%;border:3px solid #ff70c8}
 .muted{color:#d8bfd6}.small{font-size:11px;color:#cdb9cb}.code{font-size:20px;letter-spacing:2px;color:#ff69bd;font-weight:bold;text-align:center}.secondary{background:#ffffff20}
-.post-card,.friend-card,.request-card,.notif-card,.setting-card{padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff0b;margin:8px 0}
+.post-card,.friend-card,.request-card,.notif-card{padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff0b;margin:8px 0}
 .notif-card.unread{background:#ff3f9f20;border-color:#ff3f9f50}
 .post-media{width:100%;max-height:320px;object-fit:cover;border-radius:12px;margin-top:8px}.media-preview{width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin:8px 0;display:none;border:1px solid #ffffff20}.media-row{display:flex;gap:6px}
 .post-actions{display:flex;gap:6px;margin-top:8px}.action-btn{flex:1;padding:8px;font-size:12px;background:#ffffff18;border-radius:12px}.action-btn.liked{background:linear-gradient(90deg,#ff3f9f,#a52cff)}
@@ -27,8 +27,8 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 .story-viewer{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:100;display:none;flex-direction:column}.story-viewer.active{display:flex}
 .story-top{position:absolute;top:0;left:0;right:0;padding:14px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#000000cc,transparent);z-index:101}
 .story-bottom{position:absolute;bottom:0;left:0;right:0;padding:14px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(transparent,#000000e0);z-index:101}
-.reels-container{height:calc(100vh - 150px);overflow-y:scroll;scroll-snap-type:y mandatory}
-.reel-item{height:calc(100vh - 160px);scroll-snap-align:start;position:relative;background:#000;border-radius:20px;overflow:hidden;margin:12px 0;border:1px solid #ffffff20}
+.reels-container{height:calc(100vh - 300px);overflow-y:scroll;scroll-snap-type:y mandatory}
+.reel-item{height:calc(100vh - 320px);scroll-snap-align:start;position:relative;background:#000;border-radius:20px;overflow:hidden;margin:12px 0;border:1px solid #ffffff20}
 .reel-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}.reel-overlay{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(transparent,#000000e0);z-index:1}
 .reel-actions{position:absolute;right:10px;bottom:90px;display:flex;flex-direction:column;gap:10px;z-index:2}
 .reel-action-btn{width:46px;height:50px;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#ffffff20;font-size:18px;padding:0}.reel-action-btn span{font-size:8px}
@@ -49,12 +49,11 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 .toggle.on{background:linear-gradient(90deg,#ff3f9f,#a52cff)}
 .toggle::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:0.3s}
 .toggle.on::after{left:21px}
-.game-cell{height:90px;font-size:32px;background:#ffffff18;border-radius:14px;transition:0.2s}
-.game-cell:active{transform:scale(0.95)}
+.game-cell{height:90px;font-size:32px;background:#ffffff18;border-radius:14px}
 </style>
 </head>
 <body>
-<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">Made for Couples - BOSS Game 👑</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
+<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">5-Bottom Clean</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
 <div id="app" class="app hidden">
 <div id="loveOverlay" class="love-overlay"><div id="loveEmoji" style="font-size:90px">💋</div><h1 id="loveText" style="margin-top:12px">I Miss You Jaan! 😘</h1><p id="loveFrom" class="muted">From Your Love</p><button id="closeLoveBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">Aww ❤️ Love You Too</button></div>
 <div id="ringtoneOverlay" class="love-overlay"><div style="font-size:80px">🔔</div><h1 id="ringtoneText" style="margin-top:12px">Your Jaan is Online! ❤️</h1><p id="ringtoneSub" class="muted">Tumhari jaan abhi online aayi hai</p><button id="closeRingtoneBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">❤️ Aww Hi Jaan</button></div>
@@ -73,55 +72,65 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <div class="top-title"><span>Do Dil Ek Jaan ❤️</span><div class="bell" id="bellBtn">🔔<div id="bellBadge" class="bell-badge hidden">0</div></div></div>
 <div class="panel" style="background:linear-gradient(135deg,#ff3f9f30,#a52cff30);border-color:#ff3f9f50;text-align:center">
 <div id="coupleNotLinked">
-<div class="couple-heart">💔</div>
-<h3>Couple Connect Karo 💑</h3>
-<p class="small">Partner ka Friend Code daalo aur Private Space unlock karo</p>
+<div class="couple-heart">💔</div><h3>Couple Connect Karo 💑</h3>
 <div style="display:flex;gap:6px;margin-top:10px"><input id="coupleCodeInput" maxlength="8" placeholder="PARTNER CODE"><button id="linkCoupleBtn" style="width:90px">Link ❤️</button></div>
 <div id="coupleLinkStatus" class="status"></div>
 </div>
 <div id="coupleLinked" class="hidden">
 <div style="display:flex;justify-content:center;align-items:center;gap:10px"><div style="position:relative"><img id="myCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="myOnlineDot" class="online-dot" style="position:absolute;bottom:2px;right:2px"></span></div><div class="couple-heart" style="font-size:26px">❤️</div><div style="position:relative"><img id="partnerCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="partnerOnlineDot" class="offline-dot" style="position:absolute;bottom:2px;right:2px"></span></div></div>
-<h3 id="coupleNames" style="margin-top:8px">You ❤️ Partner</h3>
-<p id="partnerOnlineText" class="small">Checking...</p>
-<div id="anniversaryCountdown" class="countdown">--</div>
-<p id="anniversaryLabel" class="small">Anniversary Countdown</p>
+<h3 id="coupleNames" style="margin-top:8px">You ❤️ Partner</h3><p id="partnerOnlineText" class="small">Checking...</p>
+<div id="anniversaryCountdown" class="countdown">--</div><p id="anniversaryLabel" class="small">Anniversary Countdown</p>
 <div style="display:flex;gap:6px;margin-top:10px"><input id="anniversaryInput" type="date"><button id="saveAnniversaryBtn" style="width:90px" class="secondary">Save 📅</button></div>
-<div style="display:flex;gap:8px;margin-top:12px">
-<button id="missYouBtn" class="love-btn" style="background:linear-gradient(90deg,#ff7eb3,#ff3f9f)">😘 Miss You</button>
-<button id="hugBtn" class="love-btn" style="background:linear-gradient(90deg,#a52cff,#7a2bff)">🤗 Hug</button>
-<button id="kissBtn" class="love-btn" style="background:linear-gradient(90deg,#ff3f9f,#ff0000)">💋 Kiss</button>
-</div>
-<button id="unlinkCoupleBtn" style="margin-top:12px;background:#ff3264;width:100%">💔 Remove Partner / Unlink</button>
-</div>
-</div>
+<div style="display:flex;gap:8px;margin-top:12px"><button id="missYouBtn" class="love-btn" style="background:linear-gradient(90deg,#ff7eb3,#ff3f9f)">😘 Miss You</button><button id="hugBtn" class="love-btn" style="background:linear-gradient(90deg,#a52cff,#7a2bff)">🤗 Hug</button><button id="kissBtn" class="love-btn" style="background:linear-gradient(90deg,#ff3f9f,#ff0000)">💋 Kiss</button></div>
+<button id="unlinkCoupleBtn" style="margin-top:12px;background:#ff3264;width:100%">💔 Unlink</button>
+</div></div>
 <div class="panel" style="padding:10px"><div class="stories-bar" id="storiesBar"><div class="story-item story-add" id="addStoryItem"><div class="story-ring" style="background:#ffffff20"><span style="font-size:28px">+</span></div><div class="story-name">Your Story</div></div></div><input id="storyInput" type="file" accept="image/*,video/*" class="hidden"><div id="storyStatus" class="status"></div></div>
 <div class="panel"><h2 id="homeWelcome">Welcome! 💕</h2></div>
 </section>
 
 <section id="coupleScreen" class="screen"><div class="top-title">💑 Our Private Space 🔐</div>
-<div class="panel" style="text-align:center;background:linear-gradient(135deg,#ff3f9f40,#7a2bff40)"><h3>🎮 BOSS Game 👑</h3><p class="small">Jeeto aur BOSS bano 😎</p><button id="playGameBtn" style="margin-top:8px">❤️ Play Tic-Tac-Toe 👑</button></div>
-<div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me jake Partner ko Link karo</p></div><div id="coupleHasLink" class="hidden"><div class="panel private-post"><h3>🔐 Sirf Tum Dono Ke Liye</h3><textarea id="privatePostText" rows="3" placeholder="Aaj ka secret yaad... ❤️"></textarea><input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview"><div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div><button id="publishPrivateBtn">💌 Private Post Karo</button><div id="privatePostStatus" class="status"></div></div><div id="privateFeed"></div><div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div></div></section>
+<div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me Partner Link karo</p></div><div id="coupleHasLink" class="hidden"><div class="panel private-post"><h3>🔐 Sirf Tum Dono</h3><textarea id="privatePostText" rows="3" placeholder="Secret... ❤️"></textarea><input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview"><div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div><button id="publishPrivateBtn">💌 Post Karo</button><div id="privatePostStatus" class="status"></div></div><div id="privateFeed"></div><div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div></div></section>
 
 <section id="gameScreen" class="screen">
 <div class="top-title">🎮 BOSS Battle 👑 <button id="closeGameBtn" class="secondary" style="width:auto;padding:8px 14px">← Back</button></div>
 <div class="panel" style="text-align:center;background:linear-gradient(135deg,#ff3f9f20,#7a2bff20)">
 <div id="gameStatus" style="font-size:18px;font-weight:bold;margin-bottom:6px">Loading...</div>
-<div id="bossText" style="font-size:26px;font-weight:bold;color:#ff69bd;display:none;margin:10px 0;text-shadow:0 0 15px #ff3f9f"></div>
+<div id="bossText" style="font-size:26px;font-weight:bold;color:#ff69bd;display:none;margin:10px 0"></div>
 <div id="ticBoard" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:15px auto">
 <button class="game-cell" data-i="0"></button><button class="game-cell" data-i="1"></button><button class="game-cell" data-i="2"></button>
 <button class="game-cell" data-i="3"></button><button class="game-cell" data-i="4"></button><button class="game-cell" data-i="5"></button>
 <button class="game-cell" data-i="6"></button><button class="game-cell" data-i="7"></button><button class="game-cell" data-i="8"></button>
 </div>
-<div style="display:flex;gap:8px"><button id="resetGameBtn" class="secondary" style="flex:1">🔄 New Game</button><button id="exitGameBtn" class="secondary" style="flex:1;background:#ff326430">Exit</button></div>
-<p class="small" style="margin-top:10px">Tum = ❤️ | Partner = 💜</p>
+<div style="display:flex;gap:8px"><button id="resetGameBtn" class="secondary" style="flex:1">🔄 New</button><button id="exitGameBtn" class="secondary" style="flex:1;background:#ff326430">Exit</button></div>
 </div>
 </section>
 
-<section id="postsScreen" class="screen"><div class="top-title">📝 Posts</div><div class="panel"><textarea id="postText" rows="3" placeholder="Kya haal hai? ✨"></textarea><input id="postMediaInput" type="file" accept="image/*" class="hidden"><img id="mediaPreviewImg" class="media-preview"><div class="media-row"><button id="selectMediaBtn" class="secondary">📷 Photo</button><button id="removeMediaBtn" class="secondary hidden">❌</button></div><button id="publishPostBtn">Post Karo</button><div id="postStatus" class="status"></div></div><div id="postsFeed"></div></section>
-<section id="reelsScreen" class="screen"><div class="top-title">🎬 Reels</div><div class="panel"><textarea id="reelCaption" rows="2" placeholder="Caption..."></textarea><input id="reelInput" type="file" accept="video/*" class="hidden"><video id="reelPreview" class="media-preview" controls></video><div class="media-row"><button id="selectReelBtn" class="secondary">🎥 Select Reel</button><button id="removeReelBtn" class="secondary hidden">❌</button></div><button id="publishReelBtn">Upload Reel</button><div id="reelStatus" class="status"></div></div><div id="reelsFeed" class="reels-container"></div></section>
-<section id="friendsScreen" class="screen"><div class="top-title">👥 Friends</div><div class="panel"><div id="myFriendCode" class="code">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div><div class="panel"><h2>Requests</h2><div id="requestList"></div></div><div class="panel"><h2>Friends</h2><div id="friendsList"></div></div><div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search</button><div id="friendResult"></div></div></section>
-<section id="chatScreen" class="screen"><div class="top-title">💬 Chat</div><div id="privateChatHeader" class="panel hidden"><div id="privateFriendName" style="font-weight:bold">Friend</div><button id="backToFriendsBtn" class="secondary" style="margin-top:6px">← Back</button></div><div id="chatBox" style="height:50vh;overflow-y:auto;padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff08;margin:10px 0"></div><div style="display:flex;gap:6px"><input id="chatInput" placeholder="Message..."><button id="sendBtn" style="width:70px">Send</button></div></section>
-<section id="profileScreen" class="screen"><div class="top-title">👤 Profile</div><div class="panel" style="text-align:center"><img id="profilePic" class="profile-pic"><input id="photoInput" type="file" accept="image/*" class="hidden"><img id="profilePreview" class="media-preview" style="margin:8px auto;max-width:200px"><button id="changePhotoBtn" class="secondary">Select Photo</button><button id="uploadPhotoBtn" class="hidden">Upload</button><h2 id="userName">User</h2><p id="userEmail" class="small"></p><div id="editBox" class="hidden"><input id="nameInput"><textarea id="bioInput" rows="2"></textarea><button id="saveBtn">Save</button><button id="cancelBtn" class="secondary">Cancel</button></div><button id="editBtn" class="secondary">Edit</button><button id="openSettingsBtn" class="secondary">⚙️ Settings</button><button id="logoutBtn" class="secondary" style="background:#ff3264">Logout</button></div></section>
+<section id="friendsScreen" class="screen">
+<div class="top-title">👥 Social Hub</div>
+<div style="display:flex;gap:6px;margin-bottom:10px">
+<button id="tabFriendsBtn" class="secondary" style="flex:1;background:linear-gradient(90deg,#ff3f9f,#a52cff)">👥 Friends</button>
+<button id="tabChatBtn" class="secondary" style="flex:1">💬 Chats</button>
+<button id="tabFeedBtn" class="secondary" style="flex:1">📝 Feeds</button>
+</div>
+<div id="friendsTab">
+<div class="panel"><div id="myFriendCode" class="code">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div>
+<div class="panel"><h2>Requests</h2><div id="requestList"></div></div>
+<div class="panel"><h2>Friends</h2><div id="friendsList"></div></div>
+<div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search</button><div id="friendResult"></div></div>
+</div>
+<div id="chatTab" class="hidden">
+<div id="privateChatHeader" class="panel hidden"><div id="privateFriendName" style="font-weight:bold">Friend</div><button id="backToFriendsBtn" class="secondary" style="margin-top:6px">← Back</button></div>
+<div id="chatBox" style="height:45vh;overflow-y:auto;padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff08;margin:10px 0"></div>
+<div style="display:flex;gap:6px"><input id="chatInput" placeholder="Message..."><button id="sendBtn" style="width:70px">Send</button></div>
+</div>
+<div id="feedTab" class="hidden">
+<div style="display:flex;gap:6px;margin-bottom:8px"><button id="feedPostBtn" class="secondary" style="flex:1;background:#ff3f9f">📝 Posts</button><button id="feedReelBtn" class="secondary" style="flex:1">🎬 Reels</button></div>
+<div id="feedPostsDiv"><div class="panel"><textarea id="postText" rows="3" placeholder="Kya haal hai? ✨"></textarea><input id="postMediaInput" type="file" accept="image/*" class="hidden"><img id="mediaPreviewImg" class="media-preview"><div class="media-row"><button id="selectMediaBtn" class="secondary">📷 Photo</button><button id="removeMediaBtn" class="secondary hidden">❌</button></div><button id="publishPostBtn">Post Karo</button><div id="postStatus" class="status"></div></div><div id="postsFeed"></div></div>
+<div id="feedReelsDiv" class="hidden"><div class="panel"><textarea id="reelCaption" rows="2" placeholder="Caption..."></textarea><input id="reelInput" type="file" accept="video/*" class="hidden"><video id="reelPreview" class="media-preview" controls></video><div class="media-row"><button id="selectReelBtn" class="secondary">🎥 Select Reel</button><button id="removeReelBtn" class="secondary hidden">❌</button></div><button id="publishReelBtn">Upload Reel</button><div id="reelStatus" class="status"></div></div><div id="reelsFeed" class="reels-container"></div></div>
+</div>
+</section>
+
+<section id="profileScreen" class="screen"><div class="top-title">👤 You</div><div class="panel" style="text-align:center"><img id="profilePic" class="profile-pic"><input id="photoInput" type="file" accept="image/*" class="hidden"><img id="profilePreview" class="media-preview" style="margin:8px auto;max-width:200px"><button id="changePhotoBtn" class="secondary">Select Photo</button><button id="uploadPhotoBtn" class="hidden">Upload</button><h2 id="userName">User</h2><p id="userEmail" class="small"></p><div id="editBox" class="hidden"><input id="nameInput"><textarea id="bioInput" rows="2"></textarea><button id="saveBtn">Save</button><button id="cancelBtn" class="secondary">Cancel</button></div><button id="editBtn" class="secondary">Edit</button><button id="openSettingsBtn" class="secondary">⚙️ Settings</button><button id="logoutBtn" class="secondary" style="background:#ff3264">Logout</button></div></section>
 
 <section id="settingsScreen" class="screen">
 <div class="top-title">⚙️ Settings <button id="closeSettingsBtn" class="secondary" style="width:auto;padding:8px 14px">← Back</button></div>
@@ -132,34 +141,18 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <div class="setting-row"><span>Vibration</span><div id="toggleVibration" class="toggle on"></div></div>
 <button id="testRingtoneBtn" class="secondary" style="margin-top:8px">🎵 Test Ringtone</button>
 </div>
-<div class="panel"><h3>👁️ Privacy</h3>
-<div class="setting-row"><span>Private Account</span><div id="togglePrivate" class="toggle"></div></div>
-<div class="setting-row"><span>Hide Online Status</span><div id="toggleHideOnline" class="toggle"></div></div>
-</div>
-<div class="panel"><h3>🎨 Theme</h3>
-<select id="themeSelect"><option value="love">💜 Love (Default)</option><option value="dark">🖤 Dark Black</option><option value="sunset">🌅 Sunset Orange</option><option value="ocean">🌊 Ocean Blue</option></select>
-</div>
-<div class="panel"><h3>💾 Data & Storage</h3>
-<button id="clearChatBtn" class="secondary" style="background:#ff980030">🗑️ Clear All Chats</button>
-<button id="clearPrivateBtn" class="secondary" style="background:#ff980030;margin-top:8px">🗑️ Clear Private Space</button>
-<button id="clearNotifSettingBtn" class="secondary" style="background:#ff980030;margin-top:8px">🔔 Clear Notifications</button>
-</div>
-<div class="panel"><h3>⚠️ Danger</h3>
-<button id="settingsUnlinkBtn" style="background:#ff3264;width:100%">💔 Remove Partner</button>
-<button id="deleteAccountBtn" style="background:#000;border:1px solid #ff3264;margin-top:8px;width:100%">❌ Delete Account</button>
-</div>
+<div class="panel"><h3>👁️ Privacy</h3><div class="setting-row"><span>Private Account</span><div id="togglePrivate" class="toggle"></div></div><div class="setting-row"><span>Hide Online Status</span><div id="toggleHideOnline" class="toggle"></div></div></div>
+<div class="panel"><h3>🎨 Theme</h3><select id="themeSelect"><option value="love">💜 Love</option><option value="dark">🖤 Dark</option><option value="sunset">🌅 Sunset</option><option value="ocean">🌊 Ocean</option></select></div>
+<div class="panel"><h3>💾 Data</h3><button id="clearChatBtn" class="secondary" style="background:#ff980030">🗑️ Clear Chats</button><button id="clearPrivateBtn" class="secondary" style="background:#ff980030;margin-top:8px">🗑️ Clear Private</button><button id="clearNotifSettingBtn" class="secondary" style="background:#ff980030;margin-top:8px">🔔 Clear Notifications</button></div>
+<div class="panel"><h3>⚠️ Danger</h3><button id="settingsUnlinkBtn" style="background:#ff3264;width:100%">💔 Remove Partner</button><button id="deleteAccountBtn" style="background:#000;border:1px solid #ff3264;margin-top:8px;width:100%">❌ Delete Account</button></div>
 </section>
 
 <nav class="bottom-nav">
 <button class="nav-btn active" data-screen="homeScreen"><span class="nav-icon">🏠</span>Home</button>
 <button class="nav-btn" data-screen="coupleScreen"><span class="nav-icon">💑</span>Us</button>
 <button class="nav-btn" data-screen="gameScreen"><span class="nav-icon">🎮</span>Game</button>
-<button class="nav-btn" data-screen="postsScreen"><span class="nav-icon">📝</span>Posts</button>
-<button class="nav-btn" data-screen="reelsScreen"><span class="nav-icon">🎬</span>Reels</button>
-<button class="nav-btn" data-screen="friendsScreen"><span class="nav-icon">👥</span>Friends</button>
-<button class="nav-btn" data-screen="chatScreen"><span class="nav-icon">💬</span>Chat</button>
-<button class="nav-btn" data-screen="profileScreen"><span class="nav-icon">👤</span>Profile</button>
-<button class="nav-btn" data-screen="settingsScreen"><span class="nav-icon">⚙️</span>Set</button>
+<button class="nav-btn" data-screen="friendsScreen"><span class="nav-icon">👥</span>Social</button>
+<button class="nav-btn" data-screen="profileScreen"><span class="nav-icon">👤</span>You</button>
 </nav>
 </div>
 <script type="module">
@@ -174,7 +167,7 @@ let selectedPostBase64=null, selectedReelBase64=null, selectedProfileBase64=null
 let settings={ringtone:true, likeNotif:true, commentNotif:true, vibration:true, privateAcc:false, hideOnline:false, theme:"love"};
 const safe=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const code=()=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";return Array.from({length:8},()=>c[Math.floor(Math.random()*c.length)]).join("")};
-function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav-btn").forEach(b=>{if(["homeScreen","coupleScreen","gameScreen","friendsScreen","profileScreen","settingsScreen"].includes(b.dataset.screen)) b.classList.toggle("active",b.dataset.screen===id||(id==="settingsScreen"&&b.dataset.screen==="profileScreen"));});}
 document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>showScreen(b.dataset.screen)));
 function chatId(a,b){return [a,b].sort().join("_")} function reqId(a,b){return a+"_"+b}
 getRedirectResult(auth).catch(()=>{});
@@ -182,238 +175,37 @@ $("loginBtn").onclick=async()=>{try{const mob=/Android|iPhone/i.test(navigator.u
 function loadLocalSettings(){try{const s=localStorage.getItem("dd_settings"); if(s) settings={...settings,...JSON.parse(s)};}catch{} applySettingsUI();}
 function saveLocalSettings(){localStorage.setItem("dd_settings",JSON.stringify(settings));}
 function applySettingsUI(){
-$("toggleRingtone").className="toggle"+(settings.ringtone?" on":"");
-$("toggleLikeNotif").className="toggle"+(settings.likeNotif?" on":"");
-$("toggleCommentNotif").className="toggle"+(settings.commentNotif?" on":"");
-$("toggleVibration").className="toggle"+(settings.vibration?" on":"");
-$("togglePrivate").className="toggle"+(settings.privateAcc?" on":"");
-$("toggleHideOnline").className="toggle"+(settings.hideOnline?" on":"");
-$("themeSelect").value=settings.theme;
-const appEl=$("app");
-if(settings.theme==="dark") appEl.style.background="radial-gradient(circle at top,#222,#000 70%)";
-else if(settings.theme==="sunset") appEl.style.background="radial-gradient(circle at top,#ff6a00,#58145b 60%,#000)";
-else if(settings.theme==="ocean") appEl.style.background="radial-gradient(circle at top,#00c6ff,#0052D4 60%,#000)";
-else appEl.style.background="radial-gradient(circle at top,#58145b,#180018 55%,#050005)";
+$("toggleRingtone").className="toggle"+(settings.ringtone?" on":""); $("toggleLikeNotif").className="toggle"+(settings.likeNotif?" on":""); $("toggleCommentNotif").className="toggle"+(settings.commentNotif?" on":""); $("toggleVibration").className="toggle"+(settings.vibration?" on":""); $("togglePrivate").className="toggle"+(settings.privateAcc?" on":""); $("toggleHideOnline").className="toggle"+(settings.hideOnline?" on":""); $("themeSelect").value=settings.theme;
+const appEl=$("app"); if(settings.theme==="dark") appEl.style.background="radial-gradient(circle at top,#222,#000 70%)"; else if(settings.theme==="sunset") appEl.style.background="radial-gradient(circle at top,#ff6a00,#58145b 60%,#000)"; else if(settings.theme==="ocean") appEl.style.background="radial-gradient(circle at top,#00c6ff,#0052D4 60%,#000)"; else appEl.style.background="radial-gradient(circle at top,#58145b,#180018 55%,#050005)";
 }
-async function loadProfile(u){
-const r=doc(db,"users",u.uid);let s=await getDoc(r);
-if(!s.exists()){
-await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),isOnline:true,lastSeen:serverTimestamp(),privateAccount:false,createdAt:serverTimestamp()}); s=await getDoc(r);
-}else{
-const hide=settings.hideOnline;
-await setDoc(r,{isOnline:!hide,lastSeen:serverTimestamp()},{merge:true});
-}
-const d=s.data();
-$("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤";
-if(d.privateAccount!==undefined) {settings.privateAcc=d.privateAccount; saveLocalSettings(); applySettingsUI();}
-}
-async function sendNotif(toUid, type, text, refId){
-if(!settings.likeNotif && type.includes("like")) return;
-if(!settings.commentNotif && type.includes("comment")) return;
-const u=auth.currentUser; if(!u||toUid===u.uid) return; try{await addDoc(collection(db,"notifications"),{toUid:toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",fromPhoto:$("profilePic").src||"",type:type,text:text,refId:refId||"",read:false,createdAt:serverTimestamp()});}catch(e){}
-}
-function loadNotifs(u){
-if(notifUnsub)notifUnsub();
-notifUnsub=onSnapshot(query(collection(db,"notifications"),where("toUid","==",u.uid),orderBy("createdAt","desc")),snap=>{
-let unread=0; let loveNotif=null; $("notifList").innerHTML=""; if(snap.empty){$("notifList").innerHTML="<p class=muted style=padding:20px>No notifications 🔔</p>";} snap.forEach(d=>{
-const n=d.data(); if(!n.read) unread++;
-if(["miss_you","hug","kiss"].includes(n.type) &&!n.read){loveNotif=n;}
-const icon={like_post:"❤️",like_reel:"❤️",like_story:"❤️",comment_post:"💬",comment_reel:"💬",follow_request:"👥",follow_accept:"✅",miss_you:"😘",hug:"🤗",kiss:"💋",private_post:"💌"}[n.type]||"🔔";
-const el=document.createElement("div"); el.className="notif-card"+(n.read?"":" unread");
-el.innerHTML=`<div style="display:flex;gap:10px;align-items:center"><div style="font-size:22px">${icon}</div><div style="flex:1"><b>${safe(n.fromName||"User")}</b><div class="small">${safe(n.text||"")}</div><div class="small" style="opacity:0.6">${n.createdAt?.toDate? n.createdAt.toDate().toLocaleString() : "Just now"}</div></div></div>`;
-el.onclick=async()=>{await updateDoc(doc(db,"notifications",d.id),{read:true}); if(["miss_you","hug","kiss"].includes(n.type)){showLoveOverlay(n.type,n.fromName);}};
-$("notifList").append(el);
-});
-if(loveNotif){showLoveOverlay(loveNotif.type,loveNotif.fromName);}
-const badge=$("bellBadge"); if(unread>0){badge.textContent=unread>99?"99+":unread; badge.classList.remove("hidden");} else {badge.classList.add("hidden");}
-});
-}
-$("bellBtn").onclick=()=>{$("notifScreen").classList.add("active");};
-$("closeNotifBtn").onclick=()=>{$("notifScreen").classList.remove("active");};
-$("markAllReadBtn").onclick=async()=>{const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await updateDoc(doc(db,"notifications",d.id),{read:true});});};
-$("clearNotifBtn").onclick=async()=>{if(!confirm("Clear all?"))return; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await deleteDoc(doc(db,"notifications",d.id));});};
-function showLoveOverlay(type, fromName){
-const map={miss_you:{emoji:"😘",text:`${fromName} Misses You So Much! 😘`},hug:{emoji:"🤗",text:`${fromName} Sent You A Tight Hug! 🤗`},kiss:{emoji:"💋",text:`${fromName} Sent You A Kiss! 💋`}};
-const m=map[type]||map.miss_you;
-$("loveEmoji").textContent=m.emoji; $("loveText").textContent=m.text; $("loveFrom").textContent="From "+fromName+" ❤️";
-$("loveOverlay").classList.add("active");
-playRingtone(true);
-}
+async function loadProfile(u){const r=doc(db,"users",u.uid);let s=await getDoc(r); if(!s.exists()){await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),isOnline:true,lastSeen:serverTimestamp(),privateAccount:false,createdAt:serverTimestamp()}); s=await getDoc(r);}else{const hide=settings.hideOnline; await setDoc(r,{isOnline:!hide,lastSeen:serverTimestamp()},{merge:true});} const d=s.data(); $("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; if(d.privateAccount!==undefined) {settings.privateAcc=d.privateAccount; saveLocalSettings(); applySettingsUI();}}
+async function sendNotif(toUid, type, text, refId){if(!settings.likeNotif && type.includes("like")) return; if(!settings.commentNotif && type.includes("comment")) return; const u=auth.currentUser; if(!u||toUid===u.uid) return; try{await addDoc(collection(db,"notifications"),{toUid:toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",fromPhoto:$("profilePic").src||"",type:type,text:text,refId:refId||"",read:false,createdAt:serverTimestamp()});}catch(e){}}
+function loadNotifs(u){if(notifUnsub)notifUnsub(); notifUnsub=onSnapshot(query(collection(db,"notifications"),where("toUid","==",u.uid),orderBy("createdAt","desc")),snap=>{let unread=0; let loveNotif=null; $("notifList").innerHTML=""; if(snap.empty){$("notifList").innerHTML="<p class=muted style=padding:20px>No notifications 🔔</p>";} snap.forEach(d=>{const n=d.data(); if(!n.read) unread++; if(["miss_you","hug","kiss"].includes(n.type) &&!n.read){loveNotif=n;} const icon={like_post:"❤️",like_reel:"❤️",like_story:"❤️",comment_post:"💬",comment_reel:"💬",follow_request:"👥",follow_accept:"✅",miss_you:"😘",hug:"🤗",kiss:"💋",private_post:"💌"}[n.type]||"🔔"; const el=document.createElement("div"); el.className="notif-card"+(n.read?"":" unread"); el.innerHTML=`<div style="display:flex;gap:10px;align-items:center"><div style="font-size:22px">${icon}</div><div style="flex:1"><b>${safe(n.fromName||"User")}</b><div class="small">${safe(n.text||"")}</div><div class="small" style="opacity:0.6">${n.createdAt?.toDate? n.createdAt.toDate().toLocaleString() : "Just now"}</div></div></div>`; el.onclick=async()=>{await updateDoc(doc(db,"notifications",d.id),{read:true}); if(["miss_you","hug","kiss"].includes(n.type)){showLoveOverlay(n.type,n.fromName);}}; $("notifList").append(el);}); if(loveNotif){showLoveOverlay(loveNotif.type,loveNotif.fromName);} const badge=$("bellBadge"); if(unread>0){badge.textContent=unread>99?"99+":unread; badge.classList.remove("hidden");} else {badge.classList.add("hidden");}});}
+$("bellBtn").onclick=()=>{$("notifScreen").classList.add("active");}; $("closeNotifBtn").onclick=()=>{$("notifScreen").classList.remove("active");}; $("markAllReadBtn").onclick=async()=>{const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await updateDoc(doc(db,"notifications",d.id),{read:true});});}; $("clearNotifBtn").onclick=async()=>{if(!confirm("Clear all?"))return; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await deleteDoc(doc(db,"notifications",d.id));});};
+function showLoveOverlay(type, fromName){const map={miss_you:{emoji:"😘",text:`${fromName} Misses You So Much! 😘`},hug:{emoji:"🤗",text:`${fromName} Sent You A Tight Hug! 🤗`},kiss:{emoji:"💋",text:`${fromName} Sent You A Kiss! 💋`}}; const m=map[type]||map.miss_you; $("loveEmoji").textContent=m.emoji; $("loveText").textContent=m.text; $("loveFrom").textContent="From "+fromName+" ❤️"; $("loveOverlay").classList.add("active"); playRingtone(true);}
 $("closeLoveBtn").onclick=()=>{$("loveOverlay").classList.remove("active");};
-function playRingtone(isLove=false){
-if(!settings.ringtone) return;
-try{
-const ctx=new (window.AudioContext||window.webkitAudioContext)();
-const now=ctx.currentTime;
-function tone(freq,start,dur){
-const o=ctx.createOscillator(); const g=ctx.createGain();
-o.type="sine"; o.frequency.value=freq; o.connect(g); g.connect(ctx.destination);
-g.gain.setValueAtTime(0,now+start); g.gain.linearRampToValueAtTime(0.6,now+start+0.05); g.gain.exponentialRampToValueAtTime(0.001,now+start+dur);
-o.start(now+start); o.stop(now+start+dur);
-}
-if(isLove){tone(523.25,0,0.5); tone(659.25,0.15,0.5); tone(783.99,0.3,0.8);}else{tone(659.25,0,0.4); tone(783.99,0.2,0.4); tone(1046.5,0.4,0.8);}
-}catch(e){}
-if(settings.vibration && navigator.vibrate) navigator.vibrate([150,80,150,80,300]);
-}
-$("testRingtoneBtn").onclick=()=>playRingtone(false);
-$("closeRingtoneBtn").onclick=()=>{$("ringtoneOverlay").classList.remove("active");};
-function showRingtonePopup(name){
-if(!settings.ringtone) return;
-$("ringtoneText").textContent=`${name} is Online! ❤️`;
-$("ringtoneSub").textContent=`${name} abhi online aayi hai, jaldi message karo 😘`;
-$("ringtoneOverlay").classList.add("active");
-playRingtone(false);
-}
-// COUPLE
-$("linkCoupleBtn").onclick=async()=>{
-const c=$("coupleCodeInput").value.trim().toUpperCase(); const me=auth.currentUser; if(c.length!==8)return;
-$("coupleLinkStatus").textContent="Linking...";
-const snap=await getDocs(query(collection(db,"users"),where("friendCode","==",c)));
-if(snap.empty){$("coupleLinkStatus").textContent="Code not found"; return;}
-const partner=snap.docs[0]; if(partner.id===me.uid){$("coupleLinkStatus").textContent="Apna code nahi"; return;}
-const cid=[me.uid,partner.id].sort().join("_");
-const existing=await getDoc(doc(db,"couples",cid));
-if(!existing.exists()){
-await setDoc(doc(db,"couples",cid),{members:[me.uid,partner.id],uid1:me.uid,uid2:partner.id,name1:$("userName").textContent, name2:partner.data().name||"Partner",photo1:$("profilePic").src,photo2:partner.data().photoURL||"",anniversaryDate:null,createdAt:serverTimestamp()});
-}
-$("coupleLinkStatus").textContent="Linked ❤️";
-await setDoc(doc(db,"users",me.uid),{coupleId:cid,partnerUid:partner.id},{merge:true});
-await setDoc(doc(db,"users",partner.id),{coupleId:cid,partnerUid:me.uid},{merge:true});
-};
-function loadCouple(u){
-if(coupleUnsub)coupleUnsub();
-coupleUnsub=onSnapshot(doc(db,"users",u.uid),async snap=>{
-const data=snap.data(); if(!data?.coupleId){$("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden"); if(partnerPresenceUnsub){partnerPresenceUnsub(); partnerPresenceUnsub=null;} return;}
-myCoupleId=data.coupleId; partnerUid=data.partnerUid;
-const cSnap=await getDoc(doc(db,"couples",myCoupleId));
-if(!cSnap.exists()){
-await setDoc(doc(db,"users",u.uid),{coupleId:null,partnerUid:null},{merge:true});
-$("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden");
-return;}
-const c=cSnap.data();
-$("coupleNotLinked").classList.add("hidden"); $("coupleLinked").classList.remove("hidden"); $("coupleNeedLink").classList.add("hidden"); $("coupleHasLink").classList.remove("hidden");
-const isUid1=u.uid===c.uid1;
-$("coupleNames").textContent=(isUid1?c.name1:c.name2)+" ❤️ "+(isUid1?c.name2:c.name1);
-$("myCouplePic").src=isUid1?c.photo1:c.photo2||$("profilePic").src;
-$("partnerCouplePic").src=isUid1?c.photo2:c.photo1||"https://placehold.co/100x100/58145b/fff?text=❤";
-if(c.anniversaryDate){$("anniversaryInput").value=c.anniversaryDate; updateCountdown(c.anniversaryDate);}
-loadPrivatePosts(myCoupleId);
-loadLoveHistory(myCoupleId);
-loadPartnerPresence();
-});
-}
-function loadPartnerPresence(){
-if(!partnerUid) return;
-if(partnerPresenceUnsub) partnerPresenceUnsub();
-partnerPresenceUnsub=onSnapshot(doc(db,"users",partnerUid),snap=>{
-if(!snap.exists()) return;
-const d=snap.data();
-const online=d.isOnline===true;
-const dot=$("partnerOnlineDot");
-const txt=$("partnerOnlineText");
-if(online){dot.className="online-dot"; txt.textContent=`🟢 Online now ❤️`; if(!lastPartnerOnline){showRingtonePopup(d.name||"Your Jaan");} lastPartnerOnline=true;}
-else {dot.className="offline-dot"; const last=d.lastSeen?.toDate? d.lastSeen.toDate().toLocaleTimeString() : ""; txt.textContent=`⚪ Offline - last seen ${last}`; lastPartnerOnline=false;}
-});
-}
-function updateCountdown(dateStr){
-if(!dateStr){$("anniversaryCountdown").textContent="--"; return;}
-const ann=new Date(dateStr); const now=new Date(); let next=new Date(ann); next.setFullYear(now.getFullYear()); if(next<now) next.setFullYear(now.getFullYear()+1);
-const diff=next-now; const days=Math.ceil(diff/(1000*60*60*24));
-$("anniversaryCountdown").textContent=days+" days ❤️";
-$("anniversaryLabel").textContent=days===0?"Today is Anniversary! 🎉":"Anniversary Countdown - "+next.toLocaleDateString();
-}
-$("saveAnniversaryBtn").onclick=async()=>{
-const d=$("anniversaryInput").value; if(!d||!myCoupleId)return;
-await updateDoc(doc(db,"couples",myCoupleId),{anniversaryDate:d});
-updateCountdown(d);
-sendNotif(partnerUid,"private_post",`saved anniversary date 📅 ${d}`, myCoupleId);
-alert("Anniversary saved ❤️");
-};
-async function unlinkCouple(){
-if(!confirm("💔 Pakka partner ko hatana hai?")) return;
-if(!myCoupleId) return;
-try{
-const u=auth.currentUser;
-await setDoc(doc(db,"users",u.uid),{coupleId:null,partnerUid:null},{merge:true});
-if(partnerUid){try{await setDoc(doc(db,"users",partnerUid),{coupleId:null,partnerUid:null},{merge:true});}catch(e){}}
-try{await deleteDoc(doc(db,"couples",myCoupleId));}catch(e){}
-myCoupleId=null; partnerUid=null;
-$("coupleNotLinked").classList.remove("hidden");
-$("coupleLinked").classList.add("hidden");
-$("coupleNeedLink").classList.remove("hidden");
-$("coupleHasLink").classList.add("hidden");
-if(partnerPresenceUnsub){partnerPresenceUnsub(); partnerPresenceUnsub=null;}
-alert("Partner removed 💔");
-}catch(e){alert(e.message);}
-}
-$("unlinkCoupleBtn").onclick=unlinkCouple;
-$("settingsUnlinkBtn").onclick=unlinkCouple;
-$("missYouBtn").onclick=()=>sendLove("miss_you","Misses you so much! 😘 I Miss You Jaan!");
-$("hugBtn").onclick=()=>sendLove("hug","Sent you a tight hug! 🤗");
-$("kissBtn").onclick=()=>sendLove("kiss","Sent you a kiss! 💋 Muahhh!");
-async function sendLove(type, text){
-if(!myCoupleId||!partnerUid){alert("Pehle partner link karo"); return;}
-const u=auth.currentUser;
-await addDoc(collection(db,"couples",myCoupleId,"loves"),{fromUid:u.uid,fromName:$("userName").textContent,type:type,text:text,createdAt:serverTimestamp()});
-await sendNotif(partnerUid,type,text,myCoupleId);
-playRingtone(true);
-alert("Sent ❤️ "+type);
-}
-function loadLoveHistory(cid){
-if(loveUnsub)loveUnsub();
-loveUnsub=onSnapshot(query(collection(db,"couples",cid,"loves"),orderBy("createdAt","desc")),snap=>{
-$("loveHistory").innerHTML=""; if(snap.empty){$("loveHistory").innerHTML="<p class=small>No love yet, start sending 😘</p>"; return;}
-snap.forEach(d=>{const l=d.data(); const el=document.createElement("div"); el.className="notif-card"; const icon={miss_you:"😘",hug:"🤗",kiss:"💋"}[l.type]||"❤️"; el.innerHTML=`<b>${icon} ${safe(l.fromName)}</b> <span class=small>${safe(l.text)}</span><div class=small style=opacity:0.6>${l.createdAt?.toDate? l.createdAt.toDate().toLocaleString():"Just now"}</div>`; $("loveHistory").append(el);});
-});
-}
-$("selectPrivateMediaBtn").onclick=()=>$("privateMediaInput").click();
-$("removePrivateMediaBtn").onclick=()=>{selectedPrivateBase64=null; $("privateMediaInput").value=""; $("privatePreviewImg").style.display="none"; $("removePrivateMediaBtn").classList.add("hidden");};
+function playRingtone(isLove=false){if(!settings.ringtone) return; try{const ctx=new (window.AudioContext||window.webkitAudioContext)(); const now=ctx.currentTime; function tone(freq,start,dur){const o=ctx.createOscillator(); const g=ctx.createGain(); o.type="sine"; o.frequency.value=freq; o.connect(g); g.connect(ctx.destination); g.gain.setValueAtTime(0,now+start); g.gain.linearRampToValueAtTime(0.6,now+start+0.05); g.gain.exponentialRampToValueAtTime(0.001,now+start+dur); o.start(now+start); o.stop(now+start+dur);} if(isLove){tone(523.25,0,0.5); tone(659.25,0.15,0.5); tone(783.99,0.3,0.8);}else{tone(659.25,0,0.4); tone(783.99,0.2,0.4); tone(1046.5,0.4,0.8);}}catch(e){} if(settings.vibration && navigator.vibrate) navigator.vibrate([150,80,150,80,300]);}
+$("testRingtoneBtn").onclick=()=>playRingtone(false); $("closeRingtoneBtn").onclick=()=>{$("ringtoneOverlay").classList.remove("active");};
+function showRingtonePopup(name){if(!settings.ringtone) return; $("ringtoneText").textContent=`${name} is Online! ❤️`; $("ringtoneSub").textContent=`${name} abhi online aayi hai 😘`; $("ringtoneOverlay").classList.add("active"); playRingtone(false);}
+$("linkCoupleBtn").onclick=async()=>{const c=$("coupleCodeInput").value.trim().toUpperCase(); const me=auth.currentUser; if(c.length!==8)return; $("coupleLinkStatus").textContent="Linking..."; const snap=await getDocs(query(collection(db,"users"),where("friendCode","==",c))); if(snap.empty){$("coupleLinkStatus").textContent="Code not found"; return;} const partner=snap.docs[0]; if(partner.id===me.uid){$("coupleLinkStatus").textContent="Apna code nahi"; return;} const cid=[me.uid,partner.id].sort().join("_"); const existing=await getDoc(doc(db,"couples",cid)); if(!existing.exists()){await setDoc(doc(db,"couples",cid),{members:[me.uid,partner.id],uid1:me.uid,uid2:partner.id,name1:$("userName").textContent, name2:partner.data().name||"Partner",photo1:$("profilePic").src,photo2:partner.data().photoURL||"",anniversaryDate:null,createdAt:serverTimestamp()});} $("coupleLinkStatus").textContent="Linked ❤️"; await setDoc(doc(db,"users",me.uid),{coupleId:cid,partnerUid:partner.id},{merge:true}); await setDoc(doc(db,"users",partner.id),{coupleId:cid,partnerUid:me.uid},{merge:true});};
+function loadCouple(u){if(coupleUnsub)coupleUnsub(); coupleUnsub=onSnapshot(doc(db,"users",u.uid),async snap=>{const data=snap.data(); if(!data?.coupleId){$("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden"); if(partnerPresenceUnsub){partnerPresenceUnsub(); partnerPresenceUnsub=null;} return;} myCoupleId=data.coupleId; partnerUid=data.partnerUid; const cSnap=await getDoc(doc(db,"couples",myCoupleId)); if(!cSnap.exists()){await setDoc(doc(db,"users",u.uid),{coupleId:null,partnerUid:null},{merge:true}); $("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden"); return;} const c=cSnap.data(); $("coupleNotLinked").classList.add("hidden"); $("coupleLinked").classList.remove("hidden"); $("coupleNeedLink").classList.add("hidden"); $("coupleHasLink").classList.remove("hidden"); const isUid1=u.uid===c.uid1; $("coupleNames").textContent=(isUid1?c.name1:c.name2)+" ❤️ "+(isUid1?c.name2:c.name1); $("myCouplePic").src=isUid1?c.photo1:c.photo2||$("profilePic").src; $("partnerCouplePic").src=isUid1?c.photo2:c.photo1||"https://placehold.co/100x100/58145b/fff?text=❤"; if(c.anniversaryDate){$("anniversaryInput").value=c.anniversaryDate; updateCountdown(c.anniversaryDate);} loadPrivatePosts(myCoupleId); loadLoveHistory(myCoupleId); loadPartnerPresence();});}
+function loadPartnerPresence(){if(!partnerUid) return; if(partnerPresenceUnsub) partnerPresenceUnsub(); partnerPresenceUnsub=onSnapshot(doc(db,"users",partnerUid),snap=>{if(!snap.exists()) return; const d=snap.data(); const online=d.isOnline===true; const dot=$("partnerOnlineDot"); const txt=$("partnerOnlineText"); if(online){dot.className="online-dot"; txt.textContent=`🟢 Online now ❤️`; if(!lastPartnerOnline){showRingtonePopup(d.name||"Your Jaan");} lastPartnerOnline=true;} else {dot.className="offline-dot"; const last=d.lastSeen?.toDate? d.lastSeen.toDate().toLocaleTimeString() : ""; txt.textContent=`⚪ Offline - last seen ${last}`; lastPartnerOnline=false;}});}
+function updateCountdown(dateStr){if(!dateStr){$("anniversaryCountdown").textContent="--"; return;} const ann=new Date(dateStr); const now=new Date(); let next=new Date(ann); next.setFullYear(now.getFullYear()); if(next<now) next.setFullYear(now.getFullYear()+1); const diff=next-now; const days=Math.ceil(diff/(1000*60*60*24)); $("anniversaryCountdown").textContent=days+" days ❤️"; $("anniversaryLabel").textContent=days===0?"Today is Anniversary! 🎉":"Anniversary Countdown - "+next.toLocaleDateString();}
+$("saveAnniversaryBtn").onclick=async()=>{const d=$("anniversaryInput").value; if(!d||!myCoupleId)return; await updateDoc(doc(db,"couples",myCoupleId),{anniversaryDate:d}); updateCountdown(d); sendNotif(partnerUid,"private_post",`saved anniversary 📅 ${d}`, myCoupleId); alert("Saved ❤️");};
+async function unlinkCouple(){if(!confirm("💔 Pakka hatana hai?")) return; if(!myCoupleId) return; try{const u=auth.currentUser; await setDoc(doc(db,"users",u.uid),{coupleId:null,partnerUid:null},{merge:true}); if(partnerUid){try{await setDoc(doc(db,"users",partnerUid),{coupleId:null,partnerUid:null},{merge:true});}catch(e){}} try{await deleteDoc(doc(db,"couples",myCoupleId));}catch(e){} myCoupleId=null; partnerUid=null; $("coupleNotLinked").classList.remove("hidden"); $("coupleLinked").classList.add("hidden"); $("coupleNeedLink").classList.remove("hidden"); $("coupleHasLink").classList.add("hidden"); if(partnerPresenceUnsub){partnerPresenceUnsub(); partnerPresenceUnsub=null;} alert("Removed 💔");}catch(e){alert(e.message);}} $("unlinkCoupleBtn").onclick=unlinkCouple; $("settingsUnlinkBtn").onclick=unlinkCouple;
+$("missYouBtn").onclick=()=>sendLove("miss_you","Misses you so much! 😘"); $("hugBtn").onclick=()=>sendLove("hug","Sent you a tight hug! 🤗"); $("kissBtn").onclick=()=>sendLove("kiss","Sent you a kiss! 💋");
+async function sendLove(type, text){if(!myCoupleId||!partnerUid){alert("Pehle link karo"); return;} const u=auth.currentUser; await addDoc(collection(db,"couples",myCoupleId,"loves"),{fromUid:u.uid,fromName:$("userName").textContent,type:type,text:text,createdAt:serverTimestamp()}); await sendNotif(partnerUid,type,text,myCoupleId); playRingtone(true); alert("Sent ❤️");}
+function loadLoveHistory(cid){if(loveUnsub)loveUnsub(); loveUnsub=onSnapshot(query(collection(db,"couples",cid,"loves"),orderBy("createdAt","desc")),snap=>{$("loveHistory").innerHTML=""; if(snap.empty){$("loveHistory").innerHTML="<p class=small>No love yet 😘</p>"; return;} snap.forEach(d=>{const l=d.data(); const el=document.createElement("div"); el.className="notif-card"; const icon={miss_you:"😘",hug:"🤗",kiss:"💋"}[l.type]||"❤️"; el.innerHTML=`<b>${icon} ${safe(l.fromName)}</b> <span class=small>${safe(l.text)}</span><div class=small style=opacity:0.6>${l.createdAt?.toDate? l.createdAt.toDate().toLocaleString():"Just now"}</div>`; $("loveHistory").append(el);});});}
+$("selectPrivateMediaBtn").onclick=()=>$("privateMediaInput").click(); $("removePrivateMediaBtn").onclick=()=>{selectedPrivateBase64=null; $("privateMediaInput").value=""; $("privatePreviewImg").style.display="none"; $("removePrivateMediaBtn").classList.add("hidden");};
 $("privateMediaInput").onchange=()=>{const f=$("privateMediaInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedPrivateBase64=e.target.result; $("privatePreviewImg").src=selectedPrivateBase64; $("privatePreviewImg").style.display="block"; $("removePrivateMediaBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
-$("publishPrivateBtn").onclick=async()=>{
-const u=auth.currentUser, t=$("privatePostText").value.trim(); if(!u||!myCoupleId||(!t&&!selectedPrivateBase64))return;
-$("publishPrivateBtn").disabled=true;
-try{await addDoc(collection(db,"couples",myCoupleId,"privatePosts"),{uid:u.uid,authorName:$("userName").textContent,text:t,mediaURL:selectedPrivateBase64||null,createdAt:serverTimestamp()}); $("privatePostText").value=""; selectedPrivateBase64=null; $("privateMediaInput").value=""; $("privatePreviewImg").style.display="none"; sendNotif(partnerUid,"private_post",`added private memory 💌 "${t.slice(0,30)}"`, myCoupleId);}catch(e){$("privatePostStatus").textContent=e.message;}
-$("publishPrivateBtn").disabled=false;
-};
-function loadPrivatePosts(cid){
-if(privateUnsub2)privateUnsub2();
-privateUnsub2=onSnapshot(query(collection(db,"couples",cid,"privatePosts"),orderBy("createdAt","desc")),snap=>{
-$("privateFeed").innerHTML=""; if(snap.empty){$("privateFeed").innerHTML="<p class=muted style=padding:10px>No private memories yet, start writing 💌</p>"; return;}
-snap.forEach(d=>{const p=d.data(); const el=document.createElement("div"); el.className="post-card private-post"; el.innerHTML=`<div style="display:flex;justify-content:space-between"><b>💌 ${safe(p.authorName)}</b><span class=small>${p.createdAt?.toDate? p.createdAt.toDate().toLocaleDateString():""}</span></div><div style="margin:6px 0;white-space:pre-wrap">${safe(p.text||"")}</div>${p.mediaURL?`<img src="${p.mediaURL}" class="post-media">`:""}`; $("privateFeed").append(el);});
-});
-}
+$("publishPrivateBtn").onclick=async()=>{const u=auth.currentUser, t=$("privatePostText").value.trim(); if(!u||!myCoupleId||(!t&&!selectedPrivateBase64))return; $("publishPrivateBtn").disabled=true; try{await addDoc(collection(db,"couples",myCoupleId,"privatePosts"),{uid:u.uid,authorName:$("userName").textContent,text:t,mediaURL:selectedPrivateBase64||null,createdAt:serverTimestamp()}); $("privatePostText").value=""; selectedPrivateBase64=null; $("privateMediaInput").value=""; $("privatePreviewImg").style.display="none"; sendNotif(partnerUid,"private_post",`private memory 💌 "${t.slice(0,30)}"`, myCoupleId);}catch(e){$("privatePostStatus").textContent=e.message;} $("publishPrivateBtn").disabled=false;};
+function loadPrivatePosts(cid){if(privateUnsub2)privateUnsub2(); privateUnsub2=onSnapshot(query(collection(db,"couples",cid,"privatePosts"),orderBy("createdAt","desc")),snap=>{$("privateFeed").innerHTML=""; if(snap.empty){$("privateFeed").innerHTML="<p class=muted style=padding:10px>No private memories yet 💌</p>"; return;} snap.forEach(d=>{const p=d.data(); const el=document.createElement("div"); el.className="post-card private-post"; el.innerHTML=`<div style="display:flex;justify-content:space-between"><b>💌 ${safe(p.authorName)}</b><span class=small>${p.createdAt?.toDate? p.createdAt.toDate().toLocaleDateString():""}</span></div><div style="margin:6px 0;white-space:pre-wrap">${safe(p.text||"")}</div>${p.mediaURL?`<img src="${p.mediaURL}" class="post-media">`:""}`; $("privateFeed").append(el);});});}
 $("addStoryItem").onclick=()=>$("storyInput").click();
 $("storyInput").onchange=()=>{const f=$("storyInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=async e=>{const base64=e.target.result; $("storyStatus").textContent="Uploading..."; try{const u=auth.currentUser; const now=Date.now(); await addDoc(collection(db,"stories"),{uid:u.uid,authorName:$("userName").textContent||"User",authorPhoto:$("profilePic").src||"",mediaURL:base64,mediaType:f.type.startsWith("video")?"video":"image",likes:[],likesCount:0,createdAt:serverTimestamp(),expiresAt: now + 24*60*60*1000}); $("storyStatus").textContent="Story added ❤️";}catch(err){$("storyStatus").textContent=err.message;} $("storyInput").value="";}; rd.readAsDataURL(f);};
-function loadStories(){
-if(storiesUnsub)storiesUnsub();
-storiesUnsub=onSnapshot(query(collection(db,"stories"),orderBy("createdAt","desc")),snap=>{
-const bar=$("storiesBar"); const addBtn=$("addStoryItem"); bar.innerHTML=""; bar.appendChild(addBtn);
-currentStories=[]; const now=Date.now();
-snap.forEach(d=>{const s=d.data(); const id=d.id; if(s.expiresAt && s.expiresAt < now) return; currentStories.push({id,...s}); const item=document.createElement("div"); item.className="story-item"; item.innerHTML=`<div class="story-ring"><img src="${safe(s.authorPhoto||"https://placehold.co/100x100/58145b/fff?text=❤")}"></div><div class="story-name">${safe(s.authorName||"User")}</div>${s.likesCount>0?`<div class="story-like-badge">❤️ ${s.likesCount}</div>`:""}`; item.onclick=()=>openStory(id); bar.appendChild(item);});
-});
-}
+function loadStories(){if(storiesUnsub)storiesUnsub(); storiesUnsub=onSnapshot(query(collection(db,"stories"),orderBy("createdAt","desc")),snap=>{const bar=$("storiesBar"); const addBtn=$("addStoryItem"); bar.innerHTML=""; bar.appendChild(addBtn); currentStories=[]; const now=Date.now(); snap.forEach(d=>{const s=d.data(); const id=d.id; if(s.expiresAt && s.expiresAt < now) return; currentStories.push({id,...s}); const item=document.createElement("div"); item.className="story-item"; item.innerHTML=`<div class="story-ring"><img src="${safe(s.authorPhoto||"https://placehold.co/100x100/58145b/fff?text=❤")}"></div><div class="story-name">${safe(s.authorName||"User")}</div>${s.likesCount>0?`<div class="story-like-badge">❤️ ${s.likesCount}</div>`:""}`; item.onclick=()=>openStory(id); bar.appendChild(item);});});}
 function openStory(id){const idx=currentStories.findIndex(s=>s.id===id); if(idx===-1)return; currentStoryIndex=idx; showStory();}
-function showStory(){
-const s=currentStories[currentStoryIndex]; if(!s)return;
-$("storyViewerName").textContent=s.authorName||"User"; $("storyViewerTime").textContent=new Date(s.expiresAt - 24*60*60*1000).toLocaleTimeString();
-const uid=auth.currentUser?.uid; const liked=uid&&s.likes?.includes(uid);
-$("deleteStoryBtn").classList.toggle("hidden", s.uid!==uid);
-$("deleteStoryBtn").onclick=async()=>{if(confirm("Delete story?")){await deleteDoc(doc(db,"stories",s.id)); closeStory();}};
-$("storyLikeCount").textContent=s.likesCount||0; $("storyLikeBtn").style.background=liked?"linear-gradient(90deg,#ff3f9f,#a52cff)":"#ffffff20";
-const content=$("storyContent"); content.innerHTML=""; if(s.mediaType==="video"){const v=document.createElement("video"); v.src=s.mediaURL; v.controls=true; v.autoplay=true; v.style.width="100%"; v.style.height="100%"; content.appendChild(v);} else {const img=document.createElement("img"); img.src=s.mediaURL; content.appendChild(img);}
-$("storyViewer").classList.add("active");
-}
-function closeStory(){$("storyViewer").classList.remove("active"); $("storyContent").innerHTML="";}
-$("closeStoryBtn").onclick=closeStory;
-$("nextStoryBtn").onclick=()=>{currentStoryIndex++; if(currentStoryIndex>=currentStories.length) closeStory(); else showStory();};
-$("storyLikeBtn").onclick=async()=>{
-const s=currentStories[currentStoryIndex]; if(!s)return; const uid=auth.currentUser?.uid; if(!uid)return;
-const ref=doc(db,"stories",s.id); const liked=uid&&s.likes?.includes(uid);
-if(liked){await updateDoc(ref,{likes:arrayRemove(uid),likesCount:increment(-1)}); s.likes=s.likes.filter(x=>x!==uid); s.likesCount=(s.likesCount||1)-1;}
-else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)}); s.likes=[...(s.likes||[]),uid]; s.likesCount=(s.likesCount||0)+1; sendNotif(s.uid,"like_story",`liked your story ❤️`, s.id);}
-$("storyLikeCount").textContent=s.likesCount||0; $("storyLikeBtn").style.background=liked?"#ffffff20":"linear-gradient(90deg,#ff3f9f,#a52cff)";
-};
-$("storyContent").onclick=(e)=>{if(e.target.tagName==="VIDEO") return; $("nextStoryBtn").click();};
+function showStory(){const s=currentStories[currentStoryIndex]; if(!s)return; $("storyViewerName").textContent=s.authorName||"User"; $("storyViewerTime").textContent=new Date(s.expiresAt - 24*60*60*1000).toLocaleTimeString(); const uid=auth.currentUser?.uid; const liked=uid&&s.likes?.includes(uid); $("deleteStoryBtn").classList.toggle("hidden", s.uid!==uid); $("deleteStoryBtn").onclick=async()=>{if(confirm("Delete story?")){await deleteDoc(doc(db,"stories",s.id)); closeStory();}}; $("storyLikeCount").textContent=s.likesCount||0; $("storyLikeBtn").style.background=liked?"linear-gradient(90deg,#ff3f9f,#a52cff)":"#ffffff20"; const content=$("storyContent"); content.innerHTML=""; if(s.mediaType==="video"){const v=document.createElement("video"); v.src=s.mediaURL; v.controls=true; v.autoplay=true; v.style.width="100%"; v.style.height="100%"; content.appendChild(v);} else {const img=document.createElement("img"); img.src=s.mediaURL; content.appendChild(img);} $("storyViewer").classList.add("active");}
+function closeStory(){$("storyViewer").classList.remove("active"); $("storyContent").innerHTML="";} $("closeStoryBtn").onclick=closeStory; $("nextStoryBtn").onclick=()=>{currentStoryIndex++; if(currentStoryIndex>=currentStories.length) closeStory(); else showStory();}; $("storyLikeBtn").onclick=async()=>{const s=currentStories[currentStoryIndex]; if(!s)return; const uid=auth.currentUser?.uid; if(!uid)return; const ref=doc(db,"stories",s.id); const liked=uid&&s.likes?.includes(uid); if(liked){await updateDoc(ref,{likes:arrayRemove(uid),likesCount:increment(-1)}); s.likes=s.likes.filter(x=>x!==uid); s.likesCount=(s.likesCount||1)-1;} else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)}); s.likes=[...(s.likes||[]),uid]; s.likesCount=(s.likesCount||0)+1; sendNotif(s.uid,"like_story",`liked your story ❤️`, s.id);} $("storyLikeCount").textContent=s.likesCount||0; $("storyLikeBtn").style.background=liked?"#ffffff20":"linear-gradient(90deg,#ff3f9f,#a52cff)";}; $("storyContent").onclick=(e)=>{if(e.target.tagName==="VIDEO") return; $("nextStoryBtn").click();};
 $("selectMediaBtn").onclick=()=>$("postMediaInput").click(); $("removeMediaBtn").onclick=()=>{selectedPostBase64=null;$("postMediaInput").value="";$("mediaPreviewImg").style.display="none";$("removeMediaBtn").classList.add("hidden");};
 $("postMediaInput").onchange=()=>{const f=$("postMediaInput").files[0]; if(!f)return; if(f.size>700*1024){alert("700KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedPostBase64=e.target.result; $("mediaPreviewImg").src=selectedPostBase64; $("mediaPreviewImg").style.display="block"; $("removeMediaBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
 function loadPosts(){if(postsUnsub)postsUnsub(); postsUnsub=onSnapshot(query(collection(db,"posts"),orderBy("createdAt","desc")),snap=>{$("postsFeed").innerHTML=""; snap.forEach(d=>{const p=d.data(); const id=d.id; const uid=auth.currentUser?.uid; const liked=uid&&p.likes?.includes(uid); const el=document.createElement("div"); el.className="post-card"; el.innerHTML=`<div style="display:flex;justify-content:space-between"><b>❤️ ${safe(p.authorName||"User")}</b> ${uid===p.uid?`<button class="del" style="width:auto;padding:4px 10px;background:#ff3264">🗑️</button>`:""}</div><div style="margin:6px 0;white-space:pre-wrap">${safe(p.text||"")}</div>${p.mediaURL?`<img src="${p.mediaURL}" class="post-media">`:""}<div class="post-actions"><button class="action-btn likeBtn ${liked?"liked":""}">❤️ ${p.likesCount||0}</button><button class="action-btn secondary commentToggle">💬 ${p.commentsCount||0}</button><button class="action-btn secondary shareBtn">🔗 Share</button></div><div class="comments-box"><div class="cList"></div><div style="display:flex;gap:6px;margin-top:8px"><input class="cInput" placeholder="Comment..."><button class="cSend" style="width:60px">Send</button></div></div>`; if(uid===p.uid) el.querySelector(".del").onclick=async()=>{if(confirm("Delete?")) await deleteDoc(doc(db,"posts",id));}; el.querySelector(".likeBtn").onclick=async()=>{const ref=doc(db,"posts",id); if(liked){await updateDoc(ref,{likes:arrayRemove(uid),likesCount:increment(-1)});} else {await updateDoc(ref,{likes:arrayUnion(uid),likesCount:increment(1)}); sendNotif(p.uid,"like_post",`liked your post ❤️ "${(p.text||"").slice(0,30)}"`, id);}}; el.querySelector(".shareBtn").onclick=async()=>{const txt=`${p.text||""} ${location.href}`; if(navigator.share){try{await navigator.share({title:"Post",text:txt});}catch{}} else {await navigator.clipboard.writeText(txt); alert("Copied ❤️");}}; const box=el.querySelector(".comments-box"); const cList=el.querySelector(".cList"); el.querySelector(".commentToggle").onclick=()=>{box.classList.toggle("active"); if(box.classList.contains("active")){onSnapshot(query(collection(db,"posts",id,"comments"),orderBy("createdAt","asc")),cs=>{cList.innerHTML=""; cs.forEach(cd=>{const cm=cd.data(); const div=document.createElement("div"); div.className="comment"; div.innerHTML=`<b>${safe(cm.authorName)}:</b> ${safe(cm.text)}`; cList.appendChild(div);});});}}; el.querySelector(".cSend").onclick=async()=>{const input=el.querySelector(".cInput"); const t=input.value.trim(); if(!t||!uid)return; await addDoc(collection(db,"posts",id,"comments"),{uid:uid,authorName:$("userName").textContent||"User",text:t,createdAt:serverTimestamp()}); await updateDoc(doc(db,"posts",id),{commentsCount:increment(1)}); sendNotif(p.uid,"comment_post",`commented: "${t.slice(0,30)}"`, id); input.value="";}; $("postsFeed").append(el);});});}
@@ -426,14 +218,24 @@ $("copyCodeBtn").onclick=async()=>{await navigator.clipboard.writeText($("myFrie
 $("searchFriendBtn").onclick=async()=>{const c=$("friendSearchInput").value.trim().toUpperCase(), me=auth.currentUser; if(c.length!==8)return; const snap=await getDocs(query(collection(db,"users"),where("friendCode","==",c))); if(snap.empty){$("friendResult").textContent="Not found";return;} const f=snap.docs[0]; if(f.id===me.uid){$("friendResult").textContent="Own code";return;} $("friendResult").innerHTML=`<div class=friend-card><b>${safe(f.data().name||"User")}</b><br><button id=addF>➕ Add Friend</button></div>`; $("addF").onclick=async()=>{await setDoc(doc(db,"friendRequests",reqId(me.uid,f.id)),{fromUid:me.uid,toUid:f.id,fromName:$("userName").textContent,fromPhoto:$("profilePic").src,status:"pending",createdAt:serverTimestamp()}); sendNotif(f.id,"follow_request",`sent you a friend request 👥`, me.uid); $("friendResult").textContent="Request sent ❤️";};};
 function loadRequests(u){if(reqUnsub)reqUnsub(); reqUnsub=onSnapshot(query(collection(db,"friendRequests"),where("toUid","==",u.uid),where("status","==","pending")),s=>{$("requestList").innerHTML=""; if(s.empty){$("requestList").textContent="No requests";return;} s.forEach(d=>{const rd=d.data(); const el=document.createElement("div"); el.className="request-card"; el.innerHTML=`<b>${safe(rd.fromName||"User")}</b><div style="display:flex;gap:6px;margin-top:6px"><button class=accept>Accept</button><button class="secondary reject">Reject</button></div>`; el.querySelector(".accept").onclick=async()=>{await updateDoc(doc(db,"friendRequests",d.id),{status:"accepted"}); await setDoc(doc(db,"friends",u.uid+"_"+rd.fromUid),{uid:u.uid,friendUid:rd.fromUid,friendName:rd.fromName,createdAt:serverTimestamp()}); await setDoc(doc(db,"friends",rd.fromUid+"_"+u.uid),{uid:rd.fromUid,friendUid:u.uid,friendName:$("userName").textContent,createdAt:serverTimestamp()}); sendNotif(rd.fromUid,"follow_accept",`accepted your request ✅`, u.uid);}; el.querySelector(".reject").onclick=async()=>await updateDoc(doc(db,"friendRequests",d.id),{status:"rejected"}); $("requestList").append(el);});});}
 function loadFriends(u){if(friendsUnsub)friendsUnsub(); friendsUnsub=onSnapshot(query(collection(db,"friends"),where("uid","==",u.uid)),s=>{$("friendsList").innerHTML=""; s.forEach(d=>{const fd=d.data(); const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(fd.friendName||"Friend")}</b><br><button style="margin-top:6px">💬 Message</button>`; el.querySelector("button").onclick=()=>openChat(fd.friendUid,fd.friendName); $("friendsList").append(el);});});}
-async function openChat(fid,fname){const u=auth.currentUser; currentPrivateFriendUid=fid; $("privateFriendName").textContent=fname; $("privateChatHeader").classList.remove("hidden"); showScreen("chatScreen"); const id=chatId(u.uid,fid); await setDoc(doc(db,"privateChats",id),{participants:[u.uid,fid]},{merge:true}); if(privateUnsub)privateUnsub(); privateUnsub=onSnapshot(query(collection(db,"privateChats",id,"messages"),orderBy("createdAt","asc")),snap=>{$("chatBox").innerHTML=""; snap.forEach(m=>{const d=m.data(); const div=document.createElement("div"); div.style.margin="6px 0"; div.style.textAlign=d.uid===u.uid?"right":"left"; div.innerHTML=`<span style="display:inline-block;padding:8px 12px;border-radius:14px;background:${d.uid===u.uid?"#ff3f9f":"#ffffff20"}">${safe(d.text||"")}</span>`; $("chatBox").append(div);}); $("chatBox").scrollTop=$("chatBox").scrollHeight;});}
+async function openChat(fid,fname){
+ currentPrivateFriendUid=fid;
+ $("privateFriendName").textContent=fname;
+ $("privateChatHeader").classList.remove("hidden");
+ $("tabFriendsBtn").click();
+ setTimeout(()=>{ $("tabChatBtn").click(); },80);
+ const u=auth.currentUser; const id=chatId(u.uid,fid); await setDoc(doc(db,"privateChats",id),{participants:[u.uid,fid]},{merge:true});
+ if(privateUnsub)privateUnsub();
+ privateUnsub=onSnapshot(query(collection(db,"privateChats",id,"messages"),orderBy("createdAt","asc")),snap=>{
+   $("chatBox").innerHTML=""; snap.forEach(m=>{const d=m.data(); const div=document.createElement("div"); div.style.margin="6px 0"; div.style.textAlign=d.uid===u.uid?"right":"left"; div.innerHTML=`<span style="display:inline-block;padding:8px 12px;border-radius:14px;background:${d.uid===u.uid?"#ff3f9f":"#ffffff20"}">${safe(d.text||"")}</span>`; $("chatBox").append(div);}); $("chatBox").scrollTop=$("chatBox").scrollHeight;
+ });
+}
 $("sendBtn").onclick=async()=>{const u=auth.currentUser, t=$("chatInput").value.trim(); if(!u||!currentPrivateFriendUid||!t)return; const id=chatId(u.uid,currentPrivateFriendUid); await addDoc(collection(db,"privateChats",id,"messages"),{uid:u.uid,text:t,createdAt:serverTimestamp()}); $("chatInput").value="";};
-$("backToFriendsBtn").onclick=()=>showScreen("friendsScreen");
+$("backToFriendsBtn").onclick=()=>{$("tabFriendsBtn").click();};
 $("changePhotoBtn").onclick=()=>$("photoInput").click(); $("photoInput").onchange=()=>{const f=$("photoInput").files[0]; if(!f)return; if(f.size>500*1024){alert("500KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedProfileBase64=e.target.result; $("profilePreview").src=selectedProfileBase64; $("profilePreview").style.display="block"; $("uploadPhotoBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
 $("uploadPhotoBtn").onclick=async()=>{const u=auth.currentUser; if(!u||!selectedProfileBase64)return; await setDoc(doc(db,"users",u.uid),{photoURL:selectedProfileBase64},{merge:true}); $("profilePic").src=selectedProfileBase64; $("profilePreview").style.display="none"; $("uploadPhotoBtn").classList.add("hidden");};
 $("editBtn").onclick=()=>$("editBox").classList.remove("hidden"); $("cancelBtn").onclick=()=>$("editBox").classList.add("hidden"); $("saveBtn").onclick=async()=>{const u=auth.currentUser; const n=$("nameInput").value.trim(); const b=$("bioInput").value.trim(); if(!n)return; await setDoc(doc(db,"users",u.uid),{name:n,bio:b},{merge:true}); $("userName").textContent=n; $("editBox").classList.add("hidden");};
-$("openSettingsBtn").onclick=()=>showScreen("settingsScreen");
-$("closeSettingsBtn").onclick=()=>showScreen("profileScreen");
+$("openSettingsBtn").onclick=()=>showScreen("settingsScreen"); $("closeSettingsBtn").onclick=()=>showScreen("profileScreen");
 $("toggleRingtone").onclick=()=>{settings.ringtone=!settings.ringtone; saveLocalSettings(); applySettingsUI(); if(settings.ringtone) playRingtone(false);};
 $("toggleLikeNotif").onclick=()=>{settings.likeNotif=!settings.likeNotif; saveLocalSettings(); applySettingsUI();};
 $("toggleCommentNotif").onclick=()=>{settings.commentNotif=!settings.commentNotif; saveLocalSettings(); applySettingsUI();};
@@ -442,88 +244,26 @@ $("togglePrivate").onclick=async()=>{settings.privateAcc=!settings.privateAcc; s
 $("toggleHideOnline").onclick=async()=>{settings.hideOnline=!settings.hideOnline; saveLocalSettings(); applySettingsUI(); const u=auth.currentUser; if(u) await setDoc(doc(db,"users",u.uid),{isOnline:!settings.hideOnline},{merge:true});};
 $("themeSelect").onchange=()=>{settings.theme=$("themeSelect").value; saveLocalSettings(); applySettingsUI();};
 $("clearChatBtn").onclick=async()=>{if(!confirm("Saare chats delete?")) return; const u=auth.currentUser; const snaps=await getDocs(query(collection(db,"friends"),where("uid","==",u.uid))); for(const d of snaps.docs){const fid=d.data().friendUid; const id=chatId(u.uid,fid); const msgs=await getDocs(collection(db,"privateChats",id,"messages")); for(const m of msgs.docs) await deleteDoc(m.ref);} alert("Chats cleared ✅");};
-$("clearPrivateBtn").onclick=async()=>{if(!myCoupleId) {alert("Couple link nahi hai"); return;} if(!confirm("Private Space ke saare posts delete?")) return; const snap=await getDocs(collection(db,"couples",myCoupleId,"privatePosts")); for(const d of snap.docs) await deleteDoc(d.ref); alert("Private posts cleared ✅");};
-$("clearNotifSettingBtn").onclick=async()=>{if(!confirm("Saare notifications delete?")) return; const u=auth.currentUser; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",u.uid))); for(const d of snap.docs) await deleteDoc(d.ref); alert("Notifications cleared ✅");};
-$("deleteAccountBtn").onclick=async()=>{if(!confirm("Pakka account delete?")) return; if(!confirm("Last warning!")) return; try{const u=auth.currentUser; if(myCoupleId) {try{await deleteDoc(doc(db,"couples",myCoupleId));}catch{}} await deleteDoc(doc(db,"users",u.uid)); await deleteUser(u); alert("Account deleted");}catch(e){alert(e.message+" - pehle re-login karo");}};
+$("clearPrivateBtn").onclick=async()=>{if(!myCoupleId) {alert("Couple link nahi hai"); return;} if(!confirm("Private posts delete?")) return; const snap=await getDocs(collection(db,"couples",myCoupleId,"privatePosts")); for(const d of snap.docs) await deleteDoc(d.ref); alert("Cleared ✅");};
+$("clearNotifSettingBtn").onclick=async()=>{if(!confirm("Saare notifications delete?")) return; const u=auth.currentUser; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",u.uid))); for(const d of snap.docs) await deleteDoc(d.ref); alert("Cleared ✅");};
+$("deleteAccountBtn").onclick=async()=>{if(!confirm("Pakka delete?")) return; if(!confirm("Last warning!")) return; try{const u=auth.currentUser; if(myCoupleId) {try{await deleteDoc(doc(db,"couples",myCoupleId));}catch{}} await deleteDoc(doc(db,"users",u.uid)); await deleteUser(u); alert("Deleted");}catch(e){alert(e.message);}};
 $("logoutBtn").onclick=async()=>{const u=auth.currentUser; if(u){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});} await signOut(auth);};
 
-// === BOSS GAME ===
-$("playGameBtn").onclick=()=>{ if(!myCoupleId){alert("Pehle partner link karo Home se"); return;} showScreen("gameScreen"); initGame(); };
-$("closeGameBtn").onclick=()=>showScreen("coupleScreen");
-$("exitGameBtn").onclick=()=>showScreen("coupleScreen");
-async function initGame(){
- if(!myCoupleId) return;
- const gameRef=doc(db,"couples",myCoupleId,"game","current");
- const snap=await getDoc(gameRef);
- if(!snap.exists()){
-   await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent||"You",playerO:partnerUid||"",playerOName:"Partner",winner:null,createdAt:serverTimestamp()});
- }
- if(gameUnsub) gameUnsub();
- gameUnsub=onSnapshot(gameRef, async (s)=>{
-  if(!s.exists()) return;
-  const g=s.data();
-  if((!g.playerOName || g.playerOName==="Partner") && g.playerO){
-   try{ const pSnap=await getDoc(doc(db,"users",g.playerO)); if(pSnap.exists()){ await updateDoc(gameRef,{playerOName:pSnap.data().name}); g.playerOName=pSnap.data().name; } }catch{}
-  }
-  const board=g.board||[];
-  document.querySelectorAll(".game-cell").forEach((btn,i)=>{
-    btn.textContent=board[i]||"";
-    btn.style.background=board[i]==="❤️"?"#ff3f9f60":board[i]==="💜"?"#7a2bff60":"#ffffff18";
-  });
-  if(g.winner){
-   if(g.winner==="draw"){
-     $("gameStatus").textContent="Draw! 🤝";
-     $("bossText").style.display="block"; $("bossText").innerHTML=`DRAW - Dono BOSS 👑👑<br><span style="font-size:14px">Dono barabar ho jaan 😘</span>`;
-   } else {
-     const winName=g.winner===g.playerX? g.playerXName : g.playerOName;
-     const winSym=g.winner===g.playerX? "❤️" : "💜";
-     $("gameStatus").textContent=`${winName} ${winSym} jeet gaya!`;
-     $("bossText").style.display="block"; $("bossText").innerHTML=`${safe(winName)} is the BOSS 👑😎<br><span style="font-size:14px">Loser ko ek kiss deni padegi 😘💋</span>`;
-     playRingtone(true);
-   }
-  } else {
-   $("bossText").style.display="none";
-   const turnName=g.turn===g.playerX? g.playerXName : g.playerOName;
-   $("gameStatus").textContent=`${safe(turnName||"Partner")} ki baari ${g.turn===auth.currentUser.uid? "- Tum Chalo ❤️":"- Wait karo ⏳"}`;
-  }
- });
-}
-document.querySelectorAll(".game-cell").forEach(btn=>{
- btn.onclick=async()=>{
-  const i=parseInt(btn.dataset.i);
-  if(!myCoupleId) return;
-  const gameRef=doc(db,"couples",myCoupleId,"game","current");
-  const snap=await getDoc(gameRef); if(!snap.exists()) return;
-  const g=snap.data();
-  if(g.winner) return;
-  if(g.turn!==auth.currentUser.uid){alert("Tumhari baari nahi hai, jaan ka wait karo 😘"); return;}
-  if(g.board[i]!=="") return;
-  const mySymbol=auth.currentUser.uid===g.playerX?"❤️":"💜";
-  let newBoard=[...g.board]; newBoard[i]=mySymbol;
-  const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-  let winner=null;
-  for(const w of wins){ if(newBoard[w[0]] && newBoard[w[0]]===newBoard[w[1]] && newBoard[w[0]]===newBoard[w[2]]){ winner=auth.currentUser.uid; } }
-  if(!winner && newBoard.every(c=>c!=="")) winner="draw";
-  const nextTurn=winner? null : (g.turn===g.playerX? g.playerO : g.playerX);
-  await updateDoc(gameRef,{board:newBoard,turn:nextTurn,winner:winner});
- }
-});
-$("resetGameBtn").onclick=async()=>{
- if(!myCoupleId) return;
- const gameRef=doc(db,"couples",myCoupleId,"game","current");
- await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent,playerO:partnerUid,playerOName:"Partner",winner:null,createdAt:serverTimestamp()});
- $("bossText").style.display="none";
-};
+// TABS LOGIC
+$("tabFriendsBtn").onclick=()=>{ $("friendsTab").classList.remove("hidden"); $("chatTab").classList.add("hidden"); $("feedTab").classList.add("hidden"); $("tabFriendsBtn").style.background="linear-gradient(90deg,#ff3f9f,#a52cff)"; $("tabChatBtn").style.background="#ffffff20"; $("tabFeedBtn").style.background="#ffffff20"; };
+$("tabChatBtn").onclick=()=>{ $("friendsTab").classList.add("hidden"); $("chatTab").classList.remove("hidden"); $("feedTab").classList.add("hidden"); $("tabChatBtn").style.background="linear-gradient(90deg,#ff3f9f,#a52cff)"; $("tabFriendsBtn").style.background="#ffffff20"; $("tabFeedBtn").style.background="#ffffff20"; };
+$("tabFeedBtn").onclick=()=>{ $("friendsTab").classList.add("hidden"); $("chatTab").classList.add("hidden"); $("feedTab").classList.remove("hidden"); $("tabFeedBtn").style.background="linear-gradient(90deg,#ff3f9f,#a52cff)"; $("tabFriendsBtn").style.background="#ffffff20"; $("tabChatBtn").style.background="#ffffff20"; };
+$("feedPostBtn").onclick=()=>{ $("feedPostsDiv").classList.remove("hidden"); $("feedReelsDiv").classList.add("hidden"); $("feedPostBtn").style.background="#ff3f9f"; $("feedReelBtn").style.background="#ffffff20"; };
+$("feedReelBtn").onclick=()=>{ $("feedPostsDiv").classList.add("hidden"); $("feedReelsDiv").classList.remove("hidden"); $("feedReelBtn").style.background="#ff3f9f"; $("feedPostBtn").style.background="#ffffff20"; };
 
-onAuthStateChanged(auth,async u=>{
-if(u){
-$("loginScreen").classList.add("hidden");$("app").classList.remove("hidden");
-loadLocalSettings();
-await loadProfile(u); loadPosts(); loadReels(); loadStories(); loadNotifs(u); loadRequests(u); loadFriends(u); loadCouple(u);
-setInterval(async()=>{try{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}catch{}},30000);
-document.addEventListener("visibilitychange",async()=>{try{if(document.hidden){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});}else{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}}catch{}});
-} else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden");}
-});
+// BOSS GAME
+$("closeGameBtn").onclick=()=>showScreen("coupleScreen"); $("exitGameBtn").onclick=()=>showScreen("coupleScreen");
+async function initGame(){ if(!myCoupleId) return; const gameRef=doc(db,"couples",myCoupleId,"game","current"); const snap=await getDoc(gameRef); if(!snap.exists()){ await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent||"You",playerO:partnerUid||"",playerOName:"Partner",winner:null,createdAt:serverTimestamp()}); } if(gameUnsub) gameUnsub(); gameUnsub=onSnapshot(gameRef, async (s)=>{ if(!s.exists()) return; const g=s.data(); if((!g.playerOName || g.playerOName==="Partner") && g.playerO){ try{ const pSnap=await getDoc(doc(db,"users",g.playerO)); if(pSnap.exists()){ await updateDoc(gameRef,{playerOName:pSnap.data().name}); g.playerOName=pSnap.data().name; } }catch{} } const board=g.board||[]; document.querySelectorAll(".game-cell").forEach((btn,i)=>{ btn.textContent=board[i]||""; btn.style.background=board[i]==="❤️"?"#ff3f9f60":board[i]==="💜"?"#7a2bff60":"#ffffff18"; }); if(g.winner){ if(g.winner==="draw"){ $("gameStatus").textContent="Draw! 🤝"; $("bossText").style.display="block"; $("bossText").innerHTML=`DRAW - Dono BOSS 👑👑`; } else { const winName=g.winner===g.playerX? g.playerXName : g.playerOName; $("gameStatus").textContent=`${winName} jeet gaya!`; $("bossText").style.display="block"; $("bossText").innerHTML=`${safe(winName)} is the BOSS 👑😎<br><span style="font-size:14px">Loser ko kiss deni padegi 😘</span>`; playRingtone(true); } } else { $("bossText").style.display="none"; const turnName=g.turn===g.playerX? g.playerXName : g.playerOName; $("gameStatus").textContent=`${safe(turnName||"Partner")} ki baari ${g.turn===auth.currentUser.uid? "- Tum Chalo ❤️":"- Wait ⏳"}`; } });}
+document.querySelectorAll(".game-cell").forEach(btn=>{ btn.onclick=async()=>{ const i=parseInt(btn.dataset.i); if(!myCoupleId) return; const gameRef=doc(db,"couples",myCoupleId,"game","current"); const snap=await getDoc(gameRef); if(!snap.exists()) return; const g=snap.data(); if(g.winner) return; if(g.turn!==auth.currentUser.uid){alert("Tumhari baari nahi hai 😘"); return;} if(g.board[i]!=="") return; const mySymbol=auth.currentUser.uid===g.playerX?"❤️":"💜"; let newBoard=[...g.board]; newBoard[i]=mySymbol; const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; let winner=null; for(const w of wins){ if(newBoard[w[0]] && newBoard[w[0]]===newBoard[w[1]] && newBoard[w[0]]===newBoard[w[2]]){ winner=auth.currentUser.uid; } } if(!winner && newBoard.every(c=>c!=="")) winner="draw"; const nextTurn=winner? null : (g.turn===g.playerX? g.playerO : g.playerX); await updateDoc(gameRef,{board:newBoard,turn:nextTurn,winner:winner}); }});
+$("resetGameBtn").onclick=async()=>{ if(!myCoupleId) return; const gameRef=doc(db,"couples",myCoupleId,"game","current"); await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent,playerO:partnerUid,playerOName:"Partner",winner:null,createdAt:serverTimestamp()}); $("bossText").style.display="none"; };
+document.querySelectorAll(".nav-btn").forEach(b=>{ if(b.dataset.screen==="gameScreen") b.addEventListener("click",()=>{ if(myCoupleId) initGame(); }); });
+
+onAuthStateChanged(auth,async u=>{ if(u){ $("loginScreen").classList.add("hidden");$("app").classList.remove("hidden"); loadLocalSettings(); await loadProfile(u); loadPosts(); loadReels(); loadStories(); loadNotifs(u); loadRequests(u); loadFriends(u); loadCouple(u); setInterval(async()=>{try{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}catch{}},30000); document.addEventListener("visibilitychange",async()=>{try{if(document.hidden){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});}else{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}}catch{}});} else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden");}});
 </script>
 </body>
 </html>
