@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do Dil Ek Jaan ❤️ 5-Bottom</title>
+<title>Do Dil Ek Jaan ❤️ Call + 5 Bottom</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;color:#fff;background:#000}
 button,input,textarea,select{font:inherit}button{border:0;border-radius:28px;padding:11px 14px;color:#fff;background:linear-gradient(90deg,#ff3f9f,#a52cff);font-weight:bold;cursor:pointer}
@@ -53,73 +53,58 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 </style>
 </head>
 <body>
-<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">5-Bottom Clean</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
+<div id="loginScreen" class="login"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="muted">Call + 5 Bottom</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
 <div id="app" class="app hidden">
+<!-- LOVE + RINGTONE -->
 <div id="loveOverlay" class="love-overlay"><div id="loveEmoji" style="font-size:90px">💋</div><h1 id="loveText" style="margin-top:12px">I Miss You Jaan! 😘</h1><p id="loveFrom" class="muted">From Your Love</p><button id="closeLoveBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">Aww ❤️ Love You Too</button></div>
 <div id="ringtoneOverlay" class="love-overlay"><div style="font-size:80px">🔔</div><h1 id="ringtoneText" style="margin-top:12px">Your Jaan is Online! ❤️</h1><p id="ringtoneSub" class="muted">Tumhari jaan abhi online aayi hai</p><button id="closeRingtoneBtn" class="secondary" style="margin-top:20px;width:auto;padding:12px 28px">❤️ Aww Hi Jaan</button></div>
-<div id="storyViewer" class="story-viewer">
-<div class="story-top"><div><b id="storyViewerName">User</b><div id="storyViewerTime" class="small"></div></div><div style="display:flex;gap:8px"><button id="deleteStoryBtn" class="hidden" style="width:auto;padding:8px 14px;background:#ff3264">🗑️</button><button id="closeStoryBtn" style="width:auto;padding:8px 14px" class="secondary">✕</button></div></div>
-<div id="storyContent" style="flex:1;display:flex;align-items:center;justify-content:center"></div>
-<div class="story-bottom"><div style="display:flex;gap:8px;align-items:center"><button id="storyLikeBtn" style="width:60px">❤️ <span id="storyLikeCount">0</span></button></div><button id="nextStoryBtn" class="secondary" style="width:auto">Next →</button></div>
+
+<!-- CALL SCREENS -->
+<div id="callScreen" class="love-overlay" style="background:#000;z-index:300;padding:0">
+<video id="remoteVideo" autoplay playsinline style="width:100%;height:100%;object-fit:cover;background:#000"></video>
+<video id="localVideo" autoplay muted playsinline style="position:absolute;bottom:110px;right:20px;width:110px;height:150px;border-radius:14px;border:2px solid #ff3f9f;object-fit:cover;background:#222"></video>
+<div style="position:absolute;top:20px;left:0;right:0;text-align:center;z-index:1"><h2 id="callStatusText">Calling... 📞</h2><p id="callNameText" class="small">Jaan ❤️</p></div>
+<div style="position:absolute;bottom:30px;left:0;right:0;display:flex;justify-content:center;gap:16px;z-index:1">
+<button id="muteBtn" class="secondary" style="width:56px;height:56px;border-radius:28px;font-size:20px">🎤</button>
+<button id="endCallBtn" style="width:66px;height:66px;border-radius:33px;background:#ff1744;font-size:26px">❌</button>
+<button id="speakerBtn" class="secondary" style="width:56px;height:56px;border-radius:28px;font-size:20px">🔊</button>
 </div>
-<div id="notifScreen" class="notif-screen">
-<div class="top-title">🔔 Notifications <button id="closeNotifBtn" class="secondary" style="width:auto;padding:8px 14px">✕</button></div>
-<div style="display:flex;gap:8px;margin-bottom:10px"><button id="markAllReadBtn" class="secondary" style="flex:1">Mark read</button><button id="clearNotifBtn" class="secondary" style="flex:1;background:#ff326430">Clear</button></div>
-<div id="notifList"></div>
 </div>
+<div id="incomingCallOverlay" class="love-overlay" style="z-index:301">
+<div style="font-size:70px;animation:beat 0.8s infinite">📞</div>
+<h1 id="incomingCallName">Jaan Calling...</h1><p class="muted">Tumhari jaan call kar rahi hai ❤️</p>
+<div style="display:flex;gap:20px;margin-top:30px">
+<button id="acceptCallBtn" style="width:70px;height:70px;border-radius:35px;background:#00c853;font-size:28px">📞</button>
+<button id="rejectCallBtn" style="width:70px;height:70px;border-radius:35px;background:#ff1744;font-size:28px">❌</button>
+</div>
+</div>
+
+<!-- STORY VIEWER + NOTIF -->
+<div id="storyViewer" class="story-viewer"><div class="story-top"><div><b id="storyViewerName">User</b><div id="storyViewerTime" class="small"></div></div><div style="display:flex;gap:8px"><button id="deleteStoryBtn" class="hidden" style="width:auto;padding:8px 14px;background:#ff3264">🗑️</button><button id="closeStoryBtn" style="width:auto;padding:8px 14px" class="secondary">✕</button></div></div><div id="storyContent" style="flex:1;display:flex;align-items:center;justify-content:center"></div><div class="story-bottom"><div style="display:flex;gap:8px;align-items:center"><button id="storyLikeBtn" style="width:60px">❤️ <span id="storyLikeCount">0</span></button></div><button id="nextStoryBtn" class="secondary" style="width:auto">Next →</button></div></div>
+<div id="notifScreen" class="notif-screen"><div class="top-title">🔔 Notifications <button id="closeNotifBtn" class="secondary" style="width:auto;padding:8px 14px">✕</button></div><div style="display:flex;gap:8px;margin-bottom:10px"><button id="markAllReadBtn" class="secondary" style="flex:1">Mark read</button><button id="clearNotifBtn" class="secondary" style="flex:1;background:#ff326430">Clear</button></div><div id="notifList"></div></div>
 
 <section id="homeScreen" class="screen active">
 <div class="top-title"><span>Do Dil Ek Jaan ❤️</span><div class="bell" id="bellBtn">🔔<div id="bellBadge" class="bell-badge hidden">0</div></div></div>
 <div class="panel" style="background:linear-gradient(135deg,#ff3f9f30,#a52cff30);border-color:#ff3f9f50;text-align:center">
-<div id="coupleNotLinked">
-<div class="couple-heart">💔</div><h3>Couple Connect Karo 💑</h3>
-<div style="display:flex;gap:6px;margin-top:10px"><input id="coupleCodeInput" maxlength="8" placeholder="PARTNER CODE"><button id="linkCoupleBtn" style="width:90px">Link ❤️</button></div>
-<div id="coupleLinkStatus" class="status"></div>
-</div>
-<div id="coupleLinked" class="hidden">
-<div style="display:flex;justify-content:center;align-items:center;gap:10px"><div style="position:relative"><img id="myCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="myOnlineDot" class="online-dot" style="position:absolute;bottom:2px;right:2px"></span></div><div class="couple-heart" style="font-size:26px">❤️</div><div style="position:relative"><img id="partnerCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="partnerOnlineDot" class="offline-dot" style="position:absolute;bottom:2px;right:2px"></span></div></div>
-<h3 id="coupleNames" style="margin-top:8px">You ❤️ Partner</h3><p id="partnerOnlineText" class="small">Checking...</p>
-<div id="anniversaryCountdown" class="countdown">--</div><p id="anniversaryLabel" class="small">Anniversary Countdown</p>
-<div style="display:flex;gap:6px;margin-top:10px"><input id="anniversaryInput" type="date"><button id="saveAnniversaryBtn" style="width:90px" class="secondary">Save 📅</button></div>
-<div style="display:flex;gap:8px;margin-top:12px"><button id="missYouBtn" class="love-btn" style="background:linear-gradient(90deg,#ff7eb3,#ff3f9f)">😘 Miss You</button><button id="hugBtn" class="love-btn" style="background:linear-gradient(90deg,#a52cff,#7a2bff)">🤗 Hug</button><button id="kissBtn" class="love-btn" style="background:linear-gradient(90deg,#ff3f9f,#ff0000)">💋 Kiss</button></div>
-<button id="unlinkCoupleBtn" style="margin-top:12px;background:#ff3264;width:100%">💔 Unlink</button>
-</div></div>
+<div id="coupleNotLinked"><div class="couple-heart">💔</div><h3>Couple Connect Karo 💑</h3><div style="display:flex;gap:6px;margin-top:10px"><input id="coupleCodeInput" maxlength="8" placeholder="PARTNER CODE"><button id="linkCoupleBtn" style="width:90px">Link ❤️</button></div><div id="coupleLinkStatus" class="status"></div></div>
+<div id="coupleLinked" class="hidden"><div style="display:flex;justify-content:center;align-items:center;gap:10px"><div style="position:relative"><img id="myCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="myOnlineDot" class="online-dot" style="position:absolute;bottom:2px;right:2px"></span></div><div class="couple-heart" style="font-size:26px">❤️</div><div style="position:relative"><img id="partnerCouplePic" class="profile-pic" style="width:60px;height:60px"><span id="partnerOnlineDot" class="offline-dot" style="position:absolute;bottom:2px;right:2px"></span></div></div><h3 id="coupleNames" style="margin-top:8px">You ❤️ Partner</h3><p id="partnerOnlineText" class="small">Checking...</p><div id="anniversaryCountdown" class="countdown">--</div><p id="anniversaryLabel" class="small">Anniversary Countdown</p><div style="display:flex;gap:6px;margin-top:10px"><input id="anniversaryInput" type="date"><button id="saveAnniversaryBtn" style="width:90px" class="secondary">Save 📅</button></div><div style="display:flex;gap:8px;margin-top:12px"><button id="missYouBtn" class="love-btn" style="background:linear-gradient(90deg,#ff7eb3,#ff3f9f)">😘 Miss You</button><button id="hugBtn" class="love-btn" style="background:linear-gradient(90deg,#a52cff,#7a2bff)">🤗 Hug</button><button id="kissBtn" class="love-btn" style="background:linear-gradient(90deg,#ff3f9f,#ff0000)">💋 Kiss</button></div><button id="unlinkCoupleBtn" style="margin-top:12px;background:#ff3264;width:100%">💔 Unlink</button></div></div>
 <div class="panel" style="padding:10px"><div class="stories-bar" id="storiesBar"><div class="story-item story-add" id="addStoryItem"><div class="story-ring" style="background:#ffffff20"><span style="font-size:28px">+</span></div><div class="story-name">Your Story</div></div></div><input id="storyInput" type="file" accept="image/*,video/*" class="hidden"><div id="storyStatus" class="status"></div></div>
 <div class="panel"><h2 id="homeWelcome">Welcome! 💕</h2></div>
 </section>
 
-<section id="coupleScreen" class="screen"><div class="top-title">💑 Our Private Space 🔐</div>
-<div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me Partner Link karo</p></div><div id="coupleHasLink" class="hidden"><div class="panel private-post"><h3>🔐 Sirf Tum Dono</h3><textarea id="privatePostText" rows="3" placeholder="Secret... ❤️"></textarea><input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview"><div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div><button id="publishPrivateBtn">💌 Post Karo</button><div id="privatePostStatus" class="status"></div></div><div id="privateFeed"></div><div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div></div></section>
+<section id="coupleScreen" class="screen"><div class="top-title">💑 Our Private Space 🔐</div><div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me Partner Link karo</p></div><div id="coupleHasLink" class="hidden"><div class="panel private-post"><h3>🔐 Sirf Tum Dono</h3><textarea id="privatePostText" rows="3" placeholder="Secret... ❤️"></textarea><input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview"><div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div><button id="publishPrivateBtn">💌 Post Karo</button><div id="privatePostStatus" class="status"></div></div><div id="privateFeed"></div><div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div></div></section>
 
 <section id="gameScreen" class="screen">
 <div class="top-title">🎮 BOSS Battle 👑 <button id="closeGameBtn" class="secondary" style="width:auto;padding:8px 14px">← Back</button></div>
-<div class="panel" style="text-align:center;background:linear-gradient(135deg,#ff3f9f20,#7a2bff20)">
-<div id="gameStatus" style="font-size:18px;font-weight:bold;margin-bottom:6px">Loading...</div>
-<div id="bossText" style="font-size:26px;font-weight:bold;color:#ff69bd;display:none;margin:10px 0"></div>
-<div id="ticBoard" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:15px auto">
-<button class="game-cell" data-i="0"></button><button class="game-cell" data-i="1"></button><button class="game-cell" data-i="2"></button>
-<button class="game-cell" data-i="3"></button><button class="game-cell" data-i="4"></button><button class="game-cell" data-i="5"></button>
-<button class="game-cell" data-i="6"></button><button class="game-cell" data-i="7"></button><button class="game-cell" data-i="8"></button>
-</div>
-<div style="display:flex;gap:8px"><button id="resetGameBtn" class="secondary" style="flex:1">🔄 New</button><button id="exitGameBtn" class="secondary" style="flex:1;background:#ff326430">Exit</button></div>
-</div>
+<div class="panel" style="text-align:center;background:linear-gradient(135deg,#ff3f9f20,#7a2bff20)"><div id="gameStatus" style="font-size:18px;font-weight:bold;margin-bottom:6px">Loading...</div><div id="bossText" style="font-size:26px;font-weight:bold;color:#ff69bd;display:none;margin:10px 0"></div><div id="ticBoard" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:15px auto"><button class="game-cell" data-i="0"></button><button class="game-cell" data-i="1"></button><button class="game-cell" data-i="2"></button><button class="game-cell" data-i="3"></button><button class="game-cell" data-i="4"></button><button class="game-cell" data-i="5"></button><button class="game-cell" data-i="6"></button><button class="game-cell" data-i="7"></button><button class="game-cell" data-i="8"></button></div><div style="display:flex;gap:8px"><button id="resetGameBtn" class="secondary" style="flex:1">🔄 New</button><button id="exitGameBtn" class="secondary" style="flex:1;background:#ff326430">Exit</button></div></div>
 </section>
 
 <section id="friendsScreen" class="screen">
 <div class="top-title">👥 Social Hub</div>
-<div style="display:flex;gap:6px;margin-bottom:10px">
-<button id="tabFriendsBtn" class="secondary" style="flex:1;background:linear-gradient(90deg,#ff3f9f,#a52cff)">👥 Friends</button>
-<button id="tabChatBtn" class="secondary" style="flex:1">💬 Chats</button>
-<button id="tabFeedBtn" class="secondary" style="flex:1">📝 Feeds</button>
-</div>
-<div id="friendsTab">
-<div class="panel"><div id="myFriendCode" class="code">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div>
-<div class="panel"><h2>Requests</h2><div id="requestList"></div></div>
-<div class="panel"><h2>Friends</h2><div id="friendsList"></div></div>
-<div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search</button><div id="friendResult"></div></div>
-</div>
+<div style="display:flex;gap:6px;margin-bottom:10px"><button id="tabFriendsBtn" class="secondary" style="flex:1;background:linear-gradient(90deg,#ff3f9f,#a52cff)">👥 Friends</button><button id="tabChatBtn" class="secondary" style="flex:1">💬 Chats</button><button id="tabFeedBtn" class="secondary" style="flex:1">📝 Feeds</button></div>
+<div id="friendsTab"><div class="panel"><div id="myFriendCode" class="code">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div><div class="panel"><h2>Requests</h2><div id="requestList"></div></div><div class="panel"><h2>Friends</h2><div id="friendsList"></div></div><div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search</button><div id="friendResult"></div></div></div>
 <div id="chatTab" class="hidden">
-<div id="privateChatHeader" class="panel hidden"><div id="privateFriendName" style="font-weight:bold">Friend</div><button id="backToFriendsBtn" class="secondary" style="margin-top:6px">← Back</button></div>
+<div id="privateChatHeader" class="panel hidden"><div style="display:flex;justify-content:space-between;align-items:center"><div><div id="privateFriendName" style="font-weight:bold">Friend</div><div class="small">Private Chat + Call 📞</div></div><div style="display:flex;gap:6px"><button id="voiceCallBtn" style="width:auto;padding:10px 12px;background:#00c853;font-size:16px">📞</button><button id="videoCallBtn" style="width:auto;padding:10px 12px;background:#2962ff;font-size:16px">📹</button><button id="backToFriendsBtn" class="secondary" style="width:auto;padding:8px 12px">←</button></div></div></div>
 <div id="chatBox" style="height:45vh;overflow-y:auto;padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff08;margin:10px 0"></div>
 <div style="display:flex;gap:6px"><input id="chatInput" placeholder="Message..."><button id="sendBtn" style="width:70px">Send</button></div>
 </div>
@@ -134,13 +119,7 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 
 <section id="settingsScreen" class="screen">
 <div class="top-title">⚙️ Settings <button id="closeSettingsBtn" class="secondary" style="width:auto;padding:8px 14px">← Back</button></div>
-<div class="panel"><h3>🔔 Notifications</h3>
-<div class="setting-row"><span>Couple Ringtone</span><div id="toggleRingtone" class="toggle on"></div></div>
-<div class="setting-row"><span>Like Notification</span><div id="toggleLikeNotif" class="toggle on"></div></div>
-<div class="setting-row"><span>Comment Notification</span><div id="toggleCommentNotif" class="toggle on"></div></div>
-<div class="setting-row"><span>Vibration</span><div id="toggleVibration" class="toggle on"></div></div>
-<button id="testRingtoneBtn" class="secondary" style="margin-top:8px">🎵 Test Ringtone</button>
-</div>
+<div class="panel"><h3>🔔 Notifications</h3><div class="setting-row"><span>Couple Ringtone</span><div id="toggleRingtone" class="toggle on"></div></div><div class="setting-row"><span>Like Notification</span><div id="toggleLikeNotif" class="toggle on"></div></div><div class="setting-row"><span>Comment Notification</span><div id="toggleCommentNotif" class="toggle on"></div></div><div class="setting-row"><span>Vibration</span><div id="toggleVibration" class="toggle on"></div></div><button id="testRingtoneBtn" class="secondary" style="margin-top:8px">🎵 Test Ringtone</button></div>
 <div class="panel"><h3>👁️ Privacy</h3><div class="setting-row"><span>Private Account</span><div id="togglePrivate" class="toggle"></div></div><div class="setting-row"><span>Hide Online Status</span><div id="toggleHideOnline" class="toggle"></div></div></div>
 <div class="panel"><h3>🎨 Theme</h3><select id="themeSelect"><option value="love">💜 Love</option><option value="dark">🖤 Dark</option><option value="sunset">🌅 Sunset</option><option value="ocean">🌊 Ocean</option></select></div>
 <div class="panel"><h3>💾 Data</h3><button id="clearChatBtn" class="secondary" style="background:#ff980030">🗑️ Clear Chats</button><button id="clearPrivateBtn" class="secondary" style="background:#ff980030;margin-top:8px">🗑️ Clear Private</button><button id="clearNotifSettingBtn" class="secondary" style="background:#ff980030;margin-top:8px">🔔 Clear Notifications</button></div>
@@ -174,11 +153,8 @@ getRedirectResult(auth).catch(()=>{});
 $("loginBtn").onclick=async()=>{try{const mob=/Android|iPhone/i.test(navigator.userAgent)||location.hostname.includes("vercel.app"); if(mob) await signInWithRedirect(auth,provider); else await signInWithPopup(auth,provider);}catch{await signInWithRedirect(auth,provider);}};
 function loadLocalSettings(){try{const s=localStorage.getItem("dd_settings"); if(s) settings={...settings,...JSON.parse(s)};}catch{} applySettingsUI();}
 function saveLocalSettings(){localStorage.setItem("dd_settings",JSON.stringify(settings));}
-function applySettingsUI(){
-$("toggleRingtone").className="toggle"+(settings.ringtone?" on":""); $("toggleLikeNotif").className="toggle"+(settings.likeNotif?" on":""); $("toggleCommentNotif").className="toggle"+(settings.commentNotif?" on":""); $("toggleVibration").className="toggle"+(settings.vibration?" on":""); $("togglePrivate").className="toggle"+(settings.privateAcc?" on":""); $("toggleHideOnline").className="toggle"+(settings.hideOnline?" on":""); $("themeSelect").value=settings.theme;
-const appEl=$("app"); if(settings.theme==="dark") appEl.style.background="radial-gradient(circle at top,#222,#000 70%)"; else if(settings.theme==="sunset") appEl.style.background="radial-gradient(circle at top,#ff6a00,#58145b 60%,#000)"; else if(settings.theme==="ocean") appEl.style.background="radial-gradient(circle at top,#00c6ff,#0052D4 60%,#000)"; else appEl.style.background="radial-gradient(circle at top,#58145b,#180018 55%,#050005)";
-}
-async function loadProfile(u){const r=doc(db,"users",u.uid);let s=await getDoc(r); if(!s.exists()){await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),isOnline:true,lastSeen:serverTimestamp(),privateAccount:false,createdAt:serverTimestamp()}); s=await getDoc(r);}else{const hide=settings.hideOnline; await setDoc(r,{isOnline:!hide,lastSeen:serverTimestamp()},{merge:true});} const d=s.data(); $("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; if(d.privateAccount!==undefined) {settings.privateAcc=d.privateAccount; saveLocalSettings(); applySettingsUI();}}
+function applySettingsUI(){$("toggleRingtone").className="toggle"+(settings.ringtone?" on":""); $("toggleLikeNotif").className="toggle"+(settings.likeNotif?" on":""); $("toggleCommentNotif").className="toggle"+(settings.commentNotif?" on":""); $("toggleVibration").className="toggle"+(settings.vibration?" on":""); $("togglePrivate").className="toggle"+(settings.privateAcc?" on":""); $("toggleHideOnline").className="toggle"+(settings.hideOnline?" on":""); $("themeSelect").value=settings.theme; const appEl=$("app"); if(settings.theme==="dark") appEl.style.background="radial-gradient(circle at top,#222,#000 70%)"; else if(settings.theme==="sunset") appEl.style.background="radial-gradient(circle at top,#ff6a00,#58145b 60%,#000)"; else if(settings.theme==="ocean") appEl.style.background="radial-gradient(circle at top,#00c6ff,#0052D4 60%,#000)"; else appEl.style.background="radial-gradient(circle at top,#58145b,#180018 55%,#050005)";}
+async function loadProfile(u){const r=doc(db,"users",u.uid);let s=await getDoc(r); if(!s.exists()){await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),isOnline:true,lastSeen:serverTimestamp(),privateAccount:false,createdAt:serverTimestamp()}); s=await getDoc(r);}else{const hide=settings.hideOnline; await setDoc(r,{isOnline:!hide,lastSeen:serverTimestamp()},{merge:true});} const d=s.data(); $("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; if(d.privateAccount!==undefined){settings.privateAcc=d.privateAccount; saveLocalSettings(); applySettingsUI();}}
 async function sendNotif(toUid, type, text, refId){if(!settings.likeNotif && type.includes("like")) return; if(!settings.commentNotif && type.includes("comment")) return; const u=auth.currentUser; if(!u||toUid===u.uid) return; try{await addDoc(collection(db,"notifications"),{toUid:toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",fromPhoto:$("profilePic").src||"",type:type,text:text,refId:refId||"",read:false,createdAt:serverTimestamp()});}catch(e){}}
 function loadNotifs(u){if(notifUnsub)notifUnsub(); notifUnsub=onSnapshot(query(collection(db,"notifications"),where("toUid","==",u.uid),orderBy("createdAt","desc")),snap=>{let unread=0; let loveNotif=null; $("notifList").innerHTML=""; if(snap.empty){$("notifList").innerHTML="<p class=muted style=padding:20px>No notifications 🔔</p>";} snap.forEach(d=>{const n=d.data(); if(!n.read) unread++; if(["miss_you","hug","kiss"].includes(n.type) &&!n.read){loveNotif=n;} const icon={like_post:"❤️",like_reel:"❤️",like_story:"❤️",comment_post:"💬",comment_reel:"💬",follow_request:"👥",follow_accept:"✅",miss_you:"😘",hug:"🤗",kiss:"💋",private_post:"💌"}[n.type]||"🔔"; const el=document.createElement("div"); el.className="notif-card"+(n.read?"":" unread"); el.innerHTML=`<div style="display:flex;gap:10px;align-items:center"><div style="font-size:22px">${icon}</div><div style="flex:1"><b>${safe(n.fromName||"User")}</b><div class="small">${safe(n.text||"")}</div><div class="small" style="opacity:0.6">${n.createdAt?.toDate? n.createdAt.toDate().toLocaleString() : "Just now"}</div></div></div>`; el.onclick=async()=>{await updateDoc(doc(db,"notifications",d.id),{read:true}); if(["miss_you","hug","kiss"].includes(n.type)){showLoveOverlay(n.type,n.fromName);}}; $("notifList").append(el);}); if(loveNotif){showLoveOverlay(loveNotif.type,loveNotif.fromName);} const badge=$("bellBadge"); if(unread>0){badge.textContent=unread>99?"99+":unread; badge.classList.remove("hidden");} else {badge.classList.add("hidden");}});}
 $("bellBtn").onclick=()=>{$("notifScreen").classList.add("active");}; $("closeNotifBtn").onclick=()=>{$("notifScreen").classList.remove("active");}; $("markAllReadBtn").onclick=async()=>{const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await updateDoc(doc(db,"notifications",d.id),{read:true});});}; $("clearNotifBtn").onclick=async()=>{if(!confirm("Clear all?"))return; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",auth.currentUser.uid))); snap.forEach(async d=>{await deleteDoc(doc(db,"notifications",d.id));});};
@@ -218,18 +194,7 @@ $("copyCodeBtn").onclick=async()=>{await navigator.clipboard.writeText($("myFrie
 $("searchFriendBtn").onclick=async()=>{const c=$("friendSearchInput").value.trim().toUpperCase(), me=auth.currentUser; if(c.length!==8)return; const snap=await getDocs(query(collection(db,"users"),where("friendCode","==",c))); if(snap.empty){$("friendResult").textContent="Not found";return;} const f=snap.docs[0]; if(f.id===me.uid){$("friendResult").textContent="Own code";return;} $("friendResult").innerHTML=`<div class=friend-card><b>${safe(f.data().name||"User")}</b><br><button id=addF>➕ Add Friend</button></div>`; $("addF").onclick=async()=>{await setDoc(doc(db,"friendRequests",reqId(me.uid,f.id)),{fromUid:me.uid,toUid:f.id,fromName:$("userName").textContent,fromPhoto:$("profilePic").src,status:"pending",createdAt:serverTimestamp()}); sendNotif(f.id,"follow_request",`sent you a friend request 👥`, me.uid); $("friendResult").textContent="Request sent ❤️";};};
 function loadRequests(u){if(reqUnsub)reqUnsub(); reqUnsub=onSnapshot(query(collection(db,"friendRequests"),where("toUid","==",u.uid),where("status","==","pending")),s=>{$("requestList").innerHTML=""; if(s.empty){$("requestList").textContent="No requests";return;} s.forEach(d=>{const rd=d.data(); const el=document.createElement("div"); el.className="request-card"; el.innerHTML=`<b>${safe(rd.fromName||"User")}</b><div style="display:flex;gap:6px;margin-top:6px"><button class=accept>Accept</button><button class="secondary reject">Reject</button></div>`; el.querySelector(".accept").onclick=async()=>{await updateDoc(doc(db,"friendRequests",d.id),{status:"accepted"}); await setDoc(doc(db,"friends",u.uid+"_"+rd.fromUid),{uid:u.uid,friendUid:rd.fromUid,friendName:rd.fromName,createdAt:serverTimestamp()}); await setDoc(doc(db,"friends",rd.fromUid+"_"+u.uid),{uid:rd.fromUid,friendUid:u.uid,friendName:$("userName").textContent,createdAt:serverTimestamp()}); sendNotif(rd.fromUid,"follow_accept",`accepted your request ✅`, u.uid);}; el.querySelector(".reject").onclick=async()=>await updateDoc(doc(db,"friendRequests",d.id),{status:"rejected"}); $("requestList").append(el);});});}
 function loadFriends(u){if(friendsUnsub)friendsUnsub(); friendsUnsub=onSnapshot(query(collection(db,"friends"),where("uid","==",u.uid)),s=>{$("friendsList").innerHTML=""; s.forEach(d=>{const fd=d.data(); const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(fd.friendName||"Friend")}</b><br><button style="margin-top:6px">💬 Message</button>`; el.querySelector("button").onclick=()=>openChat(fd.friendUid,fd.friendName); $("friendsList").append(el);});});}
-async function openChat(fid,fname){
- currentPrivateFriendUid=fid;
- $("privateFriendName").textContent=fname;
- $("privateChatHeader").classList.remove("hidden");
- $("tabFriendsBtn").click();
- setTimeout(()=>{ $("tabChatBtn").click(); },80);
- const u=auth.currentUser; const id=chatId(u.uid,fid); await setDoc(doc(db,"privateChats",id),{participants:[u.uid,fid]},{merge:true});
- if(privateUnsub)privateUnsub();
- privateUnsub=onSnapshot(query(collection(db,"privateChats",id,"messages"),orderBy("createdAt","asc")),snap=>{
-   $("chatBox").innerHTML=""; snap.forEach(m=>{const d=m.data(); const div=document.createElement("div"); div.style.margin="6px 0"; div.style.textAlign=d.uid===u.uid?"right":"left"; div.innerHTML=`<span style="display:inline-block;padding:8px 12px;border-radius:14px;background:${d.uid===u.uid?"#ff3f9f":"#ffffff20"}">${safe(d.text||"")}</span>`; $("chatBox").append(div);}); $("chatBox").scrollTop=$("chatBox").scrollHeight;
- });
-}
+async function openChat(fid,fname){ currentPrivateFriendUid=fid; $("privateFriendName").textContent=fname; $("privateChatHeader").classList.remove("hidden"); $("tabFriendsBtn").click(); setTimeout(()=>{ $("tabChatBtn").click(); },80); const u=auth.currentUser; const id=chatId(u.uid,fid); await setDoc(doc(db,"privateChats",id),{participants:[u.uid,fid]},{merge:true}); if(privateUnsub)privateUnsub(); privateUnsub=onSnapshot(query(collection(db,"privateChats",id,"messages"),orderBy("createdAt","asc")),snap=>{ $("chatBox").innerHTML=""; snap.forEach(m=>{const d=m.data(); const div=document.createElement("div"); div.style.margin="6px 0"; div.style.textAlign=d.uid===u.uid?"right":"left"; div.innerHTML=`<span style="display:inline-block;padding:8px 12px;border-radius:14px;background:${d.uid===u.uid?"#ff3f9f":"#ffffff20"}">${safe(d.text||"")}</span>`; $("chatBox").append(div);}); $("chatBox").scrollTop=$("chatBox").scrollHeight; });}
 $("sendBtn").onclick=async()=>{const u=auth.currentUser, t=$("chatInput").value.trim(); if(!u||!currentPrivateFriendUid||!t)return; const id=chatId(u.uid,currentPrivateFriendUid); await addDoc(collection(db,"privateChats",id,"messages"),{uid:u.uid,text:t,createdAt:serverTimestamp()}); $("chatInput").value="";};
 $("backToFriendsBtn").onclick=()=>{$("tabFriendsBtn").click();};
 $("changePhotoBtn").onclick=()=>$("photoInput").click(); $("photoInput").onchange=()=>{const f=$("photoInput").files[0]; if(!f)return; if(f.size>500*1024){alert("500KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedProfileBase64=e.target.result; $("profilePreview").src=selectedProfileBase64; $("profilePreview").style.display="block"; $("uploadPhotoBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
@@ -248,22 +213,90 @@ $("clearPrivateBtn").onclick=async()=>{if(!myCoupleId) {alert("Couple link nahi 
 $("clearNotifSettingBtn").onclick=async()=>{if(!confirm("Saare notifications delete?")) return; const u=auth.currentUser; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",u.uid))); for(const d of snap.docs) await deleteDoc(d.ref); alert("Cleared ✅");};
 $("deleteAccountBtn").onclick=async()=>{if(!confirm("Pakka delete?")) return; if(!confirm("Last warning!")) return; try{const u=auth.currentUser; if(myCoupleId) {try{await deleteDoc(doc(db,"couples",myCoupleId));}catch{}} await deleteDoc(doc(db,"users",u.uid)); await deleteUser(u); alert("Deleted");}catch(e){alert(e.message);}};
 $("logoutBtn").onclick=async()=>{const u=auth.currentUser; if(u){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});} await signOut(auth);};
-
-// TABS LOGIC
 $("tabFriendsBtn").onclick=()=>{ $("friendsTab").classList.remove("hidden"); $("chatTab").classList.add("hidden"); $("feedTab").classList.add("hidden"); $("tabFriendsBtn").style.background="linear-gradient(90deg,#ff3f9f,#a52cff)"; $("tabChatBtn").style.background="#ffffff20"; $("tabFeedBtn").style.background="#ffffff20"; };
 $("tabChatBtn").onclick=()=>{ $("friendsTab").classList.add("hidden"); $("chatTab").classList.remove("hidden"); $("feedTab").classList.add("hidden"); $("tabChatBtn").style.background="linear-gradient(90deg,#ff3f9f,#a52cff)"; $("tabFriendsBtn").style.background="#ffffff20"; $("tabFeedBtn").style.background="#ffffff20"; };
 $("tabFeedBtn").onclick=()=>{ $("friendsTab").classList.add("hidden"); $("chatTab").classList.add("hidden"); $("feedTab").classList.remove("hidden"); $("tabFeedBtn").style.background="linear-gradient(90deg,#ff3f9f,#a52cff)"; $("tabFriendsBtn").style.background="#ffffff20"; $("tabChatBtn").style.background="#ffffff20"; };
 $("feedPostBtn").onclick=()=>{ $("feedPostsDiv").classList.remove("hidden"); $("feedReelsDiv").classList.add("hidden"); $("feedPostBtn").style.background="#ff3f9f"; $("feedReelBtn").style.background="#ffffff20"; };
 $("feedReelBtn").onclick=()=>{ $("feedPostsDiv").classList.add("hidden"); $("feedReelsDiv").classList.remove("hidden"); $("feedReelBtn").style.background="#ff3f9f"; $("feedPostBtn").style.background="#ffffff20"; };
-
-// BOSS GAME
 $("closeGameBtn").onclick=()=>showScreen("coupleScreen"); $("exitGameBtn").onclick=()=>showScreen("coupleScreen");
 async function initGame(){ if(!myCoupleId) return; const gameRef=doc(db,"couples",myCoupleId,"game","current"); const snap=await getDoc(gameRef); if(!snap.exists()){ await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent||"You",playerO:partnerUid||"",playerOName:"Partner",winner:null,createdAt:serverTimestamp()}); } if(gameUnsub) gameUnsub(); gameUnsub=onSnapshot(gameRef, async (s)=>{ if(!s.exists()) return; const g=s.data(); if((!g.playerOName || g.playerOName==="Partner") && g.playerO){ try{ const pSnap=await getDoc(doc(db,"users",g.playerO)); if(pSnap.exists()){ await updateDoc(gameRef,{playerOName:pSnap.data().name}); g.playerOName=pSnap.data().name; } }catch{} } const board=g.board||[]; document.querySelectorAll(".game-cell").forEach((btn,i)=>{ btn.textContent=board[i]||""; btn.style.background=board[i]==="❤️"?"#ff3f9f60":board[i]==="💜"?"#7a2bff60":"#ffffff18"; }); if(g.winner){ if(g.winner==="draw"){ $("gameStatus").textContent="Draw! 🤝"; $("bossText").style.display="block"; $("bossText").innerHTML=`DRAW - Dono BOSS 👑👑`; } else { const winName=g.winner===g.playerX? g.playerXName : g.playerOName; $("gameStatus").textContent=`${winName} jeet gaya!`; $("bossText").style.display="block"; $("bossText").innerHTML=`${safe(winName)} is the BOSS 👑😎<br><span style="font-size:14px">Loser ko kiss deni padegi 😘</span>`; playRingtone(true); } } else { $("bossText").style.display="none"; const turnName=g.turn===g.playerX? g.playerXName : g.playerOName; $("gameStatus").textContent=`${safe(turnName||"Partner")} ki baari ${g.turn===auth.currentUser.uid? "- Tum Chalo ❤️":"- Wait ⏳"}`; } });}
 document.querySelectorAll(".game-cell").forEach(btn=>{ btn.onclick=async()=>{ const i=parseInt(btn.dataset.i); if(!myCoupleId) return; const gameRef=doc(db,"couples",myCoupleId,"game","current"); const snap=await getDoc(gameRef); if(!snap.exists()) return; const g=snap.data(); if(g.winner) return; if(g.turn!==auth.currentUser.uid){alert("Tumhari baari nahi hai 😘"); return;} if(g.board[i]!=="") return; const mySymbol=auth.currentUser.uid===g.playerX?"❤️":"💜"; let newBoard=[...g.board]; newBoard[i]=mySymbol; const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; let winner=null; for(const w of wins){ if(newBoard[w[0]] && newBoard[w[0]]===newBoard[w[1]] && newBoard[w[0]]===newBoard[w[2]]){ winner=auth.currentUser.uid; } } if(!winner && newBoard.every(c=>c!=="")) winner="draw"; const nextTurn=winner? null : (g.turn===g.playerX? g.playerO : g.playerX); await updateDoc(gameRef,{board:newBoard,turn:nextTurn,winner:winner}); }});
 $("resetGameBtn").onclick=async()=>{ if(!myCoupleId) return; const gameRef=doc(db,"couples",myCoupleId,"game","current"); await setDoc(gameRef,{board:["","","","","","","","",""],turn:auth.currentUser.uid,playerX:auth.currentUser.uid,playerXName:$("userName").textContent,playerO:partnerUid,playerOName:"Partner",winner:null,createdAt:serverTimestamp()}); $("bossText").style.display="none"; };
 document.querySelectorAll(".nav-btn").forEach(b=>{ if(b.dataset.screen==="gameScreen") b.addEventListener("click",()=>{ if(myCoupleId) initGame(); }); });
 
-onAuthStateChanged(auth,async u=>{ if(u){ $("loginScreen").classList.add("hidden");$("app").classList.remove("hidden"); loadLocalSettings(); await loadProfile(u); loadPosts(); loadReels(); loadStories(); loadNotifs(u); loadRequests(u); loadFriends(u); loadCouple(u); setInterval(async()=>{try{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}catch{}},30000); document.addEventListener("visibilitychange",async()=>{try{if(document.hidden){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});}else{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}}catch{}});} else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden");}});
+// ============ CALLING LOGIC ============
+let pc=null, localStream=null, callIdGlobal=null, incomingUnsub=null;
+const servers={iceServers:[{urls:["stun:stun1.l.google.com:19302","stun:stun2.l.google.com:19302"]}]};
+
+async function createCall(isVideo){
+ if(!currentPrivateFriendUid){alert("Pehle friend select karo"); return;}
+ callIdGlobal=[auth.currentUser.uid,currentPrivateFriendUid].sort().join("_")+"_call";
+ const callRef=doc(db,"calls",callIdGlobal);
+ $("callScreen").classList.add("active");
+ $("callStatusText").textContent=isVideo?"Video Calling... 📹":"Voice Calling... 📞";
+ $("callNameText").textContent=$("privateFriendName").textContent+" ❤️";
+ try{
+ pc=new RTCPeerConnection(servers);
+ localStream=await navigator.mediaDevices.getUserMedia({video:isVideo,audio:true});
+ localStream.getTracks().forEach(t=>pc.addTrack(t,localStream));
+ $("localVideo").srcObject=localStream; $("localVideo").style.display=isVideo?"block":"none";
+ pc.ontrack=e=>{ $("remoteVideo").srcObject=e.streams[0]; };
+ pc.onicecandidate=e=>{ if(e.candidate) addDoc(collection(db,"calls",callIdGlobal,"offerCandidates"),e.candidate.toJSON()); };
+ const offer=await pc.createOffer(); await pc.setLocalDescription(offer);
+ await setDoc(callRef,{offer:{type:offer.type,sdp:offer.sdp},callerUid:auth.currentUser.uid,callerName:$("userName").textContent,receiverUid:currentPrivateFriendUid,isVideo:isVideo,status:"calling",createdAt:serverTimestamp()});
+ onSnapshot(callRef,async snap=>{ const data=snap.data(); if(!data) return; if(data.answer &&!pc.currentRemoteDescription){ await pc.setRemoteDescription(new RTCSessionDescription(data.answer)); $("callStatusText").textContent="Connected ❤️ - "+$("privateFriendName").textContent; } if(data.status==="ended"){ endCall(); } });
+ onSnapshot(collection(db,"calls",callIdGlobal,"answerCandidates"),snap=>{ snap.docChanges().forEach(async ch=>{ if(ch.type==="added"){ try{await pc.addIceCandidate(new RTCIceCandidate(ch.doc.data()));}catch{}} }); });
+ await sendNotif(currentPrivateFriendUid,"private_post",`${$("userName").textContent} is calling you ${isVideo?"📹":"📞"}`, callIdGlobal);
+ playRingtone(false);
+ }catch(e){ alert("Call failed: "+e.message); endCall(); }
+}
+function listenIncomingCalls(u){
+ if(incomingUnsub) incomingUnsub();
+ incomingUnsub=onSnapshot(query(collection(db,"calls"),where("receiverUid","==",u.uid)),snap=>{
+  snap.docChanges().forEach(ch=>{
+    const data=ch.doc.data(); const id=ch.doc.id;
+    if((ch.type==="added" || ch.type==="modified") && data.callerUid!==u.uid &&!data.answer && data.status!=="ended"){
+      callIdGlobal=id;
+      $("incomingCallName").textContent=(data.callerName||"Jaan")+" Calling... "+(data.isVideo?"📹":"📞");
+      $("incomingCallOverlay").classList.add("active"); playRingtone(false);
+    }
+    if(ch.type==="modified" && data.status==="ended"){ $("incomingCallOverlay").classList.remove("active"); $("callScreen").classList.remove("active"); }
+  });
+ });
+}
+async function acceptCall(){
+ if(!callIdGlobal) return;
+ const callRef=doc(db,"calls",callIdGlobal); const snap=await getDoc(callRef); if(!snap.exists()) return; const data=snap.data();
+ $("incomingCallOverlay").classList.remove("active"); $("callScreen").classList.add("active"); $("callStatusText").textContent=data.isVideo?"Video Call Connected 📹":"Voice Call Connected 📞";
+ try{
+ pc=new RTCPeerConnection(servers);
+ localStream=await navigator.mediaDevices.getUserMedia({video:data.isVideo,audio:true});
+ localStream.getTracks().forEach(t=>pc.addTrack(t,localStream));
+ $("localVideo").srcObject=localStream; $("localVideo").style.display=data.isVideo?"block":"none";
+ pc.ontrack=e=>{ $("remoteVideo").srcObject=e.streams[0]; };
+ pc.onicecandidate=e=>{ if(e.candidate) addDoc(collection(db,"calls",callIdGlobal,"answerCandidates"),e.candidate.toJSON()); };
+ await pc.setRemoteDescription(new RTCSessionDescription(data.offer));
+ const answer=await pc.createAnswer(); await pc.setLocalDescription(answer);
+ await updateDoc(callRef,{answer:{type:answer.type,sdp:answer.sdp}});
+ onSnapshot(collection(db,"calls",callIdGlobal,"offerCandidates"),s=>{ s.docChanges().forEach(async c=>{ if(c.type==="added"){ try{await pc.addIceCandidate(new RTCIceCandidate(c.doc.data()));}catch{}} }); });
+ }catch(e){ alert(e.message); endCall(); }
+}
+async function endCall(){
+ $("callScreen").classList.remove("active"); $("incomingCallOverlay").classList.remove("active");
+ if(pc){ pc.close(); pc=null; }
+ if(localStream){ localStream.getTracks().forEach(t=>t.stop()); localStream=null; }
+ $("remoteVideo").srcObject=null; $("localVideo").srcObject=null;
+ if(callIdGlobal){ try{ await updateDoc(doc(db,"calls",callIdGlobal),{status:"ended"}); setTimeout(async()=>{ try{ await deleteDoc(doc(db,"calls",callIdGlobal)); const oSnap=await getDocs(collection(db,"calls",callIdGlobal,"offerCandidates")); oSnap.forEach(async d=>await deleteDoc(d.ref)); const aSnap=await getDocs(collection(db,"calls",callIdGlobal,"answerCandidates")); aSnap.forEach(async d=>await deleteDoc(d.ref)); }catch{} },3000); }catch{} }
+ callIdGlobal=null;
+}
+$("voiceCallBtn").onclick=()=>createCall(false); $("videoCallBtn").onclick=()=>createCall(true);
+$("acceptCallBtn").onclick=acceptCall;
+$("rejectCallBtn").onclick=async()=>{ $("incomingCallOverlay").classList.remove("active"); if(callIdGlobal){ try{ await updateDoc(doc(db,"calls",callIdGlobal),{status:"ended"}); }catch{} } callIdGlobal=null; };
+$("endCallBtn").onclick=endCall;
+$("muteBtn").onclick=()=>{ if(localStream){ localStream.getAudioTracks().forEach(t=>t.enabled=!t.enabled); $("muteBtn").style.background=localStream.getAudioTracks()[0]?.enabled?"#ffffff20":"#ff1744"; } };
+$("speakerBtn").onclick=()=>{ const v=$("remoteVideo"); v.muted=!v.muted; $("speakerBtn").style.background=v.muted?"#ff1744":"#ffffff20"; };
+
+onAuthStateChanged(auth,async u=>{ if(u){ $("loginScreen").classList.add("hidden");$("app").classList.remove("hidden"); loadLocalSettings(); await loadProfile(u); loadPosts(); loadReels(); loadStories(); loadNotifs(u); loadRequests(u); loadFriends(u); loadCouple(u); listenIncomingCalls(u); setInterval(async()=>{try{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}catch{}},30000); document.addEventListener("visibilitychange",async()=>{try{if(document.hidden){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});}else{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}}catch{}});} else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden");}});
 </script>
 </body>
 </html>
