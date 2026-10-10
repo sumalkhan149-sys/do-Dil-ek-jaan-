@@ -5,17 +5,17 @@
 <title>Do Dil Ek Jaan ❤️</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;color:#fff;background:#000}
-button,input,textarea{font:inherit}button{border:0;border-radius:28px;padding:11px 14px;color:#fff;background:linear-gradient(90deg,#ff3f9f,#a52cff);font-weight:bold;cursor:pointer}
-input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:12px;background:#ffffff12;color:#fff;outline:none;margin:6px 0}
-.app{max-width:500px;min-height:100vh;margin:auto;padding:12px 12px 90px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005)}
+button,input,textarea,select{font:inherit}button{border:0;border-radius:28px;padding:11px 14px;color:#fff;background:linear-gradient(90deg,#ff3f9f,#a52cff);font-weight:bold;cursor:pointer}
+input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:12px;background:#ffffff12;color:#fff;outline:none;margin:6px 0}
+.app{max-width:500px;min-height:100vh;margin:auto;padding:12px 12px 90px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005);transition:0.3s}
 .hidden{display:none!important}.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005)}
 .card,.panel{background:#ffffff0d;border:1px solid #ffffff20;border-radius:20px;padding:14px;margin:8px 0}
 .screen{display:none}.screen.active{display:block}.top-title{font-size:21px;font-weight:bold;margin:6px 0 10px;display:flex;justify-content:space-between;align-items:center}
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:68px;display:flex;justify-content:space-around;align-items:center;background:#140014f5;border-top:1px solid #ffffff20;z-index:10}
-.nav-btn{width:13%;background:none;padding:5px 1px;color:#bdaabd;font-size:8px}.nav-btn.active{color:#ff69bd}.nav-icon{display:block;font-size:18px;margin-bottom:1px}
+.nav-btn{width:11%;background:none;padding:5px 1px;color:#bdaabd;font-size:7px}.nav-btn.active{color:#ff69bd}.nav-icon{display:block;font-size:16px;margin-bottom:1px}
 .profile-pic{width:80px;height:80px;object-fit:cover;border-radius:50%;border:3px solid #ff70c8}
 .muted{color:#d8bfd6}.small{font-size:11px;color:#cdb9cb}.code{font-size:20px;letter-spacing:2px;color:#ff69bd;font-weight:bold;text-align:center}.secondary{background:#ffffff20}
-.post-card,.friend-card,.request-card,.notif-card{padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff0b;margin:8px 0}
+.post-card,.friend-card,.request-card,.notif-card,.setting-card{padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff0b;margin:8px 0}
 .notif-card.unread{background:#ff3f9f20;border-color:#ff3f9f50}
 .post-media{width:100%;max-height:320px;object-fit:cover;border-radius:12px;margin-top:8px}.media-preview{width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin:8px 0;display:none;border:1px solid #ffffff20}.media-row{display:flex;gap:6px}
 .post-actions{display:flex;gap:6px;margin-top:8px}.action-btn{flex:1;padding:8px;font-size:12px;background:#ffffff18;border-radius:12px}.action-btn.liked{background:linear-gradient(90deg,#ff3f9f,#a52cff)}
@@ -44,6 +44,11 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 .private-post{background:linear-gradient(135deg,#ff3f9f20,#a52cff20);border:1px solid #ff3f9f40}
 .online-dot{width:12px;height:12px;background:#00ff88;border-radius:50%;display:inline-block;margin-left:6px;box-shadow:0 0 8px #00ff88;animation:beat 1s infinite}
 .offline-dot{width:12px;height:12px;background:#666;border-radius:50%;display:inline-block;margin-left:6px}
+.setting-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #ffffff12}
+.toggle{width:44px;height:26px;background:#ffffff30;border-radius:13px;position:relative;cursor:pointer;transition:0.3s}
+.toggle.on{background:linear-gradient(90deg,#ff3f9f,#a52cff)}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:0.3s}
+.toggle.on::after{left:21px}
 </style>
 </head>
 <body>
@@ -83,37 +88,59 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 <button id="hugBtn" class="love-btn" style="background:linear-gradient(90deg,#a52cff,#7a2bff)">🤗 Hug</button>
 <button id="kissBtn" class="love-btn" style="background:linear-gradient(90deg,#ff3f9f,#ff0000)">💋 Kiss</button>
 </div>
-<div style="display:flex;gap:8px;margin-top:10px">
-<button id="soundToggleBtn" class="secondary" style="flex:1">🔔 Ringtone: ON</button>
-<button id="testRingtoneBtn" class="secondary" style="flex:1">🎵 Test Sound</button>
-</div>
 <button id="unlinkCoupleBtn" style="margin-top:12px;background:#ff3264;width:100%">💔 Remove Partner / Unlink</button>
 </div>
 </div>
 <div class="panel" style="padding:10px"><div class="stories-bar" id="storiesBar"><div class="story-item story-add" id="addStoryItem"><div class="story-ring" style="background:#ffffff20"><span style="font-size:28px">+</span></div><div class="story-name">Your Story</div></div></div><input id="storyInput" type="file" accept="image/*,video/*" class="hidden"><div id="storyStatus" class="status"></div></div>
 <div class="panel"><h2 id="homeWelcome">Welcome! 💕</h2></div>
 </section>
-<section id="coupleScreen" class="screen">
-<div class="top-title">💑 Our Private Space 🔐</div>
-<div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me jake Partner ko Link karo, tab ye private diary khulegi ❤️</p></div>
-<div id="coupleHasLink" class="hidden">
-<div class="panel private-post">
-<h3>🔐 Sirf Tum Dono Ke Liye</h3>
-<textarea id="privatePostText" rows="3" placeholder="Aaj ka secret yaad... ❤️"></textarea>
-<input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview">
-<div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div>
-<button id="publishPrivateBtn">💌 Private Post Karo (Only Us)</button>
-<div id="privatePostStatus" class="status"></div>
-</div>
-<div id="privateFeed"></div>
-<div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div>
-</div>
-</section>
+<section id="coupleScreen" class="screen"><div class="top-title">💑 Our Private Space 🔐</div><div id="coupleNeedLink" class="panel"><p class="muted">Pehle Home me jake Partner ko Link karo</p></div><div id="coupleHasLink" class="hidden"><div class="panel private-post"><h3>🔐 Sirf Tum Dono Ke Liye</h3><textarea id="privatePostText" rows="3" placeholder="Aaj ka secret yaad... ❤️"></textarea><input id="privateMediaInput" type="file" accept="image/*" class="hidden"><img id="privatePreviewImg" class="media-preview"><div class="media-row"><button id="selectPrivateMediaBtn" class="secondary">📷 Photo</button><button id="removePrivateMediaBtn" class="secondary hidden">❌</button></div><button id="publishPrivateBtn">💌 Private Post Karo</button><div id="privatePostStatus" class="status"></div></div><div id="privateFeed"></div><div class="panel"><h3>💓 Love History</h3><div id="loveHistory"></div></div></div></section>
 <section id="postsScreen" class="screen"><div class="top-title">📝 Posts</div><div class="panel"><textarea id="postText" rows="3" placeholder="Kya haal hai? ✨"></textarea><input id="postMediaInput" type="file" accept="image/*" class="hidden"><img id="mediaPreviewImg" class="media-preview"><div class="media-row"><button id="selectMediaBtn" class="secondary">📷 Photo</button><button id="removeMediaBtn" class="secondary hidden">❌</button></div><button id="publishPostBtn">Post Karo</button><div id="postStatus" class="status"></div></div><div id="postsFeed"></div></section>
 <section id="reelsScreen" class="screen"><div class="top-title">🎬 Reels</div><div class="panel"><textarea id="reelCaption" rows="2" placeholder="Caption..."></textarea><input id="reelInput" type="file" accept="video/*" class="hidden"><video id="reelPreview" class="media-preview" controls></video><div class="media-row"><button id="selectReelBtn" class="secondary">🎥 Select Reel</button><button id="removeReelBtn" class="secondary hidden">❌</button></div><button id="publishReelBtn">Upload Reel</button><div id="reelStatus" class="status"></div></div><div id="reelsFeed" class="reels-container"></div></section>
 <section id="friendsScreen" class="screen"><div class="top-title">👥 Friends</div><div class="panel"><div id="myFriendCode" class="code">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div><div class="panel"><h2>Requests</h2><div id="requestList"></div></div><div class="panel"><h2>Friends</h2><div id="friendsList"></div></div><div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search</button><div id="friendResult"></div></div></section>
 <section id="chatScreen" class="screen"><div class="top-title">💬 Chat</div><div id="privateChatHeader" class="panel hidden"><div id="privateFriendName" style="font-weight:bold">Friend</div><button id="backToFriendsBtn" class="secondary" style="margin-top:6px">← Back</button></div><div id="chatBox" style="height:50vh;overflow-y:auto;padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff08;margin:10px 0"></div><div style="display:flex;gap:6px"><input id="chatInput" placeholder="Message..."><button id="sendBtn" style="width:70px">Send</button></div></section>
-<section id="profileScreen" class="screen"><div class="top-title">👤 Profile</div><div class="panel" style="text-align:center"><img id="profilePic" class="profile-pic"><input id="photoInput" type="file" accept="image/*" class="hidden"><img id="profilePreview" class="media-preview" style="margin:8px auto;max-width:200px"><button id="changePhotoBtn" class="secondary">Select Photo</button><button id="uploadPhotoBtn" class="hidden">Upload</button><h2 id="userName">User</h2><p id="userEmail" class="small"></p><div id="editBox" class="hidden"><input id="nameInput"><textarea id="bioInput" rows="2"></textarea><button id="saveBtn">Save</button><button id="cancelBtn" class="secondary">Cancel</button></div><button id="editBtn" class="secondary">Edit</button><button id="logoutBtn" class="secondary" style="background:#ff3264">Logout</button></div></section>
+<section id="profileScreen" class="screen"><div class="top-title">👤 Profile</div><div class="panel" style="text-align:center"><img id="profilePic" class="profile-pic"><input id="photoInput" type="file" accept="image/*" class="hidden"><img id="profilePreview" class="media-preview" style="margin:8px auto;max-width:200px"><button id="changePhotoBtn" class="secondary">Select Photo</button><button id="uploadPhotoBtn" class="hidden">Upload</button><h2 id="userName">User</h2><p id="userEmail" class="small"></p><div id="editBox" class="hidden"><input id="nameInput"><textarea id="bioInput" rows="2"></textarea><button id="saveBtn">Save</button><button id="cancelBtn" class="secondary">Cancel</button></div><button id="editBtn" class="secondary">Edit</button><button id="openSettingsBtn" class="secondary">⚙️ Settings</button><button id="logoutBtn" class="secondary" style="background:#ff3264">Logout</button></div></section>
+
+<section id="settingsScreen" class="screen">
+<div class="top-title">⚙️ Settings <button id="closeSettingsBtn" class="secondary" style="width:auto;padding:8px 14px">← Back</button></div>
+
+<div class="panel"><h3>🔔 Notifications</h3>
+<div class="setting-row"><span>Couple Ringtone</span><div id="toggleRingtone" class="toggle on"></div></div>
+<div class="setting-row"><span>Like Notification</span><div id="toggleLikeNotif" class="toggle on"></div></div>
+<div class="setting-row"><span>Comment Notification</span><div id="toggleCommentNotif" class="toggle on"></div></div>
+<div class="setting-row"><span>Vibration</span><div id="toggleVibration" class="toggle on"></div></div>
+<button id="testRingtoneBtn" class="secondary" style="margin-top:8px">🎵 Test Ringtone</button>
+</div>
+
+<div class="panel"><h3>👁️ Privacy</h3>
+<div class="setting-row"><span>Private Account</span><div id="togglePrivate" class="toggle"></div></div>
+<div class="setting-row"><span>Hide Online Status</span><div id="toggleHideOnline" class="toggle"></div></div>
+<p class="small" style="margin-top:6px">Private ON = sirf friends tumhari post dekh payenge</p>
+</div>
+
+<div class="panel"><h3>🎨 Theme</h3>
+<select id="themeSelect">
+<option value="love">💜 Love (Default Pink/Purple)</option>
+<option value="dark">🖤 Dark Black</option>
+<option value="sunset">🌅 Sunset Orange</option>
+<option value="ocean">🌊 Ocean Blue</option>
+</select>
+</div>
+
+<div class="panel"><h3>💾 Data & Storage</h3>
+<button id="clearChatBtn" class="secondary" style="background:#ff980030">🗑️ Clear All Chats</button>
+<button id="clearPrivateBtn" class="secondary" style="background:#ff980030;margin-top:8px">🗑️ Clear Private Space Posts</button>
+<button id="clearNotifSettingBtn" class="secondary" style="background:#ff980030;margin-top:8px">🔔 Clear All Notifications</button>
+</div>
+
+<div class="panel"><h3>⚠️ Danger Zone</h3>
+<button id="settingsUnlinkBtn" style="background:#ff3264;width:100%">💔 Remove Partner</button>
+<button id="deleteAccountBtn" style="background:#000;border:1px solid #ff3264;margin-top:8px;width:100%">❌ Delete Account Permanently</button>
+</div>
+
+<div class="panel"><p class="small" style="text-align:center">Do Dil Ek Jaan ❤️ v2.0<br>Made with Love in India</p></div>
+</section>
+
 <nav class="bottom-nav">
 <button class="nav-btn active" data-screen="homeScreen"><span class="nav-icon">🏠</span>Home</button>
 <button class="nav-btn" data-screen="coupleScreen"><span class="nav-icon">💑</span>Us</button>
@@ -122,17 +149,19 @@ input,textarea{width:100%;padding:12px;border:1px solid #ffffff2b;border-radius:
 <button class="nav-btn" data-screen="friendsScreen"><span class="nav-icon">👥</span>Friends</button>
 <button class="nav-btn" data-screen="chatScreen"><span class="nav-icon">💬</span>Chat</button>
 <button class="nav-btn" data-screen="profileScreen"><span class="nav-icon">👤</span>Profile</button>
+<button class="nav-btn" data-screen="settingsScreen"><span class="nav-icon">⚙️</span>Set</button>
 </nav>
 </div>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut,deleteUser} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapshot,getDocs,where,updateDoc,serverTimestamp,deleteDoc,arrayUnion,arrayRemove,increment} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",authDomain:"do-dil-ek-jaan.firebaseapp.com",projectId:"do-dil-ek-jaan",storageBucket:"do-dil-ek-jaan.firebasestorage.app",messagingSenderId:"468290989463",appId:"1:468290989463:web:3a8c0fc7b550177cfb68d2"};
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), provider=new GoogleAuthProvider();
 const $=id=>document.getElementById(id);
-let currentPrivateFriendUid=null, postsUnsub=null, reelsUnsub=null, reqUnsub=null, friendsUnsub=null, privateUnsub=null, storiesUnsub=null, notifUnsub=null, coupleUnsub=null, privateUnsub2=null, loveUnsub=null, partnerPresenceUnsub=null, currentStories=[], currentStoryIndex=0, myCoupleId=null, partnerUid=null, lastPartnerOnline=false, ringtoneEnabled=true;
+let currentPrivateFriendUid=null, postsUnsub=null, reelsUnsub=null, reqUnsub=null, friendsUnsub=null, privateUnsub=null, storiesUnsub=null, notifUnsub=null, coupleUnsub=null, privateUnsub2=null, loveUnsub=null, partnerPresenceUnsub=null, currentStories=[], currentStoryIndex=0, myCoupleId=null, partnerUid=null, lastPartnerOnline=false;
 let selectedPostBase64=null, selectedReelBase64=null, selectedProfileBase64=null, selectedPrivateBase64=null;
+let settings={ringtone:true, likeNotif:true, commentNotif:true, vibration:true, privateAcc:false, hideOnline:false, theme:"love"};
 const safe=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const code=()=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";return Array.from({length:8},()=>c[Math.floor(Math.random()*c.length)]).join("")};
 function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));}
@@ -140,8 +169,39 @@ document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>
 function chatId(a,b){return [a,b].sort().join("_")} function reqId(a,b){return a+"_"+b}
 getRedirectResult(auth).catch(()=>{});
 $("loginBtn").onclick=async()=>{try{const mob=/Android|iPhone/i.test(navigator.userAgent)||location.hostname.includes("vercel.app"); if(mob) await signInWithRedirect(auth,provider); else await signInWithPopup(auth,provider);}catch{await signInWithRedirect(auth,provider);}};
-async function loadProfile(u){const r=doc(db,"users",u.uid);let s=await getDoc(r);if(!s.exists()){await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),isOnline:true,lastSeen:serverTimestamp(),createdAt:serverTimestamp()}); s=await getDoc(r);}else{await setDoc(r,{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}const d=s.data(); $("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤";}
-async function sendNotif(toUid, type, text, refId){const u=auth.currentUser; if(!u||toUid===u.uid) return; try{await addDoc(collection(db,"notifications"),{toUid:toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",fromPhoto:$("profilePic").src||"",type:type,text:text,refId:refId||"",read:false,createdAt:serverTimestamp()});}catch(e){}}
+function loadLocalSettings(){try{const s=localStorage.getItem("dd_settings"); if(s) settings={...settings,...JSON.parse(s)};}catch{} applySettingsUI();}
+function saveLocalSettings(){localStorage.setItem("dd_settings",JSON.stringify(settings));}
+function applySettingsUI(){
+$("toggleRingtone").className="toggle"+(settings.ringtone?" on":"");
+$("toggleLikeNotif").className="toggle"+(settings.likeNotif?" on":"");
+$("toggleCommentNotif").className="toggle"+(settings.commentNotif?" on":"");
+$("toggleVibration").className="toggle"+(settings.vibration?" on":"");
+$("togglePrivate").className="toggle"+(settings.privateAcc?" on":"");
+$("toggleHideOnline").className="toggle"+(settings.hideOnline?" on":"");
+$("themeSelect").value=settings.theme;
+const appEl=$("app");
+if(settings.theme==="dark") appEl.style.background="radial-gradient(circle at top,#222,#000 70%)";
+else if(settings.theme==="sunset") appEl.style.background="radial-gradient(circle at top,#ff6a00,#58145b 60%,#000)";
+else if(settings.theme==="ocean") appEl.style.background="radial-gradient(circle at top,#00c6ff,#0052D4 60%,#000)";
+else appEl.style.background="radial-gradient(circle at top,#58145b,#180018 55%,#050005)";
+}
+async function loadProfile(u){
+const r=doc(db,"users",u.uid);let s=await getDoc(r);
+if(!s.exists()){
+await setDoc(r,{name:u.displayName||"User",bio:"",email:u.email||"",photoURL:u.photoURL||"",friendCode:code(),isOnline:true,lastSeen:serverTimestamp(),privateAccount:false,createdAt:serverTimestamp()}); s=await getDoc(r);
+}else{
+const hide=settings.hideOnline;
+await setDoc(r,{isOnline:!hide,lastSeen:serverTimestamp()},{merge:true});
+}
+const d=s.data();
+$("userName").textContent=d.name||"User"; $("userEmail").textContent=u.email||""; $("nameInput").value=d.name||""; $("bioInput").value=d.bio||""; $("profilePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤"; $("myFriendCode").textContent=d.friendCode||code(); $("homeWelcome").textContent="Welcome, "+(d.name||"User")+"! ❤️"; $("myCouplePic").src=d.photoURL||u.photoURL||"https://placehold.co/100x100/58145b/fff?text=❤";
+if(d.privateAccount!==undefined) {settings.privateAcc=d.privateAccount; saveLocalSettings(); applySettingsUI();}
+}
+async function sendNotif(toUid, type, text, refId){
+if(!settings.likeNotif && type.includes("like")) return;
+if(!settings.commentNotif && type.includes("comment")) return;
+const u=auth.currentUser; if(!u||toUid===u.uid) return; try{await addDoc(collection(db,"notifications"),{toUid:toUid,fromUid:u.uid,fromName:$("userName").textContent||"User",fromPhoto:$("profilePic").src||"",type:type,text:text,refId:refId||"",read:false,createdAt:serverTimestamp()});}catch(e){}
+}
 function loadNotifs(u){
 if(notifUnsub)notifUnsub();
 notifUnsub=onSnapshot(query(collection(db,"notifications"),where("toUid","==",u.uid),orderBy("createdAt","desc")),snap=>{
@@ -168,11 +228,10 @@ const m=map[type]||map.miss_you;
 $("loveEmoji").textContent=m.emoji; $("loveText").textContent=m.text; $("loveFrom").textContent="From "+fromName+" ❤️";
 $("loveOverlay").classList.add("active");
 playRingtone(true);
-if(navigator.vibrate) navigator.vibrate([200,100,200,100,400]);
 }
 $("closeLoveBtn").onclick=()=>{$("loveOverlay").classList.remove("active");};
 function playRingtone(isLove=false){
-if(!ringtoneEnabled) return;
+if(!settings.ringtone) return;
 try{
 const ctx=new (window.AudioContext||window.webkitAudioContext)();
 const now=ctx.currentTime;
@@ -184,19 +243,18 @@ o.start(now+start); o.stop(now+start+dur);
 }
 if(isLove){tone(523.25,0,0.5); tone(659.25,0.15,0.5); tone(783.99,0.3,0.8);}else{tone(659.25,0,0.4); tone(783.99,0.2,0.4); tone(1046.5,0.4,0.8);}
 }catch(e){}
-if(navigator.vibrate) navigator.vibrate([150,80,150,80,300]);
+if(settings.vibration && navigator.vibrate) navigator.vibrate([150,80,150,80,300]);
 }
 $("testRingtoneBtn").onclick=()=>playRingtone(false);
-$("soundToggleBtn").onclick=()=>{ringtoneEnabled=!ringtoneEnabled; $("soundToggleBtn").textContent=ringtoneEnabled?"🔔 Ringtone: ON":"🔕 Ringtone: OFF"; if(ringtoneEnabled) playRingtone(false);};
 $("closeRingtoneBtn").onclick=()=>{$("ringtoneOverlay").classList.remove("active");};
 function showRingtonePopup(name){
-if(!ringtoneEnabled) return;
+if(!settings.ringtone) return;
 $("ringtoneText").textContent=`${name} is Online! ❤️`;
 $("ringtoneSub").textContent=`${name} abhi online aayi hai, jaldi message karo 😘`;
 $("ringtoneOverlay").classList.add("active");
 playRingtone(false);
 }
-// PRESENCE + COUPLE LOGIC
+// COUPLE
 $("linkCoupleBtn").onclick=async()=>{
 const c=$("coupleCodeInput").value.trim().toUpperCase(); const me=auth.currentUser; if(c.length!==8)return;
 $("coupleLinkStatus").textContent="Linking...";
@@ -261,8 +319,8 @@ updateCountdown(d);
 sendNotif(partnerUid,"private_post",`saved anniversary date 📅 ${d}`, myCoupleId);
 alert("Anniversary saved ❤️");
 };
-$("unlinkCoupleBtn").onclick=async()=>{
-if(!confirm("💔 Pakka partner ko hatana hai? Private Space lock ho jayega!")) return;
+async function unlinkCouple(){
+if(!confirm("💔 Pakka partner ko hatana hai?")) return;
 if(!myCoupleId) return;
 try{
 const u=auth.currentUser;
@@ -277,7 +335,9 @@ $("coupleHasLink").classList.add("hidden");
 if(partnerPresenceUnsub){partnerPresenceUnsub(); partnerPresenceUnsub=null;}
 alert("Partner removed 💔");
 }catch(e){alert(e.message);}
-};
+}
+$("unlinkCoupleBtn").onclick=unlinkCouple;
+$("settingsUnlinkBtn").onclick=unlinkCouple;
 $("missYouBtn").onclick=()=>sendLove("miss_you","Misses you so much! 😘 I Miss You Jaan!");
 $("hugBtn").onclick=()=>sendLove("hug","Sent you a tight hug! 🤗");
 $("kissBtn").onclick=()=>sendLove("kiss","Sent you a kiss! 💋 Muahhh!");
@@ -361,14 +421,28 @@ $("sendBtn").onclick=async()=>{const u=auth.currentUser, t=$("chatInput").value.
 $("backToFriendsBtn").onclick=()=>showScreen("friendsScreen");
 $("changePhotoBtn").onclick=()=>$("photoInput").click(); $("photoInput").onchange=()=>{const f=$("photoInput").files[0]; if(!f)return; if(f.size>500*1024){alert("500KB se chhoti lo");return;} const rd=new FileReader(); rd.onload=e=>{selectedProfileBase64=e.target.result; $("profilePreview").src=selectedProfileBase64; $("profilePreview").style.display="block"; $("uploadPhotoBtn").classList.remove("hidden");}; rd.readAsDataURL(f);};
 $("uploadPhotoBtn").onclick=async()=>{const u=auth.currentUser; if(!u||!selectedProfileBase64)return; await setDoc(doc(db,"users",u.uid),{photoURL:selectedProfileBase64},{merge:true}); $("profilePic").src=selectedProfileBase64; $("profilePreview").style.display="none"; $("uploadPhotoBtn").classList.add("hidden");};
-$("editBtn").onclick=()=>$("editBox").classList.remove("hidden"); $("cancelBtn").onclick=()=>$("editBox").classList.add("hidden"); $("saveBtn").onclick=async()=>{const u=auth.currentUser; const n=$("nameInput").value.trim(); const b=$("bioInput").value.trim(); if(!n)return; await setDoc(doc(db,"users",u.uid),{name:n,bio:b},{merge:true}); $("userName").textContent=n; $("editBox").classList.add("hidden");}; $("logoutBtn").onclick=async()=>{const u=auth.currentUser; if(u){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});} await signOut(auth);};
+$("editBtn").onclick=()=>$("editBox").classList.remove("hidden"); $("cancelBtn").onclick=()=>$("editBox").classList.add("hidden"); $("saveBtn").onclick=async()=>{const u=auth.currentUser; const n=$("nameInput").value.trim(); const b=$("bioInput").value.trim(); if(!n)return; await setDoc(doc(db,"users",u.uid),{name:n,bio:b},{merge:true}); $("userName").textContent=n; $("editBox").classList.add("hidden");};
+$("openSettingsBtn").onclick=()=>showScreen("settingsScreen");
+$("closeSettingsBtn").onclick=()=>showScreen("profileScreen");
+$("toggleRingtone").onclick=()=>{settings.ringtone=!settings.ringtone; saveLocalSettings(); applySettingsUI(); if(settings.ringtone) playRingtone(false);};
+$("toggleLikeNotif").onclick=()=>{settings.likeNotif=!settings.likeNotif; saveLocalSettings(); applySettingsUI();};
+$("toggleCommentNotif").onclick=()=>{settings.commentNotif=!settings.commentNotif; saveLocalSettings(); applySettingsUI();};
+$("toggleVibration").onclick=()=>{settings.vibration=!settings.vibration; saveLocalSettings(); applySettingsUI(); if(settings.vibration && navigator.vibrate) navigator.vibrate(100);};
+$("togglePrivate").onclick=async()=>{settings.privateAcc=!settings.privateAcc; saveLocalSettings(); applySettingsUI(); const u=auth.currentUser; if(u) await setDoc(doc(db,"users",u.uid),{privateAccount:settings.privateAcc},{merge:true});};
+$("toggleHideOnline").onclick=async()=>{settings.hideOnline=!settings.hideOnline; saveLocalSettings(); applySettingsUI(); const u=auth.currentUser; if(u) await setDoc(doc(db,"users",u.uid),{isOnline:!settings.hideOnline},{merge:true});};
+$("themeSelect").onchange=()=>{settings.theme=$("themeSelect").value; saveLocalSettings(); applySettingsUI();};
+$("clearChatBtn").onclick=async()=>{if(!confirm("Saare chats delete?")) return; const u=auth.currentUser; const snaps=await getDocs(query(collection(db,"friends"),where("uid","==",u.uid))); for(const d of snaps.docs){const fid=d.data().friendUid; const id=chatId(u.uid,fid); const msgs=await getDocs(collection(db,"privateChats",id,"messages")); for(const m of msgs.docs) await deleteDoc(m.ref);} alert("Chats cleared ✅");};
+$("clearPrivateBtn").onclick=async()=>{if(!myCoupleId) {alert("Couple link nahi hai"); return;} if(!confirm("Private Space ke saare posts delete?")) return; const snap=await getDocs(collection(db,"couples",myCoupleId,"privatePosts")); for(const d of snap.docs) await deleteDoc(d.ref); alert("Private posts cleared ✅");};
+$("clearNotifSettingBtn").onclick=async()=>{if(!confirm("Saare notifications delete?")) return; const u=auth.currentUser; const snap=await getDocs(query(collection(db,"notifications"),where("toUid","==",u.uid))); for(const d of snap.docs) await deleteDoc(d.ref); alert("Notifications cleared ✅");};
+$("deleteAccountBtn").onclick=async()=>{if(!confirm("Pakka account delete? Ye wapas nahi ayega!")) return; if(!confirm("Last warning: Saara data delete ho jayega!")) return; try{const u=auth.currentUser; if(myCoupleId) {try{await deleteDoc(doc(db,"couples",myCoupleId));}catch{}} const userDoc=doc(db,"users",u.uid); await deleteDoc(userDoc); await deleteUser(u); alert("Account deleted");}catch(e){alert(e.message+" - pehle re-login karo");}};
+$("logoutBtn").onclick=async()=>{const u=auth.currentUser; if(u){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});} await signOut(auth);};
 onAuthStateChanged(auth,async u=>{
 if(u){
 $("loginScreen").classList.add("hidden");$("app").classList.remove("hidden");
+loadLocalSettings();
 await loadProfile(u); loadPosts(); loadReels(); loadStories(); loadNotifs(u); loadRequests(u); loadFriends(u); loadCouple(u);
-setInterval(async()=>{try{await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}catch{}},30000);
-document.addEventListener("visibilitychange",async()=>{try{if(document.hidden){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});}else{await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}}catch{}});
-window.addEventListener("beforeunload",()=>{try{navigator.sendBeacon&&navigator.sendBeacon("");}catch{}});
+setInterval(async()=>{try{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}catch{}},30000);
+document.addEventListener("visibilitychange",async()=>{try{if(document.hidden){await setDoc(doc(db,"users",u.uid),{isOnline:false,lastSeen:serverTimestamp()},{merge:true});}else{if(!settings.hideOnline) await setDoc(doc(db,"users",u.uid),{isOnline:true,lastSeen:serverTimestamp()},{merge:true});}}catch{}});
 } else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden");}
 });
 </script>
