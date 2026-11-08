@@ -59,7 +59,7 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <nav class="bottom-nav"><button class="nav-btn active" data-screen="homeScreen"><span class="nav-icon">🏠</span>Home</button><button class="nav-btn" data-screen="coupleScreen"><span class="nav-icon">💑</span>Us</button><button class="nav-btn" data-screen="gameScreen"><span class="nav-icon">🎮</span>Game</button><button class="nav-btn" data-screen="friendsScreen"><span class="nav-icon">👥</span>Social</button><button class="nav-btn" data-screen="profileScreen"><span class="nav-icon">👤</span>You</button></nav>
 </div><script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,setPersistence,browserLocalPersistence} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapshot,getDocs,where,updateDoc,serverTimestamp,deleteDoc,increment} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",authDomain:"do-dil-ek-jaan.firebaseapp.com",projectId:"do-dil-ek-jaan",storageBucket:"do-dil-ek-jaan.firebasestorage.app",messagingSenderId:"468290989463",appId:"1:468290989463:web:3a8c0fc7b550177cfb68d2"};
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), provider=new GoogleAuthProvider();
