@@ -63,6 +63,7 @@ import import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,get
 import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapshot,getDocs,where,updateDoc,serverTimestamp,deleteDoc,increment} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",authDomain:"do-dil-ek-jaan.firebaseapp.com",projectId:"do-dil-ek-jaan",storageBucket:"do-dil-ek-jaan.firebasestorage.app",messagingSenderId:"468290989463",appId:"1:468290989463:web:3a8c0fc7b550177cfb68d2"};
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), provider=new GoogleAuthProvider();
+  setPersistence(auth, browserLocalPersistence).catch(()=>{});
 const $=id=>document.getElementById(id);
 let currentPrivateFriendUid=null, postMediaBase64=null, postMediaType=null, coupleIdGlobal=null, pc=null, localStream=null, currentCallId=null, missedCallTimer=null, callTimerInterval=null, callSeconds=0, friendsUnsub=null, privateUnsub=null, notifUnsub=null, gameUnsub=null, currentGameId=null, facingMode="user", notifSettings={master:"on",like:"on",msg:"on",call:"on",friend:"on",bday:"on",anniv:"on"};
 const safe=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
