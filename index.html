@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do Dil Ek Jaan FINAL ALL FIXED</title>
+<title>Do Dil Ek Jaan FINAL ALL FIXED + FOREVER</title>
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#ff3f6c">
 <style>
@@ -21,28 +21,34 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 .friend-card{padding:12px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff0b;margin:8px 0}
 .love-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#000000dd;z-index:200;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}.love-overlay.active{display:flex}
 .small{font-size:11px;color:#cdb9cb}
-/* INSTA SETTING STYLE */
 .insta-set-row{display:flex;justify-content:space-between;align-items:center;padding:14px 4px;border-bottom:1px solid #ffffff12;cursor:pointer}
 .insta-set-row b{font-size:14px}.insta-set-row span{font-size:12px;color:#cdb9cb}
 .insta-set-row select{width:90px;margin:0}
-/* WALLET + HEADER COINS */
 .header-coins{background:#ffcc0022;border:1px solid #ffcc00aa;border-radius:20px;padding:5px 10px;font-size:13px;font-weight:bold;color:#ffcc00;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
 .wallet-balance{background:linear-gradient(135deg,#ffcc00,#ff8a00);color:#000;border-radius:20px;padding:18px;text-align:center;margin:10px 0}
+/* ===== FOREVER RAINBOW + STARS ===== */
+#foreverScreen{background:linear-gradient(180deg,#ff000022,#ff7f0022,#ffff0022,#00ff0022,#0000ff22,#4b008222,#9400d322);border-radius:22px;position:relative;overflow:hidden}
+.rainbow-text{background:linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:bold}
+.rainbow-border{border:2px solid transparent;background:linear-gradient(#1a001a,#1a001a) padding-box,linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3) border-box}
+.rainbow-btn{background:linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3)!important;color:#fff!important;text-shadow:0 1px 3px #000}
+.stars{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;color:#fff;animation:twinkle 2s infinite alternate;font-size:14px}
+@keyframes twinkle{from{opacity:.2;transform:scale(.7)}to{opacity:1;transform:scale(1.2)}}
+.forever-inner{position:relative;z-index:1}
+.mystery-box{background:linear-gradient(135deg,#ffcc00,#ff3f9f,#a52cff);border-radius:20px;padding:16px;text-align:center;margin:8px 0}
+.group-card{background:#ffffff12;border:1px solid #ffffff2a;border-radius:18px;padding:12px;margin:10px 0}
+.group-chat-box{height:260px;overflow-y:auto;padding:10px;border:1px solid #ffffff22;border-radius:14px;background:#00000040;margin:8px 0}
 </style></head>
 <body class="theme-pink">
 <div id="loginScreen" class="login" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#58145b,#180018 55%,#050005)"><div class="card" style="text-align:center;max-width:400px;width:100%"><div style="font-size:55px">❤️</div><h1>Do Dil Ek Jaan</h1><p class="small">FINAL ALL FIXED - Bugs Fixed: Notif + Call Answer + Timer + Setting</p><button id="loginBtn" style="margin-top:15px">Continue with Google</button></div></div>
 <div id="app" class="app hidden">
 <div id="notifScreen" class="full-screen" style="position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:100%;background:#0a0012;z-index:100;display:none;flex-direction:column;padding:12px"><div class="top-title">🔔 Notifications <button id="closeNotifBtn" class="secondary" style="width:auto">✕</button></div><div id="notifList"></div></div>
-
-<!-- WALLET SCREEN -->
 <div id="walletScreen" class="full-screen" style="position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:100%;background:#0a0012;z-index:100;display:none;flex-direction:column;padding:12px;overflow-y:auto">
 <div class="top-title">🪙 My Wallet <button id="closeWalletBtn" class="secondary" style="width:auto">✕</button></div>
 <div class="wallet-balance"><div style="font-size:14px">Total Coins</div><div id="walletCoinsBig" style="font-size:42px;font-weight:bold">🪙 0</div><div class="small" style="color:#000">Har user ka alag wallet hai</div></div>
 <div class="panel" style="text-align:center"><h3>🎬 Reward Ad</h3><p class="small">Ad dekho, 25 coins pao</p><button id="rewardAdBtn" style="background:linear-gradient(90deg,#ffcc00,#ff8a00);color:#000;width:100%;margin-top:8px">▶️ Ad Dekho +25 Coins</button><p class="small" style="margin-top:6px">Abhi demo wala hai. Baad me yahi button pe asli Ad lagega.</p></div>
 <div class="panel"><h3>📜 History</h3><div id="walletHistory"></div></div>
 </div>
-
-<!-- SETTINGS - INSTA JAISE -->
 <div id="settingsScreen" class="full-screen" style="position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:500px;height:100%;background:#0a0012;z-index:100;display:none;flex-direction:column;padding:12px;overflow-y:auto">
 <div class="top-title">⚙️ Settings <button id="closeSettingsBtn" class="secondary" style="width:auto">✕</button></div>
 <div style="display:flex;align-items:center;gap:12px;padding:10px 4px"><img id="settingsPic" src="https://placehold.co/100x100/58145b/fff?text=❤" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #ff70c8"><div><b id="settingsName">User</b><br><span class="small" id="settingsBio">Bio...</span></div></div>
@@ -66,7 +72,6 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <button id="applyThemeBtn" class="secondary">Save All Settings ✅</button>
 <button id="logoutBtn" class="secondary" style="background:#ff3264;margin-top:8px">Log Out 🚪</button>
 </div>
-
 <div id="hugOverlay" class="love-overlay"><div style="font-size:100px" id="hugEmoji">🤗</div><h1 id="hugText">Hug Sent!</h1></div>
 <div id="callScreen" class="love-overlay" style="z-index:700;background:#000"><video id="remoteVideoFull" autoplay playsinline style="width:100%;height:100%;object-fit:cover"></video><video id="localVideoSmall" autoplay muted playsinline style="position:absolute;bottom:90px;right:15px;width:110px;height:150px;border-radius:14px;border:2px solid #ff3f9f"></video><div style="position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:12px"><button id="muteBtn" class="secondary" style="width:60px;height:60px;border-radius:30px">🎤</button><button id="endCallBtn" style="width:70px;height:70px;border-radius:35px;background:#ff3264">📞</button><button id="switchCamBtn" class="secondary" style="width:60px;height:60px;border-radius:30px">🔄</button></div><div style="position:absolute;top:30px;left:0;right:0;text-align:center"><h2 id="callName">Calling...</h2><p class="small" id="callStatus">Connecting...</p><p class="small" id="callTimer">00:00 - Waiting for answer...</p></div></div>
 <div id="incomingCallOverlay" class="love-overlay" style="z-index:800;background:radial-gradient(circle at top,#58145b,#000)"><div style="font-size:70px">📞</div><h2 id="incomingName">Incoming Call</h2><p id="incomingType" class="small"></p><div style="display:flex;gap:20px;margin-top:30px"><button id="rejectCallBtn" style="width:70px;height:70px;border-radius:35px;background:#ff3264">✕</button><button id="acceptCallBtn" style="width:70px;height:70px;border-radius:35px;background:#00ff88">📞</button></div></div>
@@ -82,14 +87,64 @@ input,textarea,select{width:100%;padding:12px;border:1px solid #ffffff2b;border-
 <section id="friendsScreen" class="screen"><div class="top-title">👥 Social</div><div style="display:flex;gap:6px"><button id="tabFriendsBtn" class="secondary" style="flex:1;background:linear-gradient(90deg,#ff3f9f,#a52cff)">Friends</button><button id="tabChatBtn" class="secondary" style="flex:1">Chats</button><button id="tabSearchBtn" class="secondary" style="flex:1">Search</button></div><div id="friendsTab"><div class="panel"><div id="myFriendCode" style="font-size:16px;letter-spacing:2px;color:#ff69bd;font-weight:bold;text-align:center">--------</div><button id="copyCodeBtn" class="secondary">Copy Code</button></div><div id="friendsList"></div><div class="panel"><input id="friendSearchInput" maxlength="8" placeholder="FRIEND CODE"><button id="searchFriendBtn">Search Code</button><div id="friendResult"></div></div></div><div id="chatTab" class="hidden"><div id="privateChatHeader" class="panel hidden"><div style="display:flex;justify-content:space-between;align-items:center"><div><b id="privateFriendName">Friend</b><br><span class="small" id="chatOnlineStatus" style="color:#00ff88">● Online • Seen ✓✓</span></div><div style="display:flex;gap:6px"><button id="voiceCallBtn" class="secondary" style="width:auto">📞 Audio</button><button id="videoCallBtn" class="secondary" style="width:auto">📹 Video</button><button id="backToFriendsBtn" class="secondary" style="width:auto">←</button></div></div></div><div id="chatBox" style="height:35vh;overflow-y:auto;padding:12px;border:1px solid #ffffff18;border-radius:16px;margin:10px 0"></div><img id="chatMediaPreview" style="width:100%;max-width:200px;border-radius:12px;display:none;margin:6px 0"><audio id="chatAudioPreview" controls style="display:none;width:200px;margin:6px 0"></audio><div style="display:flex;gap:6px;align-items:center"><button id="chatMediaBtn" class="secondary" style="width:45px">📷</button><input id="chatMediaInput" type="file" accept="image/*,video/*" style="display:none"><button id="voiceNoteBtn" class="secondary" style="width:45px">🎤</button><input id="chatInput" placeholder="Message... click=edit"><button id="sendBtn" style="width:60px">Send</button></div><div class="small" style="color:#888">🎤 voice | 📷 media | msg click=edit/delete</div></div><div id="searchTab" class="hidden"><div class="panel"><input id="userSearchInput" placeholder="Naam search..."><button id="userSearchBtn">🔍 Search</button><div id="userSearchResults"></div></div></div></section>
 <section id="profileScreen" class="screen"><div class="top-title"><span>👤 Profile</span><button id="openSettingsBtn" style="width:45px;height:45px;border-radius:22px;background:#ffffff20;font-size:22px;border:0;color:#fff">⚙️</button></div><div class="panel" style="text-align:center;position:relative"><div style="position:relative;display:inline-block"><img id="profilePic" style="width:100px;height:100px;object-fit:cover;border-radius:50%;border:3px solid #ff70c8;cursor:pointer"><div id="camIcon" style="position:absolute;bottom:-2px;right:-2px;width:32px;height:32px;border-radius:16px;background:linear-gradient(90deg,#ff3f9f,#a52cff);display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid #000;font-size:16px">📷</div></div><input id="profilePicInput" type="file" accept="image/*" style="display:none"><h2 id="userName">User</h2><p class="small" id="bioText">Bio...</p><div style="display:flex;gap:10px;justify-content:center;margin:12px 0"><div><b id="postsCount">0</b><br><span class="small">Posts</span></div><div><b id="followersCount">0</b><br><span class="small">Followers</span></div><div><b id="followingCount">0</b><br><span class="small">Following</span></div></div><button id="openWalletBtn" style="width:100%;background:linear-gradient(90deg,#ffcc00,#ff8a00);color:#000;margin-bottom:8px">🪙 My Wallet - <span id="profileCoinCount">0</span> Coins</button><input id="userNameInput" placeholder="Name"><input id="userBioInput" placeholder="Bio"><button id="saveProfileBtn" class="secondary">Save Profile ✅</button></div></section>
 
-<!-- FOREVER - KHALI PAGE -->
-<section id="foreverScreen" class="screen"><div class="top-title">♾️ Forever</div><div class="panel" style="text-align:center;padding:40px 14px"><div style="font-size:70px">♾️❤️</div><h2 style="margin:10px 0">Forever</h2><p class="small">Ye page abhi khaali chhoda hai.<br>Yahan baad me naya feature aayega.</p><div id="foreverContent"></div></div></section>
+<!-- FOREVER - NEW FULL -->
+<section id="foreverScreen" class="screen">
+<div class="stars" id="foreverStars"></div>
+<div class="forever-inner">
+<div class="top-title"><span class="rainbow-text">♾️ Forever 🌈</span><span>🪙 <span id="foreverCoins">0</span></span></div>
+
+<!-- MYSTERY BOX -->
+<div class="mystery-box rainbow-border">
+<div style="font-size:50px">🎁</div>
+<h3>Mystery Box</h3>
+<p class="small" style="color:#fff">Ad Dekho -> Box Kholo -> 100-500 Coins<br>24 Ghante me 1 baar</p>
+<p id="mysteryTimer" class="small" style="color:#fff;font-weight:bold"></p>
+<button id="mysteryAdBtn" class="rainbow-btn" style="width:100%;margin-top:8px">🎬 Ad Dekho + Box Kholo 🎁</button>
+</div>
+
+<!-- STREAK -->
+<div class="panel rainbow-border" style="text-align:center">
+<h3>🔥 Forever Streak</h3>
+<div style="font-size:32px">🔥 <span id="foreverStreak">0</span> Din</div>
+<p class="small">Roz Forever kholo, streak badhao</p>
+<button id="streakCheckBtn" class="secondary" style="width:100%">✅ Aaj Ka Check-In Karo</button>
+</div>
+
+<!-- CREATE GROUP -->
+<div class="panel rainbow-border">
+<h3 class="rainbow-text">👥 Naya Group Banao - 500 Coins</h3>
+<p class="small">Tere paas: 🪙 <span id="createGroupCoins">0</span> Coins | Chahiye: 500 Coins</p>
+<input id="newGroupName" placeholder="Group ka naam... Ex: Love Family ❤️">
+<input id="newGroupDesc" placeholder="Group ka bio...">
+<label class="small"><input type="checkbox" id="newGroupApproval" checked style="width:auto"> Approval ON rakhu? (ON = Admin approve karega, OFF = koi bhi sidha join)</label>
+<button id="createGroupBtn" class="rainbow-btn" style="width:100%">👥 Group Banao - 500 Coins 💰</button>
+<div class="panel" style="text-align:center;margin-top:10px">
+<p class="small">Coins kam hai? Yahi se kamao</p>
+<button id="foreverAdBtn" style="background:linear-gradient(90deg,#ffcc00,#ff8a00);color:#000;width:100%">🎬 Ad Dekho +25 Coins</button>
+<p class="small">1 Ad = 25 Coins | 20 Ad = 500 Coins = Group</p>
+</div>
+</div>
+
+<!-- ALL GROUPS -->
+<h3 class="rainbow-text" style="margin:12px 4px">🌍 Saare Groups - Join Karo 👇</h3>
+<div id="foreverGroupsList"></div>
+<div id="groupChatArea" class="panel hidden">
+<h3 id="groupChatTitle">Group Chat</h3>
+<div id="groupRequestsBox"></div>
+<div id="groupChatBox" class="group-chat-box"></div>
+<div style="display:flex;gap:6px"><input id="groupChatInput" placeholder="Group me likho..."><button id="groupSendBtn" style="width:70px">Send</button></div>
+<button id="groupLeaveBtn" class="secondary" style="background:#ff3264;width:100%;margin-top:6px">Group Chhodo 🚪</button>
+<button id="groupCloseBtn" class="secondary" style="width:100%">Band Karo ✕</button>
+</div>
+<div id="foreverContent"></div>
+</div>
+</section>
 
 <nav class="bottom-nav"><button class="nav-btn active" data-screen="homeScreen"><span class="nav-icon">🏠</span>Home</button><button class="nav-btn" data-screen="coupleScreen"><span class="nav-icon">💑</span>Us</button><button class="nav-btn" data-screen="gameScreen"><span class="nav-icon">🎮</span>Game</button><button class="nav-btn" data-screen="friendsScreen"><span class="nav-icon">👥</span>Social</button><button class="nav-btn" data-screen="foreverScreen"><span class="nav-icon">♾️</span>Forever</button><button class="nav-btn" data-screen="profileScreen"><span class="nav-icon">👤</span>You</button></nav>
 </div><script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,setPersistence,browserLocalPersistence,signOut} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapshot,getDocs,where,updateDoc,serverTimestamp,deleteDoc,increment} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import {getFirestore,doc,setDoc,getDoc,collection,addDoc,query,orderBy,onSnapshot,getDocs,where,updateDoc,serverTimestamp,deleteDoc,increment,arrayUnion,arrayRemove} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyBwlV_JfkbnFZ0zJDxDX8SQo0HvADgDjwA",authDomain:"do-dil-ek-jaan.firebaseapp.com",projectId:"do-dil-ek-jaan",storageBucket:"do-dil-ek-jaan.firebasestorage.app",messagingSenderId:"468290989463",appId:"1:468290989463:web:3a8c0fc7b550177cfb68d2"};
 const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app), provider=new GoogleAuthProvider();
   setPersistence(auth, browserLocalPersistence).catch(()=>{});
@@ -97,26 +152,20 @@ const $=id=>document.getElementById(id);
 let currentPrivateFriendUid=null, postMediaBase64=null, postMediaType=null, coupleIdGlobal=null, pc=null, localStream=null, currentCallId=null, missedCallTimer=null, callTimerInterval=null, callSeconds=0, friendsUnsub=null, privateUnsub=null, notifUnsub=null, gameUnsub=null, currentGameId=null, facingMode="user", notifSettings={master:"on",like:"on",msg:"on",call:"on",friend:"on",bday:"on",anniv:"on"};
 const safe=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const genCode=()=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";return Array.from({length:8},()=>c[Math.floor(Math.random()*c.length)]).join("")};
-function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.screen===id)); if(id==="foreverScreen"){loadForever();}}
 document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>showScreen(b.dataset.screen)));
 function chatId(a,b){return [a,b].sort().join("_")}
 getRedirectResult(auth).catch(()=>{}); $("loginBtn").onclick=async()=>{try{await signInWithPopup(auth,provider);}catch{await signInWithRedirect(auth,provider);}};
 $("closeNotifBtn").onclick=()=>{$("notifScreen").style.display="none";}; $("closeSettingsBtn").onclick=()=>{$("settingsScreen").style.display="none";}; $("openSettingsBtn").onclick=()=>{ if($("settingsPic")) $("settingsPic").src=$("profilePic").src; if($("settingsName")) $("settingsName").textContent=$("userName").textContent; if($("settingsBio")) $("settingsBio").textContent=$("bioText").textContent; $("settingsScreen").style.display="flex"; loadNotifSettingsUI();}; $("bellBtn").onclick=()=>{$("notifScreen").style.display="flex";};
-// WALLET OPEN / CLOSE
 $("headerCoinBtn").onclick=()=>{ $("walletScreen").style.display="flex"; loadWallet(); };
 $("openWalletBtn").onclick=()=>{ $("walletScreen").style.display="flex"; loadWallet(); };
 $("closeWalletBtn").onclick=()=>{ $("walletScreen").style.display="none"; };
 if($("logoutBtn")) $("logoutBtn").onclick=async()=>{ if(!confirm("Logout karna hai?")) return; await signOut(auth); location.reload(); };
 function loadNotifSettingsUI(){ const saved=localStorage.getItem("notifSettings_v2"); if(saved){try{notifSettings=JSON.parse(saved);}catch{}} if($("notifMasterSelect")){ $("notifMasterSelect").value=notifSettings.master; $("notifLikeSelect").value=notifSettings.like; $("notifMsgSelect").value=notifSettings.msg; $("notifCallSelect").value=notifSettings.call; $("notifFriendSelect").value=notifSettings.friend; $("notifBdaySelect").value=notifSettings.bday; $("notifAnnivSelect").value=notifSettings.anniv; }}
 async function requestNotifPermission(){
-  if(!("Notification" in window)){ alert("Browser me Notification support nahi"); return false; }
+  if(!("Notification" in window)){ return false; }
   if(Notification.permission==="granted") return true;
-  if(Notification.permission!=="denied"){
-    const p=await Notification.requestPermission();
-    console.log("Permission:",p);
-    return p==="granted";
-  }
-  alert("Permission BLOCKED hai - Chrome Settings > Site Settings > Notifications > Allow karo, phir refresh karo");
+  if(Notification.permission!=="denied"){ const p=await Notification.requestPermission(); return p==="granted"; }
   return false;
 }
 function canSendNotif(type){
@@ -133,22 +182,14 @@ function canSendNotif(type){
   return true;
 }
 function showMobileNotif(title,body,type="msg"){
-  if(!canSendNotif(type)){ console.log("Notif OFF for",type); return; }
+  if(!canSendNotif(type)){ return; }
   if(navigator.vibrate) navigator.vibrate([200,100,200,100,200]);
   try{new Audio("https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=notification-sound-7062.mp3").play().catch(()=>{});}catch{}
   if(Notification&&Notification.permission==="granted"){
-    try{
-      const n=new Notification(title,{body:body,icon:$("profilePic")?.src||"https://cdn-icons-png.flaticon.com/512/833/833472.png",badge:"https://cdn-icons-png.flaticon.com/512/833/833472.png",vibrate:[200,100,200],requireInteraction:true,tag:type+"_"+Date.now()});
-      n.onclick=()=>{window.focus(); n.close(); $("notifScreen").style.display="flex";};
-      setTimeout(()=>n.close(),8000);
-      console.log("Mobile notif sent",title);
-    }catch(e){ console.log(e); alert(title+": "+body); }
-  } else {
-    console.log("Permission not granted yet");
+    try{ const n=new Notification(title,{body:body,icon:$("profilePic")?.src||"https://cdn-icons-png.flaticon.com/512/833/833472.png",badge:"https://cdn-icons-png.flaticon.com/512/833/833472.png",vibrate:[200,100,200],requireInteraction:true,tag:type+"_"+Date.now()}); n.onclick=()=>{window.focus(); n.close(); $("notifScreen").style.display="flex";}; setTimeout(()=>n.close(),8000);}catch(e){ alert(title+": "+body); }
   }
 }
 async function sendNotif(toUid,text){const u=auth.currentUser; if(!u||!toUid||toUid===u.uid) return; try{const toSnap=await getDoc(doc(db,"users",toUid)); if(!toSnap.exists()) return; if((toSnap.data().blocked||[]).includes(u.uid)) return; await addDoc(collection(db,"notifications"),{toUid,fromUid:u.uid,fromName:$("userName").textContent||u.displayName,text,read:false,createdAt:serverTimestamp()});}catch{}}
-// ===== WALLET - HAR USER KE LIYE ALAG =====
 let walletUnsub=null;
 function loadWallet(){
   const u=auth.currentUser; if(!u) return;
@@ -159,6 +200,8 @@ function loadWallet(){
     if($("headerCoinCount")) $("headerCoinCount").textContent=coins;
     if($("profileCoinCount")) $("profileCoinCount").textContent=coins;
     if($("walletCoinsBig")) $("walletCoinsBig").textContent="🪙 "+coins;
+    if($("foreverCoins")) $("foreverCoins").textContent=coins;
+    if($("createGroupCoins")) $("createGroupCoins").textContent=coins;
   });
   onSnapshot(query(collection(db,"users",u.uid,"walletHistory"),orderBy("createdAt","desc")), snap=>{
     let html="";
@@ -173,11 +216,7 @@ async function addWalletCoins(amount,text){
 }
 $("rewardAdBtn").onclick=async()=>{
   const btn=$("rewardAdBtn"); btn.textContent="⏳ Ad chal raha hai... 3 sec"; btn.disabled=true;
-  setTimeout(async()=>{
-    await addWalletCoins(25,"Reward Ad - +25 Coins 🎬");
-    btn.textContent="▶️ Ad Dekho +25 Coins"; btn.disabled=false;
-    alert("🎉 +25 Coins mil gaye! Wallet me check karo 🪙");
-  },3000);
+  setTimeout(async()=>{ await addWalletCoins(25,"Reward Ad - +25 Coins 🎬"); btn.textContent="▶️ Ad Dekho +25 Coins"; btn.disabled=false; alert("🎉 +25 Coins mil gaye!"); },3000);
 };
 function loadNotifs(u){if(notifUnsub)notifUnsub(); notifUnsub=onSnapshot(query(collection(db,"notifications"),where("toUid","==",u.uid),orderBy("createdAt","desc")),snap=>{let unread=0; let last=null; $("notifList").innerHTML=""; snap.forEach(d=>{const n=d.data(); if(!n.read){unread++; if(!last) last=n;} const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(n.fromName)}</b><br>${safe(n.text)}<br><span class="small">${n.createdAt? new Date(n.createdAt.toMillis()).toLocaleString():"now"}</span><br><button class="secondary" style="width:auto;padding:4px 8px" onclick="window.delNotif('${d.id}')">🗑️ Delete</button>`; el.onclick=async(e)=>{if(e.target.tagName==="BUTTON") return; await updateDoc(doc(db,"notifications",d.id),{read:true});}; $("notifList").append(el);}); const b=$("bellBadge"); if(unread>0){b.textContent=unread; b.classList.remove("hidden"); if(last){ let type="msg"; const txt=last.text||""; if(txt.includes("liked")||txt.includes("like")) type="like"; else if(txt.includes("call")||txt.includes("Call")||txt.includes("CALL")) type="call"; else if(txt.includes("friend")) type="friend"; else if(txt.includes("Birthday")) type="bday"; else if(txt.includes("Anniversary")) type="anniv"; else if(txt.includes("Hug")||txt.includes("Kiss")||txt.includes("Sorry")) type="couple"; showMobileNotif(last.fromName+" ❤️",txt,type); } }else b.classList.add("hidden");});}
 window.delNotif=async(id)=>{await deleteDoc(doc(db,"notifications",id));};
@@ -191,16 +230,79 @@ $("applyThemeBtn").onclick=async()=>{
   localStorage.setItem("notifSettings_v2",JSON.stringify(notifSettings));
   document.body.className="theme-"+t;
   if(auth.currentUser) await updateDoc(doc(db,"users",auth.currentUser.uid),{appTheme:t,settings:notifSettings}).catch(()=>{});
-  alert("✅ All Settings Saved Perfect!\nMaster: "+notifSettings.master+"\nLike:"+notifSettings.like+" Msg:"+notifSettings.msg+" Call:"+notifSettings.call+"\nBday:"+notifSettings.bday+" Anniv:"+notifSettings.anniv+"\n\nTest button dabao notification check karne");
+  alert("✅ All Settings Saved!");
   if(notifSettings.master==="on") await requestNotifPermission();
   $("settingsScreen").style.display="none";
 };
 $("testNotifBtn").onclick=async()=>{
   const ok=await requestNotifPermission();
   if(!ok){alert("Permission DENY - Chrome > Site Settings > Notifications > Allow karo, phir refresh"); return;}
-  showMobileNotif("Do Dil Ek Jaan ❤️","Test Mobile Notif - Bahar aaya? 📱🔔 Agar ye dikha to fix ho gaya!","msg");
-  alert("🔔 Test bheja - ab mobile ke notification panel me dekho (app minimize karke) - 8 sec tak rahega");
+  showMobileNotif("Do Dil Ek Jaan ❤️","Test Mobile Notif - Bahar aaya? 📱🔔","msg");
+  alert("🔔 Test bheja");
 };
+
+// ===== FOREVER - STARS =====
+(function(){let h="";const em=["✨","⭐","🌟","💫"];for(let i=0;i<28;i++){let l=Math.random()*95,t=Math.random()*95;h+=`<span class="star" style="left:${l}%;top:${t}%;animation-delay:${(Math.random()*2).toFixed(1)}s">${em[i%4]}</span>`;} const el=$("foreverStars"); if(el) el.innerHTML=h;})();
+
+// ===== FOREVER - MYSTERY BOX + STREAK + GROUPS =====
+let currentGroupId=null, groupUnsub=null, groupReqUnsub=null;
+async function loadForever(){
+  const u=auth.currentUser; if(!u) return;
+  const snap=await getDoc(doc(db,"users",u.uid)); const d=snap.data()||{};
+  if($("foreverStreak")) $("foreverStreak").textContent=d.foreverStreak||0;
+  if(d.mysteryLastClaim){ const last=d.mysteryLastClaim.toMillis? d.mysteryLastClaim.toMillis(): new Date(d.mysteryLastClaim).getTime(); const diff=Date.now()-last; if(diff<24*3600*1000){ const left=24*3600*1000-diff; const hh=Math.floor(left/3600000), mm=Math.floor((left%3600000)/60000); if($("mysteryTimer")) $("mysteryTimer").textContent=`⏳ Agla Box: ${hh}h ${mm}m baad`; if($("mysteryAdBtn")) $("mysteryAdBtn").textContent=`🔒 Locked - ${hh}h ${mm}m baad khulega`; } else { if($("mysteryTimer")) $("mysteryTimer").textContent="✅ Box Ready Hai!"; if($("mysteryAdBtn")) $("mysteryAdBtn").textContent="🎬 Ad Dekho + Box Kholo 🎁"; } } else { if($("mysteryTimer")) $("mysteryTimer").textContent="✅ Box Ready Hai!"; }
+  loadForeverGroups();
+}
+$("streakCheckBtn").onclick=async()=>{
+  const u=auth.currentUser; if(!u) return; const ref=doc(db,"users",u.uid); const s=await getDoc(ref); const d=s.data()||{}; const today=new Date().toDateString(); if(d.lastStreakDate===today){ alert("Aaj ka check-in ho gaya hai 🔥"); return; } let ns=(d.foreverStreak||0)+1; await updateDoc(ref,{foreverStreak:ns,lastStreakDate:today}); if($("foreverStreak")) $("foreverStreak").textContent=ns; alert(`🔥 Streak ${ns} din ho gaya! Roz aate raho!`);
+};
+$("mysteryAdBtn").onclick=async()=>{
+  const u=auth.currentUser; if(!u) return; const ref=doc(db,"users",u.uid); const s=await getDoc(ref); const d=s.data()||{}; if(d.mysteryLastClaim){ const last=d.mysteryLastClaim.toMillis? d.mysteryLastClaim.toMillis():0; if(Date.now()-last<24*3600*1000){ alert("Box abhi locked hai, 24 ghante baad khulega ⏳"); return; } }
+  const btn=$("mysteryAdBtn"); btn.textContent="⏳ Ad chal raha hai... 3 sec"; btn.disabled=true;
+  setTimeout(async()=>{ const reward=Math.floor(Math.random()*(500-100+1))+100; await updateDoc(ref,{mysteryLastClaim:serverTimestamp()}); await addWalletCoins(reward,`Mystery Box 🎁 +${reward} Coins`); btn.disabled=false; btn.textContent="🎬 Ad Dekho + Box Kholo 🎁"; alert(`🎉 Mystery Box Khul Gaya!\n\n🎁 Tujhe mile: ${reward} Coins 🪙\n\nKal phir aana, phir Box khulega!`); loadForever(); },3000);
+};
+$("foreverAdBtn").onclick=async()=>{ const b=$("foreverAdBtn"); b.textContent="⏳ Ad chal raha hai..."; b.disabled=true; setTimeout(async()=>{ await addWalletCoins(25,"Reward Ad Forever - +25 Coins 🎬"); b.textContent="🎬 Ad Dekho +25 Coins"; b.disabled=false; alert("🎉 +25 Coins mil gaye!"); },3000); };
+$("createGroupBtn").onclick=async()=>{
+  const u=auth.currentUser; if(!u) return; const name=$("newGroupName").value.trim(); if(!name){ alert("Group ka naam likho"); return; }
+  const snap=await getDoc(doc(db,"users",u.uid)); const coins=snap.data().walletCoins||0; if(coins<500){ alert(`❌ Coins kam hai!\nTere paas: ${coins}\nChahiye: 500\n\nAd dekho, 25 Coins kamao. 20 Ad = 500 Coins`); return; }
+  await updateDoc(doc(db,"users",u.uid),{walletCoins:increment(-500)}); await addDoc(collection(db,"users",u.uid,"walletHistory"),{amount:-500,text:`Group Banaya: ${name} 👥`,createdAt:serverTimestamp()});
+  const gid=await addDoc(collection(db,"foreverGroups"),{name,desc:$("newGroupDesc").value.trim(),adminUid:u.uid,adminName:$("userName").textContent,coAdmins:[],members:[u.uid],memberNames:[$("userName").textContent],approval:$("newGroupApproval").checked,blocked:[],createdAt:serverTimestamp()});
+  $("newGroupName").value=""; $("newGroupDesc").value=""; alert("🎉 Group Ban Gaya! 500 Coins kate. Ab sabko Add karne do! 👥"); loadForeverGroups();
+};
+function loadForeverGroups(){
+  onSnapshot(query(collection(db,"foreverGroups"),orderBy("createdAt","desc")), snap=>{
+    let html=""; if(snap.empty) html=`<div class="panel" style="text-align:center"><p>Abhi koi group nahi hai.<br>Pehla group tu bana! 500 Coins me 👑</p></div>`;
+    snap.forEach(d=>{ const g=d.data(); const isMember=(g.members||[]).includes(auth.currentUser.uid); const isAdmin=g.adminUid===auth.currentUser.uid; const isCo=(g.coAdmins||[]).includes(auth.currentUser.uid); const isBlocked=(g.blocked||[]).includes(auth.currentUser.uid); const cnt=(g.members||[]).length;
+      html+=`<div class="group-card"><div style="display:flex;justify-content:space-between"><b>👥 ${safe(g.name)}</b><span class="small">${cnt}/200</span></div><p class="small">${safe(g.desc||"")}</p><p class="small">👑 Admin: ${safe(g.adminName||"")} | ${g.approval?"🔒 Approval ON":"🔓 Sab Join Kar Sakte"} ${isBlocked?"| 🚫 Tum Block Ho":""}</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">
+      ${isMember?`<button style="width:auto" onclick="window.openGroup('${d.id}','${safe(g.name)}')">💬 Chat Khol</button>`:`${isBlocked?`<button style="width:auto;background:#555">🚫 Blocked</button>`:`<button style="width:auto" class="rainbow-btn" onclick="window.joinGroup('${d.id}')">➕ Add / Join</button>`}`}
+      ${isMember?`<button class="secondary" style="width:auto" onclick="window.leaveGroup('${d.id}')">🚪 Leave</button>`:""}
+      ${(isAdmin||isCo)?`<button class="secondary" style="width:auto;background:#ffcc00;color:#000" onclick="window.manageGroup('${d.id}')">⚙️ Manage</button>`:""}
+      </div></div>`;
+    });
+    if($("foreverGroupsList")) $("foreverGroupsList").innerHTML=html;
+  });
+}
+window.joinGroup=async(gid)=>{
+  const u=auth.currentUser; const ref=doc(db,"foreverGroups",gid); const s=await getDoc(ref); if(!s.exists()) return; const g=s.data(); if((g.blocked||[]).includes(u.uid)){ alert("Tum is group me Block ho 🚫"); return; } if((g.members||[]).includes(u.uid)){ window.openGroup(gid,g.name); return; } if((g.members||[]).length>=200){ alert("Group Full hai - 200/200"); return; }
+  if(g.approval){ await addDoc(collection(db,"foreverGroups",gid,"requests"),{uid:u.uid,name:$("userName").textContent,createdAt:serverTimestamp()}); alert("📩 Request bhej di! Admin approve karega tab andar jaoge."); } else { await updateDoc(ref,{members:arrayUnion(u.uid),memberNames:arrayUnion($("userName").textContent)}); alert("🎉 Group me Add ho gaye! Ab chat karo!"); window.openGroup(gid,g.name); }
+};
+window.leaveGroup=async(gid)=>{ if(!confirm("Group chhodna hai?")) return; await updateDoc(doc(db,"foreverGroups",gid),{members:arrayRemove(auth.currentUser.uid),memberNames:arrayRemove($("userName").textContent),coAdmins:arrayRemove(auth.currentUser.uid)}); alert("Group chhod diya"); };
+window.openGroup=async(gid,name)=>{
+  currentGroupId=gid; $("groupChatArea").classList.remove("hidden"); if($("groupChatTitle")) $("groupChatTitle").textContent="💬 "+name;
+  const gsnap=await getDoc(doc(db,"foreverGroups",gid)); const g=gsnap.data(); const isAdmin=g.adminUid===auth.currentUser.uid; const isCo=(g.coAdmins||[]).includes(auth.currentUser.uid);
+  if(isAdmin||isCo){ onSnapshot(query(collection(db,"foreverGroups",gid,"requests"),orderBy("createdAt","asc")), rs=>{ let rh="<h4>📩 Pending Requests</h4>"; rs.forEach(rd=>{ const r=rd.data(); rh+=`<div class="friend-card" style="display:flex;justify-content:space-between"><b>${safe(r.name)}</b><div><button style="width:auto;padding:4px 8px" onclick="window.approveReq('${gid}','${rd.id}','${r.uid}','${safe(r.name)}')">✅ Approve</button> <button class="secondary" style="width:auto;padding:4px 8px;background:#ff3264" onclick="window.rejectReq('${gid}','${rd.id}')">❌ Reject</button></div></div>`; }); if($("groupRequestsBox")) $("groupRequestsBox").innerHTML=rs.empty?"<p class='small'>Koi pending request nahi</p>":rh; }); } else { if($("groupRequestsBox")) $("groupRequestsBox").innerHTML=""; }
+  if(groupUnsub) groupUnsub(); groupUnsub=onSnapshot(query(collection(db,"foreverGroups",gid,"messages"),orderBy("createdAt","asc")), snap=>{ let h=""; snap.forEach(m=>{ const md=m.data(); const mine=md.uid===auth.currentUser.uid; h+=`<div style="text-align:${mine?"right":"left"};margin:6px 0"><span style="display:inline-block;max-width:80%;padding:8px 12px;border-radius:14px;background:${mine?"linear-gradient(90deg,#ff3f9f,#a52cff)":"#ffffff18"}"><b style="font-size:11px">${safe(md.name)}</b><div style="font-size:13px;white-space:pre-wrap">${safe(md.text)}</div>${(isAdmin||isCo)&&!mine?`<button style="width:auto;padding:2px 6px;font-size:9px;background:#ff3264;border:0;color:#fff;border-radius:6px;margin-top:4px" onclick="window.groupKick('${gid}','${md.uid}','${safe(md.name)}')">Kick 🚫</button> <button style="width:auto;padding:2px 6px;font-size:9px;background:#000;border:0;color:#fff;border-radius:6px" onclick="window.groupBlock('${gid}','${md.uid}','${safe(md.name)}')">Block ⛔</button> <button style="width:auto;padding:2px 6px;font-size:9px;background:#ffcc00;border:0;color:#000;border-radius:6px" onclick="window.makeCoAdmin('${gid}','${md.uid}')">Co-Admin 👑</button>`:""}</span></div>`; }); if($("groupChatBox")) $("groupChatBox").innerHTML=h||"<p class='small'>Abhi koi message nahi, pehla message tu bhej!</p>"; $("groupChatBox").scrollTop=$("groupChatBox").scrollHeight; });
+};
+window.approveReq=async(gid,rid,uid,name)=>{ await updateDoc(doc(db,"foreverGroups",gid),{members:arrayUnion(uid),memberNames:arrayUnion(name)}); await deleteDoc(doc(db,"foreverGroups",gid,"requests",rid)); alert(name+" Approved ✅"); };
+window.rejectReq=async(gid,rid)=>{ await deleteDoc(doc(db,"foreverGroups",gid,"requests",rid)); alert("Rejected ❌"); };
+window.groupKick=async(gid,uid,name)=>{ if(!confirm(name+" ko Kick karna hai?")) return; await updateDoc(doc(db,"foreverGroups",gid),{members:arrayRemove(uid),memberNames:arrayRemove(name),coAdmins:arrayRemove(uid)}); alert(name+" Kick ho gaya"); };
+window.groupBlock=async(gid,uid,name)=>{ if(!confirm(name+" ko Block karna hai? Dobara add nahi ho payega.")) return; await updateDoc(doc(db,"foreverGroups",gid),{members:arrayRemove(uid),memberNames:arrayRemove(name),blocked:arrayUnion(uid),coAdmins:arrayRemove(uid)}); alert(name+" Blocked ⛔"); };
+window.makeCoAdmin=async(gid,uid)=>{ await updateDoc(doc(db,"foreverGroups",gid),{coAdmins:arrayUnion(uid)}); alert("Co-Admin bana diya 👑"); };
+window.manageGroup=async(gid)=>{ const s=await getDoc(doc(db,"foreverGroups",gid)); const g=s.data(); const act=prompt(`Manage Group: ${g.name}\n\n1 likho = Approval ON/OFF badlo (Abhi: ${g.approval?"ON":"OFF"})\n2 likho = Group Delete karo`); if(act==="1"){ await updateDoc(doc(db,"foreverGroups",gid),{approval:!g.approval}); alert("Approval ab: "+(!g.approval?"ON":"OFF")); } else if(act==="2"){ if(confirm("Group delete karna hai?")){ await deleteDoc(doc(db,"foreverGroups",gid)); alert("Group Delete ho gaya"); } } };
+$("groupSendBtn").onclick=async()=>{ if(!currentGroupId) return; const t=$("groupChatInput").value.trim(); if(!t) return; await addDoc(collection(db,"foreverGroups",currentGroupId,"messages"),{uid:auth.currentUser.uid,name:$("userName").textContent,text:t,createdAt:serverTimestamp()}); $("groupChatInput").value=""; };
+$("groupLeaveBtn").onclick=async()=>{ if(!currentGroupId) return; await window.leaveGroup(currentGroupId); $("groupChatArea").classList.add("hidden"); currentGroupId=null; };
+$("groupCloseBtn").onclick=()=>{ $("groupChatArea").classList.add("hidden"); currentGroupId=null; };
+
 function loadFriends(u){if(friendsUnsub)friendsUnsub(); friendsUnsub=onSnapshot(query(collection(db,"friends"),where("uid","==",u.uid)),s=>{$("friendsList").innerHTML=""; $("friendsForGame").innerHTML=""; s.forEach(d=>{const fd=d.data(); const el=document.createElement("div"); el.className="friend-card"; el.innerHTML=`<b>${safe(fd.friendName||"Friend")}</b><div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap"><button>💬 Message</button><button class="secondary">🎮 Game</button><button class="secondary" style="background:#ff3264;width:auto" onclick="window.removeFriend('${d.id}')">🗑️ Remove BOTH</button><button class="secondary" style="width:auto" onclick="window.blockFriend('${fd.friendUid}')">🚫 Block</button></div>`; const b=el.querySelectorAll("button"); b[0].onclick=()=>openChat(fd.friendUid,fd.friendName); b[1].onclick=()=>startGameWithFriend(fd.friendUid,fd.friendName); $("friendsList").append(el); const gEl=document.createElement("div"); gEl.className="friend-card"; gEl.innerHTML=`<div style="display:flex;justify-content:space-between"><b>👤 ${safe(fd.friendName)}</b><button style="width:auto">❌⭕ Play</button></div>`; gEl.querySelector("button").onclick=()=>startGameWithFriend(fd.friendUid,fd.friendName); $("friendsForGame").append(gEl);});});}
 window.removeFriend=async(fid)=>{if(!confirm("Remove BOTH sides?")) return; const me=auth.currentUser; const snap=await getDoc(doc(db,"friends",fid)); if(!snap.exists()) return; const data=snap.data(); await deleteDoc(doc(db,"friends",fid)); try{await deleteDoc(doc(db,"friends",data.friendUid+"_"+me.uid));}catch{await deleteDoc(doc(db,"friends",me.uid+"_"+data.friendUid)).catch(()=>{});} alert("Removed BOTH ✅");};
 window.blockFriend=async(fid)=>{if(!confirm("Block? 🚫")) return; const ref=doc(db,"users",auth.currentUser.uid); const snap=await getDoc(ref); let b=snap.data().blocked||[]; if(!b.includes(fid)) b.push(fid); await updateDoc(ref,{blocked:b}); alert("Blocked 🚫");};
@@ -245,12 +347,7 @@ async function createCall(isVideo,toUid,toName){
     clearInterval(callTimerInterval);
     callTimerInterval=setInterval(()=>{callSeconds++; $("callTimer").textContent=`${String(Math.floor(callSeconds/60)).padStart(2,'0')}:${String(callSeconds%60).padStart(2,'0')}`;},1000);
   };
-  pc.onconnectionstatechange=()=>{
-    if(pc.connectionState==="connected"){
-      $("callStatus").textContent="Connected ❤️";
-      clearTimeout(missedCallTimer);
-    }
-  };
+  pc.onconnectionstatechange=()=>{ if(pc.connectionState==="connected"){ $("callStatus").textContent="Connected ❤️"; clearTimeout(missedCallTimer); } };
 const offer=await pc.createOffer({offerToReceiveAudio:true,offerToReceiveVideo:isVideo});
   await pc.setLocalDescription(offer);
   await setDoc(callDoc,{offer:{type:offer.type,sdp:offer.sdp},fromUid:me.uid,fromName:$("userName").textContent,toUid,isVideo,createdAt:serverTimestamp()});
@@ -331,11 +428,7 @@ async function acceptCall(callId,data){
     await pc.setLocalDescription(answer);
     await updateDoc(callDoc,{answer:{type:answer.type,sdp:answer.sdp}});
     onSnapshot(offerCandidates, snap=>{snap.docChanges().forEach(async ch=>{if(ch.type==="added"&&pc){try{await pc.addIceCandidate(new RTCIceCandidate(ch.doc.data()));}catch{}}} );});
-  }catch(e){
-    alert("Call accept failed: "+e.message);
-    $("callScreen").classList.remove("active");
-    currentCallId=null;
-  }
+  }catch(e){ alert("Call accept failed: "+e.message); $("callScreen").classList.remove("active"); currentCallId=null; }
 }
 async function rejectCall(callId){ $("incomingCallOverlay").classList.remove("active"); try{await deleteDoc(doc(db,"calls",callId));}catch{} currentCallId=null; clearInterval(callTimerInterval);}
 $("endCallBtn").onclick=async()=>{ $("callScreen").classList.remove("active"); if(pc){pc.close(); pc=null;} if(localStream){localStream.getTracks().forEach(t=>t.stop()); localStream=null;} if(currentCallId){try{await deleteDoc(doc(db,"calls",currentCallId));}catch{} currentCallId=null;} clearTimeout(missedCallTimer); clearInterval(callTimerInterval);};
@@ -382,13 +475,13 @@ $("addYtBtn").onclick=async()=>{if(!coupleIdGlobal){alert("Pehle link karo"); re
 $("addCalendarBtn").onclick=async()=>{if(!coupleIdGlobal) return; const t=$("calendarTitle").value.trim(), d=$("calendarDate").value; if(!t||!d) return; await addDoc(collection(db,"couples",coupleIdGlobal,"calendar"),{title:t,date:d,createdAt:serverTimestamp()}); $("calendarTitle").value="";};
 $("addDiaryBtn").onclick=async()=>{if(!coupleIdGlobal) return; const t=$("diaryInput").value.trim(); if(!t) return; await addDoc(collection(db,"couples",coupleIdGlobal,"diary"),{text:t,uid:auth.currentUser.uid,createdAt:serverTimestamp()}); $("diaryInput").value="";};
 $("addGoalBtn").onclick=async()=>{if(!coupleIdGlobal) return; const t=$("goalInput").value.trim(); if(!t) return; await addDoc(collection(db,"couples",coupleIdGlobal,"goals"),{text:t,done:false,createdAt:serverTimestamp()}); $("goalInput").value="";};
-$("saveAnniversaryBtn").onclick=async()=>{if(!coupleIdGlobal){alert("Pehle couple link karo"); return;} const d=$("anniversaryInput").value; if(!d) return; await updateDoc(doc(db,"couples",coupleIdGlobal),{anniversary:d}); alert("Anniversary Saved ❤️ "+d+" - Count + Yaad Dilayega"); checkAnnivBdayReminder(d,$("birthdayInput").value);};
-$("saveBirthdayBtn").onclick=async()=>{if(!coupleIdGlobal){alert("Pehle couple link karo"); return;} const d=$("birthdayInput").value; if(!d) return; await updateDoc(doc(db,"couples",coupleIdGlobal),{birthday:d}); alert("Birthday Saved 🎂 "+d+" - Count + Yaad Dilayega"); checkAnnivBdayReminder($("anniversaryInput").value,d);};
+$("saveAnniversaryBtn").onclick=async()=>{if(!coupleIdGlobal){alert("Pehle couple link karo"); return;} const d=$("anniversaryInput").value; if(!d) return; await updateDoc(doc(db,"couples",coupleIdGlobal),{anniversary:d}); alert("Anniversary Saved ❤️ "+d); checkAnnivBdayReminder(d,$("birthdayInput").value);};
+$("saveBirthdayBtn").onclick=async()=>{if(!coupleIdGlobal){alert("Pehle couple link karo"); return;} const d=$("birthdayInput").value; if(!d) return; await updateDoc(doc(db,"couples",coupleIdGlobal),{birthday:d}); alert("Birthday Saved 🎂 "+d); checkAnnivBdayReminder($("anniversaryInput").value,d);};
 async function startGameWithFriend(friendUid,friendName){const me=auth.currentUser; showScreen("gameScreen"); currentGameId=chatId(me.uid,friendUid); const ref=doc(db,"games",currentGameId); const snap=await getDoc(ref); if(!snap.exists()){await setDoc(ref,{members:[me.uid,friendUid],playerX:me.uid,playerXName:$("userName").textContent,playerO:friendUid,playerOName:friendName,board:["","","","","","","","",""],turn:me.uid,winner:null,createdAt:serverTimestamp()}); if(canSendNotif("friend")) sendNotif(friendUid,"Game challenge by "+$("userName").textContent);} listenGame(currentGameId);}
 function listenGame(gameId){ if(gameUnsub) gameUnsub(); gameUnsub=onSnapshot(doc(db,"games",gameId),s=>{if(!s.exists()) return; const g=s.data(); document.querySelectorAll(".game-cell").forEach((btn,i)=>{btn.textContent=g.board[i]||"";}); if(g.winner){ $("gameStatus").textContent=g.winner==="draw"?"Draw 🤝": (g.winner===auth.currentUser.uid?"YOU WIN 👑":"WON");} else {$("gameStatus").textContent=g.turn===auth.currentUser.uid?"Tumhari Baari ❤️": g.playerXName+" ki baari";}});}
 document.querySelectorAll(".game-cell").forEach(btn=>{btn.onclick=async()=>{const i=parseInt(btn.dataset.i); if(!currentGameId) return; const ref=doc(db,"games",currentGameId); const snap=await getDoc(ref); if(!snap.exists()) return; const g=snap.data(); if(g.winner||g.turn!==auth.currentUser.uid||g.board[i]!=="") return; const sym=auth.currentUser.uid===g.playerX?"❤️":"💜"; let nb=[...g.board]; nb[i]=sym; const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; let win=null; for(const w of wins){if(nb[w[0]] && nb[w[0]]===nb[w[1]] && nb[w[0]]===nb[w[2]]) win=auth.currentUser.uid;} if(!win && nb.every(c=>c!=="")) win="draw"; await updateDoc(ref,{board:nb,turn: win? null : (g.turn===g.playerX? g.playerO : g.playerX),winner:win});};});
 $("resetGameBtn").onclick=async()=>{if(!currentGameId) return; await updateDoc(doc(db,"games",currentGameId),{board:["","","","","","","","",""],turn:auth.currentUser.uid,winner:null});};
-onAuthStateChanged(auth,async u=>{ if(u){ $("loginScreen").style.display="none"; $("loginScreen").classList.add("hidden");$("app").classList.remove("hidden"); $("app").style.display="block"; await loadProfile(u); loadWallet(); loadNotifs(u); loadFriends(u); loadCouple(u); loadPosts(); loadStories(); listenIncomingCalls(u); loadNotifSettingsUI(); await requestNotifPermission(); } else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden"); $("loginScreen").style.display="flex";}});
+onAuthStateChanged(auth,async u=>{ if(u){ $("loginScreen").style.display="none"; $("loginScreen").classList.add("hidden");$("app").classList.remove("hidden"); $("app").style.display="block"; await loadProfile(u); loadWallet(); loadNotifs(u); loadFriends(u); loadCouple(u); loadPosts(); loadStories(); listenIncomingCalls(u); loadNotifSettingsUI(); await requestNotifPermission(); loadForever(); } else {$("app").classList.add("hidden");$("loginScreen").classList.remove("hidden"); $("loginScreen").style.display="flex";}});
 </script>
 </body>
 </html>
